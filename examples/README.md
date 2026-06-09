@@ -1,16 +1,26 @@
 # Examples
 
-The `ballerinax/microsoft.sharepoint.sites` connector provides practical examples illustrating usage in various scenarios.
+The `microsoft.sharepoint.sites` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/tree/main/examples), covering use cases like site analytics dashboard, site permission audit cleanup, and content governance audit workflow.
 
-[//]: # (TODO: Add examples)
-1. 
-2. 
+1. [Site analytics dashboard](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/tree/main/examples/site-analytics-dashboard) - Build a dashboard that retrieves and displays analytics data for SharePoint sites.
+
+2. [Site permission audit cleanup](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/tree/main/examples/site-permission-audit-cleanup) - Audit and clean up permissions across SharePoint sites to ensure proper access control.
+
+3. [Content governance audit workflow](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/tree/main/examples/content-governance-audit-workflow) - Automate a content governance workflow that audits SharePoint site content for compliance.
+
+4. [Sharepoint drive inventory](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/tree/main/examples/sharepoint-drive-inventory) - Generate a comprehensive inventory of all drives and their contents across SharePoint sites.
 
 ## Prerequisites
 
-[//]: # (TODO: Add prerequisites)
+1. Generate Microsoft SharePoint credentials to authenticate the connector as described in the [Setup guide](https://central.ballerina.io/ballerinax/microsoft.sharepoint.sites/latest#setup-guide).
 
-## Running an example
+2. For each example, create a `Config.toml` file the related configuration. Here's an example of how your `Config.toml` file should look:
+
+    ```toml
+    token = "<Access Token>"
+    ```
+
+## Running an Example
 
 Execute the following commands to build an example from the source:
 
@@ -24,22 +34,4 @@ Execute the following commands to build an example from the source:
 
     ```bash
     bal run
-    ```
-
-## Building the examples with the local module
-
-**Warning**: Due to the absence of support for reading local repositories for single Ballerina files, the Bala of the module is manually written to the central repository as a workaround. Consequently, the bash script may modify your local Ballerina repositories.
-
-Execute the following commands to build all the examples against the changes you have made to the module locally:
-
-* To build all the examples:
-
-    ```bash
-    ./build.sh build
-    ```
-
-* To run all the examples:
-
-    ```bash
-    ./build.sh run
     ```
