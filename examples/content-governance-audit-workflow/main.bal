@@ -38,7 +38,7 @@ public function main() returns error? {
 
     io:println("Step 1: Retrieving all content types defined on the site...");
     sites:MicrosoftGraphContentTypeCollectionResponse contentTypesResponse =
-        check sharepointClient->sitesListContentTypes(
+        check sharepointClient->listContentTypes(
             siteId,
             queries = {
                 dollarSelect: ["id", "name", "description"]
@@ -57,7 +57,7 @@ public function main() returns error? {
 
     io:println("Step 2: Examining column definitions for content type ID: " + targetContentTypeId);
     sites:MicrosoftGraphColumnDefinitionCollectionResponse columnsResponse =
-        check sharepointClient->sitesContentTypesListColumns(
+        check sharepointClient->contentTypesListColumns(
             siteId,
             targetContentTypeId,
             queries = {
@@ -111,7 +111,7 @@ public function main() returns error? {
         };
 
         sites:MicrosoftGraphColumnDefinition createdColumn =
-            check sharepointClient->sitesContentTypesCreateColumns(siteId, targetContentTypeId, newColumn);
+            check sharepointClient->contentTypesCreateColumns(siteId, targetContentTypeId, newColumn);
 
         string createdId = createdColumn?.id ?: "N/A";
         string createdName = createdColumn?.name ?: "Unnamed";

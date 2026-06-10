@@ -38,7 +38,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 1: Retrieving site details...");
-    sites:MicrosoftGraphSite siteDetails = check sharepointClient->sitesSiteGetSite(
+    sites:MicrosoftGraphSite siteDetails = check sharepointClient->siteGetSite(
         siteId,
         queries = {
             dollarSelect: ["id", "displayName", "name", "description", "webUrl", "createdDateTime", "lastModifiedDateTime"]
@@ -63,7 +63,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 2: Fetching all-time analytics summary...");
-    sites:MicrosoftGraphItemActivityStat allTimeStats = check sharepointClient->sitesAnalyticsGetAllTime(
+    sites:MicrosoftGraphItemActivityStat allTimeStats = check sharepointClient->analyticsGetAllTime(
         siteId,
         queries = {
             dollarSelect: ["id", "access", "create", "delete", "edit", "move", "startDateTime", "endDateTime", "isTrending", "incompleteData"]
@@ -113,7 +113,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 3: Fetching last seven days activity stats...");
-    sites:MicrosoftGraphItemActivityStat lastSevenDaysStats = check sharepointClient->sitesAnalyticsGetLastSevenDays(
+    sites:MicrosoftGraphItemActivityStat lastSevenDaysStats = check sharepointClient->analyticsGetLastSevenDays(
         siteId,
         queries = {
             dollarSelect: ["id", "access", "create", "delete", "edit", "move", "startDateTime", "endDateTime", "isTrending", "incompleteData"]

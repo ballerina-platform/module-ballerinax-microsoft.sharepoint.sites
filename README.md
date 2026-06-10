@@ -50,7 +50,7 @@ To use the `microsoft.sharepoint.sites` connector in your Ballerina application,
 ### Step 1: Import the module
 
 ```ballerina
-import ballerinax/microsoft.sharepoint.sites as mssites;
+import ballerinax/microsoft.sharepoint.sites;
 ```
 
 ### Step 2: Instantiate a new connector
@@ -63,14 +63,14 @@ clientSecret = "<Your_Client_Secret>"
 tenantId = "<Your_Tenant_Id>"
 ```
 
-2. Create a `mssites:ConnectionConfig` and initialize the client:
+2. Create a `sites:ConnectionConfig` and initialize the client:
 
 ```ballerina
 configurable string clientId = ?;
 configurable string clientSecret = ?;
 configurable string tenantId = ?;
 
-final mssites:Client mssitesClient = check new ({
+final sites:Client msClient = check new ({
     auth: {
         clientId,
         clientSecret,
@@ -88,14 +88,14 @@ Now, utilize the available connector operations.
 
 ```ballerina
 public function main() returns error? {
-    mssites:MicrosoftGraphList newList = {
+    sites:MicrosoftGraphList newList = {
         displayName: "Project Tasks",
         list: {
             template: "genericList"
         }
     };
 
-    mssites:MicrosoftGraphList response = check mssitesClient->sitesCreateLists("contoso.sharepoint.com,abc123,def456", newList);
+    sites:MicrosoftGraphList response = check msClient->createLists("contoso.sharepoint.com,abc123,def456", newList);
 }
 ```
 

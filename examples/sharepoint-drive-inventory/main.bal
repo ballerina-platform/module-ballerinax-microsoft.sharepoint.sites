@@ -35,7 +35,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 1: Discovering all SharePoint sites in the organization...");
-    sites:MicrosoftGraphSiteCollectionResponse siteListResponse = check sharepointClient->sitesSiteListSite(
+    sites:MicrosoftGraphSiteCollectionResponse siteListResponse = check sharepointClient->siteListSite(
         queries = {
             dollarSearch: "*",
             dollarTop: 10,
@@ -80,7 +80,7 @@ public function main() returns error? {
         io:println("--------------------------------------------------");
 
         io:println("  Step 2: Fetching primary (default) drive...");
-        sites:MicrosoftGraphDrive|error primaryDriveResult = sharepointClient->sitesGetDrive(
+        sites:MicrosoftGraphDrive|error primaryDriveResult = sharepointClient->getDrive(
             siteIdVal,
             queries = {
                 dollarSelect: ["id", "name", "driveType", "webUrl", "description", "quota", "owner", "createdDateTime", "lastModifiedDateTime"]
@@ -120,7 +120,7 @@ public function main() returns error? {
         io:println("");
 
         io:println("  Step 3: Enumerating all drives (document libraries) on this site...");
-        sites:MicrosoftGraphDriveCollectionResponse|error allDrivesResult = sharepointClient->sitesListDrives(
+        sites:MicrosoftGraphDriveCollectionResponse|error allDrivesResult = sharepointClient->listDrives(
             siteIdVal,
             queries = {
                 dollarSelect: ["id", "name", "driveType", "webUrl", "description", "quota", "createdDateTime", "lastModifiedDateTime"],

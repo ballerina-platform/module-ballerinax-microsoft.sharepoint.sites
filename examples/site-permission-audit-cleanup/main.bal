@@ -38,7 +38,7 @@ public function main() returns error? {
 
     io:println("Step 1: Retrieving all permissions for the site...");
     sites:MicrosoftGraphPermissionCollectionResponse permissionCollection =
-        check sharepointClient->sitesListPermissions(siteId);
+        check sharepointClient->listPermissions(siteId);
 
     sites:MicrosoftGraphPermission[] permissions = permissionCollection.value ?: [];
     io:println("Total permissions found: " + permissions.length().toString());
@@ -85,7 +85,7 @@ public function main() returns error? {
 
     io:println("Step 2b: Fetching full details of the suspicious permission...");
     sites:MicrosoftGraphPermission suspiciousPermission =
-        check sharepointClient->sitesGetPermissions(siteId, suspiciousPermissionId);
+        check sharepointClient->getPermissions(siteId, suspiciousPermissionId);
 
     string detailedId = suspiciousPermission.id ?: "unknown";
     string[]? detailedRoles = suspiciousPermission.roles;
@@ -113,7 +113,7 @@ public function main() returns error? {
     io:println("Step 3: Revoking overly permissive permission to enforce least privilege...");
     io:println("Deleting permission ID: " + suspiciousPermissionId);
 
-    error? deleteResult = sharepointClient->sitesDeletePermissions(siteId, suspiciousPermissionId);
+    error? deleteResult = sharepointClient->deletePermissions(siteId, suspiciousPermissionId);
 
     if deleteResult is error {
         io:println("[ERROR] Failed to delete permission: " + deleteResult.message());

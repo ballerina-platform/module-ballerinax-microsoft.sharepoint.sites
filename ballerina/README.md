@@ -1,11 +1,11 @@
 ## Overview
 
-## Overview
 [Microsoft SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) is a cloud-based collaboration and content management platform that enables organizations to create, share, and manage sites, documents, and resources securely across teams and enterprises.
 
 The `ballerinax/microsoft.sharepoint.sites` package offers APIs to connect and interact with the [Microsoft SharePoint API](https://learn.microsoft.com/en-us/graph/api/resources/sharepoint?view=graph-rest-1.0) endpoints, specifically based on [Microsoft Graph REST API v1.0](https://learn.microsoft.com/en-us/graph/api/resources/sharepoint?view=graph-rest-1.0).
 
 ## Setup guide
+
 To use the Microsoft SharePoint Sites connector, you must have access to the Microsoft SharePoint API through a [Microsoft Azure developer account](https://portal.azure.com/) and obtain an OAuth 2.0 client credentials (access token). If you do not have a Microsoft account, you can sign up for one [here](https://signup.microsoft.com/).
 
 ### Step 1: Create a Microsoft Account and Register an Application
@@ -43,12 +43,13 @@ To use the Microsoft SharePoint Sites connector, you must have access to the Mic
 > **Tip:** You must copy and store the client secret value somewhere safe. It won't be visible again in your Azure portal settings for security reasons.
 
 ## Quickstart
+
 To use the `microsoft.sharepoint.sites` connector in your Ballerina application, update the `.bal` file as follows:
 
 ### Step 1: Import the module
 
 ```ballerina
-import ballerinax/microsoft.sharepoint.sites as mssites;
+import ballerinax/microsoft.sharepoint.sites;
 ```
 
 ### Step 2: Instantiate a new connector
@@ -61,14 +62,14 @@ clientSecret = "<Your_Client_Secret>"
 tenantId = "<Your_Tenant_Id>"
 ```
 
-2. Create a `mssites:ConnectionConfig` and initialize the client:
+2. Create a `sites:ConnectionConfig` and initialize the client:
 
 ```ballerina
 configurable string clientId = ?;
 configurable string clientSecret = ?;
 configurable string tenantId = ?;
 
-final mssites:Client mssitesClient = check new ({
+final sites:Client msClient = check new ({
     auth: {
         clientId,
         clientSecret,
@@ -86,7 +87,7 @@ Now, utilize the available connector operations.
 
 ```ballerina
 public function main() returns error? {
-    mssites:MicrosoftGraphList newList = {
+    sites:MicrosoftGraphList newList = {
         displayName: "Project Documents",
         list: {
             template: "documentLibrary",
@@ -94,7 +95,7 @@ public function main() returns error? {
         }
     };
 
-    mssites:MicrosoftGraphList response = check mssitesClient->sitesCreateLists("contoso.sharepoint.com,abc123,def456", newList);
+    sites:MicrosoftGraphList response = check msClient->createLists("contoso.sharepoint.com,abc123,def456", newList);
 }
 ```
 
@@ -105,6 +106,7 @@ bal run
 ```
 
 ## Examples
+
 The `microsoft.sharepoint.sites` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/tree/main/examples), covering the following use cases:
 
 1. [Site analytics dashboard](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/tree/main/examples/site-analytics-dashboard) - Demonstrates how to retrieve and visualize SharePoint site analytics data using the connector.

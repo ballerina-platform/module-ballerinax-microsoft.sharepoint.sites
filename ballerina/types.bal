@@ -31,7 +31,7 @@ public type MicrosoftGraphTeamsAppResourceSpecificPermission record {
 
 public type MicrosoftGraphPrinterCapabilitiesLeftMarginsItemsNumber decimal?;
 
-# Represents the Queries record for the operation: sitesOperationsGetCount71b0
+# Represents the Queries record for the operation: operationsGetCount71b0
 public type SitesOperationsGetCount71b0Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -41,7 +41,7 @@ public type SitesOperationsGetCount71b0Queries record {
     string dollarSearch?;
 };
 
-# Represents the Queries record for the operation: sitesCreatedByUserGetMailboxSettings
+# Represents the Queries record for the operation: createdByUserGetMailboxSettings
 public type SitesCreatedByUserGetMailboxSettingsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -183,7 +183,7 @@ public type MicrosoftGraphSite record {
     MicrosoftGraphBaseItem[] items?;
 };
 
-# Represents the Headers record for the operation: sitesAnalyticsDeleteItemActivityStats
+# Represents the Headers record for the operation: analyticsDeleteItemActivityStats
 public type SitesAnalyticsDeleteItemActivityStatsHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -194,7 +194,7 @@ public type SitesAnalyticsDeleteItemActivityStatsHeaders record {
 public type MicrosoftGraphPlannerUserIds record {
 };
 
-# Represents the Queries record for the operation: sitesCreatedByUserServiceProvisioningErrorsGetCountC398
+# Represents the Queries record for the operation: createdByUserServiceProvisioningErrorsGetCountC398
 public type SitesCreatedByUserServiceProvisioningErrorsGetCountC398Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -362,7 +362,7 @@ public type MicrosoftGraphScoredEmailAddress record {
     MicrosoftGraphSelectionLikelihoodInfo|record {} selectionLikelihood?;
 };
 
-# Represents the Queries record for the operation: sitesLastModifiedByUserListServiceProvisioningErrors
+# Represents the Queries record for the operation: lastModifiedByUserListServiceProvisioningErrors
 public type SitesLastModifiedByUserListServiceProvisioningErrorsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -777,7 +777,7 @@ public type MicrosoftGraphDeviceCompliancePolicyState record {
     decimal settingCount?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesGetCount50aa
+# Represents the Queries record for the operation: contentTypesGetCount50aa
 public type SitesContentTypesGetCount50aaQueries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -801,7 +801,7 @@ public type OAuth2RefreshTokenGrantConfig record {|
     string refreshUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
 |};
 
-# Represents the Queries record for the operation: sitesListExternalColumns
+# Represents the Queries record for the operation: listExternalColumns
 public type SitesListExternalColumnsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -1021,7 +1021,7 @@ public type MicrosoftGraphSubscription record {
     string? encryptionCertificate?;
 };
 
-# Represents the Queries record for the operation: sitesListDrives
+# Represents the Queries record for the operation: listDrives
 public type SitesListDrivesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -1195,7 +1195,7 @@ public type MicrosoftGraphRichLongRunningOperationCollectionResponse record {
     MicrosoftGraphRichLongRunningOperation[] value?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListContentTypes
+# Represents the Queries record for the operation: getByPathListContentTypes
 public type SitesGetByPathListContentTypesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -1237,7 +1237,7 @@ public type MicrosoftGraphSharingDetail record {
     string? sharedDateTime?;
 };
 
-# Represents the Queries record for the operation: sitesColumnsGetCountA8bb
+# Represents the Queries record for the operation: columnsGetCountA8bb
 public type SitesColumnsGetCountA8bbQueries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -1247,7 +1247,7 @@ public type SitesColumnsGetCountA8bbQueries record {
     string dollarSearch?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesListColumnLinks
+# Represents the Queries record for the operation: contentTypesListColumnLinks
 public type SitesContentTypesListColumnLinksQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -1525,7 +1525,7 @@ public type MicrosoftGraphServicePlanInfo record {
     string? servicePlanId?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListPermissions
+# Represents the Queries record for the operation: getByPathListPermissions
 public type SitesGetByPathListPermissionsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -1595,7 +1595,7 @@ public type MicrosoftGraphPersonOrGroupColumn record {
     string? displayAs?;
 };
 
-# Represents the Queries record for the operation: sitesGetColumns
+# Represents the Queries record for the operation: getColumns
 public type SitesGetColumnsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -1753,7 +1753,7 @@ public type MicrosoftGraphDevice record {
     string? enrollmentType?;
 };
 
-# Represents the Queries record for the operation: sitesGetLastModifiedByUser
+# Represents the Queries record for the operation: getLastModifiedByUser
 public type SitesGetLastModifiedByUserQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -1763,7 +1763,7 @@ public type SitesGetLastModifiedByUserQueries record {
     ("id"|"deletedDateTime"|"aboutMe"|"accountEnabled"|"ageGroup"|"assignedLicenses"|"assignedPlans"|"authorizationInfo"|"birthday"|"businessPhones"|"city"|"companyName"|"consentProvidedForMinor"|"country"|"createdDateTime"|"creationType"|"customSecurityAttributes"|"department"|"deviceEnrollmentLimit"|"displayName"|"employeeHireDate"|"employeeId"|"employeeLeaveDateTime"|"employeeOrgData"|"employeeType"|"externalUserState"|"externalUserStateChangeDateTime"|"faxNumber"|"givenName"|"hireDate"|"identities"|"identityParentId"|"imAddresses"|"interests"|"isManagementRestricted"|"isResourceAccount"|"jobTitle"|"lastPasswordChangeDateTime"|"legalAgeGroupClassification"|"licenseAssignmentStates"|"mail"|"mailboxSettings"|"mailNickname"|"mobilePhone"|"mySite"|"officeLocation"|"onPremisesDistinguishedName"|"onPremisesDomainName"|"onPremisesExtensionAttributes"|"onPremisesImmutableId"|"onPremisesLastSyncDateTime"|"onPremisesProvisioningErrors"|"onPremisesSamAccountName"|"onPremisesSecurityIdentifier"|"onPremisesSyncEnabled"|"onPremisesUserPrincipalName"|"otherMails"|"passwordPolicies"|"passwordProfile"|"pastProjects"|"postalCode"|"preferredDataLocation"|"preferredLanguage"|"preferredName"|"print"|"provisionedPlans"|"proxyAddresses"|"responsibilities"|"schools"|"securityIdentifier"|"serviceProvisioningErrors"|"showInAddressList"|"signInActivity"|"signInSessionsValidFromDateTime"|"skills"|"state"|"streetAddress"|"surname"|"usageLocation"|"userPrincipalName"|"userType"|"activities"|"adhocCalls"|"agreementAcceptances"|"appRoleAssignments"|"authentication"|"calendar"|"calendarGroups"|"calendars"|"calendarView"|"chats"|"cloudClipboard"|"cloudPCs"|"contactFolders"|"contacts"|"createdObjects"|"dataSecurityAndGovernance"|"deviceManagementTroubleshootingEvents"|"directReports"|"drive"|"drives"|"employeeExperience"|"events"|"extensions"|"followedSites"|"inferenceClassification"|"insights"|"joinedTeams"|"licenseDetails"|"mailFolders"|"managedAppRegistrations"|"managedDevices"|"manager"|"memberOf"|"messages"|"oauth2PermissionGrants"|"onenote"|"onlineMeetings"|"onPremisesSyncBehavior"|"outlook"|"ownedDevices"|"ownedObjects"|"people"|"permissionGrants"|"photo"|"photos"|"planner"|"presence"|"registeredDevices"|"scopedRoleMemberOf"|"settings"|"solutions"|"sponsors"|"teamwork"|"todo"|"transitiveMemberOf")[] dollarSelect?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesColumnPositionsGetCountDea9
+# Represents the Queries record for the operation: contentTypesColumnPositionsGetCountDea9
 public type SitesContentTypesColumnPositionsGetCountDea9Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -1847,7 +1847,7 @@ public type MicrosoftGraphStoragePlanInformation record {
     boolean? upgradeAvailable?;
 };
 
-# Represents the Headers record for the operation: sitesGetByPathDeleteTermStore
+# Represents the Headers record for the operation: getByPathDeleteTermStore
 public type SitesGetByPathDeleteTermStoreHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -1975,7 +1975,7 @@ public type MicrosoftGraphSharedInsight record {
     MicrosoftGraphResourceVisualization|record {} resourceVisualization?;
 };
 
-# Represents the Queries record for the operation: sitesExternalColumnsGetCount3855
+# Represents the Queries record for the operation: externalColumnsGetCount3855
 public type SitesExternalColumnsGetCount3855Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -2064,7 +2064,7 @@ public type MicrosoftGraphMessageRulePredicates record {
 # Specifies the type of Teams conversation context: team, channel, chat, or unknown.
 public type MicrosoftGraphTeamworkConversationIdentityType "team"|"channel"|"chat"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: sitesGetAllSites
+# Represents the Queries record for the operation: getAllSites
 public type SitesGetAllSitesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -2163,7 +2163,7 @@ public type MicrosoftGraphDeviceManagementExchangeAccessStateReason "none"|"unkn
 # Enum indicating the source that triggered a sensitivity label action.
 public type MicrosoftGraphLabelActionSource "manual"|"automatic"|"recommended"|"none"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: sitesAnalyticsItemActivityStatsActivitiesGetCount972d
+# Represents the Queries record for the operation: analyticsItemActivityStatsActivitiesGetCount972d
 public type SitesAnalyticsItemActivityStatsActivitiesGetCount972dQueries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -2227,7 +2227,7 @@ public type MicrosoftGraphCloudPC record {
     string? userPrincipalName?;
 };
 
-# Represents the Queries record for the operation: sitesDelta
+# Represents the Queries record for the operation: delta
 public type SitesDeltaQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -2255,7 +2255,7 @@ public type SitesDeltaQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"displayName"|"error"|"isPersonalSite"|"root"|"sharepointIds"|"siteCollection"|"createdByUser"|"lastModifiedByUser"|"analytics"|"columns"|"contentTypes"|"drive"|"drives"|"externalColumns"|"items"|"lists"|"onenote"|"operations"|"pages"|"permissions"|"sites"|"termStore"|"termStores")[] dollarSelect?;
 };
 
-# Represents the Queries record for the operation: sitesSitesGetCountF499
+# Represents the Queries record for the operation: getCountF499
 public type SitesSitesGetCountF499Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -2414,7 +2414,7 @@ public type MicrosoftGraphCallRecording record {
     string? content?;
 };
 
-# Represents the Queries record for the operation: sitesAnalyticsListItemActivityStats
+# Represents the Queries record for the operation: analyticsListItemActivityStats
 public type SitesAnalyticsListItemActivityStatsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -2450,7 +2450,7 @@ public type MicrosoftGraphInternetMessageHeader record {
     string? value?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListPages
+# Represents the Queries record for the operation: getByPathListPages
 public type SitesGetByPathListPagesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -2542,7 +2542,7 @@ public type MicrosoftGraphPrinterStatus record {
     MicrosoftGraphPrinterProcessingState state?;
 };
 
-# Represents the Queries record for the operation: sitesGetPermissions
+# Represents the Queries record for the operation: getPermissions
 public type SitesGetPermissionsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -2666,7 +2666,7 @@ public type MicrosoftGraphSiteCollectionResponse record {
     MicrosoftGraphSite[] value?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesGetColumnLinks
+# Represents the Queries record for the operation: contentTypesGetColumnLinks
 public type SitesContentTypesGetColumnLinksQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -2703,7 +2703,7 @@ public type MicrosoftGraphProcessContentMetadataBase record {
     MicrosoftGraphContentBase|record {} content?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListLists
+# Represents the Queries record for the operation: getByPathListLists
 public type SitesGetByPathListListsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -2834,7 +2834,7 @@ public type MicrosoftGraphConfigurationManagerClientEnabledFeatures record {
     boolean resourceAccess?;
 };
 
-# Represents the Queries record for the operation: sitesSiteGetApplicableContentTypesForList
+# Represents the Queries record for the operation: siteGetApplicableContentTypesForList
 public type SitesSiteGetApplicableContentTypesForListQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -2878,7 +2878,7 @@ public type MicrosoftGraphAttachmentBase record {
     string? contentType?;
 };
 
-# Represents the Queries record for the operation: sitesAnalyticsGetAllTime
+# Represents the Queries record for the operation: analyticsGetAllTime
 public type SitesAnalyticsGetAllTimeQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -2956,7 +2956,7 @@ public type ContentTypesMicrosoftGraphAddCopyFromContentTypeHubBody record {
     string contentTypeId?;
 };
 
-# Represents the Headers record for the operation: sitesGetByPathDeleteAnalytics
+# Represents the Headers record for the operation: getByPathDeleteAnalytics
 public type SitesGetByPathDeleteAnalyticsHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -2976,7 +2976,7 @@ public type MicrosoftGraphUserWorkLocation record {
 # Possible ways of adding a mobile device to management
 public type MicrosoftGraphDeviceEnrollmentType "unknown"|"userEnrollment"|"deviceEnrollmentManager"|"appleBulkWithUser"|"appleBulkWithoutUser"|"windowsAzureADJoin"|"windowsBulkUserless"|"windowsAutoEnrollment"|"windowsBulkAzureDomainJoin"|"windowsCoManagement"|"windowsAzureADJoinUsingDeviceAuth"|"appleUserEnrollment"|"appleUserEnrollmentWithServiceAccount"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: sitesContentTypesColumnsGetCount896b
+# Represents the Queries record for the operation: contentTypesColumnsGetCount896b
 public type SitesContentTypesColumnsGetCount896bQueries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -3094,14 +3094,14 @@ public type MicrosoftGraphDocumentSetVersion record {
     MicrosoftGraphDocumentSetVersionItem[] items?;
 };
 
-# Represents the Headers record for the operation: sitesDeleteOperations
+# Represents the Headers record for the operation: deleteOperations
 public type SitesDeleteOperationsHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
     string ifMatch?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListSites
+# Represents the Queries record for the operation: getByPathListSites
 public type SitesGetByPathListSitesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -3223,7 +3223,7 @@ public type MicrosoftGraphKeyValue record {
 # Supported duplex printing modes for a printer, expressed as PrintDuplexMode values.
 public type MicrosoftgraphprinterCapabilitiesDuplexModes MicrosoftGraphPrintDuplexMode|DuplexModesAnyOf2?;
 
-# Represents the Queries record for the operation: sitesContentTypesGetBase
+# Represents the Queries record for the operation: contentTypesGetBase
 public type SitesContentTypesGetBaseQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -3388,7 +3388,7 @@ public type MicrosoftGraphPrinterShare record {
     MicrosoftGraphGroup[] allowedGroups?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesColumnsGetSourceColumn
+# Represents the Queries record for the operation: contentTypesColumnsGetSourceColumn
 public type SitesContentTypesColumnsGetSourceColumnQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -3685,7 +3685,7 @@ public type MicrosoftGraphPhoneType "home"|"business"|"mobile"|"other"|"assistan
 # Enum describing detailed processing state conditions of a printer, covering hardware, consumable, and subsystem status events.
 public type MicrosoftGraphPrinterProcessingStateDetail "paused"|"mediaJam"|"mediaNeeded"|"mediaLow"|"mediaEmpty"|"coverOpen"|"interlockOpen"|"outputTrayMissing"|"outputAreaFull"|"markerSupplyLow"|"markerSupplyEmpty"|"inputTrayMissing"|"outputAreaAlmostFull"|"markerWasteAlmostFull"|"markerWasteFull"|"fuserOverTemp"|"fuserUnderTemp"|"other"|"none"|"movingToPaused"|"shutdown"|"connectingToDevice"|"timedOut"|"stopping"|"stoppedPartially"|"tonerLow"|"tonerEmpty"|"spoolAreaFull"|"doorOpen"|"opticalPhotoConductorNearEndOfLife"|"opticalPhotoConductorLifeOver"|"developerLow"|"developerEmpty"|"interpreterResourceUnavailable"|"unknownFutureValue"|"alertRemovalOfBinaryChangeEntry"|"banderAdded"|"banderAlmostEmpty"|"banderAlmostFull"|"banderAtLimit"|"banderClosed"|"banderConfigurationChange"|"banderCoverClosed"|"banderCoverOpen"|"banderEmpty"|"banderFull"|"banderInterlockClosed"|"banderInterlockOpen"|"banderJam"|"banderLifeAlmostOver"|"banderLifeOver"|"banderMemoryExhausted"|"banderMissing"|"banderMotorFailure"|"banderNearLimit"|"banderOffline"|"banderOpened"|"banderOverTemperature"|"banderPowerSaver"|"banderRecoverableFailure"|"banderRecoverableStorage"|"banderRemoved"|"banderResourceAdded"|"banderResourceRemoved"|"banderThermistorFailure"|"banderTimingFailure"|"banderTurnedOff"|"banderTurnedOn"|"banderUnderTemperature"|"banderUnrecoverableFailure"|"banderUnrecoverableStorageError"|"banderWarmingUp"|"binderAdded"|"binderAlmostEmpty"|"binderAlmostFull"|"binderAtLimit"|"binderClosed"|"binderConfigurationChange"|"binderCoverClosed"|"binderCoverOpen"|"binderEmpty"|"binderFull"|"binderInterlockClosed"|"binderInterlockOpen"|"binderJam"|"binderLifeAlmostOver"|"binderLifeOver"|"binderMemoryExhausted"|"binderMissing"|"binderMotorFailure"|"binderNearLimit"|"binderOffline"|"binderOpened"|"binderOverTemperature"|"binderPowerSaver"|"binderRecoverableFailure"|"binderRecoverableStorage"|"binderRemoved"|"binderResourceAdded"|"binderResourceRemoved"|"binderThermistorFailure"|"binderTimingFailure"|"binderTurnedOff"|"binderTurnedOn"|"binderUnderTemperature"|"binderUnrecoverableFailure"|"binderUnrecoverableStorageError"|"binderWarmingUp"|"cameraFailure"|"chamberCooling"|"chamberFailure"|"chamberHeating"|"chamberTemperatureHigh"|"chamberTemperatureLow"|"cleanerLifeAlmostOver"|"cleanerLifeOver"|"configurationChange"|"deactivated"|"deleted"|"dieCutterAdded"|"dieCutterAlmostEmpty"|"dieCutterAlmostFull"|"dieCutterAtLimit"|"dieCutterClosed"|"dieCutterConfigurationChange"|"dieCutterCoverClosed"|"dieCutterCoverOpen"|"dieCutterEmpty"|"dieCutterFull"|"dieCutterInterlockClosed"|"dieCutterInterlockOpen"|"dieCutterJam"|"dieCutterLifeAlmostOver"|"dieCutterLifeOver"|"dieCutterMemoryExhausted"|"dieCutterMissing"|"dieCutterMotorFailure"|"dieCutterNearLimit"|"dieCutterOffline"|"dieCutterOpened"|"dieCutterOverTemperature"|"dieCutterPowerSaver"|"dieCutterRecoverableFailure"|"dieCutterRecoverableStorage"|"dieCutterRemoved"|"dieCutterResourceAdded"|"dieCutterResourceRemoved"|"dieCutterThermistorFailure"|"dieCutterTimingFailure"|"dieCutterTurnedOff"|"dieCutterTurnedOn"|"dieCutterUnderTemperature"|"dieCutterUnrecoverableFailure"|"dieCutterUnrecoverableStorageError"|"dieCutterWarmingUp"|"extruderCooling"|"extruderFailure"|"extruderHeating"|"extruderJam"|"extruderTemperatureHigh"|"extruderTemperatureLow"|"fanFailure"|"faxModemLifeAlmostOver"|"faxModemLifeOver"|"faxModemMissing"|"faxModemTurnedOff"|"faxModemTurnedOn"|"folderAdded"|"folderAlmostEmpty"|"folderAlmostFull"|"folderAtLimit"|"folderClosed"|"folderConfigurationChange"|"folderCoverClosed"|"folderCoverOpen"|"folderEmpty"|"folderFull"|"folderInterlockClosed"|"folderInterlockOpen"|"folderJam"|"folderLifeAlmostOver"|"folderLifeOver"|"folderMemoryExhausted"|"folderMissing"|"folderMotorFailure"|"folderNearLimit"|"folderOffline"|"folderOpened"|"folderOverTemperature"|"folderPowerSaver"|"folderRecoverableFailure"|"folderRecoverableStorage"|"folderRemoved"|"folderResourceAdded"|"folderResourceRemoved"|"folderThermistorFailure"|"folderTimingFailure"|"folderTurnedOff"|"folderTurnedOn"|"folderUnderTemperature"|"folderUnrecoverableFailure"|"folderUnrecoverableStorageError"|"folderWarmingUp"|"hibernate"|"holdNewJobs"|"identifyPrinterRequested"|"imprinterAdded"|"imprinterAlmostEmpty"|"imprinterAlmostFull"|"imprinterAtLimit"|"imprinterClosed"|"imprinterConfigurationChange"|"imprinterCoverClosed"|"imprinterCoverOpen"|"imprinterEmpty"|"imprinterFull"|"imprinterInterlockClosed"|"imprinterInterlockOpen"|"imprinterJam"|"imprinterLifeAlmostOver"|"imprinterLifeOver"|"imprinterMemoryExhausted"|"imprinterMissing"|"imprinterMotorFailure"|"imprinterNearLimit"|"imprinterOffline"|"imprinterOpened"|"imprinterOverTemperature"|"imprinterPowerSaver"|"imprinterRecoverableFailure"|"imprinterRecoverableStorage"|"imprinterRemoved"|"imprinterResourceAdded"|"imprinterResourceRemoved"|"imprinterThermistorFailure"|"imprinterTimingFailure"|"imprinterTurnedOff"|"imprinterTurnedOn"|"imprinterUnderTemperature"|"imprinterUnrecoverableFailure"|"imprinterUnrecoverableStorageError"|"imprinterWarmingUp"|"inputCannotFeedSizeSelected"|"inputManualInputRequest"|"inputMediaColorChange"|"inputMediaFormPartsChange"|"inputMediaSizeChange"|"inputMediaTrayFailure"|"inputMediaTrayFeedError"|"inputMediaTrayJam"|"inputMediaTypeChange"|"inputMediaWeightChange"|"inputPickRollerFailure"|"inputPickRollerLifeOver"|"inputPickRollerLifeWarn"|"inputPickRollerMissing"|"inputTrayElevationFailure"|"inputTrayPositionFailure"|"inserterAdded"|"inserterAlmostEmpty"|"inserterAlmostFull"|"inserterAtLimit"|"inserterClosed"|"inserterConfigurationChange"|"inserterCoverClosed"|"inserterCoverOpen"|"inserterEmpty"|"inserterFull"|"inserterInterlockClosed"|"inserterInterlockOpen"|"inserterJam"|"inserterLifeAlmostOver"|"inserterLifeOver"|"inserterMemoryExhausted"|"inserterMissing"|"inserterMotorFailure"|"inserterNearLimit"|"inserterOffline"|"inserterOpened"|"inserterOverTemperature"|"inserterPowerSaver"|"inserterRecoverableFailure"|"inserterRecoverableStorage"|"inserterRemoved"|"inserterResourceAdded"|"inserterResourceRemoved"|"inserterThermistorFailure"|"inserterTimingFailure"|"inserterTurnedOff"|"inserterTurnedOn"|"inserterUnderTemperature"|"inserterUnrecoverableFailure"|"inserterUnrecoverableStorageError"|"inserterWarmingUp"|"interlockClosed"|"interpreterCartridgeAdded"|"interpreterCartridgeDeleted"|"interpreterComplexPageEncountered"|"interpreterMemoryDecrease"|"interpreterMemoryIncrease"|"interpreterResourceAdded"|"interpreterResourceDeleted"|"lampAtEol"|"lampFailure"|"lampNearEol"|"laserAtEol"|"laserFailure"|"laserNearEol"|"makeEnvelopeAdded"|"makeEnvelopeAlmostEmpty"|"makeEnvelopeAlmostFull"|"makeEnvelopeAtLimit"|"makeEnvelopeClosed"|"makeEnvelopeConfigurationChange"|"makeEnvelopeCoverClosed"|"makeEnvelopeCoverOpen"|"makeEnvelopeEmpty"|"makeEnvelopeFull"|"makeEnvelopeInterlockClosed"|"makeEnvelopeInterlockOpen"|"makeEnvelopeJam"|"makeEnvelopeLifeAlmostOver"|"makeEnvelopeLifeOver"|"makeEnvelopeMemoryExhausted"|"makeEnvelopeMissing"|"makeEnvelopeMotorFailure"|"makeEnvelopeNearLimit"|"makeEnvelopeOffline"|"makeEnvelopeOpened"|"makeEnvelopeOverTemperature"|"makeEnvelopePowerSaver"|"makeEnvelopeRecoverableFailure"|"makeEnvelopeRecoverableStorage"|"makeEnvelopeRemoved"|"makeEnvelopeResourceAdded"|"makeEnvelopeResourceRemoved"|"makeEnvelopeThermistorFailure"|"makeEnvelopeTimingFailure"|"makeEnvelopeTurnedOff"|"makeEnvelopeTurnedOn"|"makeEnvelopeUnderTemperature"|"makeEnvelopeUnrecoverableFailure"|"makeEnvelopeUnrecoverableStorageError"|"makeEnvelopeWarmingUp"|"markerAdjustingPrintQuality"|"markerCleanerMissing"|"markerDeveloperAlmostEmpty"|"markerDeveloperEmpty"|"markerDeveloperMissing"|"markerFuserMissing"|"markerFuserThermistorFailure"|"markerFuserTimingFailure"|"markerInkAlmostEmpty"|"markerInkEmpty"|"markerInkMissing"|"markerOpcMissing"|"markerPrintRibbonAlmostEmpty"|"markerPrintRibbonEmpty"|"markerPrintRibbonMissing"|"markerSupplyAlmostEmpty"|"markerSupplyMissing"|"markerTonerCartridgeMissing"|"markerTonerMissing"|"markerWasteInkReceptacleAlmostFull"|"markerWasteInkReceptacleFull"|"markerWasteInkReceptacleMissing"|"markerWasteMissing"|"markerWasteTonerReceptacleAlmostFull"|"markerWasteTonerReceptacleFull"|"markerWasteTonerReceptacleMissing"|"materialEmpty"|"materialLow"|"materialNeeded"|"mediaDrying"|"mediaPathCannotDuplexMediaSelected"|"mediaPathFailure"|"mediaPathInputEmpty"|"mediaPathInputFeedError"|"mediaPathInputJam"|"mediaPathInputRequest"|"mediaPathJam"|"mediaPathMediaTrayAlmostFull"|"mediaPathMediaTrayFull"|"mediaPathMediaTrayMissing"|"mediaPathOutputFeedError"|"mediaPathOutputFull"|"mediaPathOutputJam"|"mediaPathPickRollerFailure"|"mediaPathPickRollerLifeOver"|"mediaPathPickRollerLifeWarn"|"mediaPathPickRollerMissing"|"motorFailure"|"outputMailboxSelectFailure"|"outputMediaTrayFailure"|"outputMediaTrayFeedError"|"outputMediaTrayJam"|"perforaterAdded"|"perforaterAlmostEmpty"|"perforaterAlmostFull"|"perforaterAtLimit"|"perforaterClosed"|"perforaterConfigurationChange"|"perforaterCoverClosed"|"perforaterCoverOpen"|"perforaterEmpty"|"perforaterFull"|"perforaterInterlockClosed"|"perforaterInterlockOpen"|"perforaterJam"|"perforaterLifeAlmostOver"|"perforaterLifeOver"|"perforaterMemoryExhausted"|"perforaterMissing"|"perforaterMotorFailure"|"perforaterNearLimit"|"perforaterOffline"|"perforaterOpened"|"perforaterOverTemperature"|"perforaterPowerSaver"|"perforaterRecoverableFailure"|"perforaterRecoverableStorage"|"perforaterRemoved"|"perforaterResourceAdded"|"perforaterResourceRemoved"|"perforaterThermistorFailure"|"perforaterTimingFailure"|"perforaterTurnedOff"|"perforaterTurnedOn"|"perforaterUnderTemperature"|"perforaterUnrecoverableFailure"|"perforaterUnrecoverableStorageError"|"perforaterWarmingUp"|"platformCooling"|"platformFailure"|"platformHeating"|"platformTemperatureHigh"|"platformTemperatureLow"|"powerDown"|"powerUp"|"printerManualReset"|"printerNmsReset"|"printerReadyToPrint"|"puncherAdded"|"puncherAlmostEmpty"|"puncherAlmostFull"|"puncherAtLimit"|"puncherClosed"|"puncherConfigurationChange"|"puncherCoverClosed"|"puncherCoverOpen"|"puncherEmpty"|"puncherFull"|"puncherInterlockClosed"|"puncherInterlockOpen"|"puncherJam"|"puncherLifeAlmostOver"|"puncherLifeOver"|"puncherMemoryExhausted"|"puncherMissing"|"puncherMotorFailure"|"puncherNearLimit"|"puncherOffline"|"puncherOpened"|"puncherOverTemperature"|"puncherPowerSaver"|"puncherRecoverableFailure"|"puncherRecoverableStorage"|"puncherRemoved"|"puncherResourceAdded"|"puncherResourceRemoved"|"puncherThermistorFailure"|"puncherTimingFailure"|"puncherTurnedOff"|"puncherTurnedOn"|"puncherUnderTemperature"|"puncherUnrecoverableFailure"|"puncherUnrecoverableStorageError"|"puncherWarmingUp"|"resuming"|"scanMediaPathFailure"|"scanMediaPathInputEmpty"|"scanMediaPathInputFeedError"|"scanMediaPathInputJam"|"scanMediaPathInputRequest"|"scanMediaPathJam"|"scanMediaPathOutputFeedError"|"scanMediaPathOutputFull"|"scanMediaPathOutputJam"|"scanMediaPathPickRollerFailure"|"scanMediaPathPickRollerLifeOver"|"scanMediaPathPickRollerLifeWarn"|"scanMediaPathPickRollerMissing"|"scanMediaPathTrayAlmostFull"|"scanMediaPathTrayFull"|"scanMediaPathTrayMissing"|"scannerLightFailure"|"scannerLightLifeAlmostOver"|"scannerLightLifeOver"|"scannerLightMissing"|"scannerSensorFailure"|"scannerSensorLifeAlmostOver"|"scannerSensorLifeOver"|"scannerSensorMissing"|"separationCutterAdded"|"separationCutterAlmostEmpty"|"separationCutterAlmostFull"|"separationCutterAtLimit"|"separationCutterClosed"|"separationCutterConfigurationChange"|"separationCutterCoverClosed"|"separationCutterCoverOpen"|"separationCutterEmpty"|"separationCutterFull"|"separationCutterInterlockClosed"|"separationCutterInterlockOpen"|"separationCutterJam"|"separationCutterLifeAlmostOver"|"separationCutterLifeOver"|"separationCutterMemoryExhausted"|"separationCutterMissing"|"separationCutterMotorFailure"|"separationCutterNearLimit"|"separationCutterOffline"|"separationCutterOpened"|"separationCutterOverTemperature"|"separationCutterPowerSaver"|"separationCutterRecoverableFailure"|"separationCutterRecoverableStorage"|"separationCutterRemoved"|"separationCutterResourceAdded"|"separationCutterResourceRemoved"|"separationCutterThermistorFailure"|"separationCutterTimingFailure"|"separationCutterTurnedOff"|"separationCutterTurnedOn"|"separationCutterUnderTemperature"|"separationCutterUnrecoverableFailure"|"separationCutterUnrecoverableStorageError"|"separationCutterWarmingUp"|"sheetRotatorAdded"|"sheetRotatorAlmostEmpty"|"sheetRotatorAlmostFull"|"sheetRotatorAtLimit"|"sheetRotatorClosed"|"sheetRotatorConfigurationChange"|"sheetRotatorCoverClosed"|"sheetRotatorCoverOpen"|"sheetRotatorEmpty"|"sheetRotatorFull"|"sheetRotatorInterlockClosed"|"sheetRotatorInterlockOpen"|"sheetRotatorJam"|"sheetRotatorLifeAlmostOver"|"sheetRotatorLifeOver"|"sheetRotatorMemoryExhausted"|"sheetRotatorMissing"|"sheetRotatorMotorFailure"|"sheetRotatorNearLimit"|"sheetRotatorOffline"|"sheetRotatorOpened"|"sheetRotatorOverTemperature"|"sheetRotatorPowerSaver"|"sheetRotatorRecoverableFailure"|"sheetRotatorRecoverableStorage"|"sheetRotatorRemoved"|"sheetRotatorResourceAdded"|"sheetRotatorResourceRemoved"|"sheetRotatorThermistorFailure"|"sheetRotatorTimingFailure"|"sheetRotatorTurnedOff"|"sheetRotatorTurnedOn"|"sheetRotatorUnderTemperature"|"sheetRotatorUnrecoverableFailure"|"sheetRotatorUnrecoverableStorageError"|"sheetRotatorWarmingUp"|"slitterAdded"|"slitterAlmostEmpty"|"slitterAlmostFull"|"slitterAtLimit"|"slitterClosed"|"slitterConfigurationChange"|"slitterCoverClosed"|"slitterCoverOpen"|"slitterEmpty"|"slitterFull"|"slitterInterlockClosed"|"slitterInterlockOpen"|"slitterJam"|"slitterLifeAlmostOver"|"slitterLifeOver"|"slitterMemoryExhausted"|"slitterMissing"|"slitterMotorFailure"|"slitterNearLimit"|"slitterOffline"|"slitterOpened"|"slitterOverTemperature"|"slitterPowerSaver"|"slitterRecoverableFailure"|"slitterRecoverableStorage"|"slitterRemoved"|"slitterResourceAdded"|"slitterResourceRemoved"|"slitterThermistorFailure"|"slitterTimingFailure"|"slitterTurnedOff"|"slitterTurnedOn"|"slitterUnderTemperature"|"slitterUnrecoverableFailure"|"slitterUnrecoverableStorageError"|"slitterWarmingUp"|"stackerAdded"|"stackerAlmostEmpty"|"stackerAlmostFull"|"stackerAtLimit"|"stackerClosed"|"stackerConfigurationChange"|"stackerCoverClosed"|"stackerCoverOpen"|"stackerEmpty"|"stackerFull"|"stackerInterlockClosed"|"stackerInterlockOpen"|"stackerJam"|"stackerLifeAlmostOver"|"stackerLifeOver"|"stackerMemoryExhausted"|"stackerMissing"|"stackerMotorFailure"|"stackerNearLimit"|"stackerOffline"|"stackerOpened"|"stackerOverTemperature"|"stackerPowerSaver"|"stackerRecoverableFailure"|"stackerRecoverableStorage"|"stackerRemoved"|"stackerResourceAdded"|"stackerResourceRemoved"|"stackerThermistorFailure"|"stackerTimingFailure"|"stackerTurnedOff"|"stackerTurnedOn"|"stackerUnderTemperature"|"stackerUnrecoverableFailure"|"stackerUnrecoverableStorageError"|"stackerWarmingUp"|"standby"|"staplerAdded"|"staplerAlmostEmpty"|"staplerAlmostFull"|"staplerAtLimit"|"staplerClosed"|"staplerConfigurationChange"|"staplerCoverClosed"|"staplerCoverOpen"|"staplerEmpty"|"staplerFull"|"staplerInterlockClosed"|"staplerInterlockOpen"|"staplerJam"|"staplerLifeAlmostOver"|"staplerLifeOver"|"staplerMemoryExhausted"|"staplerMissing"|"staplerMotorFailure"|"staplerNearLimit"|"staplerOffline"|"staplerOpened"|"staplerOverTemperature"|"staplerPowerSaver"|"staplerRecoverableFailure"|"staplerRecoverableStorage"|"staplerRemoved"|"staplerResourceAdded"|"staplerResourceRemoved"|"staplerThermistorFailure"|"staplerTimingFailure"|"staplerTurnedOff"|"staplerTurnedOn"|"staplerUnderTemperature"|"staplerUnrecoverableFailure"|"staplerUnrecoverableStorageError"|"staplerWarmingUp"|"stitcherAdded"|"stitcherAlmostEmpty"|"stitcherAlmostFull"|"stitcherAtLimit"|"stitcherClosed"|"stitcherConfigurationChange"|"stitcherCoverClosed"|"stitcherCoverOpen"|"stitcherEmpty"|"stitcherFull"|"stitcherInterlockClosed"|"stitcherInterlockOpen"|"stitcherJam"|"stitcherLifeAlmostOver"|"stitcherLifeOver"|"stitcherMemoryExhausted"|"stitcherMissing"|"stitcherMotorFailure"|"stitcherNearLimit"|"stitcherOffline"|"stitcherOpened"|"stitcherOverTemperature"|"stitcherPowerSaver"|"stitcherRecoverableFailure"|"stitcherRecoverableStorage"|"stitcherRemoved"|"stitcherResourceAdded"|"stitcherResourceRemoved"|"stitcherThermistorFailure"|"stitcherTimingFailure"|"stitcherTurnedOff"|"stitcherTurnedOn"|"stitcherUnderTemperature"|"stitcherUnrecoverableFailure"|"stitcherUnrecoverableStorageError"|"stitcherWarmingUp"|"subunitAdded"|"subunitAlmostEmpty"|"subunitAlmostFull"|"subunitAtLimit"|"subunitClosed"|"subunitCoolingDown"|"subunitEmpty"|"subunitFull"|"subunitLifeAlmostOver"|"subunitLifeOver"|"subunitMemoryExhausted"|"subunitMissing"|"subunitMotorFailure"|"subunitNearLimit"|"subunitOffline"|"subunitOpened"|"subunitOverTemperature"|"subunitPowerSaver"|"subunitRecoverableFailure"|"subunitRecoverableStorage"|"subunitRemoved"|"subunitResourceAdded"|"subunitResourceRemoved"|"subunitThermistorFailure"|"subunitTimingFailure"|"subunitTurnedOff"|"subunitTurnedOn"|"subunitUnderTemperature"|"subunitUnrecoverableFailure"|"subunitUnrecoverableStorage"|"subunitWarmingUp"|"suspend"|"testing"|"trimmerAdded"|"trimmerAlmostEmpty"|"trimmerAlmostFull"|"trimmerAtLimit"|"trimmerClosed"|"trimmerConfigurationChange"|"trimmerCoverClosed"|"trimmerCoverOpen"|"trimmerEmpty"|"trimmerFull"|"trimmerInterlockClosed"|"trimmerInterlockOpen"|"trimmerJam"|"trimmerLifeAlmostOver"|"trimmerLifeOver"|"trimmerMemoryExhausted"|"trimmerMissing"|"trimmerMotorFailure"|"trimmerNearLimit"|"trimmerOffline"|"trimmerOpened"|"trimmerOverTemperature"|"trimmerPowerSaver"|"trimmerRecoverableFailure"|"trimmerRecoverableStorage"|"trimmerRemoved"|"trimmerResourceAdded"|"trimmerResourceRemoved"|"trimmerThermistorFailure"|"trimmerTimingFailure"|"trimmerTurnedOff"|"trimmerTurnedOn"|"trimmerUnderTemperature"|"trimmerUnrecoverableFailure"|"trimmerUnrecoverableStorageError"|"trimmerWarmingUp"|"unknown"|"wrapperAdded"|"wrapperAlmostEmpty"|"wrapperAlmostFull"|"wrapperAtLimit"|"wrapperClosed"|"wrapperConfigurationChange"|"wrapperCoverClosed"|"wrapperCoverOpen"|"wrapperEmpty"|"wrapperFull"|"wrapperInterlockClosed"|"wrapperInterlockOpen"|"wrapperJam"|"wrapperLifeAlmostOver"|"wrapperLifeOver"|"wrapperMemoryExhausted"|"wrapperMissing"|"wrapperMotorFailure"|"wrapperNearLimit"|"wrapperOffline"|"wrapperOpened"|"wrapperOverTemperature"|"wrapperPowerSaver"|"wrapperRecoverableFailure"|"wrapperRecoverableStorage"|"wrapperRemoved"|"wrapperResourceAdded"|"wrapperResourceRemoved"|"wrapperThermistorFailure"|"wrapperTimingFailure"|"wrapperTurnedOff"|"wrapperTurnedOn"|"wrapperUnderTemperature"|"wrapperUnrecoverableFailure"|"wrapperUnrecoverableStorageError"|"wrapperWarmingUp";
 
-# Represents the Queries record for the operation: sitesAnalyticsGetLastSevenDays
+# Represents the Queries record for the operation: analyticsGetLastSevenDays
 public type SitesAnalyticsGetLastSevenDaysQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -3917,7 +3917,7 @@ public type MicrosoftGraphTimeOffReason record {
     boolean? isActive?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesListBaseTypes
+# Represents the Queries record for the operation: contentTypesListBaseTypes
 public type SitesContentTypesListBaseTypesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -3965,7 +3965,7 @@ public type MicrosoftGraphFieldValueSet record {
     *MicrosoftGraphEntity;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesBaseTypesGetCount6b07
+# Represents the Queries record for the operation: contentTypesBaseTypesGetCount6b07
 public type SitesContentTypesBaseTypesGetCount6b07Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -4024,7 +4024,7 @@ public type MicrosoftGraphManagedAppOperation record {
 # Enumeration of Live Share options for a meeting: enabled, disabled, or unknownFutureValue.
 public type MicrosoftGraphMeetingLiveShareOptions "enabled"|"disabled"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: sitesSiteGetByPathGetActivitiesByInterval9468
+# Represents the Queries record for the operation: siteGetByPathGetActivitiesByInterval9468
 public type SitesSiteGetByPathGetActivitiesByInterval9468Queries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -4059,7 +4059,7 @@ public type MicrosoftGraphPasswordAuthenticationMethod record {
     string? password?;
 };
 
-# Represents the Queries record for the operation: sitesListItems
+# Represents the Queries record for the operation: listItems
 public type SitesListItemsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -4135,7 +4135,7 @@ public type MicrosoftGraphOutlookGeoCoordinates record {
     decimal|string|ReferenceNumeric? longitude?;
 };
 
-# Represents the Queries record for the operation: sitesGetCount6254
+# Represents the Queries record for the operation: getCount6254
 public type SitesGetCount6254Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -4168,7 +4168,7 @@ public type MicrosoftGraphGeoCoordinates record {
     decimal|string|ReferenceNumeric? longitude?;
 };
 
-# Represents the Queries record for the operation: sitesGetOperations
+# Represents the Queries record for the operation: getOperations
 public type SitesGetOperationsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -4178,7 +4178,7 @@ public type SitesGetOperationsQueries record {
     ("id"|"createdDateTime"|"lastActionDateTime"|"resourceLocation"|"status"|"statusDetail"|"error"|"percentageComplete"|"resourceId"|"type")[] dollarSelect?;
 };
 
-# Represents the Headers record for the operation: sitesContentTypesDeleteColumns
+# Represents the Headers record for the operation: contentTypesDeleteColumns
 public type SitesContentTypesDeleteColumnsHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -4283,7 +4283,7 @@ public type MicrosoftGraphWorkbookFilter record {
     MicrosoftGraphWorkbookFilterCriteria|record {} criteria?;
 };
 
-# Represents the Headers record for the operation: sitesDeleteAnalytics
+# Represents the Headers record for the operation: deleteAnalytics
 public type SitesDeleteAnalyticsHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -4448,7 +4448,7 @@ public type MicrosoftGraphDriveCollectionResponse record {
 # Enumeration indicating the specialized use case for a team, such as education or healthcare.
 public type MicrosoftGraphTeamSpecialization "none"|"educationStandard"|"educationClass"|"educationProfessionalLearningCommunity"|"educationStaff"|"healthcareStandard"|"healthcareCareCoordination"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: sitesGetDrive
+# Represents the Queries record for the operation: getDrive
 public type SitesGetDriveQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -4474,7 +4474,7 @@ public type MicrosoftGraphWorkbookChartLineFormat record {
     string? color?;
 };
 
-# Represents the Queries record for the operation: sitesListColumns
+# Represents the Queries record for the operation: listColumns
 public type SitesListColumnsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -4511,7 +4511,7 @@ public type MicrosoftGraphWorkbookWorksheetProtection record {
     MicrosoftGraphWorkbookWorksheetProtectionOptions|record {} options?;
 };
 
-# Represents the Queries record for the operation: sitesAnalyticsItemActivityStatsActivitiesGetDriveItemContent
+# Represents the Queries record for the operation: analyticsItemActivityStatsActivitiesGetDriveItemContent
 public type SitesAnalyticsItemActivityStatsActivitiesGetDriveItemContentQueries record {
     # Format of the content
     @http:Query {name: "$format"}
@@ -4562,7 +4562,7 @@ public type MicrosoftGraphContentActivity record {
     string? scopeIdentifier?;
 };
 
-# Represents the Queries record for the operation: sitesGetItems
+# Represents the Queries record for the operation: getItems
 public type SitesGetItemsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -4572,7 +4572,7 @@ public type SitesGetItemsQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"createdByUser"|"lastModifiedByUser")[] dollarSelect?;
 };
 
-# Represents the Headers record for the operation: sitesAnalyticsItemActivityStatsDeleteActivities
+# Represents the Headers record for the operation: analyticsItemActivityStatsDeleteActivities
 public type SitesAnalyticsItemActivityStatsDeleteActivitiesHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -4706,7 +4706,7 @@ public type MicrosoftGraphOutlookUser record {
     MicrosoftGraphOutlookCategory[] masterCategories?;
 };
 
-# Represents the Queries record for the operation: sitesSiteListSite
+# Represents the Queries record for the operation: siteListSite
 public type SitesSiteListSiteQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -4800,7 +4800,7 @@ public type MicrosoftGraphWorkbookIcon record {
     decimal index?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesColumnLinksGetCount7bc1
+# Represents the Queries record for the operation: contentTypesColumnLinksGetCount7bc1
 public type SitesContentTypesColumnLinksGetCount7bc1Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -4964,7 +4964,7 @@ public type MicrosoftGraphDeviceManagementTroubleshootingEvent record {
 # Enumeration of mailbox purpose types: user, linked, shared, room, equipment, others, or unknownFutureValue.
 public type MicrosoftGraphUserPurpose "user"|"linked"|"shared"|"room"|"equipment"|"others"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: sitesGetByPathListColumns
+# Represents the Queries record for the operation: getByPathListColumns
 public type SitesGetByPathListColumnsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -5038,7 +5038,7 @@ public type MicrosoftGraphPrintScaling "auto"|"shrinkToFit"|"fill"|"fit"|"none"|
 # Computer endpoint protection state
 public type MicrosoftGraphWindowsDeviceHealthState "clean"|"fullScanPending"|"rebootPending"|"manualStepsPending"|"offlineScanPending"|"critical";
 
-# Represents the Queries record for the operation: sitesListOperations
+# Represents the Queries record for the operation: listOperations
 public type SitesListOperationsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -5095,7 +5095,7 @@ public type MicrosoftGraphWorkbookChart record {
     decimal|string|ReferenceNumeric? height?;
 };
 
-# Represents the Queries record for the operation: sitesGetSites
+# Represents the Queries record for the operation: getSites
 public type SitesGetSitesQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -5232,7 +5232,7 @@ public type MicrosoftGraphManagedDevice record {
     string complianceGracePeriodExpirationDateTime?;
 };
 
-# Represents the Headers record for the operation: sitesDeleteContentTypes
+# Represents the Headers record for the operation: deleteContentTypes
 public type SitesDeleteContentTypesHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -5246,7 +5246,7 @@ public type MicrosoftGraphItemActivityCollectionResponse record {
     MicrosoftGraphItemActivity[] value?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesGetColumnPositions
+# Represents the Queries record for the operation: contentTypesGetColumnPositions
 public type SitesContentTypesGetColumnPositionsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -5342,7 +5342,7 @@ public type MicrosoftGraphOutlookItem record {
 # Enumeration of detailed states for a print job lifecycle, including upload, transformation, completion, and error conditions.
 public type MicrosoftGraphPrintJobStateDetail "uploadPending"|"transforming"|"completedSuccessfully"|"completedWithWarnings"|"completedWithErrors"|"releaseWait"|"interpreting"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: sitesPermissionsGetCount511e
+# Represents the Queries record for the operation: permissionsGetCount511e
 public type SitesPermissionsGetCount511eQueries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -5380,7 +5380,7 @@ public type MicrosoftGraphShiftActivity record {
     string? endDateTime?;
 };
 
-# Represents the Queries record for the operation: sitesSiteGetByPathGetApplicableContentTypesForList
+# Represents the Queries record for the operation: siteGetByPathGetApplicableContentTypesForList
 public type SitesSiteGetByPathGetApplicableContentTypesForListQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -5494,7 +5494,7 @@ public type MicrosoftGraphTextColumn record {
     decimal? maxLength?;
 };
 
-# Represents the Queries record for the operation: sitesAnalyticsItemActivityStatsGetCountC4ac
+# Represents the Queries record for the operation: analyticsItemActivityStatsGetCountC4ac
 public type SitesAnalyticsItemActivityStatsGetCountC4acQueries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -5514,7 +5514,7 @@ public type MicrosoftGraphDeviceMetadata record {
     string? ipAddress?;
 };
 
-# Represents the Queries record for the operation: sitesCreatedByUserListServiceProvisioningErrors
+# Represents the Queries record for the operation: createdByUserListServiceProvisioningErrors
 public type SitesCreatedByUserListServiceProvisioningErrorsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -5581,7 +5581,7 @@ public type MicrosoftGraphDeviceActionResult record {
     string? actionName?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesListColumns
+# Represents the Queries record for the operation: contentTypesListColumns
 public type SitesContentTypesListColumnsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -5794,7 +5794,7 @@ public type MicrosoftGraphOperationError record {
     string? message?;
 };
 
-# Represents the Queries record for the operation: sitesLastModifiedByUserGetMailboxSettings
+# Represents the Queries record for the operation: lastModifiedByUserGetMailboxSettings
 public type SitesLastModifiedByUserGetMailboxSettingsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -5821,7 +5821,7 @@ public type MicrosoftGraphPhoneAuthenticationMethod record {
 # Enumeration of print orientation options: portrait, landscape, reverseLandscape, or reversePortrait.
 public type MicrosoftGraphPrintOrientation "portrait"|"landscape"|"reverseLandscape"|"reversePortrait"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: sitesGetByPathGetAnalytics
+# Represents the Queries record for the operation: getByPathGetAnalytics
 public type SitesGetByPathGetAnalyticsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -5943,7 +5943,7 @@ public type MicrosoftGraphLicenseAssignmentState record {
     string? skuId?;
 };
 
-# Represents the Headers record for the operation: sitesGetByPathDeleteOnenote
+# Represents the Headers record for the operation: getByPathDeleteOnenote
 public type SitesGetByPathDeleteOnenoteHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -6012,7 +6012,7 @@ public type FinishingsAnyOf21 record {
 public type QualitiesAnyOf2 record {
 };
 
-# Represents the Queries record for the operation: sitesSiteGetActivitiesByInterval96b0
+# Represents the Queries record for the operation: siteGetActivitiesByInterval96b0
 public type SitesSiteGetActivitiesByInterval96b0Queries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -6167,7 +6167,7 @@ public type MicrosoftGraphLearningCourseActivity record {
     MicrosoftGraphCourseStatus|record {} status?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListTermStores
+# Represents the Queries record for the operation: getByPathListTermStores
 public type SitesGetByPathListTermStoresQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -6220,7 +6220,7 @@ public type MicrosoftGraphTeamsAppInstallation record {
     MicrosoftGraphTeamsAppDefinition|record {} teamsAppDefinition?;
 };
 
-# Represents the Queries record for the operation: sitesLastModifiedByUserServiceProvisioningErrorsGetCount4573
+# Represents the Queries record for the operation: lastModifiedByUserServiceProvisioningErrorsGetCount4573
 public type SitesLastModifiedByUserServiceProvisioningErrorsGetCount4573Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -6684,7 +6684,7 @@ public type MicrosoftGraphWorkbookApplication record {
     string calculationMode?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesGetBaseTypes
+# Represents the Queries record for the operation: contentTypesGetBaseTypes
 public type SitesContentTypesGetBaseTypesQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -6802,7 +6802,7 @@ public type MicrosoftGraphOpenShiftItem record {
     decimal openSlotCount?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathGetCreatedByUser
+# Represents the Queries record for the operation: getByPathGetCreatedByUser
 public type SitesGetByPathGetCreatedByUserQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -6869,7 +6869,7 @@ public type MicrosoftGraphGroupLifecyclePolicy record {
     string? managedGroupTypes?;
 };
 
-# Represents the Queries record for the operation: sitesAnalyticsGetItemActivityStats
+# Represents the Queries record for the operation: analyticsGetItemActivityStats
 public type SitesAnalyticsGetItemActivityStatsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -6879,7 +6879,7 @@ public type SitesAnalyticsGetItemActivityStatsQueries record {
     ("id"|"access"|"create"|"delete"|"edit"|"endDateTime"|"incompleteData"|"isTrending"|"move"|"startDateTime"|"activities")[] dollarSelect?;
 };
 
-# Represents the Queries record for the operation: sitesGetDrives
+# Represents the Queries record for the operation: getDrives
 public type SitesGetDrivesQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -6889,7 +6889,7 @@ public type SitesGetDrivesQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"driveType"|"owner"|"quota"|"sharePointIds"|"system"|"createdByUser"|"lastModifiedByUser"|"bundles"|"following"|"items"|"list"|"root"|"special")[] dollarSelect?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathGetOnenote
+# Represents the Queries record for the operation: getByPathGetOnenote
 public type SitesGetByPathGetOnenoteQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -7032,7 +7032,7 @@ public type MicrosoftGraphWorkbookWorksheetProtectionOptions record {
     boolean allowSort?;
 };
 
-# Represents the Queries record for the operation: sitesSiteGetActivitiesByInterval9468
+# Represents the Queries record for the operation: siteGetActivitiesByInterval9468
 public type SitesSiteGetActivitiesByInterval9468Queries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -7200,7 +7200,7 @@ public type MicrosoftGraphIdentity record {
     string? id?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathGetDrive
+# Represents the Queries record for the operation: getByPathGetDrive
 public type SitesGetByPathGetDriveQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -7341,7 +7341,7 @@ public type MicrosoftGraphTargetedChatMessage record {
     MicrosoftGraphIdentity|record {} recipient?;
 };
 
-# Represents the Queries record for the operation: sitesListPermissions
+# Represents the Queries record for the operation: listPermissions
 public type SitesListPermissionsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -7392,7 +7392,7 @@ public type MicrosoftGraphTermStoreGroup record {
     string? description?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListExternalColumns
+# Represents the Queries record for the operation: getByPathListExternalColumns
 public type SitesGetByPathListExternalColumnsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -7437,7 +7437,7 @@ public type MicrosoftGraphSiteArchivalDetails record {
 # Enumeration of chat conversation types: oneOnOne, group, meeting, or unknownFutureValue.
 public type MicrosoftGraphChatType "oneOnOne"|"group"|"meeting"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: sitesSiteGetSite
+# Represents the Queries record for the operation: siteGetSite
 public type SitesSiteGetSiteQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -7454,7 +7454,7 @@ public type MicrosoftGraphActivitiesContainer record {
     MicrosoftGraphContentActivity[] contentActivities?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListDrives
+# Represents the Queries record for the operation: getByPathListDrives
 public type SitesGetByPathListDrivesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -7482,7 +7482,7 @@ public type SitesGetByPathListDrivesQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"driveType"|"owner"|"quota"|"sharePointIds"|"system"|"createdByUser"|"lastModifiedByUser"|"bundles"|"following"|"items"|"list"|"root"|"special")[] dollarSelect?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListItems
+# Represents the Queries record for the operation: getByPathListItems
 public type SitesGetByPathListItemsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -7510,7 +7510,7 @@ public type SitesGetByPathListItemsQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"createdByUser"|"lastModifiedByUser")[] dollarSelect?;
 };
 
-# Represents the Queries record for the operation: sitesSiteContentTypesGetCompatibleHubContentTypes
+# Represents the Queries record for the operation: siteContentTypesGetCompatibleHubContentTypes
 public type SitesSiteContentTypesGetCompatibleHubContentTypesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -7631,7 +7631,7 @@ public type MicrosoftGraphOnenoteEntityBaseModel record {
     string? self?;
 };
 
-# Represents the Queries record for the operation: sitesGetAnalytics
+# Represents the Queries record for the operation: getAnalytics
 public type SitesGetAnalyticsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -7781,7 +7781,7 @@ public type MicrosoftGraphContact record {
     string? yomiSurname?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathListOperations
+# Represents the Queries record for the operation: getByPathListOperations
 public type SitesGetByPathListOperationsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -7856,7 +7856,7 @@ public type MicrosoftGraphProvisionedPlan record {
     string? capabilityStatus?;
 };
 
-# Represents the Queries record for the operation: sitesGetContentTypes
+# Represents the Queries record for the operation: getContentTypes
 public type SitesGetContentTypesQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -7923,7 +7923,7 @@ public type MicrosoftGraphPublicInnerError record {
     string? target?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesListColumnPositions
+# Represents the Queries record for the operation: contentTypesListColumnPositions
 public type SitesContentTypesListColumnPositionsQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -8057,7 +8057,7 @@ public type MicrosoftGraphTermStoreTerm record {
     MicrosoftGraphTermStoreLocalizedLabel[] labels?;
 };
 
-# Represents the Queries record for the operation: sitesGetExternalColumns
+# Represents the Queries record for the operation: getExternalColumns
 public type SitesGetExternalColumnsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -8130,7 +8130,7 @@ public type MicrosoftGraphIncompleteData record {
     string? missingDataBeforeDateTime?;
 };
 
-# Represents the Queries record for the operation: sitesListSites
+# Represents the Queries record for the operation: listSites
 public type SitesListSitesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -8181,7 +8181,7 @@ public type MicrosoftGraphItemActionStat record {
     decimal? actorCount?;
 };
 
-# Represents the Queries record for the operation: sitesItemsGetCount1b67
+# Represents the Queries record for the operation: itemsGetCount1b67
 public type SitesItemsGetCount1b67Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -8202,7 +8202,7 @@ public type MicrosoftGraphTimeOffRequest record {
     string? endDateTime?;
 };
 
-# Represents the Headers record for the operation: sitesDeletePermissions
+# Represents the Headers record for the operation: deletePermissions
 public type SitesDeletePermissionsHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -8486,7 +8486,7 @@ public type MicrosoftGraphGroup record {
     string[] infoCatalogs?;
 };
 
-# Represents the Queries record for the operation: sitesColumnsGetSourceColumn
+# Represents the Queries record for the operation: columnsGetSourceColumn
 public type SitesColumnsGetSourceColumnQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -8682,7 +8682,7 @@ public type MicrosoftGraphPrintDocument record {
     string? contentType?;
 };
 
-# Represents the Queries record for the operation: sitesListContentTypes
+# Represents the Queries record for the operation: listContentTypes
 public type SitesListContentTypesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -8710,7 +8710,7 @@ public type SitesListContentTypesQueries record {
     ("id"|"associatedHubsUrls"|"description"|"documentSet"|"documentTemplate"|"group"|"hidden"|"inheritedFrom"|"isBuiltIn"|"name"|"order"|"parentId"|"propagateChanges"|"readOnly"|"sealed"|"base"|"baseTypes"|"columnLinks"|"columnPositions"|"columns")[] dollarSelect?;
 };
 
-# Represents the Headers record for the operation: sitesContentTypesDeleteColumnLinks
+# Represents the Headers record for the operation: contentTypesDeleteColumnLinks
 public type SitesContentTypesDeleteColumnLinksHeaders record {
     # ETag
     @http:Header {name: "If-Match"}
@@ -8948,7 +8948,7 @@ public type MicrosoftGraphPlannerExternalReferences record {
 public type FinishingsAnyOf2 record {
 };
 
-# Represents the Queries record for the operation: sitesAnalyticsItemActivityStatsListActivities
+# Represents the Queries record for the operation: analyticsItemActivityStatsListActivities
 public type SitesAnalyticsItemActivityStatsListActivitiesQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -9000,7 +9000,7 @@ public type MicrosoftGraphUsageDetails record {
     string? lastModifiedDateTime?;
 };
 
-# Represents the Queries record for the operation: sitesDrivesGetCount5071
+# Represents the Queries record for the operation: drivesGetCount5071
 public type SitesDrivesGetCount5071Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
@@ -9020,7 +9020,7 @@ public type MicrosoftGraphSwapShiftsChangeRequest record {
     string? recipientShiftId?;
 };
 
-# Represents the Queries record for the operation: sitesGetCreatedByUser
+# Represents the Queries record for the operation: getCreatedByUser
 public type SitesGetCreatedByUserQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -9051,7 +9051,7 @@ public type MicrosoftGraphTeamsTab record {
     string? webUrl?;
 };
 
-# Represents the Queries record for the operation: sitesAnalyticsItemActivityStatsActivitiesGetDriveItem
+# Represents the Queries record for the operation: analyticsItemActivityStatsActivitiesGetDriveItem
 public type SitesAnalyticsItemActivityStatsActivitiesGetDriveItemQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -9061,7 +9061,7 @@ public type SitesAnalyticsItemActivityStatsActivitiesGetDriveItemQueries record 
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"audio"|"bundle"|"content"|"cTag"|"deleted"|"file"|"fileSystemInfo"|"folder"|"image"|"location"|"malware"|"package"|"pendingOperations"|"photo"|"publication"|"remoteItem"|"root"|"searchResult"|"shared"|"sharepointIds"|"size"|"specialFolder"|"video"|"webDavUrl"|"createdByUser"|"lastModifiedByUser"|"analytics"|"children"|"listItem"|"permissions"|"retentionLabel"|"subscriptions"|"thumbnails"|"versions"|"workbook")[] dollarSelect?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathGetTermStore
+# Represents the Queries record for the operation: getByPathGetTermStore
 public type SitesGetByPathGetTermStoreQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -9299,7 +9299,7 @@ public type MicrosoftGraphCloudClipboardItemPayload record {
 public type MultipageLayoutsAnyOf2 record {
 };
 
-# Represents the Queries record for the operation: sitesSiteGetByPathGetActivitiesByInterval96b0
+# Represents the Queries record for the operation: siteGetByPathGetActivitiesByInterval96b0
 public type SitesSiteGetByPathGetActivitiesByInterval96b0Queries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
@@ -9453,7 +9453,7 @@ public type MicrosoftGraphTermStoreRelation record {
     MicrosoftGraphTermStoreRelationType|record {} relationship?;
 };
 
-# Represents the Queries record for the operation: sitesAnalyticsItemActivityStatsGetActivities
+# Represents the Queries record for the operation: analyticsItemActivityStatsGetActivities
 public type SitesAnalyticsItemActivityStatsGetActivitiesQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -9565,7 +9565,7 @@ public type MicrosoftGraphDeviceHealthAttestationState record {
     string? virtualSecureMode?;
 };
 
-# Represents the Queries record for the operation: sitesContentTypesGetColumns
+# Represents the Queries record for the operation: contentTypesGetColumns
 public type SitesContentTypesGetColumnsQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -9712,7 +9712,7 @@ public type MicrosoftGraphWorkbookTableRow record {
     decimal index?;
 };
 
-# Represents the Queries record for the operation: sitesGetByPathGetLastModifiedByUser
+# Represents the Queries record for the operation: getByPathGetLastModifiedByUser
 public type SitesGetByPathGetLastModifiedByUserQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
@@ -9769,7 +9769,7 @@ public type MicrosoftGraphOnenoteOperation record {
     string? resourceLocation?;
 };
 
-# Represents the Headers record for the operation: sitesDeleteColumns
+# Represents the Headers record for the operation: deleteColumns
 public type SitesDeleteColumnsHeaders record {
     # ETag
     @http:Header {name: "If-Match"}

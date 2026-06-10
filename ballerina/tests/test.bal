@@ -59,7 +59,7 @@ function initClient() returns error? {
 
 @test:Config {}
 function testListSites() returns error? {
-    MicrosoftGraphSiteCollectionResponse|error result = sharepointClient->sitesSiteListSite();
+    MicrosoftGraphSiteCollectionResponse|error result = sharepointClient->siteListSite();
     if result is error {
         test:assertFail(result.message());
     }
@@ -74,7 +74,7 @@ function testListSites() returns error? {
     dependsOn: [testListSites]
 }
 function testGetSite() returns error? {
-    MicrosoftGraphSite|error result = sharepointClient->sitesSiteGetSite(testSiteId);
+    MicrosoftGraphSite|error result = sharepointClient->siteGetSite(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -87,7 +87,7 @@ function testGetSite() returns error? {
 }
 function testUpdateSite() returns error? {
     MicrosoftGraphSite payload = {displayName: "Updated Site Name"};
-    error? result = sharepointClient->sitesSiteUpdateSite(testSiteId, payload);
+    error? result = sharepointClient->siteUpdateSite(testSiteId, payload);
     test:assertEquals(result, (), "Update should succeed without error");
 }
 
@@ -99,7 +99,7 @@ function testUpdateSite() returns error? {
     dependsOn: [testGetSite]
 }
 function testGetAnalytics() returns error? {
-    MicrosoftGraphItemAnalytics|error result = sharepointClient->sitesGetAnalytics(testSiteId);
+    MicrosoftGraphItemAnalytics|error result = sharepointClient->getAnalytics(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -110,7 +110,7 @@ function testGetAnalytics() returns error? {
     dependsOn: [testGetAnalytics]
 }
 function testGetAllTimeAnalytics() returns error? {
-    MicrosoftGraphItemActivityStat|error result = sharepointClient->sitesAnalyticsGetAllTime(testSiteId);
+    MicrosoftGraphItemActivityStat|error result = sharepointClient->analyticsGetAllTime(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -121,7 +121,7 @@ function testGetAllTimeAnalytics() returns error? {
     dependsOn: [testGetAnalytics]
 }
 function testGetLastSevenDaysAnalytics() returns error? {
-    MicrosoftGraphItemActivityStat|error result = sharepointClient->sitesAnalyticsGetLastSevenDays(testSiteId);
+    MicrosoftGraphItemActivityStat|error result = sharepointClient->analyticsGetLastSevenDays(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -132,7 +132,7 @@ function testGetLastSevenDaysAnalytics() returns error? {
     dependsOn: [testGetAnalytics]
 }
 function testListItemActivityStats() returns error? {
-    MicrosoftGraphItemActivityStatCollectionResponse|error result = sharepointClient->sitesAnalyticsListItemActivityStats(testSiteId);
+    MicrosoftGraphItemActivityStatCollectionResponse|error result = sharepointClient->analyticsListItemActivityStats(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -147,7 +147,7 @@ function testListItemActivityStats() returns error? {
     dependsOn: [testGetSite]
 }
 function testListColumns() returns error? {
-    MicrosoftGraphColumnDefinitionCollectionResponse|error result = sharepointClient->sitesListColumns(testSiteId);
+    MicrosoftGraphColumnDefinitionCollectionResponse|error result = sharepointClient->listColumns(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -163,7 +163,7 @@ function testCreateColumn() returns error? {
         displayName: "Test Column",
         description: "A test column"
     };
-    MicrosoftGraphColumnDefinition|error result = sharepointClient->sitesCreateColumns(testSiteId, payload);
+    MicrosoftGraphColumnDefinition|error result = sharepointClient->createColumns(testSiteId, payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -179,7 +179,7 @@ function testCreateColumn() returns error? {
     dependsOn: [testCreateColumn]
 }
 function testGetColumn() returns error? {
-    MicrosoftGraphColumnDefinition|error result = sharepointClient->sitesGetColumns(testSiteId, testColumnId);
+    MicrosoftGraphColumnDefinition|error result = sharepointClient->getColumns(testSiteId, testColumnId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -190,7 +190,7 @@ function testGetColumn() returns error? {
     dependsOn: [testGetColumn]
 }
 function testGetSourceColumn() returns error? {
-    MicrosoftGraphColumnDefinition|error result = sharepointClient->sitesColumnsGetSourceColumn(testSiteId, testColumnId);
+    MicrosoftGraphColumnDefinition|error result = sharepointClient->columnsGetSourceColumn(testSiteId, testColumnId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -202,7 +202,7 @@ function testGetSourceColumn() returns error? {
 }
 function testUpdateColumn() returns error? {
     MicrosoftGraphColumnDefinition payload = {description: "Updated column description"};
-    error? result = sharepointClient->sitesUpdateColumns(testSiteId, testColumnId, payload);
+    error? result = sharepointClient->updateColumns(testSiteId, testColumnId, payload);
     test:assertEquals(result, (), "Column update should succeed without error");
 }
 
@@ -210,7 +210,7 @@ function testUpdateColumn() returns error? {
     dependsOn: [testUpdateColumn]
 }
 function testDeleteColumn() returns error? {
-    error? result = sharepointClient->sitesDeleteColumns(testSiteId, testColumnId);
+    error? result = sharepointClient->deleteColumns(testSiteId, testColumnId);
     test:assertEquals(result, (), "Column delete should succeed without error");
 }
 
@@ -222,7 +222,7 @@ function testDeleteColumn() returns error? {
     dependsOn: [testGetSite]
 }
 function testListExternalColumns() returns error? {
-    MicrosoftGraphColumnDefinitionCollectionResponse|error result = sharepointClient->sitesListExternalColumns(testSiteId);
+    MicrosoftGraphColumnDefinitionCollectionResponse|error result = sharepointClient->listExternalColumns(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -233,7 +233,7 @@ function testListExternalColumns() returns error? {
     dependsOn: [testListExternalColumns]
 }
 function testGetExternalColumn() returns error? {
-    MicrosoftGraphColumnDefinition|error result = sharepointClient->sitesGetExternalColumns(testSiteId, MOCK_COLUMN_ID);
+    MicrosoftGraphColumnDefinition|error result = sharepointClient->getExternalColumns(testSiteId, MOCK_COLUMN_ID);
     if result is error && isTestOnLiveServer {
         // External columns may not exist in live environment — acceptable skip
         return;
@@ -252,7 +252,7 @@ function testGetExternalColumn() returns error? {
     dependsOn: [testGetSite]
 }
 function testListContentTypes() returns error? {
-    MicrosoftGraphContentTypeCollectionResponse|error result = sharepointClient->sitesListContentTypes(testSiteId);
+    MicrosoftGraphContentTypeCollectionResponse|error result = sharepointClient->listContentTypes(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -268,7 +268,7 @@ function testCreateContentType() returns error? {
         name: "Test Content Type",
         description: "A test content type"
     };
-    MicrosoftGraphContentType|error result = sharepointClient->sitesCreateContentTypes(testSiteId, payload);
+    MicrosoftGraphContentType|error result = sharepointClient->createContentTypes(testSiteId, payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -284,7 +284,7 @@ function testCreateContentType() returns error? {
     dependsOn: [testCreateContentType]
 }
 function testGetContentType() returns error? {
-    MicrosoftGraphContentType|error result = sharepointClient->sitesGetContentTypes(testSiteId, testContentTypeId);
+    MicrosoftGraphContentType|error result = sharepointClient->getContentTypes(testSiteId, testContentTypeId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -295,7 +295,7 @@ function testGetContentType() returns error? {
     dependsOn: [testGetContentType]
 }
 function testListContentTypeColumns() returns error? {
-    MicrosoftGraphColumnDefinitionCollectionResponse|error result = sharepointClient->sitesContentTypesListColumns(testSiteId, testContentTypeId);
+    MicrosoftGraphColumnDefinitionCollectionResponse|error result = sharepointClient->contentTypesListColumns(testSiteId, testContentTypeId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -306,7 +306,7 @@ function testListContentTypeColumns() returns error? {
     dependsOn: [testGetContentType]
 }
 function testListContentTypeColumnLinks() returns error? {
-    MicrosoftGraphColumnLinkCollectionResponse|error result = sharepointClient->sitesContentTypesListColumnLinks(testSiteId, testContentTypeId);
+    MicrosoftGraphColumnLinkCollectionResponse|error result = sharepointClient->contentTypesListColumnLinks(testSiteId, testContentTypeId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -317,7 +317,7 @@ function testListContentTypeColumnLinks() returns error? {
     dependsOn: [testGetContentType]
 }
 function testListContentTypeBaseTypes() returns error? {
-    MicrosoftGraphContentTypeCollectionResponse|error result = sharepointClient->sitesContentTypesListBaseTypes(testSiteId, testContentTypeId);
+    MicrosoftGraphContentTypeCollectionResponse|error result = sharepointClient->contentTypesListBaseTypes(testSiteId, testContentTypeId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -328,7 +328,7 @@ function testListContentTypeBaseTypes() returns error? {
     dependsOn: [testGetContentType]
 }
 function testGetContentTypeBase() returns error? {
-    MicrosoftGraphContentType|error result = sharepointClient->sitesContentTypesGetBase(testSiteId, testContentTypeId);
+    MicrosoftGraphContentType|error result = sharepointClient->contentTypesGetBase(testSiteId, testContentTypeId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -339,7 +339,7 @@ function testGetContentTypeBase() returns error? {
     dependsOn: [testGetContentType]
 }
 function testListContentTypeColumnPositions() returns error? {
-    MicrosoftGraphColumnDefinitionCollectionResponse|error result = sharepointClient->sitesContentTypesListColumnPositions(testSiteId, testContentTypeId);
+    MicrosoftGraphColumnDefinitionCollectionResponse|error result = sharepointClient->contentTypesListColumnPositions(testSiteId, testContentTypeId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -353,7 +353,7 @@ function testCreateContentTypeColumn() returns error? {
     MicrosoftGraphColumnDefinition payload = {
         displayName: "CT Test Column"
     };
-    MicrosoftGraphColumnDefinition|error result = sharepointClient->sitesContentTypesCreateColumns(testSiteId, testContentTypeId, payload);
+    MicrosoftGraphColumnDefinition|error result = sharepointClient->contentTypesCreateColumns(testSiteId, testContentTypeId, payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -365,7 +365,7 @@ function testCreateContentTypeColumn() returns error? {
 }
 function testCreateContentTypeColumnLink() returns error? {
     MicrosoftGraphColumnLink payload = {name: "Test Column"};
-    MicrosoftGraphColumnLink|error result = sharepointClient->sitesContentTypesCreateColumnLinks(testSiteId, testContentTypeId, payload);
+    MicrosoftGraphColumnLink|error result = sharepointClient->contentTypesCreateColumnLinks(testSiteId, testContentTypeId, payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -376,7 +376,7 @@ function testCreateContentTypeColumnLink() returns error? {
     dependsOn: [testGetContentType]
 }
 function testIsContentTypePublished() returns error? {
-    BooleanValueResponse|error result = sharepointClient->sitesSiteContentTypesContentTypeIsPublished(testSiteId, testContentTypeId);
+    BooleanValueResponse|error result = sharepointClient->siteContentTypesContentTypeIsPublished(testSiteId, testContentTypeId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -388,7 +388,7 @@ function testIsContentTypePublished() returns error? {
     enable: isTestOnMockServer
 }
 function testPublishContentType() returns error? {
-    error? result = sharepointClient->sitesSiteContentTypesContentTypePublish(testSiteId, testContentTypeId);
+    error? result = sharepointClient->siteContentTypesContentTypePublish(testSiteId, testContentTypeId);
     test:assertEquals(result, (), "Publish should succeed without error");
 }
 
@@ -397,7 +397,7 @@ function testPublishContentType() returns error? {
     enable: isTestOnMockServer
 }
 function testUnpublishContentType() returns error? {
-    error? result = sharepointClient->sitesSiteContentTypesContentTypeUnpublish(testSiteId, testContentTypeId);
+    error? result = sharepointClient->siteContentTypesContentTypeUnpublish(testSiteId, testContentTypeId);
     test:assertEquals(result, (), "Unpublish should succeed without error");
 }
 
@@ -409,7 +409,7 @@ function testAddCopyContentType() returns error? {
     ContentTypesMicrosoftGraphAddCopyBody payload = {
         contentType: "https://contoso.sharepoint.com/sites/source/_api/web/contentTypes/0x01"
     };
-    ContentTypeOrNullResponse|error result = sharepointClient->sitesSiteContentTypesAddCopy(testSiteId, payload);
+    ContentTypeOrNullResponse|error result = sharepointClient->siteContentTypesAddCopy(testSiteId, payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -420,7 +420,7 @@ function testAddCopyContentType() returns error? {
     dependsOn: [testListContentTypes]
 }
 function testGetCompatibleHubContentTypes() returns error? {
-    CollectionOfContentType|error result = sharepointClient->sitesSiteContentTypesGetCompatibleHubContentTypes(testSiteId);
+    CollectionOfContentType|error result = sharepointClient->siteContentTypesGetCompatibleHubContentTypes(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -432,7 +432,7 @@ function testGetCompatibleHubContentTypes() returns error? {
 }
 function testUpdateContentType() returns error? {
     MicrosoftGraphContentType payload = {description: "Updated description"};
-    error? result = sharepointClient->sitesUpdateContentTypes(testSiteId, testContentTypeId, payload);
+    error? result = sharepointClient->updateContentTypes(testSiteId, testContentTypeId, payload);
     test:assertEquals(result, (), "Content type update should succeed without error");
 }
 
@@ -450,7 +450,7 @@ function testUpdateContentType() returns error? {
     ]
 }
 function testDeleteContentType() returns error? {
-    error? result = sharepointClient->sitesDeleteContentTypes(testSiteId, testContentTypeId);
+    error? result = sharepointClient->deleteContentTypes(testSiteId, testContentTypeId);
     test:assertEquals(result, (), "Content type delete should succeed without error");
 }
 
@@ -462,7 +462,7 @@ function testDeleteContentType() returns error? {
     dependsOn: [testGetSite]
 }
 function testGetDrive() returns error? {
-    MicrosoftGraphDrive|error result = sharepointClient->sitesGetDrive(testSiteId);
+    MicrosoftGraphDrive|error result = sharepointClient->getDrive(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -474,7 +474,7 @@ function testGetDrive() returns error? {
     dependsOn: [testGetSite]
 }
 function testListDrives() returns error? {
-    MicrosoftGraphDriveCollectionResponse|error result = sharepointClient->sitesListDrives(testSiteId);
+    MicrosoftGraphDriveCollectionResponse|error result = sharepointClient->listDrives(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -492,7 +492,7 @@ function testListDrives() returns error? {
     dependsOn: [testListDrives]
 }
 function testGetDriveById() returns error? {
-    MicrosoftGraphDrive|error result = sharepointClient->sitesGetDrives(testSiteId, testDriveId);
+    MicrosoftGraphDrive|error result = sharepointClient->getDrives(testSiteId, testDriveId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -507,7 +507,7 @@ function testGetDriveById() returns error? {
     dependsOn: [testGetSite]
 }
 function testListItems() returns error? {
-    MicrosoftGraphBaseItemCollectionResponse|error result = sharepointClient->sitesListItems(testSiteId);
+    MicrosoftGraphBaseItemCollectionResponse|error result = sharepointClient->listItems(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -519,7 +519,7 @@ function testListItems() returns error? {
     enable: isTestOnMockServer
 }
 function testGetItem() returns error? {
-    MicrosoftGraphBaseItem|error result = sharepointClient->sitesGetItems(testSiteId, "mock-item-id");
+    MicrosoftGraphBaseItem|error result = sharepointClient->getItems(testSiteId, "mock-item-id");
     if result is error {
         test:assertFail(result.message());
     }
@@ -534,7 +534,7 @@ function testGetItem() returns error? {
     dependsOn: [testGetSite]
 }
 function testListPermissions() returns error? {
-    MicrosoftGraphPermissionCollectionResponse|error result = sharepointClient->sitesListPermissions(testSiteId);
+    MicrosoftGraphPermissionCollectionResponse|error result = sharepointClient->listPermissions(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -549,7 +549,7 @@ function testCreatePermission() returns error? {
     MicrosoftGraphPermission payload = {
         roles: ["read"]
     };
-    MicrosoftGraphPermission|error result = sharepointClient->sitesCreatePermissions(testSiteId, payload);
+    MicrosoftGraphPermission|error result = sharepointClient->createPermissions(testSiteId, payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -564,7 +564,7 @@ function testCreatePermission() returns error? {
     dependsOn: [testCreatePermission]
 }
 function testGetPermission() returns error? {
-    MicrosoftGraphPermission|error result = sharepointClient->sitesGetPermissions(testSiteId, testPermissionId);
+    MicrosoftGraphPermission|error result = sharepointClient->getPermissions(testSiteId, testPermissionId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -576,7 +576,7 @@ function testGetPermission() returns error? {
 }
 function testUpdatePermission() returns error? {
     MicrosoftGraphPermission payload = {roles: ["write"]};
-    error? result = sharepointClient->sitesUpdatePermissions(testSiteId, testPermissionId, payload);
+    error? result = sharepointClient->updatePermissions(testSiteId, testPermissionId, payload);
     test:assertEquals(result, (), "Permission update should succeed without error");
 }
 
@@ -584,7 +584,7 @@ function testUpdatePermission() returns error? {
     dependsOn: [testUpdatePermission]
 }
 function testDeletePermission() returns error? {
-    error? result = sharepointClient->sitesDeletePermissions(testSiteId, testPermissionId);
+    error? result = sharepointClient->deletePermissions(testSiteId, testPermissionId);
     test:assertEquals(result, (), "Permission delete should succeed without error");
 }
 
@@ -597,7 +597,7 @@ function testGrantPermission() returns error? {
         recipients: [{email: "test@contoso.com"}],
         roles: ["read"]
     };
-    CollectionOfPermission|error result = sharepointClient->sitesSitePermissionsPermissionGrant(testSiteId, testPermissionId, payload);
+    CollectionOfPermission|error result = sharepointClient->sitePermissionsPermissionGrant(testSiteId, testPermissionId, payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -612,7 +612,7 @@ function testGrantPermission() returns error? {
     dependsOn: [testGetSite]
 }
 function testListOperations() returns error? {
-    MicrosoftGraphRichLongRunningOperationCollectionResponse|error result = sharepointClient->sitesListOperations(testSiteId);
+    MicrosoftGraphRichLongRunningOperationCollectionResponse|error result = sharepointClient->listOperations(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -628,7 +628,7 @@ function testCreateOperation() returns error? {
         'type: "createContentType",
         status: "notStarted"
     };
-    MicrosoftGraphRichLongRunningOperation|error result = sharepointClient->sitesCreateOperations(testSiteId, payload);
+    MicrosoftGraphRichLongRunningOperation|error result = sharepointClient->createOperations(testSiteId, payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -644,7 +644,7 @@ function testCreateOperation() returns error? {
     enable: isTestOnMockServer
 }
 function testGetOperation() returns error? {
-    MicrosoftGraphRichLongRunningOperation|error result = sharepointClient->sitesGetOperations(testSiteId, testOperationId);
+    MicrosoftGraphRichLongRunningOperation|error result = sharepointClient->getOperations(testSiteId, testOperationId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -657,7 +657,7 @@ function testGetOperation() returns error? {
 }
 function testUpdateOperation() returns error? {
     MicrosoftGraphRichLongRunningOperation payload = {status: "running"};
-    error? result = sharepointClient->sitesUpdateOperations(testSiteId, testOperationId, payload);
+    error? result = sharepointClient->updateOperations(testSiteId, testOperationId, payload);
     test:assertEquals(result, (), "Operation update should succeed without error");
 }
 
@@ -666,7 +666,7 @@ function testUpdateOperation() returns error? {
     enable: isTestOnMockServer
 }
 function testDeleteOperation() returns error? {
-    error? result = sharepointClient->sitesDeleteOperations(testSiteId, testOperationId);
+    error? result = sharepointClient->deleteOperations(testSiteId, testOperationId);
     test:assertEquals(result, (), "Operation delete should succeed without error");
 }
 
@@ -678,7 +678,7 @@ function testDeleteOperation() returns error? {
     dependsOn: [testGetSite]
 }
 function testListSubsites() returns error? {
-    MicrosoftGraphSiteCollectionResponse|error result = sharepointClient->sitesListSites(testSiteId);
+    MicrosoftGraphSiteCollectionResponse|error result = sharepointClient->listSites(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -690,7 +690,7 @@ function testListSubsites() returns error? {
     enable: isTestOnMockServer
 }
 function testGetSubsite() returns error? {
-    MicrosoftGraphSite|error result = sharepointClient->sitesGetSites(testSiteId, MOCK_SUBSITE_ID);
+    MicrosoftGraphSite|error result = sharepointClient->getSites(testSiteId, MOCK_SUBSITE_ID);
     if result is error {
         test:assertFail(result.message());
     }
@@ -703,7 +703,7 @@ function testGetSubsite() returns error? {
 
 @test:Config {}
 function testGetAllSites() returns error? {
-    CollectionOfSite|error result = sharepointClient->sitesGetAllSites();
+    CollectionOfSite|error result = sharepointClient->getAllSites();
     if result is error {
         test:assertFail(result.message());
     }
@@ -713,7 +713,7 @@ function testGetAllSites() returns error? {
 
 @test:Config {}
 function testSitesDelta() returns error? {
-    CollectionOfSite1|error result = sharepointClient->sitesDelta();
+    CollectionOfSite1|error result = sharepointClient->delta();
     if result is error {
         test:assertFail(result.message());
     }
@@ -728,7 +728,7 @@ function testAddSites() returns error? {
     SitesMicrosoftGraphAddBody payload = {
         value: [{id: "mock-site-to-follow"}]
     };
-    CollectionOfSite|error result = sharepointClient->sitesAdd(payload);
+    CollectionOfSite|error result = sharepointClient->add(payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -742,7 +742,7 @@ function testRemoveSites() returns error? {
     SitesMicrosoftGraphAddBody payload = {
         value: [{id: "mock-site-to-unfollow"}]
     };
-    CollectionOfSite|error result = sharepointClient->sitesRemove(payload);
+    CollectionOfSite|error result = sharepointClient->remove(payload);
     if result is error {
         test:assertFail(result.message());
     }
@@ -758,7 +758,7 @@ function testRemoveSites() returns error? {
     enable: isTestOnMockServer
 }
 function testGetApplicableContentTypesForList() returns error? {
-    CollectionOfContentType|error result = sharepointClient->sitesSiteGetApplicableContentTypesForList(testSiteId, MOCK_LIST_ID);
+    CollectionOfContentType|error result = sharepointClient->siteGetApplicableContentTypesForList(testSiteId, MOCK_LIST_ID);
     if result is error {
         test:assertFail(result.message());
     }
@@ -774,7 +774,7 @@ function testGetApplicableContentTypesForList() returns error? {
     enable: isTestOnMockServer
 }
 function testGetActivitiesByInterval() returns error? {
-    CollectionOfItemActivityStat|error result = sharepointClient->sitesSiteGetActivitiesByInterval96b0(testSiteId);
+    CollectionOfItemActivityStat|error result = sharepointClient->siteGetActivitiesByInterval96b0(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
