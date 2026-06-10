@@ -38,7 +38,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function siteListSite(map<string|string[]> headers = {}, *SitesSiteListSiteQueries queries) returns MicrosoftGraphSiteCollectionResponse|error {
+    remote isolated function listSite(map<string|string[]> headers = {}, *SitesListSiteQueries queries) returns MicrosoftGraphSiteCollectionResponse|error {
         string resourcePath = string `/`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -51,7 +51,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved entity 
-    remote isolated function siteGetSite(string siteId, map<string|string[]> headers = {}, *SitesSiteGetSiteQueries queries) returns MicrosoftGraphSite|error {
+    remote isolated function getSite(string siteId, map<string|string[]> headers = {}, *SitesGetSiteQueries queries) returns MicrosoftGraphSite|error {
         string resourcePath = string `/${getEncodedUri(siteId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -64,7 +64,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New property values 
     # + return - Success 
-    remote isolated function siteUpdateSite(string siteId, MicrosoftGraphSite payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function updateSite(string siteId, MicrosoftGraphSite payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1903,7 +1903,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function getCountF499(string siteId, map<string|string[]> headers = {}, *SitesSitesGetCountF499Queries queries) returns string|error {
+    remote isolated function getCountF499(string siteId, map<string|string[]> headers = {}, *SitesGetCountF499Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/sites/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);

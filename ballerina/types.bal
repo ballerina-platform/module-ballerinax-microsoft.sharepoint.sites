@@ -2256,7 +2256,7 @@ public type SitesDeltaQueries record {
 };
 
 # Represents the Queries record for the operation: getCountF499
-public type SitesSitesGetCountF499Queries record {
+public type SitesGetCountF499Queries record {
     # Filter items by property values
     @http:Query {name: "$filter"}
     string dollarFilter?;
@@ -4706,8 +4706,8 @@ public type MicrosoftGraphOutlookUser record {
     MicrosoftGraphOutlookCategory[] masterCategories?;
 };
 
-# Represents the Queries record for the operation: siteListSite
-public type SitesSiteListSiteQueries record {
+# Represents the Queries record for the operation: listSite
+public type SitesListSiteQueries record {
     # Skip the first n items
     @http:Query {name: "$skip"}
     int dollarSkip?;
@@ -7437,8 +7437,8 @@ public type MicrosoftGraphSiteArchivalDetails record {
 # Enumeration of chat conversation types: oneOnOne, group, meeting, or unknownFutureValue.
 public type MicrosoftGraphChatType "oneOnOne"|"group"|"meeting"|"unknownFutureValue";
 
-# Represents the Queries record for the operation: siteGetSite
-public type SitesSiteGetSiteQueries record {
+# Represents the Queries record for the operation: getSite
+public type SitesGetSiteQueries record {
     # Expand related entities
     @http:Query {name: "$expand"}
     ("*"|"createdByUser"|"lastModifiedByUser"|"analytics"|"columns"|"contentTypes"|"drive"|"drives"|"externalColumns"|"items"|"lists"|"onenote"|"operations"|"pages"|"permissions"|"sites"|"termStore"|"termStores")[] dollarExpand?;

@@ -35,7 +35,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 1: Discovering all SharePoint sites in the organization...");
-    sites:MicrosoftGraphSiteCollectionResponse siteListResponse = check sharepointClient->siteListSite(
+    sites:MicrosoftGraphSiteCollectionResponse siteListResponse = check sharepointClient->listSite(
         queries = {
             dollarSearch: "*",
             dollarTop: 10,

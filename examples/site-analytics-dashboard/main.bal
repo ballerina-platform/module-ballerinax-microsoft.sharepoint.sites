@@ -38,7 +38,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 1: Retrieving site details...");
-    sites:MicrosoftGraphSite siteDetails = check sharepointClient->siteGetSite(
+    sites:MicrosoftGraphSite siteDetails = check sharepointClient->getSite(
         siteId,
         queries = {
             dollarSelect: ["id", "displayName", "name", "description", "webUrl", "createdDateTime", "lastModifiedDateTime"]

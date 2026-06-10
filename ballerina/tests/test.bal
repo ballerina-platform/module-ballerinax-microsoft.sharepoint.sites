@@ -59,7 +59,7 @@ function initClient() returns error? {
 
 @test:Config {}
 function testListSites() returns error? {
-    MicrosoftGraphSiteCollectionResponse|error result = sharepointClient->siteListSite();
+    MicrosoftGraphSiteCollectionResponse|error result = sharepointClient->listSite();
     if result is error {
         test:assertFail(result.message());
     }
@@ -74,7 +74,7 @@ function testListSites() returns error? {
     dependsOn: [testListSites]
 }
 function testGetSite() returns error? {
-    MicrosoftGraphSite|error result = sharepointClient->siteGetSite(testSiteId);
+    MicrosoftGraphSite|error result = sharepointClient->getSite(testSiteId);
     if result is error {
         test:assertFail(result.message());
     }
@@ -87,7 +87,7 @@ function testGetSite() returns error? {
 }
 function testUpdateSite() returns error? {
     MicrosoftGraphSite payload = {displayName: "Updated Site Name"};
-    error? result = sharepointClient->siteUpdateSite(testSiteId, payload);
+    error? result = sharepointClient->updateSite(testSiteId, payload);
     test:assertEquals(result, (), "Update should succeed without error");
 }
 
