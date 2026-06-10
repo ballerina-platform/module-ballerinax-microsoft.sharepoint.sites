@@ -37,10 +37,10 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 1: Retrieving all permissions for the site...");
-    sites:MicrosoftGraphPermissionCollectionResponse permissionCollection =
+    sites:PermissionCollectionResponse permissionCollection =
         check sharepointClient->listPermissions(siteId);
 
-    sites:MicrosoftGraphPermission[] permissions = permissionCollection.value ?: [];
+    sites:Permission[] permissions = permissionCollection.value ?: [];
     io:println("Total permissions found: " + permissions.length().toString());
     io:println("");
 
@@ -54,7 +54,7 @@ public function main() returns error? {
 
     string suspiciousPermissionId = "";
 
-    foreach sites:MicrosoftGraphPermission permission in permissions {
+    foreach sites:Permission permission in permissions {
         string permId = permission.id ?: "unknown-id";
         string[]? roles = permission.roles;
         string rolesStr = roles is string[] ? string:'join(", ", ...roles) : "no roles";
@@ -84,7 +84,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 2b: Fetching full details of the suspicious permission...");
-    sites:MicrosoftGraphPermission suspiciousPermission =
+    sites:Permission suspiciousPermission =
         check sharepointClient->getPermissions(siteId, suspiciousPermissionId);
 
     string detailedId = suspiciousPermission.id ?: "unknown";
@@ -95,9 +95,9 @@ public function main() returns error? {
     io:println("  ID: " + detailedId);
     io:println("  Roles: " + detailedRolesStr);
 
-    (sites:MicrosoftGraphIdentitySet|record {})? grantedToRaw = suspiciousPermission?.grantedTo;
-    if grantedToRaw is sites:MicrosoftGraphIdentitySet {
-        sites:MicrosoftGraphIdentitySet grantedTo = grantedToRaw;
+    (sites:IdentitySet|record {})? grantedToRaw = suspiciousPermission?.grantedTo;
+    if grantedToRaw is sites:IdentitySet {
+        sites:IdentitySet grantedTo = grantedToRaw;
         io:println("  Granted To: " + grantedTo.toString());
     }
 

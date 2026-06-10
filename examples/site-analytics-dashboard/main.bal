@@ -38,7 +38,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 1: Retrieving site details...");
-    sites:MicrosoftGraphSite siteDetails = check sharepointClient->getSite(
+    sites:Site siteDetails = check sharepointClient->getSite(
         siteId,
         queries = {
             dollarSelect: ["id", "displayName", "name", "description", "webUrl", "createdDateTime", "lastModifiedDateTime"]
@@ -63,7 +63,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 2: Fetching all-time analytics summary...");
-    sites:MicrosoftGraphItemActivityStat allTimeStats = check sharepointClient->analyticsGetAllTime(
+    sites:ItemActivityStat allTimeStats = check sharepointClient->analyticsGetAllTime(
         siteId,
         queries = {
             dollarSelect: ["id", "access", "create", "delete", "edit", "move", "startDateTime", "endDateTime", "isTrending", "incompleteData"]
@@ -81,39 +81,39 @@ public function main() returns error? {
     io:println("End Date: " + allTimeEndDateTime);
     io:println("Is Trending: " + allTimeIsTrending.toString());
 
-    (sites:MicrosoftGraphItemActionStat|record {})? allTimeAccess = allTimeStats?.access;
+    (sites:ItemActionStat|record {})? allTimeAccess = allTimeStats?.access;
     if allTimeAccess != () {
         io:println("Access Activity: " + allTimeAccess.toString());
     }
 
-    (sites:MicrosoftGraphItemActionStat|record {})? allTimeCreate = allTimeStats?.create;
+    (sites:ItemActionStat|record {})? allTimeCreate = allTimeStats?.create;
     if allTimeCreate != () {
         io:println("Create Activity: " + allTimeCreate.toString());
     }
 
-    (sites:MicrosoftGraphItemActionStat|record {})? allTimeEdit = allTimeStats?.edit;
+    (sites:ItemActionStat|record {})? allTimeEdit = allTimeStats?.edit;
     if allTimeEdit != () {
         io:println("Edit Activity: " + allTimeEdit.toString());
     }
 
-    (sites:MicrosoftGraphItemActionStat|record {})? allTimeDelete = allTimeStats?.delete;
+    (sites:ItemActionStat|record {})? allTimeDelete = allTimeStats?.delete;
     if allTimeDelete != () {
         io:println("Delete Activity: " + allTimeDelete.toString());
     }
 
-    (sites:MicrosoftGraphItemActionStat|record {})? allTimeMove = allTimeStats?.move;
+    (sites:ItemActionStat|record {})? allTimeMove = allTimeStats?.move;
     if allTimeMove != () {
         io:println("Move Activity: " + allTimeMove.toString());
     }
 
-    (sites:MicrosoftGraphIncompleteData|record {})? allTimeIncompleteData = allTimeStats?.incompleteData;
+    (sites:IncompleteData|record {})? allTimeIncompleteData = allTimeStats?.incompleteData;
     if allTimeIncompleteData != () {
         io:println("Incomplete Data Info: " + allTimeIncompleteData.toString());
     }
     io:println("");
 
     io:println("Step 3: Fetching last seven days activity stats...");
-    sites:MicrosoftGraphItemActivityStat lastSevenDaysStats = check sharepointClient->analyticsGetLastSevenDays(
+    sites:ItemActivityStat lastSevenDaysStats = check sharepointClient->analyticsGetLastSevenDays(
         siteId,
         queries = {
             dollarSelect: ["id", "access", "create", "delete", "edit", "move", "startDateTime", "endDateTime", "isTrending", "incompleteData"]
@@ -131,32 +131,32 @@ public function main() returns error? {
     io:println("Period End: " + recentEndDateTime);
     io:println("Is Trending: " + recentIsTrending.toString());
 
-    (sites:MicrosoftGraphItemActionStat|record {})? recentAccess = lastSevenDaysStats?.access;
+    (sites:ItemActionStat|record {})? recentAccess = lastSevenDaysStats?.access;
     if recentAccess != () {
         io:println("Recent Access Activity: " + recentAccess.toString());
     }
 
-    (sites:MicrosoftGraphItemActionStat|record {})? recentCreate = lastSevenDaysStats?.create;
+    (sites:ItemActionStat|record {})? recentCreate = lastSevenDaysStats?.create;
     if recentCreate != () {
         io:println("Recent Create Activity: " + recentCreate.toString());
     }
 
-    (sites:MicrosoftGraphItemActionStat|record {})? recentEdit = lastSevenDaysStats?.edit;
+    (sites:ItemActionStat|record {})? recentEdit = lastSevenDaysStats?.edit;
     if recentEdit != () {
         io:println("Recent Edit Activity: " + recentEdit.toString());
     }
 
-    (sites:MicrosoftGraphItemActionStat|record {})? recentDelete = lastSevenDaysStats?.delete;
+    (sites:ItemActionStat|record {})? recentDelete = lastSevenDaysStats?.delete;
     if recentDelete != () {
         io:println("Recent Delete Activity: " + recentDelete.toString());
     }
 
-    (sites:MicrosoftGraphItemActionStat|record {})? recentMove = lastSevenDaysStats?.move;
+    (sites:ItemActionStat|record {})? recentMove = lastSevenDaysStats?.move;
     if recentMove != () {
         io:println("Recent Move Activity: " + recentMove.toString());
     }
 
-    (sites:MicrosoftGraphIncompleteData|record {})? recentIncompleteData = lastSevenDaysStats?.incompleteData;
+    (sites:IncompleteData|record {})? recentIncompleteData = lastSevenDaysStats?.incompleteData;
     if recentIncompleteData != () {
         io:println("Incomplete Data Info: " + recentIncompleteData.toString());
     }

@@ -38,7 +38,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function listSite(map<string|string[]> headers = {}, *SitesListSiteQueries queries) returns MicrosoftGraphSiteCollectionResponse|error {
+    remote isolated function listSite(map<string|string[]> headers = {}, *ListSiteQueries queries) returns SiteCollectionResponse|error {
         string resourcePath = string `/`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -51,7 +51,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved entity 
-    remote isolated function getSite(string siteId, map<string|string[]> headers = {}, *SitesGetSiteQueries queries) returns MicrosoftGraphSite|error {
+    remote isolated function getSite(string siteId, map<string|string[]> headers = {}, *GetSiteQueries queries) returns Site|error {
         string resourcePath = string `/${getEncodedUri(siteId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -64,7 +64,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New property values 
     # + return - Success 
-    remote isolated function updateSite(string siteId, MicrosoftGraphSite payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function updateSite(string siteId, Site payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -78,7 +78,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getAnalytics(string siteId, map<string|string[]> headers = {}, *SitesGetAnalyticsQueries queries) returns MicrosoftGraphItemAnalytics|error {
+    remote isolated function getAnalytics(string siteId, map<string|string[]> headers = {}, *GetAnalyticsQueries queries) returns ItemAnalytics|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -90,7 +90,7 @@ public isolated client class Client {
     # + siteId - The unique identifier of site
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function deleteAnalytics(string siteId, SitesDeleteAnalyticsHeaders headers = {}) returns error? {
+    remote isolated function deleteAnalytics(string siteId, DeleteAnalyticsHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -102,7 +102,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function updateAnalytics(string siteId, MicrosoftGraphItemAnalytics payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function updateAnalytics(string siteId, ItemAnalytics payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -116,7 +116,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function analyticsGetAllTime(string siteId, map<string|string[]> headers = {}, *SitesAnalyticsGetAllTimeQueries queries) returns MicrosoftGraphItemActivityStat|error {
+    remote isolated function analyticsGetAllTime(string siteId, map<string|string[]> headers = {}, *AnalyticsGetAllTimeQueries queries) returns ItemActivityStat|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/allTime`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -129,7 +129,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function analyticsListItemActivityStats(string siteId, map<string|string[]> headers = {}, *SitesAnalyticsListItemActivityStatsQueries queries) returns MicrosoftGraphItemActivityStatCollectionResponse|error {
+    remote isolated function analyticsListItemActivityStats(string siteId, map<string|string[]> headers = {}, *AnalyticsListItemActivityStatsQueries queries) returns ItemActivityStatCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -142,7 +142,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function analyticsCreateItemActivityStats(string siteId, MicrosoftGraphItemActivityStat payload, map<string|string[]> headers = {}) returns MicrosoftGraphItemActivityStat|error {
+    remote isolated function analyticsCreateItemActivityStats(string siteId, ItemActivityStat payload, map<string|string[]> headers = {}) returns ItemActivityStat|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -157,7 +157,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function analyticsGetItemActivityStats(string siteId, string itemActivityStatId, map<string|string[]> headers = {}, *SitesAnalyticsGetItemActivityStatsQueries queries) returns MicrosoftGraphItemActivityStat|error {
+    remote isolated function analyticsGetItemActivityStats(string siteId, string itemActivityStatId, map<string|string[]> headers = {}, *AnalyticsGetItemActivityStatsQueries queries) returns ItemActivityStat|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -170,7 +170,7 @@ public isolated client class Client {
     # + itemActivityStatId - The unique identifier of itemActivityStat
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function analyticsDeleteItemActivityStats(string siteId, string itemActivityStatId, SitesAnalyticsDeleteItemActivityStatsHeaders headers = {}) returns error? {
+    remote isolated function analyticsDeleteItemActivityStats(string siteId, string itemActivityStatId, AnalyticsDeleteItemActivityStatsHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -183,7 +183,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function analyticsUpdateItemActivityStats(string siteId, string itemActivityStatId, MicrosoftGraphItemActivityStat payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function analyticsUpdateItemActivityStats(string siteId, string itemActivityStatId, ItemActivityStat payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -198,7 +198,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function analyticsItemActivityStatsListActivities(string siteId, string itemActivityStatId, map<string|string[]> headers = {}, *SitesAnalyticsItemActivityStatsListActivitiesQueries queries) returns MicrosoftGraphItemActivityCollectionResponse|error {
+    remote isolated function analyticsItemActivityStatsListActivities(string siteId, string itemActivityStatId, map<string|string[]> headers = {}, *AnalyticsItemActivityStatsListActivitiesQueries queries) returns ItemActivityCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}/activities`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -212,7 +212,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function analyticsItemActivityStatsCreateActivities(string siteId, string itemActivityStatId, MicrosoftGraphItemActivity payload, map<string|string[]> headers = {}) returns MicrosoftGraphItemActivity|error {
+    remote isolated function analyticsItemActivityStatsCreateActivities(string siteId, string itemActivityStatId, ItemActivity payload, map<string|string[]> headers = {}) returns ItemActivity|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}/activities`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -228,7 +228,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function analyticsItemActivityStatsGetActivities(string siteId, string itemActivityStatId, string itemActivityId, map<string|string[]> headers = {}, *SitesAnalyticsItemActivityStatsGetActivitiesQueries queries) returns MicrosoftGraphItemActivity|error {
+    remote isolated function analyticsItemActivityStatsGetActivities(string siteId, string itemActivityStatId, string itemActivityId, map<string|string[]> headers = {}, *AnalyticsItemActivityStatsGetActivitiesQueries queries) returns ItemActivity|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}/activities/${getEncodedUri(itemActivityId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -242,7 +242,7 @@ public isolated client class Client {
     # + itemActivityId - The unique identifier of itemActivity
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function analyticsItemActivityStatsDeleteActivities(string siteId, string itemActivityStatId, string itemActivityId, SitesAnalyticsItemActivityStatsDeleteActivitiesHeaders headers = {}) returns error? {
+    remote isolated function analyticsItemActivityStatsDeleteActivities(string siteId, string itemActivityStatId, string itemActivityId, AnalyticsItemActivityStatsDeleteActivitiesHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}/activities/${getEncodedUri(itemActivityId)}`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -256,7 +256,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function analyticsItemActivityStatsUpdateActivities(string siteId, string itemActivityStatId, string itemActivityId, MicrosoftGraphItemActivity payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function analyticsItemActivityStatsUpdateActivities(string siteId, string itemActivityStatId, string itemActivityId, ItemActivity payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}/activities/${getEncodedUri(itemActivityId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -272,7 +272,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function analyticsItemActivityStatsActivitiesGetDriveItem(string siteId, string itemActivityStatId, string itemActivityId, map<string|string[]> headers = {}, *SitesAnalyticsItemActivityStatsActivitiesGetDriveItemQueries queries) returns MicrosoftGraphDriveItem|error {
+    remote isolated function analyticsItemActivityStatsActivitiesGetDriveItem(string siteId, string itemActivityStatId, string itemActivityId, map<string|string[]> headers = {}, *AnalyticsItemActivityStatsActivitiesGetDriveItemQueries queries) returns DriveItem|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}/activities/${getEncodedUri(itemActivityId)}/driveItem`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -287,7 +287,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved media content 
-    remote isolated function analyticsItemActivityStatsActivitiesGetDriveItemContent(string siteId, string itemActivityStatId, string itemActivityId, map<string|string[]> headers = {}, *SitesAnalyticsItemActivityStatsActivitiesGetDriveItemContentQueries queries) returns byte[]|error {
+    remote isolated function analyticsItemActivityStatsActivitiesGetDriveItemContent(string siteId, string itemActivityStatId, string itemActivityId, map<string|string[]> headers = {}, *AnalyticsItemActivityStatsActivitiesGetDriveItemContentQueries queries) returns byte[]|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}/activities/${getEncodedUri(itemActivityId)}/driveItem/content`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -315,7 +315,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function analyticsItemActivityStatsActivitiesGetCount972d(string siteId, string itemActivityStatId, map<string|string[]> headers = {}, *SitesAnalyticsItemActivityStatsActivitiesGetCount972dQueries queries) returns string|error {
+    remote isolated function analyticsItemActivityStatsActivitiesGetCount972d(string siteId, string itemActivityStatId, map<string|string[]> headers = {}, *AnalyticsItemActivityStatsActivitiesGetCount972dQueries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/${getEncodedUri(itemActivityStatId)}/activities/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -327,7 +327,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function analyticsItemActivityStatsGetCountC4ac(string siteId, map<string|string[]> headers = {}, *SitesAnalyticsItemActivityStatsGetCountC4acQueries queries) returns string|error {
+    remote isolated function analyticsItemActivityStatsGetCountC4ac(string siteId, map<string|string[]> headers = {}, *AnalyticsItemActivityStatsGetCountC4acQueries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/itemActivityStats/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -339,7 +339,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function analyticsGetLastSevenDays(string siteId, map<string|string[]> headers = {}, *SitesAnalyticsGetLastSevenDaysQueries queries) returns MicrosoftGraphItemActivityStat|error {
+    remote isolated function analyticsGetLastSevenDays(string siteId, map<string|string[]> headers = {}, *AnalyticsGetLastSevenDaysQueries queries) returns ItemActivityStat|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/analytics/lastSevenDays`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -352,7 +352,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function listColumns(string siteId, map<string|string[]> headers = {}, *SitesListColumnsQueries queries) returns MicrosoftGraphColumnDefinitionCollectionResponse|error {
+    remote isolated function listColumns(string siteId, map<string|string[]> headers = {}, *ListColumnsQueries queries) returns ColumnDefinitionCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/columns`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -365,7 +365,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function createColumns(string siteId, MicrosoftGraphColumnDefinition payload, map<string|string[]> headers = {}) returns MicrosoftGraphColumnDefinition|error {
+    remote isolated function createColumns(string siteId, ColumnDefinition payload, map<string|string[]> headers = {}) returns ColumnDefinition|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/columns`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -380,7 +380,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getColumns(string siteId, string columnDefinitionId, map<string|string[]> headers = {}, *SitesGetColumnsQueries queries) returns MicrosoftGraphColumnDefinition|error {
+    remote isolated function getColumns(string siteId, string columnDefinitionId, map<string|string[]> headers = {}, *GetColumnsQueries queries) returns ColumnDefinition|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/columns/${getEncodedUri(columnDefinitionId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -393,7 +393,7 @@ public isolated client class Client {
     # + columnDefinitionId - The unique identifier of columnDefinition
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function deleteColumns(string siteId, string columnDefinitionId, SitesDeleteColumnsHeaders headers = {}) returns error? {
+    remote isolated function deleteColumns(string siteId, string columnDefinitionId, DeleteColumnsHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/columns/${getEncodedUri(columnDefinitionId)}`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -406,7 +406,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function updateColumns(string siteId, string columnDefinitionId, MicrosoftGraphColumnDefinition payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function updateColumns(string siteId, string columnDefinitionId, ColumnDefinition payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/columns/${getEncodedUri(columnDefinitionId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -421,7 +421,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function columnsGetSourceColumn(string siteId, string columnDefinitionId, map<string|string[]> headers = {}, *SitesColumnsGetSourceColumnQueries queries) returns MicrosoftGraphColumnDefinition|error {
+    remote isolated function columnsGetSourceColumn(string siteId, string columnDefinitionId, map<string|string[]> headers = {}, *ColumnsGetSourceColumnQueries queries) returns ColumnDefinition|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/columns/${getEncodedUri(columnDefinitionId)}/sourceColumn`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -434,7 +434,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function columnsGetCountA8bb(string siteId, map<string|string[]> headers = {}, *SitesColumnsGetCountA8bbQueries queries) returns string|error {
+    remote isolated function columnsGetCountA8bb(string siteId, map<string|string[]> headers = {}, *ColumnsGetCountA8bbQueries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/columns/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -446,7 +446,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function listContentTypes(string siteId, map<string|string[]> headers = {}, *SitesListContentTypesQueries queries) returns MicrosoftGraphContentTypeCollectionResponse|error {
+    remote isolated function listContentTypes(string siteId, map<string|string[]> headers = {}, *ListContentTypesQueries queries) returns ContentTypeCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -459,7 +459,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function createContentTypes(string siteId, MicrosoftGraphContentType payload, map<string|string[]> headers = {}) returns MicrosoftGraphContentType|error {
+    remote isolated function createContentTypes(string siteId, ContentType payload, map<string|string[]> headers = {}) returns ContentType|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -474,7 +474,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getContentTypes(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesGetContentTypesQueries queries) returns MicrosoftGraphContentType|error {
+    remote isolated function getContentTypes(string siteId, string contentTypeId, map<string|string[]> headers = {}, *GetContentTypesQueries queries) returns ContentType|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -487,7 +487,7 @@ public isolated client class Client {
     # + contentTypeId - The unique identifier of contentType
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function deleteContentTypes(string siteId, string contentTypeId, SitesDeleteContentTypesHeaders headers = {}) returns error? {
+    remote isolated function deleteContentTypes(string siteId, string contentTypeId, DeleteContentTypesHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -500,7 +500,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function updateContentTypes(string siteId, string contentTypeId, MicrosoftGraphContentType payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function updateContentTypes(string siteId, string contentTypeId, ContentType payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -515,7 +515,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function contentTypesGetBase(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesContentTypesGetBaseQueries queries) returns MicrosoftGraphContentType|error {
+    remote isolated function contentTypesGetBase(string siteId, string contentTypeId, map<string|string[]> headers = {}, *ContentTypesGetBaseQueries queries) returns ContentType|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/base`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -529,7 +529,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function contentTypesListBaseTypes(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesContentTypesListBaseTypesQueries queries) returns MicrosoftGraphContentTypeCollectionResponse|error {
+    remote isolated function contentTypesListBaseTypes(string siteId, string contentTypeId, map<string|string[]> headers = {}, *ContentTypesListBaseTypesQueries queries) returns ContentTypeCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/baseTypes`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -544,7 +544,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function contentTypesGetBaseTypes(string siteId, string contentTypeId, string contentTypeId1, map<string|string[]> headers = {}, *SitesContentTypesGetBaseTypesQueries queries) returns MicrosoftGraphContentType|error {
+    remote isolated function contentTypesGetBaseTypes(string siteId, string contentTypeId, string contentTypeId1, map<string|string[]> headers = {}, *ContentTypesGetBaseTypesQueries queries) returns ContentType|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/baseTypes/${getEncodedUri(contentTypeId1)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -558,7 +558,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function contentTypesBaseTypesGetCount6b07(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesContentTypesBaseTypesGetCount6b07Queries queries) returns string|error {
+    remote isolated function contentTypesBaseTypesGetCount6b07(string siteId, string contentTypeId, map<string|string[]> headers = {}, *ContentTypesBaseTypesGetCount6b07Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/baseTypes/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -571,7 +571,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function contentTypesListColumnLinks(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesContentTypesListColumnLinksQueries queries) returns MicrosoftGraphColumnLinkCollectionResponse|error {
+    remote isolated function contentTypesListColumnLinks(string siteId, string contentTypeId, map<string|string[]> headers = {}, *ContentTypesListColumnLinksQueries queries) returns ColumnLinkCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columnLinks`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -585,7 +585,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function contentTypesCreateColumnLinks(string siteId, string contentTypeId, MicrosoftGraphColumnLink payload, map<string|string[]> headers = {}) returns MicrosoftGraphColumnLink|error {
+    remote isolated function contentTypesCreateColumnLinks(string siteId, string contentTypeId, ColumnLink payload, map<string|string[]> headers = {}) returns ColumnLink|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columnLinks`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -601,7 +601,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function contentTypesGetColumnLinks(string siteId, string contentTypeId, string columnLinkId, map<string|string[]> headers = {}, *SitesContentTypesGetColumnLinksQueries queries) returns MicrosoftGraphColumnLink|error {
+    remote isolated function contentTypesGetColumnLinks(string siteId, string contentTypeId, string columnLinkId, map<string|string[]> headers = {}, *ContentTypesGetColumnLinksQueries queries) returns ColumnLink|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columnLinks/${getEncodedUri(columnLinkId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -615,7 +615,7 @@ public isolated client class Client {
     # + columnLinkId - The unique identifier of columnLink
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function contentTypesDeleteColumnLinks(string siteId, string contentTypeId, string columnLinkId, SitesContentTypesDeleteColumnLinksHeaders headers = {}) returns error? {
+    remote isolated function contentTypesDeleteColumnLinks(string siteId, string contentTypeId, string columnLinkId, ContentTypesDeleteColumnLinksHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columnLinks/${getEncodedUri(columnLinkId)}`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -629,7 +629,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function contentTypesUpdateColumnLinks(string siteId, string contentTypeId, string columnLinkId, MicrosoftGraphColumnLink payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function contentTypesUpdateColumnLinks(string siteId, string contentTypeId, string columnLinkId, ColumnLink payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columnLinks/${getEncodedUri(columnLinkId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -644,7 +644,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function contentTypesColumnLinksGetCount7bc1(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesContentTypesColumnLinksGetCount7bc1Queries queries) returns string|error {
+    remote isolated function contentTypesColumnLinksGetCount7bc1(string siteId, string contentTypeId, map<string|string[]> headers = {}, *ContentTypesColumnLinksGetCount7bc1Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columnLinks/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -657,7 +657,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function contentTypesListColumnPositions(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesContentTypesListColumnPositionsQueries queries) returns MicrosoftGraphColumnDefinitionCollectionResponse|error {
+    remote isolated function contentTypesListColumnPositions(string siteId, string contentTypeId, map<string|string[]> headers = {}, *ContentTypesListColumnPositionsQueries queries) returns ColumnDefinitionCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columnPositions`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -672,7 +672,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function contentTypesGetColumnPositions(string siteId, string contentTypeId, string columnDefinitionId, map<string|string[]> headers = {}, *SitesContentTypesGetColumnPositionsQueries queries) returns MicrosoftGraphColumnDefinition|error {
+    remote isolated function contentTypesGetColumnPositions(string siteId, string contentTypeId, string columnDefinitionId, map<string|string[]> headers = {}, *ContentTypesGetColumnPositionsQueries queries) returns ColumnDefinition|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columnPositions/${getEncodedUri(columnDefinitionId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -686,7 +686,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function contentTypesColumnPositionsGetCountDea9(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesContentTypesColumnPositionsGetCountDea9Queries queries) returns string|error {
+    remote isolated function contentTypesColumnPositionsGetCountDea9(string siteId, string contentTypeId, map<string|string[]> headers = {}, *ContentTypesColumnPositionsGetCountDea9Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columnPositions/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -699,7 +699,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function contentTypesListColumns(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesContentTypesListColumnsQueries queries) returns MicrosoftGraphColumnDefinitionCollectionResponse|error {
+    remote isolated function contentTypesListColumns(string siteId, string contentTypeId, map<string|string[]> headers = {}, *ContentTypesListColumnsQueries queries) returns ColumnDefinitionCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columns`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -713,7 +713,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function contentTypesCreateColumns(string siteId, string contentTypeId, MicrosoftGraphColumnDefinition payload, map<string|string[]> headers = {}) returns MicrosoftGraphColumnDefinition|error {
+    remote isolated function contentTypesCreateColumns(string siteId, string contentTypeId, ColumnDefinition payload, map<string|string[]> headers = {}) returns ColumnDefinition|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columns`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -729,7 +729,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function contentTypesGetColumns(string siteId, string contentTypeId, string columnDefinitionId, map<string|string[]> headers = {}, *SitesContentTypesGetColumnsQueries queries) returns MicrosoftGraphColumnDefinition|error {
+    remote isolated function contentTypesGetColumns(string siteId, string contentTypeId, string columnDefinitionId, map<string|string[]> headers = {}, *ContentTypesGetColumnsQueries queries) returns ColumnDefinition|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columns/${getEncodedUri(columnDefinitionId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -743,7 +743,7 @@ public isolated client class Client {
     # + columnDefinitionId - The unique identifier of columnDefinition
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function contentTypesDeleteColumns(string siteId, string contentTypeId, string columnDefinitionId, SitesContentTypesDeleteColumnsHeaders headers = {}) returns error? {
+    remote isolated function contentTypesDeleteColumns(string siteId, string contentTypeId, string columnDefinitionId, ContentTypesDeleteColumnsHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columns/${getEncodedUri(columnDefinitionId)}`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -757,7 +757,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function contentTypesUpdateColumns(string siteId, string contentTypeId, string columnDefinitionId, MicrosoftGraphColumnDefinition payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function contentTypesUpdateColumns(string siteId, string contentTypeId, string columnDefinitionId, ColumnDefinition payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columns/${getEncodedUri(columnDefinitionId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -773,7 +773,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function contentTypesColumnsGetSourceColumn(string siteId, string contentTypeId, string columnDefinitionId, map<string|string[]> headers = {}, *SitesContentTypesColumnsGetSourceColumnQueries queries) returns MicrosoftGraphColumnDefinition|error {
+    remote isolated function contentTypesColumnsGetSourceColumn(string siteId, string contentTypeId, string columnDefinitionId, map<string|string[]> headers = {}, *ContentTypesColumnsGetSourceColumnQueries queries) returns ColumnDefinition|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columns/${getEncodedUri(columnDefinitionId)}/sourceColumn`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -787,7 +787,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function contentTypesColumnsGetCount896b(string siteId, string contentTypeId, map<string|string[]> headers = {}, *SitesContentTypesColumnsGetCount896bQueries queries) returns string|error {
+    remote isolated function contentTypesColumnsGetCount896b(string siteId, string contentTypeId, map<string|string[]> headers = {}, *ContentTypesColumnsGetCount896bQueries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/columns/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -800,7 +800,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - Action parameters 
     # + return - Success 
-    remote isolated function siteContentTypesContentTypeAssociateWithHubSites(string siteId, string contentTypeId, ContentTypeIdMicrosoftGraphAssociateWithHubSitesBody payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function contentTypesContentTypeAssociateWithHubSites(string siteId, string contentTypeId, ContentTypeIdAssociateWithHubSitesBody payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/microsoft.graph.associateWithHubSites`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -815,7 +815,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - Action parameters 
     # + return - Success 
-    remote isolated function siteContentTypesContentTypeCopyToDefaultContentLocation(string siteId, string contentTypeId, ContentTypeIdMicrosoftGraphCopyToDefaultContentLocationBody payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function contentTypesContentTypeCopyToDefaultContentLocation(string siteId, string contentTypeId, ContentTypeIdCopyToDefaultContentLocationBody payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/microsoft.graph.copyToDefaultContentLocation`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -829,7 +829,7 @@ public isolated client class Client {
     # + contentTypeId - The unique identifier of contentType
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function siteContentTypesContentTypeIsPublished(string siteId, string contentTypeId, map<string|string[]> headers = {}) returns BooleanValueResponse|error {
+    remote isolated function contentTypesContentTypeIsPublished(string siteId, string contentTypeId, map<string|string[]> headers = {}) returns BooleanValueResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/microsoft.graph.isPublished()`;
         return self.clientEp->get(resourcePath, headers);
     }
@@ -840,7 +840,7 @@ public isolated client class Client {
     # + contentTypeId - The unique identifier of contentType
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function siteContentTypesContentTypePublish(string siteId, string contentTypeId, map<string|string[]> headers = {}) returns error? {
+    remote isolated function contentTypesContentTypePublish(string siteId, string contentTypeId, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/microsoft.graph.publish`;
         http:Request request = new;
         return self.clientEp->post(resourcePath, request, headers);
@@ -852,7 +852,7 @@ public isolated client class Client {
     # + contentTypeId - The unique identifier of contentType
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function siteContentTypesContentTypeUnpublish(string siteId, string contentTypeId, map<string|string[]> headers = {}) returns error? {
+    remote isolated function contentTypesContentTypeUnpublish(string siteId, string contentTypeId, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/${getEncodedUri(contentTypeId)}/microsoft.graph.unpublish`;
         http:Request request = new;
         return self.clientEp->post(resourcePath, request, headers);
@@ -864,7 +864,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function contentTypesGetCount50aa(string siteId, map<string|string[]> headers = {}, *SitesContentTypesGetCount50aaQueries queries) returns string|error {
+    remote isolated function contentTypesGetCount50aa(string siteId, map<string|string[]> headers = {}, *ContentTypesGetCount50aaQueries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -876,7 +876,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - Action parameters 
     # + return - Success 
-    remote isolated function siteContentTypesAddCopy(string siteId, ContentTypesMicrosoftGraphAddCopyBody payload, map<string|string[]> headers = {}) returns ContentTypeOrNullResponse|error {
+    remote isolated function contentTypesAddCopy(string siteId, ContentTypesAddCopyBody payload, map<string|string[]> headers = {}) returns ContentTypeOrNullResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/microsoft.graph.addCopy`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -890,7 +890,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - Action parameters 
     # + return - Success 
-    remote isolated function siteContentTypesAddCopyFromContentTypeHub(string siteId, ContentTypesMicrosoftGraphAddCopyFromContentTypeHubBody payload, map<string|string[]> headers = {}) returns ContentTypeOrNullResponse|error {
+    remote isolated function contentTypesAddCopyFromContentTypeHub(string siteId, ContentTypesAddCopyFromContentTypeHubBody payload, map<string|string[]> headers = {}) returns ContentTypeOrNullResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/microsoft.graph.addCopyFromContentTypeHub`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -904,7 +904,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Success 
-    remote isolated function siteContentTypesGetCompatibleHubContentTypes(string siteId, map<string|string[]> headers = {}, *SitesSiteContentTypesGetCompatibleHubContentTypesQueries queries) returns CollectionOfContentType|error {
+    remote isolated function contentTypesGetCompatibleHubContentTypes(string siteId, map<string|string[]> headers = {}, *ContentTypesGetCompatibleHubContentTypesQueries queries) returns CollectionOfContentType|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/contentTypes/microsoft.graph.getCompatibleHubContentTypes()`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$orderby": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -917,7 +917,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getCreatedByUser(string siteId, map<string|string[]> headers = {}, *SitesGetCreatedByUserQueries queries) returns MicrosoftGraphUser|error {
+    remote isolated function getCreatedByUser(string siteId, map<string|string[]> headers = {}, *GetCreatedByUserQueries queries) returns User|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/createdByUser`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -930,7 +930,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Entity result 
-    remote isolated function createdByUserGetMailboxSettings(string siteId, map<string|string[]> headers = {}, *SitesCreatedByUserGetMailboxSettingsQueries queries) returns MicrosoftGraphMailboxSettings|error {
+    remote isolated function createdByUserGetMailboxSettings(string siteId, map<string|string[]> headers = {}, *CreatedByUserGetMailboxSettingsQueries queries) returns MailboxSettings|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/createdByUser/mailboxSettings`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -943,7 +943,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New property values 
     # + return - Success 
-    remote isolated function createdByUserUpdateMailboxSettings(string siteId, MicrosoftGraphMailboxSettings payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function createdByUserUpdateMailboxSettings(string siteId, MailboxSettings payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/createdByUser/mailboxSettings`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -957,7 +957,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function createdByUserListServiceProvisioningErrors(string siteId, map<string|string[]> headers = {}, *SitesCreatedByUserListServiceProvisioningErrorsQueries queries) returns MicrosoftGraphServiceProvisioningErrorCollectionResponse|error {
+    remote isolated function createdByUserListServiceProvisioningErrors(string siteId, map<string|string[]> headers = {}, *CreatedByUserListServiceProvisioningErrorsQueries queries) returns ServiceProvisioningErrorCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/createdByUser/serviceProvisioningErrors`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -970,7 +970,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function createdByUserServiceProvisioningErrorsGetCountC398(string siteId, map<string|string[]> headers = {}, *SitesCreatedByUserServiceProvisioningErrorsGetCountC398Queries queries) returns string|error {
+    remote isolated function createdByUserServiceProvisioningErrorsGetCountC398(string siteId, map<string|string[]> headers = {}, *CreatedByUserServiceProvisioningErrorsGetCountC398Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/createdByUser/serviceProvisioningErrors/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -982,7 +982,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getDrive(string siteId, map<string|string[]> headers = {}, *SitesGetDriveQueries queries) returns MicrosoftGraphDrive|error {
+    remote isolated function getDrive(string siteId, map<string|string[]> headers = {}, *GetDriveQueries queries) returns Drive|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/drive`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -995,7 +995,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function listDrives(string siteId, map<string|string[]> headers = {}, *SitesListDrivesQueries queries) returns MicrosoftGraphDriveCollectionResponse|error {
+    remote isolated function listDrives(string siteId, map<string|string[]> headers = {}, *ListDrivesQueries queries) returns DriveCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/drives`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1009,7 +1009,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getDrives(string siteId, string driveId, map<string|string[]> headers = {}, *SitesGetDrivesQueries queries) returns MicrosoftGraphDrive|error {
+    remote isolated function getDrives(string siteId, string driveId, map<string|string[]> headers = {}, *GetDrivesQueries queries) returns Drive|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/drives/${getEncodedUri(driveId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1022,7 +1022,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function drivesGetCount5071(string siteId, map<string|string[]> headers = {}, *SitesDrivesGetCount5071Queries queries) returns string|error {
+    remote isolated function drivesGetCount5071(string siteId, map<string|string[]> headers = {}, *DrivesGetCount5071Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/drives/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -1034,7 +1034,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function listExternalColumns(string siteId, map<string|string[]> headers = {}, *SitesListExternalColumnsQueries queries) returns MicrosoftGraphColumnDefinitionCollectionResponse|error {
+    remote isolated function listExternalColumns(string siteId, map<string|string[]> headers = {}, *ListExternalColumnsQueries queries) returns ColumnDefinitionCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/externalColumns`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1048,7 +1048,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getExternalColumns(string siteId, string columnDefinitionId, map<string|string[]> headers = {}, *SitesGetExternalColumnsQueries queries) returns MicrosoftGraphColumnDefinition|error {
+    remote isolated function getExternalColumns(string siteId, string columnDefinitionId, map<string|string[]> headers = {}, *GetExternalColumnsQueries queries) returns ColumnDefinition|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/externalColumns/${getEncodedUri(columnDefinitionId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1061,7 +1061,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function externalColumnsGetCount3855(string siteId, map<string|string[]> headers = {}, *SitesExternalColumnsGetCount3855Queries queries) returns string|error {
+    remote isolated function externalColumnsGetCount3855(string siteId, map<string|string[]> headers = {}, *ExternalColumnsGetCount3855Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/externalColumns/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -1073,7 +1073,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function listItems(string siteId, map<string|string[]> headers = {}, *SitesListItemsQueries queries) returns MicrosoftGraphBaseItemCollectionResponse|error {
+    remote isolated function listItems(string siteId, map<string|string[]> headers = {}, *ListItemsQueries queries) returns BaseItemCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/items`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1087,7 +1087,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getItems(string siteId, string baseItemId, map<string|string[]> headers = {}, *SitesGetItemsQueries queries) returns MicrosoftGraphBaseItem|error {
+    remote isolated function getItems(string siteId, string baseItemId, map<string|string[]> headers = {}, *GetItemsQueries queries) returns BaseItem|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/items/${getEncodedUri(baseItemId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1100,7 +1100,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function itemsGetCount1b67(string siteId, map<string|string[]> headers = {}, *SitesItemsGetCount1b67Queries queries) returns string|error {
+    remote isolated function itemsGetCount1b67(string siteId, map<string|string[]> headers = {}, *ItemsGetCount1b67Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/items/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -1112,7 +1112,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getLastModifiedByUser(string siteId, map<string|string[]> headers = {}, *SitesGetLastModifiedByUserQueries queries) returns MicrosoftGraphUser|error {
+    remote isolated function getLastModifiedByUser(string siteId, map<string|string[]> headers = {}, *GetLastModifiedByUserQueries queries) returns User|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/lastModifiedByUser`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1125,7 +1125,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Entity result 
-    remote isolated function lastModifiedByUserGetMailboxSettings(string siteId, map<string|string[]> headers = {}, *SitesLastModifiedByUserGetMailboxSettingsQueries queries) returns MicrosoftGraphMailboxSettings|error {
+    remote isolated function lastModifiedByUserGetMailboxSettings(string siteId, map<string|string[]> headers = {}, *LastModifiedByUserGetMailboxSettingsQueries queries) returns MailboxSettings|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/lastModifiedByUser/mailboxSettings`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1138,7 +1138,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New property values 
     # + return - Success 
-    remote isolated function lastModifiedByUserUpdateMailboxSettings(string siteId, MicrosoftGraphMailboxSettings payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function lastModifiedByUserUpdateMailboxSettings(string siteId, MailboxSettings payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/lastModifiedByUser/mailboxSettings`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1152,7 +1152,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function lastModifiedByUserListServiceProvisioningErrors(string siteId, map<string|string[]> headers = {}, *SitesLastModifiedByUserListServiceProvisioningErrorsQueries queries) returns MicrosoftGraphServiceProvisioningErrorCollectionResponse|error {
+    remote isolated function lastModifiedByUserListServiceProvisioningErrors(string siteId, map<string|string[]> headers = {}, *LastModifiedByUserListServiceProvisioningErrorsQueries queries) returns ServiceProvisioningErrorCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/lastModifiedByUser/serviceProvisioningErrors`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1165,7 +1165,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function lastModifiedByUserServiceProvisioningErrorsGetCount4573(string siteId, map<string|string[]> headers = {}, *SitesLastModifiedByUserServiceProvisioningErrorsGetCount4573Queries queries) returns string|error {
+    remote isolated function lastModifiedByUserServiceProvisioningErrorsGetCount4573(string siteId, map<string|string[]> headers = {}, *LastModifiedByUserServiceProvisioningErrorsGetCount4573Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/lastModifiedByUser/serviceProvisioningErrors/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -1177,7 +1177,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Success 
-    remote isolated function siteGetActivitiesByInterval96b0(string siteId, map<string|string[]> headers = {}, *SitesSiteGetActivitiesByInterval96b0Queries queries) returns CollectionOfItemActivityStat|error {
+    remote isolated function getActivitiesByInterval96b0(string siteId, map<string|string[]> headers = {}, *GetActivitiesByInterval96b0Queries queries) returns CollectionOfItemActivityStat|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getActivitiesByInterval()`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$orderby": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1193,7 +1193,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Success 
-    remote isolated function siteGetActivitiesByInterval9468(string siteId, string? startDateTime, string? endDateTime, string? interval, map<string|string[]> headers = {}, *SitesSiteGetActivitiesByInterval9468Queries queries) returns CollectionOfItemActivityStat|error {
+    remote isolated function getActivitiesByInterval9468(string siteId, string? startDateTime, string? endDateTime, string? interval, map<string|string[]> headers = {}, *GetActivitiesByInterval9468Queries queries) returns CollectionOfItemActivityStat|error {
         string resourcePath = string `/sites/${getEncodedUri(siteId)}/microsoft.graph.getActivitiesByInterval(startDateTime='${getEncodedUri(startDateTime)}',endDateTime='${getEncodedUri(endDateTime)}',interval='${getEncodedUri(interval)}')`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$orderby": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1207,7 +1207,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Success 
-    remote isolated function siteGetApplicableContentTypesForList(string siteId, string listId, map<string|string[]> headers = {}, *SitesSiteGetApplicableContentTypesForListQueries queries) returns CollectionOfContentType|error {
+    remote isolated function getApplicableContentTypesForList(string siteId, string listId, map<string|string[]> headers = {}, *GetApplicableContentTypesForListQueries queries) returns CollectionOfContentType|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getApplicableContentTypesForList(listId='${getEncodedUri(listId)}')`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$orderby": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1220,7 +1220,7 @@ public isolated client class Client {
     # + path - Usage: path='{path}'
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function siteGetByPath(string siteId, string? path, map<string|string[]> headers = {}) returns SiteOrNullResponse|error {
+    remote isolated function getByPath(string siteId, string? path, map<string|string[]> headers = {}) returns SiteOrNullResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')`;
         return self.clientEp->get(resourcePath, headers);
     }
@@ -1232,7 +1232,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getByPathGetAnalytics(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathGetAnalyticsQueries queries) returns MicrosoftGraphItemAnalytics|error {
+    remote isolated function getByPathGetAnalytics(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathGetAnalyticsQueries queries) returns ItemAnalytics|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/analytics`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1245,7 +1245,7 @@ public isolated client class Client {
     # + path - Usage: path='{path}'
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function getByPathDeleteAnalytics(string siteId, string? path, SitesGetByPathDeleteAnalyticsHeaders headers = {}) returns error? {
+    remote isolated function getByPathDeleteAnalytics(string siteId, string? path, GetByPathDeleteAnalyticsHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/analytics`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -1258,7 +1258,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function getByPathUpdateAnalytics(string siteId, string? path, MicrosoftGraphItemAnalytics payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function getByPathUpdateAnalytics(string siteId, string? path, ItemAnalytics payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/analytics`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1273,7 +1273,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListColumns(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListColumnsQueries queries) returns MicrosoftGraphColumnDefinitionCollectionResponse|error {
+    remote isolated function getByPathListColumns(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListColumnsQueries queries) returns ColumnDefinitionCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/columns`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1287,7 +1287,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function getByPathCreateColumns(string siteId, string? path, MicrosoftGraphColumnDefinition payload, map<string|string[]> headers = {}) returns MicrosoftGraphColumnDefinition|error {
+    remote isolated function getByPathCreateColumns(string siteId, string? path, ColumnDefinition payload, map<string|string[]> headers = {}) returns ColumnDefinition|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/columns`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1302,7 +1302,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListContentTypes(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListContentTypesQueries queries) returns MicrosoftGraphContentTypeCollectionResponse|error {
+    remote isolated function getByPathListContentTypes(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListContentTypesQueries queries) returns ContentTypeCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/contentTypes`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1316,7 +1316,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function getByPathCreateContentTypes(string siteId, string? path, MicrosoftGraphContentType payload, map<string|string[]> headers = {}) returns MicrosoftGraphContentType|error {
+    remote isolated function getByPathCreateContentTypes(string siteId, string? path, ContentType payload, map<string|string[]> headers = {}) returns ContentType|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/contentTypes`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1331,7 +1331,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getByPathGetCreatedByUser(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathGetCreatedByUserQueries queries) returns MicrosoftGraphUser|error {
+    remote isolated function getByPathGetCreatedByUser(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathGetCreatedByUserQueries queries) returns User|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/createdByUser`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1345,7 +1345,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getByPathGetDrive(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathGetDriveQueries queries) returns MicrosoftGraphDrive|error {
+    remote isolated function getByPathGetDrive(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathGetDriveQueries queries) returns Drive|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/drive`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1359,7 +1359,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListDrives(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListDrivesQueries queries) returns MicrosoftGraphDriveCollectionResponse|error {
+    remote isolated function getByPathListDrives(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListDrivesQueries queries) returns DriveCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/drives`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1373,7 +1373,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListExternalColumns(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListExternalColumnsQueries queries) returns MicrosoftGraphColumnDefinitionCollectionResponse|error {
+    remote isolated function getByPathListExternalColumns(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListExternalColumnsQueries queries) returns ColumnDefinitionCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/externalColumns`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1387,7 +1387,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListItems(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListItemsQueries queries) returns MicrosoftGraphBaseItemCollectionResponse|error {
+    remote isolated function getByPathListItems(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListItemsQueries queries) returns BaseItemCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/items`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1401,7 +1401,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getByPathGetLastModifiedByUser(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathGetLastModifiedByUserQueries queries) returns MicrosoftGraphUser|error {
+    remote isolated function getByPathGetLastModifiedByUser(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathGetLastModifiedByUserQueries queries) returns User|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/lastModifiedByUser`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1415,7 +1415,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListLists(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListListsQueries queries) returns MicrosoftGraphListCollectionResponse|error {
+    remote isolated function getByPathListLists(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListListsQueries queries) returns ListCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/lists`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1429,7 +1429,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function getByPathCreateLists(string siteId, string? path, MicrosoftGraphList payload, map<string|string[]> headers = {}) returns MicrosoftGraphList|error {
+    remote isolated function getByPathCreateLists(string siteId, string? path, List payload, map<string|string[]> headers = {}) returns List|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/lists`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1444,7 +1444,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Success 
-    remote isolated function siteGetByPathGetActivitiesByInterval96b0(string siteId, string? path, map<string|string[]> headers = {}, *SitesSiteGetByPathGetActivitiesByInterval96b0Queries queries) returns CollectionOfItemActivityStat|error {
+    remote isolated function getByPathGetActivitiesByInterval96b0(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathGetActivitiesByInterval96b0Queries queries) returns CollectionOfItemActivityStat|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/microsoft.graph.getActivitiesByInterval()`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$orderby": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1461,7 +1461,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Success 
-    remote isolated function siteGetByPathGetActivitiesByInterval9468(string siteId, string? path, string? startDateTime, string? endDateTime, string? interval, map<string|string[]> headers = {}, *SitesSiteGetByPathGetActivitiesByInterval9468Queries queries) returns CollectionOfItemActivityStat|error {
+    remote isolated function getByPathGetActivitiesByInterval9468(string siteId, string? path, string? startDateTime, string? endDateTime, string? interval, map<string|string[]> headers = {}, *GetByPathGetActivitiesByInterval9468Queries queries) returns CollectionOfItemActivityStat|error {
         string resourcePath = string `/sites/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/microsoft.graph.getActivitiesByInterval(startDateTime='${getEncodedUri(startDateTime)}',endDateTime='${getEncodedUri(endDateTime)}',interval='${getEncodedUri(interval)}')`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$orderby": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1476,7 +1476,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Success 
-    remote isolated function siteGetByPathGetApplicableContentTypesForList(string siteId, string? path, string listId, map<string|string[]> headers = {}, *SitesSiteGetByPathGetApplicableContentTypesForListQueries queries) returns CollectionOfContentType|error {
+    remote isolated function getByPathGetApplicableContentTypesForList(string siteId, string? path, string listId, map<string|string[]> headers = {}, *GetByPathGetApplicableContentTypesForListQueries queries) returns CollectionOfContentType|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/microsoft.graph.getApplicableContentTypesForList(listId='${getEncodedUri(listId)}')`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$orderby": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1490,7 +1490,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getByPathGetOnenote(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathGetOnenoteQueries queries) returns MicrosoftGraphOnenote|error {
+    remote isolated function getByPathGetOnenote(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathGetOnenoteQueries queries) returns Onenote|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/onenote`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1503,7 +1503,7 @@ public isolated client class Client {
     # + path - Usage: path='{path}'
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function getByPathDeleteOnenote(string siteId, string? path, SitesGetByPathDeleteOnenoteHeaders headers = {}) returns error? {
+    remote isolated function getByPathDeleteOnenote(string siteId, string? path, GetByPathDeleteOnenoteHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/onenote`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -1516,7 +1516,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function getByPathUpdateOnenote(string siteId, string? path, MicrosoftGraphOnenote payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function getByPathUpdateOnenote(string siteId, string? path, Onenote payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/onenote`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1531,7 +1531,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListOperations(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListOperationsQueries queries) returns MicrosoftGraphRichLongRunningOperationCollectionResponse|error {
+    remote isolated function getByPathListOperations(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListOperationsQueries queries) returns RichLongRunningOperationCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/operations`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1545,7 +1545,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function getByPathCreateOperations(string siteId, string? path, MicrosoftGraphRichLongRunningOperation payload, map<string|string[]> headers = {}) returns MicrosoftGraphRichLongRunningOperation|error {
+    remote isolated function getByPathCreateOperations(string siteId, string? path, RichLongRunningOperation payload, map<string|string[]> headers = {}) returns RichLongRunningOperation|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/operations`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1560,7 +1560,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListPages(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListPagesQueries queries) returns MicrosoftGraphBaseSitePageCollectionResponse|error {
+    remote isolated function getByPathListPages(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListPagesQueries queries) returns BaseSitePageCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/pages`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1574,7 +1574,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function getByPathCreatePages(string siteId, string? path, MicrosoftGraphBaseSitePage payload, map<string|string[]> headers = {}) returns MicrosoftGraphBaseSitePage|error {
+    remote isolated function getByPathCreatePages(string siteId, string? path, BaseSitePage payload, map<string|string[]> headers = {}) returns BaseSitePage|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/pages`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1589,7 +1589,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListPermissions(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListPermissionsQueries queries) returns MicrosoftGraphPermissionCollectionResponse|error {
+    remote isolated function getByPathListPermissions(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListPermissionsQueries queries) returns PermissionCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/permissions`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1603,7 +1603,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function getByPathCreatePermissions(string siteId, string? path, MicrosoftGraphPermission payload, map<string|string[]> headers = {}) returns MicrosoftGraphPermission|error {
+    remote isolated function getByPathCreatePermissions(string siteId, string? path, Permission payload, map<string|string[]> headers = {}) returns Permission|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/permissions`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1618,7 +1618,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListSites(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListSitesQueries queries) returns MicrosoftGraphSiteCollectionResponse|error {
+    remote isolated function getByPathListSites(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListSitesQueries queries) returns SiteCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/sites`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1632,7 +1632,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getByPathGetTermStore(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathGetTermStoreQueries queries) returns MicrosoftGraphTermStoreStore|error {
+    remote isolated function getByPathGetTermStore(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathGetTermStoreQueries queries) returns TermStoreStore|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/termStore`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1645,7 +1645,7 @@ public isolated client class Client {
     # + path - Usage: path='{path}'
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function getByPathDeleteTermStore(string siteId, string? path, SitesGetByPathDeleteTermStoreHeaders headers = {}) returns error? {
+    remote isolated function getByPathDeleteTermStore(string siteId, string? path, GetByPathDeleteTermStoreHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/termStore`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -1658,7 +1658,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function getByPathUpdateTermStore(string siteId, string? path, MicrosoftGraphTermStoreStore payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function getByPathUpdateTermStore(string siteId, string? path, TermStoreStore payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/termStore`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1673,7 +1673,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function getByPathListTermStores(string siteId, string? path, map<string|string[]> headers = {}, *SitesGetByPathListTermStoresQueries queries) returns MicrosoftGraphTermStoreStoreCollectionResponse|error {
+    remote isolated function getByPathListTermStores(string siteId, string? path, map<string|string[]> headers = {}, *GetByPathListTermStoresQueries queries) returns TermStoreStoreCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/termStores`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1687,7 +1687,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function getByPathCreateTermStores(string siteId, string? path, MicrosoftGraphTermStoreStore payload, map<string|string[]> headers = {}) returns MicrosoftGraphTermStoreStore|error {
+    remote isolated function getByPathCreateTermStores(string siteId, string? path, TermStoreStore payload, map<string|string[]> headers = {}) returns TermStoreStore|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/microsoft.graph.getByPath(path='${getEncodedUri(path)}')/termStores`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1701,7 +1701,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function listOperations(string siteId, map<string|string[]> headers = {}, *SitesListOperationsQueries queries) returns MicrosoftGraphRichLongRunningOperationCollectionResponse|error {
+    remote isolated function listOperations(string siteId, map<string|string[]> headers = {}, *ListOperationsQueries queries) returns RichLongRunningOperationCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/operations`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1714,7 +1714,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function createOperations(string siteId, MicrosoftGraphRichLongRunningOperation payload, map<string|string[]> headers = {}) returns MicrosoftGraphRichLongRunningOperation|error {
+    remote isolated function createOperations(string siteId, RichLongRunningOperation payload, map<string|string[]> headers = {}) returns RichLongRunningOperation|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/operations`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1729,7 +1729,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getOperations(string siteId, string richLongRunningOperationId, map<string|string[]> headers = {}, *SitesGetOperationsQueries queries) returns MicrosoftGraphRichLongRunningOperation|error {
+    remote isolated function getOperations(string siteId, string richLongRunningOperationId, map<string|string[]> headers = {}, *GetOperationsQueries queries) returns RichLongRunningOperation|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/operations/${getEncodedUri(richLongRunningOperationId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1742,7 +1742,7 @@ public isolated client class Client {
     # + richLongRunningOperationId - The unique identifier of richLongRunningOperation
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function deleteOperations(string siteId, string richLongRunningOperationId, SitesDeleteOperationsHeaders headers = {}) returns error? {
+    remote isolated function deleteOperations(string siteId, string richLongRunningOperationId, DeleteOperationsHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/operations/${getEncodedUri(richLongRunningOperationId)}`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -1755,7 +1755,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function updateOperations(string siteId, string richLongRunningOperationId, MicrosoftGraphRichLongRunningOperation payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function updateOperations(string siteId, string richLongRunningOperationId, RichLongRunningOperation payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/operations/${getEncodedUri(richLongRunningOperationId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1769,7 +1769,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function operationsGetCount71b0(string siteId, map<string|string[]> headers = {}, *SitesOperationsGetCount71b0Queries queries) returns string|error {
+    remote isolated function operationsGetCount71b0(string siteId, map<string|string[]> headers = {}, *OperationsGetCount71b0Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/operations/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -1781,7 +1781,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function listPermissions(string siteId, map<string|string[]> headers = {}, *SitesListPermissionsQueries queries) returns MicrosoftGraphPermissionCollectionResponse|error {
+    remote isolated function listPermissions(string siteId, map<string|string[]> headers = {}, *ListPermissionsQueries queries) returns PermissionCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/permissions`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1794,7 +1794,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property 
     # + return - Created navigation property 
-    remote isolated function createPermissions(string siteId, MicrosoftGraphPermission payload, map<string|string[]> headers = {}) returns MicrosoftGraphPermission|error {
+    remote isolated function createPermissions(string siteId, Permission payload, map<string|string[]> headers = {}) returns Permission|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/permissions`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1809,7 +1809,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getPermissions(string siteId, string permissionId, map<string|string[]> headers = {}, *SitesGetPermissionsQueries queries) returns MicrosoftGraphPermission|error {
+    remote isolated function getPermissions(string siteId, string permissionId, map<string|string[]> headers = {}, *GetPermissionsQueries queries) returns Permission|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/permissions/${getEncodedUri(permissionId)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1822,7 +1822,7 @@ public isolated client class Client {
     # + permissionId - The unique identifier of permission
     # + headers - Headers to be sent with the request 
     # + return - Success 
-    remote isolated function deletePermissions(string siteId, string permissionId, SitesDeletePermissionsHeaders headers = {}) returns error? {
+    remote isolated function deletePermissions(string siteId, string permissionId, DeletePermissionsHeaders headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/permissions/${getEncodedUri(permissionId)}`;
         map<string|string[]> httpHeaders = http:getHeaderMap(headers);
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
@@ -1835,7 +1835,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - New navigation property values 
     # + return - Success 
-    remote isolated function updatePermissions(string siteId, string permissionId, MicrosoftGraphPermission payload, map<string|string[]> headers = {}) returns error? {
+    remote isolated function updatePermissions(string siteId, string permissionId, Permission payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/${getEncodedUri(siteId)}/permissions/${getEncodedUri(permissionId)}`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1850,7 +1850,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - Action parameters 
     # + return - Success 
-    remote isolated function sitePermissionsPermissionGrant(string siteId, string permissionId, PermissionIdMicrosoftGraphGrantBody payload, map<string|string[]> headers = {}) returns CollectionOfPermission|error {
+    remote isolated function permissionsPermissionGrant(string siteId, string permissionId, PermissionIdGrantBody payload, map<string|string[]> headers = {}) returns CollectionOfPermission|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/permissions/${getEncodedUri(permissionId)}/microsoft.graph.grant`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1864,7 +1864,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function permissionsGetCount511e(string siteId, map<string|string[]> headers = {}, *SitesPermissionsGetCount511eQueries queries) returns string|error {
+    remote isolated function permissionsGetCount511e(string siteId, map<string|string[]> headers = {}, *PermissionsGetCount511eQueries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/permissions/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -1876,7 +1876,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved collection 
-    remote isolated function listSites(string siteId, map<string|string[]> headers = {}, *SitesListSitesQueries queries) returns MicrosoftGraphSiteCollectionResponse|error {
+    remote isolated function listSites(string siteId, map<string|string[]> headers = {}, *ListSitesQueries queries) returns SiteCollectionResponse|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/sites`;
         map<Encoding> queryParamEncoding = {"$orderby": {style: FORM, explode: false}, "$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1886,12 +1886,12 @@ public isolated client class Client {
     # Get sites from sites
     #
     # + siteId - The unique identifier of site
-    # + siteId1 - The unique identifier of site
+    # + id1 - The unique identifier of site
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Retrieved navigation property 
-    remote isolated function getSites(string siteId, string siteId1, map<string|string[]> headers = {}, *SitesGetSitesQueries queries) returns MicrosoftGraphSite|error {
-        string resourcePath = string `/${getEncodedUri(siteId)}/sites/${getEncodedUri(siteId1)}`;
+    remote isolated function getSites(string siteId, string id1, map<string|string[]> headers = {}, *GetSitesQueries queries) returns Site|error {
+        string resourcePath = string `/${getEncodedUri(siteId)}/sites/${getEncodedUri(id1)}`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
         return self.clientEp->get(resourcePath, headers);
@@ -1903,7 +1903,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function getCountF499(string siteId, map<string|string[]> headers = {}, *SitesGetCountF499Queries queries) returns string|error {
+    remote isolated function getCountF499(string siteId, map<string|string[]> headers = {}, *GetCountF499Queries queries) returns string|error {
         string resourcePath = string `/${getEncodedUri(siteId)}/sites/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -1914,7 +1914,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The count of the resource 
-    remote isolated function getCount6254(map<string|string[]> headers = {}, *SitesGetCount6254Queries queries) returns string|error {
+    remote isolated function getCount6254(map<string|string[]> headers = {}, *GetCount6254Queries queries) returns string|error {
         string resourcePath = string `/$count`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         return self.clientEp->get(resourcePath, headers);
@@ -1925,7 +1925,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - Action parameters 
     # + return - Success 
-    remote isolated function add(SitesMicrosoftGraphAddBody payload, map<string|string[]> headers = {}) returns CollectionOfSite|error {
+    remote isolated function add(AddBody payload, map<string|string[]> headers = {}) returns CollectionOfSite|error {
         string resourcePath = string `/microsoft.graph.add`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);
@@ -1938,7 +1938,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Success 
-    remote isolated function delta(map<string|string[]> headers = {}, *SitesDeltaQueries queries) returns CollectionOfSite1|error {
+    remote isolated function delta(map<string|string[]> headers = {}, *DeltaQueries queries) returns CollectionOfSite1|error {
         string resourcePath = string `/microsoft.graph.delta()`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$orderby": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1950,7 +1950,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - Success 
-    remote isolated function getAllSites(map<string|string[]> headers = {}, *SitesGetAllSitesQueries queries) returns CollectionOfSite|error {
+    remote isolated function getAllSites(map<string|string[]> headers = {}, *GetAllSitesQueries queries) returns CollectionOfSite|error {
         string resourcePath = string `/microsoft.graph.getAllSites()`;
         map<Encoding> queryParamEncoding = {"$select": {style: FORM, explode: false}, "$orderby": {style: FORM, explode: false}, "$expand": {style: FORM, explode: false}};
         resourcePath = resourcePath + check getPathForQueryParam(queries, queryParamEncoding);
@@ -1962,7 +1962,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + payload - Action parameters 
     # + return - Success 
-    remote isolated function remove(SitesMicrosoftGraphAddBody payload, map<string|string[]> headers = {}) returns CollectionOfSite|error {
+    remote isolated function remove(AddBody payload, map<string|string[]> headers = {}) returns CollectionOfSite|error {
         string resourcePath = string `/microsoft.graph.remove`;
         http:Request request = new;
         json jsonBody = jsondata:toJson(payload);

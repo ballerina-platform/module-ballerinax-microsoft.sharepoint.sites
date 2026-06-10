@@ -35,7 +35,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 1: Discovering all SharePoint sites in the organization...");
-    sites:MicrosoftGraphSiteCollectionResponse siteListResponse = check sharepointClient->listSite(
+    sites:SiteCollectionResponse siteListResponse = check sharepointClient->listSite(
         queries = {
             dollarSearch: "*",
             dollarTop: 10,
@@ -43,7 +43,7 @@ public function main() returns error? {
         }
     );
 
-    sites:MicrosoftGraphSite[] allSites = siteListResponse.value ?: [];
+    sites:Site[] allSites = siteListResponse.value ?: [];
     io:println("Total sites discovered: " + allSites.length().toString());
     io:println("");
 
@@ -53,7 +53,7 @@ public function main() returns error? {
     }
 
     io:println("--- Discovered Sites ---");
-    foreach sites:MicrosoftGraphSite site in allSites {
+    foreach sites:Site site in allSites {
         string siteId = site?.id ?: "N/A";
         string displayNameVal = site?.displayName ?: "Unnamed Site";
         string siteWebUrl = site?.webUrl ?: "N/A";
@@ -67,7 +67,7 @@ public function main() returns error? {
     io:println("=== Step 2 & 3: Retrieving Drive Inventory for Each Site ===");
     io:println("");
 
-    foreach sites:MicrosoftGraphSite site in allSites {
+    foreach sites:Site site in allSites {
         string? siteIdOptional = site?.id;
         if siteIdOptional is () {
             io:println("Skipping site with no ID.");
@@ -80,7 +80,7 @@ public function main() returns error? {
         io:println("--------------------------------------------------");
 
         io:println("  Step 2: Fetching primary (default) drive...");
-        sites:MicrosoftGraphDrive|error primaryDriveResult = sharepointClient->getDrive(
+        sites:Drive|error primaryDriveResult = sharepointClient->getDrive(
             siteIdVal,
             queries = {
                 dollarSelect: ["id", "name", "driveType", "webUrl", "description", "quota", "owner", "createdDateTime", "lastModifiedDateTime"]
@@ -90,7 +90,7 @@ public function main() returns error? {
         if primaryDriveResult is error {
             io:println("  Warning: Could not retrieve primary drive for site '" + displayNameVal + "': " + primaryDriveResult.message());
         } else {
-            sites:MicrosoftGraphDrive primaryDrive = primaryDriveResult;
+            sites:Drive primaryDrive = primaryDriveResult;
             string driveId = primaryDrive?.id ?: "N/A";
             string driveName = primaryDrive?.name ?: "Default Drive";
             string driveType = primaryDrive?.driveType ?: "N/A";
@@ -102,14 +102,14 @@ public function main() returns error? {
             io:println("    Drive Type  : " + driveType);
             io:println("    Web URL     : " + driveWebUrl);
 
-            (sites:MicrosoftGraphQuota|record {})? quotaVal = primaryDrive?.quota;
+            (sites:Quota|record {})? quotaVal = primaryDrive?.quota;
             if quotaVal != () {
                 io:println("    Quota Info  : " + quotaVal.toString());
             } else {
                 io:println("    Quota Info  : Not available");
             }
 
-            (sites:MicrosoftGraphIdentitySet|record {})? ownerVal = primaryDrive?.owner;
+            (sites:IdentitySet|record {})? ownerVal = primaryDrive?.owner;
             if ownerVal != () {
                 io:println("    Owner Info  : " + ownerVal.toString());
             } else {
@@ -120,7 +120,7 @@ public function main() returns error? {
         io:println("");
 
         io:println("  Step 3: Enumerating all drives (document libraries) on this site...");
-        sites:MicrosoftGraphDriveCollectionResponse|error allDrivesResult = sharepointClient->listDrives(
+        sites:DriveCollectionResponse|error allDrivesResult = sharepointClient->listDrives(
             siteIdVal,
             queries = {
                 dollarSelect: ["id", "name", "driveType", "webUrl", "description", "quota", "createdDateTime", "lastModifiedDateTime"],
@@ -131,8 +131,8 @@ public function main() returns error? {
         if allDrivesResult is error {
             io:println("  Warning: Could not list drives for site '" + displayNameVal + "': " + allDrivesResult.message());
         } else {
-            sites:MicrosoftGraphDriveCollectionResponse drivesResponse = allDrivesResult;
-            sites:MicrosoftGraphDrive[] allDrives = drivesResponse.value ?: [];
+            sites:DriveCollectionResponse drivesResponse = allDrivesResult;
+            sites:Drive[] allDrives = drivesResponse.value ?: [];
             io:println("  Total drives found on site: " + allDrives.length().toString());
             io:println("");
 
@@ -141,7 +141,7 @@ public function main() returns error? {
             } else {
                 io:println("  Drive Inventory:");
                 int driveIndex = 1;
-                foreach sites:MicrosoftGraphDrive drive in allDrives {
+                foreach sites:Drive drive in allDrives {
                     string driveId = drive?.id ?: "N/A";
                     string driveName = drive?.name ?: "Unnamed Drive";
                     string driveType = drive?.driveType ?: "N/A";
@@ -158,7 +158,7 @@ public function main() returns error? {
                     io:println("        Created           : " + createdDateTimeVal);
                     io:println("        Last Modified     : " + lastModifiedDateTimeVal);
 
-                    (sites:MicrosoftGraphQuota|record {})? quotaVal = drive?.quota;
+                    (sites:Quota|record {})? quotaVal = drive?.quota;
                     if quotaVal != () {
                         io:println("        Quota Details     : " + quotaVal.toString());
                     } else {

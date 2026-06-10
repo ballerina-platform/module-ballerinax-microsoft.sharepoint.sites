@@ -37,7 +37,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 1: Retrieving all content types defined on the site...");
-    sites:MicrosoftGraphContentTypeCollectionResponse contentTypesResponse =
+    sites:ContentTypeCollectionResponse contentTypesResponse =
         check sharepointClient->listContentTypes(
             siteId,
             queries = {
@@ -45,9 +45,9 @@ public function main() returns error? {
             }
         );
 
-    sites:MicrosoftGraphContentType[] contentTypes = contentTypesResponse.value ?: [];
+    sites:ContentType[] contentTypes = contentTypesResponse.value ?: [];
     io:println("Found " + contentTypes.length().toString() + " content type(s) on the site:");
-    foreach sites:MicrosoftGraphContentType ct in contentTypes {
+    foreach sites:ContentType ct in contentTypes {
         string ctId = ct?.id ?: "N/A";
         string ctName = ct?.name ?: "Unnamed";
         string ctDescription = ct?.description ?: "No description";
@@ -56,7 +56,7 @@ public function main() returns error? {
     io:println("");
 
     io:println("Step 2: Examining column definitions for content type ID: " + targetContentTypeId);
-    sites:MicrosoftGraphColumnDefinitionCollectionResponse columnsResponse =
+    sites:ColumnDefinitionCollectionResponse columnsResponse =
         check sharepointClient->contentTypesListColumns(
             siteId,
             targetContentTypeId,
@@ -65,11 +65,11 @@ public function main() returns error? {
             }
         );
 
-    sites:MicrosoftGraphColumnDefinition[] columns = columnsResponse.value ?: [];
+    sites:ColumnDefinition[] columns = columnsResponse.value ?: [];
     boolean complianceCategoryExists = false;
 
     io:println("Found " + columns.length().toString() + " column(s) in the content type:");
-    foreach sites:MicrosoftGraphColumnDefinition col in columns {
+    foreach sites:ColumnDefinition col in columns {
         string colId = col?.id ?: "N/A";
         string colName = col?.name ?: "Unnamed";
         boolean isRequired = col?.required ?: false;
@@ -86,7 +86,7 @@ public function main() returns error? {
     } else {
         io:println("Step 3: 'Compliance Category' column is missing. Adding mandatory column to enforce governance standards...");
 
-        sites:MicrosoftGraphChoiceColumn choiceColumn = {
+        sites:ChoiceColumn choiceColumn = {
             allowTextEntry: false,
             choices: [
                 "Regulatory",
@@ -99,7 +99,7 @@ public function main() returns error? {
             displayAs: "dropDownMenu"
         };
 
-        sites:MicrosoftGraphColumnDefinition newColumn = {
+        sites:ColumnDefinition newColumn = {
             name: "Compliance Category",
             displayName: "Compliance Category",
             description: "Mandatory field to classify document compliance category as required by organizational governance standards.",
@@ -110,7 +110,7 @@ public function main() returns error? {
             choice: choiceColumn
         };
 
-        sites:MicrosoftGraphColumnDefinition createdColumn =
+        sites:ColumnDefinition createdColumn =
             check sharepointClient->contentTypesCreateColumns(siteId, targetContentTypeId, newColumn);
 
         string createdId = createdColumn?.id ?: "N/A";

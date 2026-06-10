@@ -87,7 +87,7 @@ Now, utilize the available connector operations.
 
 ```ballerina
 public function main() returns error? {
-    sites:MicrosoftGraphList newList = {
+    sites:List newList = {
         displayName: "Project Documents",
         list: {
             template: "documentLibrary",
@@ -95,7 +95,7 @@ public function main() returns error? {
         }
     };
 
-    sites:MicrosoftGraphList response = check msClient->createLists("contoso.sharepoint.com,abc123,def456", newList);
+    sites:List response = check msClient->createLists("contoso.sharepoint.com,abc123,def456", newList);
 }
 ```
 
