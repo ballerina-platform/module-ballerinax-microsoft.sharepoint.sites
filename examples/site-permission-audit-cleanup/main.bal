@@ -25,8 +25,8 @@ configurable string siteId = ?;
 public function main() returns error? {
     sites:Client sharepointClient = check new ({
         auth: {
-            clientId: clientId,
-            clientSecret: clientSecret,
+            clientId,
+            clientSecret
             tokenUrl: "https://login.microsoftonline.com/" + tenantId + "/oauth2/v2.0/token",
             scopes: ["https://graph.microsoft.com/.default"]
         }
