@@ -55,7 +55,6 @@ To use the `microsoft.sharepoint.sites` connector in your Ballerina application,
 ### Step 1: Import the module
 
 ```ballerina
-import ballerina/oauth2;
 import ballerinax/microsoft.sharepoint.sites as mssites;
 ```
 
@@ -66,7 +65,7 @@ import ballerinax/microsoft.sharepoint.sites as mssites;
 ```toml
 clientId = "<Your_Client_Id>"
 clientSecret = "<Your_Client_Secret>"
-refreshToken = "<Your_Refresh_Token>"
+tenantId = "<Your_Tenant_Id>"
 ```
 
 2. Create a `mssites:ConnectionConfig` and initialize the client:
@@ -74,13 +73,14 @@ refreshToken = "<Your_Refresh_Token>"
 ```ballerina
 configurable string clientId = ?;
 configurable string clientSecret = ?;
-configurable string refreshToken = ?;
+configurable string tenantId = ?;
 
-final mssites:Client mssitesClient = check new({
+final mssites:Client mssitesClient = check new ({
     auth: {
         clientId,
         clientSecret,
-        refreshToken
+        tokenUrl: "https://login.microsoftonline.com/" + tenantId + "/oauth2/v2.0/token",
+        scopes: ["https://graph.microsoft.com/.default"]
     }
 });
 ```
@@ -100,7 +100,7 @@ public function main() returns error? {
         }
     };
 
-    mssites:MicrosoftGraphList response = check mssitesClient->sitesCreateLists("contoso.sharepoint.com,abc123", newList);
+    mssites:MicrosoftGraphList response = check mssitesClient->sitesCreateLists("contoso.sharepoint.com,abc123,def456", newList);
 }
 ```
 

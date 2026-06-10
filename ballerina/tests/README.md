@@ -17,9 +17,8 @@ The tests for this connector require valid Microsoft SharePoint credentials and 
 Create a `Config.toml` file in the `tests` directory with the following content:
 
 ```toml
-accessKeyId = "<your-access-key-id>"
-secretAccessKey = "<your-secret-access-key>"
-region = "<your-region>"
+accessToken = "<your-sharepoint-access-token>"
+siteId = "<your-sharepoint-site-id>"
 ```
 
 > **Note:** Replace each placeholder value with your actual credentials before running the tests.
@@ -29,25 +28,22 @@ Alternatively, you can provide the credentials using environment variables.
 **Linux/macOS:**
 
 ```bash
-export accessKeyId="<your-access-key-id>"
-export secretAccessKey="<your-secret-access-key>"
-export region="<your-region>"
+export SHAREPOINT_ACCESS_TOKEN="<your-sharepoint-access-token>"
+export SHAREPOINT_SITE_ID="<your-sharepoint-site-id>"
 ```
 
 **Windows (Command Prompt):**
 
 ```cmd
-set accessKeyId=<your-access-key-id>
-set secretAccessKey=<your-secret-access-key>
-set region=<your-region>
+set SHAREPOINT_ACCESS_TOKEN=<your-sharepoint-access-token>
+set SHAREPOINT_SITE_ID=<your-sharepoint-site-id>
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-$env:accessKeyId = "<your-access-key-id>"
-$env:secretAccessKey = "<your-secret-access-key>"
-$env:region = "<your-region>"
+$env:SHAREPOINT_ACCESS_TOKEN = "<your-sharepoint-access-token>"
+$env:SHAREPOINT_SITE_ID = "<your-sharepoint-site-id>"
 ```
 
 ---

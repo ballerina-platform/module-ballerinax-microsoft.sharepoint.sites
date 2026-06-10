@@ -1,3 +1,19 @@
+// Copyright (c) 2026, WSO2 LLC. (http://www.wso2.com).
+//
+// WSO2 LLC. licenses this file to you under the Apache License,
+// Version 2.0 (the "License"); you may not use this file except
+// in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
 import ballerina/io;
 import ballerinax/microsoft.sharepoint.sites;
 
@@ -65,33 +81,33 @@ public function main() returns error? {
     io:println("End Date: " + allTimeEndDateTime);
     io:println("Is Trending: " + allTimeIsTrending.toString());
 
-    var allTimeAccess = allTimeStats?.access;
-    if allTimeAccess is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? allTimeAccess = allTimeStats?.access;
+    if allTimeAccess != () {
         io:println("Access Activity: " + allTimeAccess.toString());
     }
 
-    var allTimeCreate = allTimeStats?.create;
-    if allTimeCreate is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? allTimeCreate = allTimeStats?.create;
+    if allTimeCreate != () {
         io:println("Create Activity: " + allTimeCreate.toString());
     }
 
-    var allTimeEdit = allTimeStats?.edit;
-    if allTimeEdit is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? allTimeEdit = allTimeStats?.edit;
+    if allTimeEdit != () {
         io:println("Edit Activity: " + allTimeEdit.toString());
     }
 
-    var allTimeDelete = allTimeStats?.delete;
-    if allTimeDelete is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? allTimeDelete = allTimeStats?.delete;
+    if allTimeDelete != () {
         io:println("Delete Activity: " + allTimeDelete.toString());
     }
 
-    var allTimeMove = allTimeStats?.move;
-    if allTimeMove is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? allTimeMove = allTimeStats?.move;
+    if allTimeMove != () {
         io:println("Move Activity: " + allTimeMove.toString());
     }
 
-    var allTimeIncompleteData = allTimeStats?.incompleteData;
-    if allTimeIncompleteData is record {} {
+    (sites:MicrosoftGraphIncompleteData|record {})? allTimeIncompleteData = allTimeStats?.incompleteData;
+    if allTimeIncompleteData != () {
         io:println("Incomplete Data Info: " + allTimeIncompleteData.toString());
     }
     io:println("");
@@ -115,33 +131,33 @@ public function main() returns error? {
     io:println("Period End: " + recentEndDateTime);
     io:println("Is Trending: " + recentIsTrending.toString());
 
-    var recentAccess = lastSevenDaysStats?.access;
-    if recentAccess is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? recentAccess = lastSevenDaysStats?.access;
+    if recentAccess != () {
         io:println("Recent Access Activity: " + recentAccess.toString());
     }
 
-    var recentCreate = lastSevenDaysStats?.create;
-    if recentCreate is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? recentCreate = lastSevenDaysStats?.create;
+    if recentCreate != () {
         io:println("Recent Create Activity: " + recentCreate.toString());
     }
 
-    var recentEdit = lastSevenDaysStats?.edit;
-    if recentEdit is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? recentEdit = lastSevenDaysStats?.edit;
+    if recentEdit != () {
         io:println("Recent Edit Activity: " + recentEdit.toString());
     }
 
-    var recentDelete = lastSevenDaysStats?.delete;
-    if recentDelete is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? recentDelete = lastSevenDaysStats?.delete;
+    if recentDelete != () {
         io:println("Recent Delete Activity: " + recentDelete.toString());
     }
 
-    var recentMove = lastSevenDaysStats?.move;
-    if recentMove is record {} {
+    (sites:MicrosoftGraphItemActionStat|record {})? recentMove = lastSevenDaysStats?.move;
+    if recentMove != () {
         io:println("Recent Move Activity: " + recentMove.toString());
     }
 
-    var recentIncompleteData = lastSevenDaysStats?.incompleteData;
-    if recentIncompleteData is record {} {
+    (sites:MicrosoftGraphIncompleteData|record {})? recentIncompleteData = lastSevenDaysStats?.incompleteData;
+    if recentIncompleteData != () {
         io:println("Incomplete Data Info: " + recentIncompleteData.toString());
     }
     io:println("");

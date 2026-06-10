@@ -35,7 +35,13 @@ string testDriveId = MOCK_DRIVE_ID;
 function initClient() returns error? {
     if isTestOnLiveServer {
         string accessToken = os:getEnv("SHAREPOINT_ACCESS_TOKEN");
+        if accessToken.trim().length() == 0 {
+            return error("SHAREPOINT_ACCESS_TOKEN environment variable is required for live server tests");
+        }
         string liveSiteId = os:getEnv("SHAREPOINT_SITE_ID");
+        if liveSiteId.trim().length() == 0 {
+            return error("SHAREPOINT_SITE_ID environment variable is required for live server tests");
+        }
         sharepointClient = check new ({
             auth: {token: accessToken}
         });

@@ -1,5 +1,3 @@
-# Ballerina Microsoft SharePoint Connector
-
 ## Overview
 
 [Microsoft SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) is a cloud-based collaboration and content management platform that enables organizations to create, manage, and share sites, documents, and data across teams and enterprises.
@@ -8,7 +6,7 @@ The `ballerinax/microsoft.sharepoint.sites` package offers APIs to connect and i
 
 ## Setup guide
 
-To use the Microsoft SharePoint Sites connector, you must have access to the Microsoft SharePoint API through a [Microsoft Azure developer account](https://portal.azure.com/) and obtain an OAuth 2.0 client credentials (access token). If you do not have a Microsoft account, you can sign up for one [here](https://signup.microsoft.com/).
+To use the Microsoft SharePoint Sites connector, you must have access to the Microsoft SharePoint API through a [Microsoft Azure developer account](https://portal.azure.com/) and obtain OAuth 2.0 client credentials (client ID, client secret, and tenant ID). If you do not have a Microsoft account, you can sign up for one [here](https://signup.microsoft.com/).
 
 ### Step 1: Create a Microsoft Account and Register an Application
 
@@ -22,7 +20,7 @@ To use the Microsoft SharePoint Sites connector, you must have access to the Mic
 
 5. Enter a name for your application, select the appropriate **Supported account types** (e.g., single tenant or multi-tenant), and click **Register**.
 
-### Step 2: Generate an Access Token (Client ID and Client Secret)
+### Step 2: Obtain Client Credentials
 
 1. Log in to the [Azure Portal](https://portal.azure.com/) and navigate to **Microsoft Entra ID** > **App registrations**, then select your registered application.
 
@@ -47,7 +45,6 @@ To use the `microsoft.sharepoint.sites` connector in your Ballerina application,
 ### Step 1: Import the module
 
 ```ballerina
-import ballerina/oauth2;
 import ballerinax/microsoft.sharepoint.sites as mssites;
 ```
 
@@ -58,7 +55,7 @@ import ballerinax/microsoft.sharepoint.sites as mssites;
 ```toml
 clientId = "<Your_Client_Id>"
 clientSecret = "<Your_Client_Secret>"
-refreshToken = "<Your_Refresh_Token>"
+tenantId = "<Your_Tenant_Id>"
 ```
 
 2. Create a `mssites:ConnectionConfig` and initialize the client:
@@ -66,13 +63,14 @@ refreshToken = "<Your_Refresh_Token>"
 ```ballerina
 configurable string clientId = ?;
 configurable string clientSecret = ?;
-configurable string refreshToken = ?;
+configurable string tenantId = ?;
 
 final mssites:Client mssitesClient = check new ({
     auth: {
         clientId,
         clientSecret,
-        refreshToken
+        tokenUrl: "https://login.microsoftonline.com/" + tenantId + "/oauth2/v2.0/token",
+        scopes: ["https://graph.microsoft.com/.default"]
     }
 });
 ```
