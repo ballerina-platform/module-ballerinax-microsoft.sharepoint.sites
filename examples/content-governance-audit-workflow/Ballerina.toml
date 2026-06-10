@@ -11,3 +11,4 @@ observabilityIncluded = true
 org = "ballerinax"
 name = "microsoft.sharepoint.sites"
 version = "0.1.0"
+repository = "local"

@@ -51,7 +51,7 @@ isolated function getDeepObjectStyleRequest(string parent, record {} anyRecord) 
         if value is SimpleBasicType {
             recordArray.push(parent + "[" + key + "]" + "=" + getEncodedUri(value.toString()));
         } else if value is SimpleBasicType[] {
-            recordArray.push(getSerializedArray(parent + "[" + key + "]", value, DEEPOBJECT, true));
+            recordArray.push(getSerializedArray(parent + "[" + key + "]" + "[]", value, DEEPOBJECT, true));
         } else if value is record {} {
             string nextParent = parent + "[" + key + "]";
             recordArray.push(getDeepObjectStyleRequest(nextParent, value));
@@ -61,9 +61,7 @@ isolated function getDeepObjectStyleRequest(string parent, record {} anyRecord) 
         }
         recordArray.push("&");
     }
-    if recordArray.length() > 0 {
-        _ = recordArray.pop();
-    }
+    _ = recordArray.pop();
     return string:'join("", ...recordArray);
 }
 
@@ -86,9 +84,7 @@ isolated function getFormStyleRequest(string parent, record {} anyRecord, boolea
             }
             recordArray.push("&");
         }
-        if recordArray.length() > 0 {
-            _ = recordArray.pop();
-        }
+        _ = recordArray.pop();
     } else {
         foreach [string, anydata] [key, value] in anyRecord.entries() {
             if value is SimpleBasicType {
@@ -100,9 +96,7 @@ isolated function getFormStyleRequest(string parent, record {} anyRecord, boolea
             }
             recordArray.push(",");
         }
-        if recordArray.length() > 0 {
-            _ = recordArray.pop();
-        }
+        _ = recordArray.pop();
     }
     return string:'join("", ...recordArray);
 }
@@ -170,9 +164,7 @@ isolated function getSerializedRecordArray(string parent, record {}[] value, str
             serializedArray.push(getFormStyleRequest(parent, recordItem, explode), ",");
         }
     }
-    if serializedArray.length() > 0 {
-        _ = serializedArray.pop();
-    }
+    _ = serializedArray.pop();
     return string:'join("", ...serializedArray);
 }
 

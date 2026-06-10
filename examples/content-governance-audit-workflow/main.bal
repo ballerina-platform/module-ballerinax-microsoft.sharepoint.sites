@@ -38,43 +38,46 @@ public function main() returns error? {
 
     io:println("Step 1: Retrieving all content types defined on the site...");
     sites:MicrosoftGraphContentTypeCollectionResponse contentTypesResponse =
-        check sharepointClient->sitesListContentTypes(siteId);
+        check sharepointClient->sitesListContentTypes(
+            siteId,
+            queries = {
+                dollarSelect: ["id", "name", "description"]
+            }
+        );
 
-    sites:MicrosoftGraphContentType[]? contentTypes = contentTypesResponse?.value;
-    if contentTypes is sites:MicrosoftGraphContentType[] {
-        io:println("Found " + contentTypes.length().toString() + " content type(s) on the site:");
-        foreach sites:MicrosoftGraphContentType ct in contentTypes {
-            string ctId = ct?.id ?: "N/A";
-            string ctName = ct?.name ?: "Unnamed";
-            string ctDescription = ct?.description ?: "No description";
-            io:println("  - ID: " + ctId + " | Name: " + ctName + " | Description: " + ctDescription);
-        }
-    } else {
-        io:println("No content types found on the site.");
+    sites:MicrosoftGraphContentType[] contentTypes = contentTypesResponse.value ?: [];
+    io:println("Found " + contentTypes.length().toString() + " content type(s) on the site:");
+    foreach sites:MicrosoftGraphContentType ct in contentTypes {
+        string ctId = ct?.id ?: "N/A";
+        string ctName = ct?.name ?: "Unnamed";
+        string ctDescription = ct?.description ?: "No description";
+        io:println("  - ID: " + ctId + " | Name: " + ctName + " | Description: " + ctDescription);
     }
     io:println("");
 
     io:println("Step 2: Examining column definitions for content type ID: " + targetContentTypeId);
     sites:MicrosoftGraphColumnDefinitionCollectionResponse columnsResponse =
-        check sharepointClient->sitesContentTypesListColumns(siteId, targetContentTypeId);
+        check sharepointClient->sitesContentTypesListColumns(
+            siteId,
+            targetContentTypeId,
+            queries = {
+                dollarSelect: ["id", "name", "displayName", "description", "required", "enforceUniqueValues", "hidden", "indexed"]
+            }
+        );
 
-    sites:MicrosoftGraphColumnDefinition[]? columns = columnsResponse?.value;
+    sites:MicrosoftGraphColumnDefinition[] columns = columnsResponse.value ?: [];
     boolean complianceCategoryExists = false;
 
-    if columns is sites:MicrosoftGraphColumnDefinition[] {
-        io:println("Found " + columns.length().toString() + " column(s) in the content type:");
-        foreach sites:MicrosoftGraphColumnDefinition col in columns {
-            string colId = col?.id ?: "N/A";
-            string colName = col?.name ?: "Unnamed";
-            boolean isRequired = col?.required ?: false;
-            io:println("  - ID: " + colId + " | Name: " + colName + " | Required: " + isRequired.toString());
+    io:println("Found " + columns.length().toString() + " column(s) in the content type:");
+    foreach sites:MicrosoftGraphColumnDefinition col in columns {
+        string colId = col?.id ?: "N/A";
+        string colName = col?.name ?: "Unnamed";
+        boolean isRequired = col?.required ?: false;
+        io:println("  - ID: " + colId + " | Name: " + colName + " | Required: " + isRequired.toString());
 
-            if colName == "Compliance Category" {
-                complianceCategoryExists = true;
-            }
+        if colName == "Compliance Category" {
+            complianceCategoryExists = true;
         }
-    } else {
-        io:println("No columns found for the specified content type.");
     }
     io:println("");
 

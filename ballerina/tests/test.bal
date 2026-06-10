@@ -409,7 +409,7 @@ function testAddCopyContentType() returns error? {
     ContentTypesMicrosoftGraphAddCopyBody payload = {
         contentType: "https://contoso.sharepoint.com/sites/source/_api/web/contentTypes/0x01"
     };
-    ContentTypeAddCopyResponse|error result = sharepointClient->sitesSiteContentTypesAddCopy(testSiteId, payload);
+    ContentTypeOrNullResponse|error result = sharepointClient->sitesSiteContentTypesAddCopy(testSiteId, payload);
     if result is error {
         test:assertFail(result.message());
     }

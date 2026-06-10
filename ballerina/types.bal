@@ -51,10 +51,10 @@ public type SitesCreatedByUserGetMailboxSettingsQueries record {
     ("archiveFolder"|"automaticRepliesSetting"|"dateFormat"|"delegateMeetingMessageDeliveryOptions"|"language"|"timeFormat"|"timeZone"|"userPurpose"|"workingHours")[] dollarSelect?;
 };
 
-# Enumeration indicating the follow-up flag status of an item: notFlagged, complete, or flagged.
+# Enumeration representing the follow-up flag status of an item: notFlagged, complete, or flagged.
 public type MicrosoftGraphFollowupFlagStatus "notFlagged"|"complete"|"flagged";
 
-# Enumeration specifying the preview type displayed on a Planner task card: automatic, noPreview, checklist, description, or reference.
+# Enumeration defining the preview type displayed on a Planner task card: automatic, noPreview, checklist, description, or reference.
 public type MicrosoftGraphPlannerPreviewType "automatic"|"noPreview"|"checklist"|"description"|"reference";
 
 # State of the action on the device
@@ -66,7 +66,7 @@ public type MicrosoftGraphPendingOperations record {
     MicrosoftGraphPendingContentUpdate|record {} pendingContentUpdate?;
 };
 
-# Represents an error returned by a OneNote operation, containing a code and message.
+# Represents an error returned by a OneNote operation, containing an error code and message.
 public type MicrosoftGraphOnenoteOperationError record {
     # The error code
     string? code?;
@@ -74,7 +74,7 @@ public type MicrosoftGraphOnenoteOperationError record {
     string? message?;
 };
 
-# Represents a sharing link for a OneDrive or SharePoint item, including URL, scope, and type.
+# Represents a sharing link for a OneDrive or SharePoint item, including its URL, scope, type, and access restrictions.
 public type MicrosoftGraphSharingLink record {
     # If true then the user can only use this link to view the item on the web, and cannot use it to download the contents of the item. Only for OneDrive for Business and SharePoint
     boolean? preventsDownload?;
@@ -90,7 +90,7 @@ public type MicrosoftGraphSharingLink record {
     string? 'type?;
 };
 
-# Represents a long-running operation with status, creation time, and last action time.
+# Represents a long-running operation, including its creation time, last action time, and current status.
 public type MicrosoftGraphOperation record {
     *MicrosoftGraphEntity;
     # The start time of the operation
@@ -101,7 +101,7 @@ public type MicrosoftGraphOperation record {
     MicrosoftGraphOperationStatus|record {} status?;
 };
 
-# Represents a team that has access to a shared channel, including host status and members.
+# Represents a team that has access to a shared channel, including host status and allowed members.
 public type MicrosoftGraphSharedWithChannelTeamInfo record {
     *MicrosoftGraphTeamInfo;
     # Indicates whether the team is the host of the channel
@@ -113,18 +113,18 @@ public type MicrosoftGraphSharedWithChannelTeamInfo record {
 # Malware threat status
 public type MicrosoftGraphWindowsMalwareThreatState "active"|"actionFailed"|"manualStepsRequired"|"fullScanRequired"|"rebootRequired"|"remediatedWithNonCriticalFailures"|"quarantined"|"removed"|"cleaned"|"allowed"|"noStatusCleared";
 
-# Represents a pending binary content update, including the UTC time it was queued.
+# Represents a pending binary content update, including the UTC timestamp when it was queued.
 public type MicrosoftGraphPendingContentUpdate record {
     # Date and time the pending binary operation was queued in UTC time. Read-only
     string? queuedDateTime?;
 };
 
-# Represents the identity set of a user who reacted to a chat message.
+# Represents the set of identities associated with a reaction on a chat message.
 public type MicrosoftGraphChatMessageReactionIdentitySet record {
     *MicrosoftGraphIdentitySet;
 };
 
-# Represents the current status of a print job, including processing state and details.
+# Represents the current processing status of a print job, including state and details.
 public type MicrosoftGraphPrintJobStatus record {
     # True if the job was acknowledged by a printer; false otherwise. Read-only
     boolean isAcquiredByPrinter?;
@@ -136,7 +136,7 @@ public type MicrosoftGraphPrintJobStatus record {
     MicrosoftGraphPrintJobProcessingState state?;
 };
 
-# Represents a SharePoint site with lists, drives, pages, content types, and permissions.
+# Represents a SharePoint site, including its collections of lists, drives, pages, content types, permissions, and related resources.
 public type MicrosoftGraphSite record {
     *MicrosoftGraphBaseItem;
     # Identifies whether the site is personal or not. Read-only
@@ -167,7 +167,7 @@ public type MicrosoftGraphSite record {
     MicrosoftGraphTermStoreStore[] termStores?;
     # The collection of drives (document libraries) under this site
     MicrosoftGraphDrive[] drives?;
-    # Collection of externally referenced column definitions available to this site.
+    # Collection of column definitions sourced from an external source for this site.
     MicrosoftGraphColumnDefinition[] externalColumns?;
     # The collection of lists under this site
     MicrosoftGraphList[] lists?;
@@ -208,7 +208,7 @@ public type SitesCreatedByUserServiceProvisioningErrorsGetCountC398Queries recor
 public type MicrosoftGraphCustomSecurityAttributeValue record {
 };
 
-# Represents an error that occurred during on-premises directory provisioning synchronization.
+# Represents an error that occurred during on-premises directory synchronization provisioning.
 public type MicrosoftGraphOnPremisesProvisioningError record {
     # Name of the directory property causing the error. Current possible values: UserPrincipalName or ProxyAddress
     string? propertyCausingError?;
@@ -220,7 +220,7 @@ public type MicrosoftGraphOnPremisesProvisioningError record {
     string? occurredDateTime?;
 };
 
-# Represents a OneNote page, including its content, metadata, and parent relationships.
+# Represents a OneNote page, including its content, metadata, and parent hierarchy.
 public type MicrosoftGraphOnenotePage record {
     *MicrosoftGraphOnenoteEntitySchemaObjectModel;
     # The section that contains the page. Read-only
@@ -247,10 +247,10 @@ public type MicrosoftGraphOnenotePage record {
     decimal? 'order?;
 };
 
-# Enumeration of device management agent types, indicating the management platform or service controlling the device.
+# Enumeration of device management agent types such as MDM, EAS, Intune, and Configuration Manager.
 public type MicrosoftGraphManagementAgentType "eas"|"mdm"|"easMdm"|"intuneClient"|"easIntuneClient"|"configurationManagerClient"|"configurationManagerClientMdm"|"configurationManagerClientMdmEas"|"unknown"|"jamf"|"googleCloudDevicePolicyController"|"microsoft365ManagedMdm"|"msSense";
 
-# Aggregated membership statistics for a Teams channel, including counts of members, guests, and owners.
+# Represents a summary of membership counts and external member presence in a Teams channel.
 public type MicrosoftGraphChannelSummary record {
     # Count of members in a channel
     decimal? membersCount?;
@@ -262,7 +262,7 @@ public type MicrosoftGraphChannelSummary record {
     decimal? ownersCount?;
 };
 
-# Represents a time card entry containing clock-in, clock-out, and break events for a shift.
+# Represents a time card entry containing clock-in, clock-out, and break events.
 public type MicrosoftGraphTimeCardEntry record {
     # The clock-in event of the timeCard
     MicrosoftGraphTimeCardBreak[] breaks?;
@@ -272,7 +272,7 @@ public type MicrosoftGraphTimeCardEntry record {
     MicrosoftGraphTimeCardEvent|record {} clockInEvent?;
 };
 
-# Metadata describing a video file's technical properties including dimensions, bitrate, and audio attributes.
+# Represents video file metadata including dimensions, bitrate, duration, and audio properties.
 public type MicrosoftGraphVideo record {
     # Duration of the file in milliseconds
     decimal? duration?;
@@ -296,28 +296,28 @@ public type MicrosoftGraphVideo record {
     decimal? height?;
 };
 
-# Represents a long-running workbook operation, including its status, result location, and any associated error.
+# Represents a long-running workbook operation, including its status, result location, and any errors.
 public type MicrosoftGraphWorkbookOperation record {
     *MicrosoftGraphEntity;
     # The error returned by the operation
     MicrosoftGraphWorkbookOperationError|record {} 'error?;
     # The resource URI for the result
     string? resourceLocation?;
-    # Enumeration of possible statuses for a workbook operation: notStarted, running, succeeded, or failed.
+    # Enumeration of workbook operation statuses: notStarted, running, succeeded, or failed.
     MicrosoftGraphWorkbookOperationStatus status?;
 };
 
-# Enumeration of icon types used to visually represent a time-off reason in scheduling.
+# Enum of icon types available for representing time-off reasons in scheduling.
 public type MicrosoftGraphTimeOffReasonIconType "none"|"car"|"calendar"|"running"|"plane"|"firstAid"|"doctor"|"notWorking"|"clock"|"juryDuty"|"globe"|"cup"|"phone"|"weather"|"umbrella"|"piggyBank"|"dog"|"cake"|"trafficCone"|"pin"|"sunny"|"unknownFutureValue";
 
-# Base schema model for OneNote entities that include a creation timestamp.
+# Represents a OneNote entity schema object with creation date and time metadata.
 public type MicrosoftGraphOnenoteEntitySchemaObjectModel record {
     *MicrosoftGraphOnenoteEntityBaseModel;
     # The date and time when the page was created. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only
     string? createdDateTime?;
 };
 
-# Represents a physical mailing address including street, city, state, postal code, and country or region.
+# Represents a physical mailing address with street, city, state, postal code, and country.
 public type MicrosoftGraphPhysicalAddress record {
     # The country or region. It's a free-format string value, for example, 'United States'
     string? countryOrRegion?;
@@ -334,7 +334,7 @@ public type MicrosoftGraphPhysicalAddress record {
 # Enumeration of container types for a Planner plan: group, roster, or unknownFutureValue.
 public type MicrosoftGraphPlannerContainerType "group"|"unknownFutureValue"|"roster";
 
-# Represents a single checklist item within a task, including its title, creation time, and checked state.
+# Represents a single checklist item within a task, including its title and completion state.
 public type MicrosoftGraphChecklistItem record {
     *MicrosoftGraphEntity;
     # Indicates the title of the checklistItem
@@ -347,12 +347,12 @@ public type MicrosoftGraphChecklistItem record {
     boolean? isChecked?;
 };
 
-# Enumeration of tag types applicable to Microsoft Teams teamwork resources.
+# Enumeration of tag types applicable to Teams teamwork tags: standard or unknownFutureValue.
 public type MicrosoftGraphTeamworkTagType "standard"|"unknownFutureValue";
 
-# Represents an email address with a computed relevance score and selection likelihood.
+# Represents an email address with an associated relevance score and selection likelihood.
 public type MicrosoftGraphScoredEmailAddress record {
-    # The unique identifier of the item associated with this email address.
+    # The unique identifier of the item associated with the email address.
     string? itemId?;
     # The email address
     string? address?;
@@ -418,14 +418,14 @@ public type MicrosoftGraphDeviceConfigurationSettingState record {
     string? settingName?;
 };
 
-# A paginated collection of SharePoint list resources returned from a query.
+# A paginated collection of SharePoint list resources returned from a list query.
 public type MicrosoftGraphListCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
-    # Array of SharePoint List resources returned in the collection.
+    # An array of SharePoint list objects returned in the collection response.
     MicrosoftGraphList[] value?;
 };
 
-# Represents a profile photo entity, including its pixel width and height dimensions.
+# Represents a profile photo entity including its pixel dimensions.
 public type MicrosoftGraphProfilePhoto record {
     *MicrosoftGraphEntity;
     # The width of the photo. Read-only
@@ -434,7 +434,7 @@ public type MicrosoftGraphProfilePhoto record {
     decimal? height?;
 };
 
-# Represents a workbook chart axis title, including its text, visibility, and formatting.
+# Represents the title of a workbook chart axis, including text, visibility, and formatting.
 public type MicrosoftGraphWorkbookChartAxisTitle record {
     *MicrosoftGraphEntity;
     # A Boolean that specifies the visibility of an axis title
@@ -445,31 +445,31 @@ public type MicrosoftGraphWorkbookChartAxisTitle record {
     string? text?;
 };
 
-# Paginated collection response containing an array of SharePoint permission resources.
+# Paginated collection of permission objects with count support.
 public type MicrosoftGraphPermissionCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
-    # Array of Permission resources returned in the collection.
+    # Array of permission objects returned in the collection.
     MicrosoftGraphPermission[] value?;
 };
 
-# Base schema representing generic content; serves as a foundation for content-derived types.
+# Base schema representing generic content within Microsoft Graph.
 public type MicrosoftGraphContentBase record {
 };
 
-# Represents a policy location, identified by a value specific to its concrete type such as domain, URL, or application.
+# Represents a policy location value such as a domain, URL, or application identifier.
 public type MicrosoftGraphPolicyLocation record {
     # The actual value representing the location. Location value is specific for concretetype of the  policyLocation - policyLocationDomain, policyLocationUrl, or policyLocationApplication (for example, 'contoso.com', 'https://partner.contoso.com/upload', '83ef198a-0396-4893-9d4f-d36efbffcaaa')
     string value?;
 };
 
-# Defines formatting properties for chart gridlines, including line style configuration.
+# Represents the formatting applied to chart gridlines, including line style.
 public type MicrosoftGraphWorkbookChartGridlinesFormat record {
     *MicrosoftGraphEntity;
     # Represents chart line formatting. Read-only
     MicrosoftGraphWorkbookChartLineFormat|record {} line?;
 };
 
-# Represents a specific version of a drive item, including its content stream and size.
+# Represents a specific version of a drive item, including its content and size.
 public type MicrosoftGraphDriveItemVersion record {
     *MicrosoftGraphBaseItemVersion;
     # Indicates the size of the content stream for this version of the item
@@ -478,16 +478,16 @@ public type MicrosoftGraphDriveItemVersion record {
     string? content?;
 };
 
-# Represents information about a team associated with a channel or resource.
+# Represents information about a team associated with a resource, extending TeamInfo.
 public type MicrosoftGraphAssociatedTeamInfo record {
     *MicrosoftGraphTeamInfo;
 };
 
-# A keyed collection of checklist items associated with a Planner task.
+# Represents a collection of checklist items associated with a Planner task.
 public type MicrosoftGraphPlannerChecklistItems record {
 };
 
-# Configuration settings for a user's mailbox, including locale, time zone, and automatic replies.
+# Mailbox configuration settings including locale, time zone, date/time formats, working hours, automatic replies, and delegate meeting message delivery options.
 public type MicrosoftGraphMailboxSettings record {
     # The date format for the user's mailbox
     string? dateFormat?;
@@ -509,7 +509,7 @@ public type MicrosoftGraphMailboxSettings record {
     MicrosoftGraphUserPurpose|record {} userPurpose?;
 };
 
-# Represents a delegated permission grant authorizing a client app to access an API on behalf of a user.
+# Represents a delegated permission grant authorizing a client application to access an API on behalf of a signed-in user.
 public type MicrosoftGraphOAuth2PermissionGrant record {
     *MicrosoftGraphEntity;
     # The id of the resource service principal to which access is authorized. This identifies the API that the client is authorized to attempt to call on behalf of a signed-in user. Supports $filter (eq only)
@@ -534,7 +534,7 @@ public type OAuth2ClientCredentialsGrantConfig record {|
     string tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
 |};
 
-# Detailed information for a Planner task, including description, checklist, and references.
+# Detailed information for a Planner task, including description, checklist, references, and preview type.
 public type MicrosoftGraphPlannerTaskDetails record {
     *MicrosoftGraphEntity;
     # The collection of references on the task
@@ -547,7 +547,7 @@ public type MicrosoftGraphPlannerTaskDetails record {
     MicrosoftGraphPlannerPreviewType|record {} previewType?;
 };
 
-# Represents a time card record including clock-in/out events, breaks, state, and confirmation status.
+# Represents a time card record tracking clock-in/out events, breaks, and state for a user's shift.
 public type MicrosoftGraphTimeCard record {
     *MicrosoftGraphChangeTrackedEntity;
     # The original timeCardEntry of the timeCard before it was edited
@@ -568,10 +568,10 @@ public type MicrosoftGraphTimeCard record {
     string? userId?;
 };
 
-# Represents the default finishing options for a printer, combining standard and extended finishing types.
+# Represents the default finishing options for a printer, supporting standard or extended finishing values.
 public type MicrosoftgraphprinterDefaultsFinishings MicrosoftGraphPrintFinishing|FinishingsAnyOf21?;
 
-# Represents an Excel workbook with worksheets, tables, named items, comments, functions, and operations.
+# Represents an Excel workbook, including worksheets, tables, named items, comments, and functions.
 public type MicrosoftGraphWorkbook record {
     *MicrosoftGraphEntity;
     # Represents a collection of tables associated with the workbook. Read-only
@@ -584,19 +584,19 @@ public type MicrosoftGraphWorkbook record {
     MicrosoftGraphWorkbookOperation[] operations?;
     # Represents a collection of worksheets associated with the workbook. Read-only
     MicrosoftGraphWorkbookWorksheet[] worksheets?;
-    # The workbook application instance that manages the workbook's application-level settings.
+    # The Excel application instance associated with the workbook.
     MicrosoftGraphWorkbookApplication|record {} application?;
-    # The workbook functions object used to invoke supported Excel worksheet functions.
+    # The collection of workbook functions available for use in calculations.
     MicrosoftGraphWorkbookFunctions|record {} functions?;
 };
 
-# Enumeration defining which participants can bypass the meeting lobby.
+# Defines which meeting participants can bypass the lobby. Values include organizer, organization, everyone, and guests.
 public type MicrosoftGraphLobbyBypassScope "organizer"|"organization"|"organizationAndFederated"|"everyone"|"unknownFutureValue"|"invited"|"organizationExcludingGuests";
 
-# Enumeration specifying the provisioning type for a Cloud PC (dedicated, shared, or unknown).
+# Enumeration of Cloud PC provisioning types: dedicated, shared, or unknown future value.
 public type MicrosoftGraphCloudPcProvisioningType "dedicated"|"shared"|"unknownFutureValue";
 
-# Represents font formatting properties for a workbook chart element, extending the base entity.
+# Font formatting properties for a workbook chart, including color, size, style, and name.
 public type MicrosoftGraphWorkbookChartFont record {
     *MicrosoftGraphEntity;
     # The HTML color code representation of the text color. For example #FF0000 represents Red
@@ -613,18 +613,18 @@ public type MicrosoftGraphWorkbookChartFont record {
     boolean? italic?;
 };
 
-# Represents usage analytics for a drive item, including all-time and recent activity statistics.
+# Analytics data for a SharePoint item, including activity stats for all time and the last seven days.
 public type MicrosoftGraphItemAnalytics record {
     *MicrosoftGraphEntity;
-    # Activity statistics aggregated over the last seven days.
+    # Aggregated activity statistics for the item over the last seven days.
     MicrosoftGraphItemActivityStat|record {} lastSevenDays?;
-    # Collection of activity statistics for the item over time intervals.
+    # Collection of activity statistics records associated with the item.
     MicrosoftGraphItemActivityStat[] itemActivityStats?;
-    # Cumulative activity statistics aggregated over the item's lifetime.
+    # Aggregated activity statistics for the item across its entire lifetime.
     MicrosoftGraphItemActivityStat|record {} allTime?;
 };
 
-# Represents a localized display name paired with its associated language tag.
+# Localized display name paired with its associated language tag.
 public type MicrosoftGraphDisplayNameLocalization record {
     # If present, the value of this field contains the displayName string that has been set for the language present in the languageTag field
     string? displayName?;
@@ -632,10 +632,10 @@ public type MicrosoftGraphDisplayNameLocalization record {
     string? languageTag?;
 };
 
-# Enumeration of finishing options applied to a print job, such as stapling, binding, punching, and folding.
+# Enumeration of print finishing options such as stapling, binding, punching, and folding.
 public type MicrosoftGraphPrintFinishing "none"|"staple"|"punch"|"cover"|"bind"|"saddleStitch"|"stitchEdge"|"stapleTopLeft"|"stapleBottomLeft"|"stapleTopRight"|"stapleBottomRight"|"stitchLeftEdge"|"stitchTopEdge"|"stitchRightEdge"|"stitchBottomEdge"|"stapleDualLeft"|"stapleDualTop"|"stapleDualRight"|"stapleDualBottom"|"unknownFutureValue"|"stapleTripleLeft"|"stapleTripleTop"|"stapleTripleRight"|"stapleTripleBottom"|"bindLeft"|"bindTop"|"bindRight"|"bindBottom"|"foldAccordion"|"foldDoubleGate"|"foldGate"|"foldHalf"|"foldHalfZ"|"foldLeftGate"|"foldLetter"|"foldParallel"|"foldPoster"|"foldRightGate"|"foldZ"|"foldEngineeringZ"|"punchTopLeft"|"punchBottomLeft"|"punchTopRight"|"punchBottomRight"|"punchDualLeft"|"punchDualTop"|"punchDualRight"|"punchDualBottom"|"punchTripleLeft"|"punchTripleTop"|"punchTripleRight"|"punchTripleBottom"|"punchQuadLeft"|"punchQuadTop"|"punchQuadRight"|"punchQuadBottom"|"fold"|"trim"|"bale"|"bookletMaker"|"coat"|"laminate"|"trimAfterPages"|"trimAfterDocuments"|"trimAfterCopies"|"trimAfterJob";
 
-# Represents a transcript of an online meeting call, including content, metadata, and timing information.
+# Transcript of an online meeting call, including content, metadata, and timing details.
 public type MicrosoftGraphCallTranscript record {
     *MicrosoftGraphEntity;
     # The unique identifier for the call that is related to this transcript. Read-only
@@ -658,10 +658,10 @@ public type MicrosoftGraphCallTranscript record {
     string? content?;
 };
 
-# Enum indicating the format of a message body: plain text or HTML.
+# Enumeration specifying the format of a message body: plain text or HTML.
 public type MicrosoftGraphBodyType "text"|"html";
 
-# Represents a workbook chart title, including its text, visibility, and formatting.
+# Represents the title of a workbook chart, including text, visibility, overlay, and formatting.
 public type MicrosoftGraphWorkbookChartTitle record {
     *MicrosoftGraphEntity;
     # Indicates whether the chart title is visible
@@ -674,28 +674,28 @@ public type MicrosoftGraphWorkbookChartTitle record {
     string? text?;
 };
 
-# Indicates that a drive item is a package, such as a OneNote notebook.
+# Indicates that a drive item is a package, such as a OneNote notebook, with a type identifier.
 public type MicrosoftGraphPackage record {
     # A string indicating the type of package. While oneNote is the only currently defined value, you should expect other package types to be returned and handle them accordingly
     string? 'type?;
 };
 
-# Represents a user's settings for item insights and meeting hours insights.
+# User-level settings controlling the visibility of item insights and meeting hours insights.
 public type MicrosoftGraphUserInsightsSettings record {
     *MicrosoftGraphEntity;
     # True if the user's itemInsights and meeting hours insights are enabled; false if the user's itemInsights and meeting hours insights are disabled. The default value is true. Optional
     boolean isEnabled?;
 };
 
-# Represents the current processing status and description of a print task.
+# Represents the current processing status of a print task, including state and description.
 public type MicrosoftGraphPrintTaskStatus record {
     # A human-readable description of the current processing state of the printTask
     string description?;
-    # Enum representing print task processing states: pending, processing, completed, aborted, or unknownFutureValue.
+    # Enumeration of print task processing states: pending, processing, completed, aborted, or unknownFutureValue.
     MicrosoftGraphPrintTaskProcessingState state?;
 };
 
-# Organizational data for an employee, including division and cost center.
+# Organizational data for an employee, including their division and cost center.
 public type MicrosoftGraphEmployeeOrgData record {
     # The name of the division in which the user works. Requires $select to retrieve. Supports $filter
     string? division?;
@@ -703,10 +703,10 @@ public type MicrosoftGraphEmployeeOrgData record {
     string? costCenter?;
 };
 
-# Enumeration of possible agreement acceptance states: accepted, declined, or unknownFutureValue.
+# Enumeration representing a user's acceptance state for a terms-of-use agreement.
 public type MicrosoftGraphAgreementAcceptanceState "accepted"|"declined"|"unknownFutureValue";
 
-# Represents an attachment on a chat message, including its content, type, URL, name, and thumbnail.
+# Represents an attachment in a Teams chat message, including content, type, URL, and metadata.
 public type MicrosoftGraphChatMessageAttachment record {
     # The ID of the Teams app that is associated with the attachment. The property is used to attribute a Teams message card to the specified app
     string? teamsAppId?;
@@ -724,7 +724,7 @@ public type MicrosoftGraphChatMessageAttachment record {
     string? thumbnailUrl?;
 };
 
-# Represents an app role assignment granting a user, group, or service principal access to an application.
+# Represents the assignment of an app role to a user, group, or service principal for a resource.
 public type MicrosoftGraphAppRoleAssignment record {
     *MicrosoftGraphDirectoryObject;
     # The display name of the resource app's service principal to which the assignment is made. Maximum length is 256 characters
@@ -743,27 +743,27 @@ public type MicrosoftGraphAppRoleAssignment record {
     string? principalType?;
 };
 
-# Represents a single occurrence of a work plan, including location type, time range, and recurrence details.
+# Represents a single occurrence of a work plan, including location, timing, and recurrence details.
 public type MicrosoftGraphWorkPlanOccurrence record {
     *MicrosoftGraphEntity;
     # The details about the time off. Only applicable when workLocationType is set to timeOff
     MicrosoftGraphTimeOffDetails|record {} timeOffDetails?;
     # Identifier of a place from the Microsoft Graph Places Directory API. Only applicable when workLocationType is set to office
     string? placeId?;
-    # Represents a date and time value paired with a time zone identifier.
+    # Represents a point in time combined with a time zone identifier for scheduling and calendar operations.
     MicrosoftGraphDateTimeTimeZone 'start?;
-    # Represents a date and time value paired with a time zone identifier.
+    # Represents a point in time combined with a time zone identifier for scheduling and calendar operations.
     MicrosoftGraphDateTimeTimeZone end?;
-    # Enumeration of work location types for a user's work schedule entry.
+    # Enumeration of work location types such as office, remote, or time off.
     MicrosoftGraphWorkLocationType workLocationType?;
     # The identifier of the parent recurrence pattern that generated this occurrence. The value is null for time-off occurrences because they don't have a parent recurrence
     string? recurrenceId?;
 };
 
-# Represents the compliance policy evaluation state for a specific device, including settings and status.
+# Represents the compliance policy state for a specific device, including settings and status.
 public type MicrosoftGraphDeviceCompliancePolicyState record {
     *MicrosoftGraphEntity;
-    # Collection of individual setting evaluation states within the compliance policy for the device.
+    # Collection of individual compliance policy setting states for the device.
     MicrosoftGraphDeviceCompliancePolicySettingState[] settingStates?;
     # The name of the policy for this policyBase
     string? displayName?;
@@ -787,7 +787,7 @@ public type SitesContentTypesGetCount50aaQueries record {
     string dollarSearch?;
 };
 
-# Extends IdentitySet to represent the identity of a user, device, app, or conversation mentioned in a chat message.
+# Represents the identity set of an entity mentioned in a chat message, including conversations.
 public type MicrosoftGraphChatMessageMentionedIdentitySet record {
     *MicrosoftGraphIdentitySet;
     # If present, represents a conversation (for example, team, channel, or chat) @mentioned in a message
@@ -829,7 +829,7 @@ public type SitesListExternalColumnsQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Configures automatic reply settings for a mailbox, including status, schedule, audience scope, and reply messages.
+# Configures automatic reply settings including status, schedule, audience, and reply messages.
 public type MicrosoftGraphAutomaticRepliesSetting record {
     # The set of audience external to the signed-in user's organization who will receive the ExternalReplyMessage, if Status is AlwaysEnabled or Scheduled. The possible values are: none, contactsOnly, all
     MicrosoftGraphExternalAudienceScope|record {} externalAudience?;
@@ -845,20 +845,20 @@ public type MicrosoftGraphAutomaticRepliesSetting record {
     MicrosoftGraphAutomaticRepliesStatus|record {} status?;
 };
 
-# Represents the formatting options for a workbook chart axis title, including font attributes.
+# Defines the font formatting properties for a workbook chart axis title.
 public type MicrosoftGraphWorkbookChartAxisTitleFormat record {
     *MicrosoftGraphEntity;
     # Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only
     MicrosoftGraphWorkbookChartFont|record {} font?;
 };
 
-# Represents print-related data for a user, including recent printer shares.
+# Represents a user's print settings, including recently used printer shares.
 public type MicrosoftGraphUserPrint record {
-    # Collection of printer shares recently used by the user.
+    # List of printer shares recently accessed by the user.
     MicrosoftGraphPrinterShare[] recentPrinterShares?;
 };
 
-# Defines the filter criteria applied to a workbook column, including conditions, values, and operators.
+# Defines filter criteria applied to a workbook column, including conditions, values, and operators.
 public type MicrosoftGraphWorkbookFilterCriteria record {
     # The color applied to the cell
     string? color?;
@@ -909,7 +909,7 @@ public type MicrosoftGraphAgreementAcceptance record {
     string? userPrincipalName?;
 };
 
-# Represents all authentication methods registered to a user, including phone, email, FIDO2, and more.
+# Represents all authentication methods registered to a user, including MFA, FIDO2, phone, and email methods.
 public type MicrosoftGraphAuthentication record {
     *MicrosoftGraphEntity;
     # The phone numbers registered to a user for authentication
@@ -938,24 +938,24 @@ public type MicrosoftGraphAuthentication record {
     MicrosoftGraphPlatformCredentialAuthenticationMethod[] platformCredentialMethods?;
 };
 
-# Represents a legacy extended property with a single string value on a supported Outlook resource.
+# Represents a legacy extended property with a single string value on a Microsoft 365 resource.
 public type MicrosoftGraphSingleValueLegacyExtendedProperty record {
     *MicrosoftGraphEntity;
     # A property value
     string? value?;
 };
 
-# Root resource representing a user's Cloud Clipboard, containing clipboard items.
+# Represents the root of a user's Cloud Clipboard, containing a collection of clipboard items.
 public type MicrosoftGraphCloudClipboardRoot record {
     *MicrosoftGraphEntity;
     # Represents a collection of Cloud Clipboard items
     MicrosoftGraphCloudClipboardItem[] items?;
 };
 
-# Represents special IEEE 754 numeric reference values: negative infinity, infinity, or NaN.
+# Represents special IEEE 754 numeric reference values: negative infinity, infinity, or not-a-number.
 public type ReferenceNumeric "-INF"|"INF"|"NaN"?;
 
-# Represents a public-facing error with code, message, target, details, and inner error.
+# Represents a public-facing error with code, message, target, details, and inner error information.
 public type MicrosoftGraphPublicError record {
     # Represents the error code
     string? code?;
@@ -972,23 +972,23 @@ public type MicrosoftGraphPublicError record {
 # Enumeration of possible task statuses: notStarted, inProgress, completed, waitingOnOthers, or deferred.
 public type MicrosoftGraphTaskStatus "notStarted"|"inProgress"|"completed"|"waitingOnOthers"|"deferred";
 
-# Defines the set of resource-specific permissions required or granted to a Teams application.
+# Represents the set of resource-specific permissions granted to a Teams application.
 public type MicrosoftGraphTeamsAppPermissionSet record {
     # A collection of resource-specific permissions
     MicrosoftGraphTeamsAppResourceSpecificPermission[] resourceSpecificPermissions?;
 };
 
-# Paginated collection response containing an array of itemActivityStat objects with activity metrics.
+# Paginated collection response containing an array of item activity statistics.
 public type MicrosoftGraphItemActivityStatCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
-    # Array of ItemActivityStat objects returned in the collection.
+    # Array of itemActivityStat objects representing the retrieved activity statistics.
     MicrosoftGraphItemActivityStat[] value?;
 };
 
-# Enum representing the approval state of a schedule change request: pending, approved, declined, or unknownFutureValue.
+# Enumeration representing the approval state of a schedule change request.
 public type MicrosoftGraphScheduleChangeState "pending"|"approved"|"declined"|"unknownFutureValue";
 
-# Represents a webhook subscription that enables change notifications for a monitored Microsoft Graph resource.
+# Represents a webhook subscription for receiving change notifications on a Microsoft Graph resource.
 public type MicrosoftGraphSubscription record {
     *MicrosoftGraphEntity;
     # Required. The URL of the endpoint that receives the change notifications. This URL must make use of the HTTPS protocol. Any query string parameter included in the notificationUrl property is included in the HTTP POST request when Microsoft Graph sends the change notifications
@@ -1052,7 +1052,7 @@ public type SitesListDrivesQueries record {
 # Enum defining the relationship type between term store terms: pin, reuse, or unknownFutureValue.
 public type MicrosoftGraphTermStoreRelationType "pin"|"reuse"|"unknownFutureValue";
 
-# Represents a user or group calendar with events, permissions, and online meeting settings.
+# Represents a user or group calendar, including events, permissions, and sharing settings.
 public type MicrosoftGraphCalendar record {
     *MicrosoftGraphEntity;
     # If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user
@@ -1093,7 +1093,7 @@ public type MicrosoftGraphCalendar record {
     MicrosoftGraphEvent[] events?;
 };
 
-# Represents a long-running Teams async operation with status, timestamps, and result details.
+# Represents a long-running async operation performed on a Teams resource.
 public type MicrosoftGraphTeamsAsyncOperation record {
     *MicrosoftGraphEntity;
     # The ID of the object that's created or modified as result of this async operation, typically a team
@@ -1104,17 +1104,17 @@ public type MicrosoftGraphTeamsAsyncOperation record {
     string? targetResourceLocation?;
     # Time when the operation was created
     string createdDateTime?;
-    # Enumeration of asynchronous operation types supported by Microsoft Teams.
+    # Specifies the type of asynchronous Teams operation, such as cloning, archiving, or creating a team or channel.
     MicrosoftGraphTeamsAsyncOperationType operationType?;
     # Any error that causes the async operation to fail
     MicrosoftGraphOperationError|record {} 'error?;
     # Time when the async operation was last updated
     string lastActionDateTime?;
-    # Enum indicating the current status of an asynchronous Teams operation.
+    # Enumeration of possible statuses for an asynchronous Teams operation lifecycle.
     MicrosoftGraphTeamsAsyncOperationStatus status?;
 };
 
-# Represents a user's Microsoft To Do resource containing task list collections.
+# Represents the Microsoft To Do service resource for a user, containing task lists.
 public type MicrosoftGraphTodo record {
     *MicrosoftGraphEntity;
     # The task lists in the users mailbox
@@ -1134,7 +1134,7 @@ public type MicrosoftGraphRecipient record {
     MicrosoftGraphEmailAddress|record {} emailAddress?;
 };
 
-# Detailed status of a long-running operation, including progress, result, and error info.
+# Extends a long-running operation with progress percentage, result resource ID, error details, and operation type.
 public type MicrosoftGraphRichLongRunningOperation record {
     *MicrosoftGraphLongRunningOperation;
     # The unique identifier for the result
@@ -1147,7 +1147,7 @@ public type MicrosoftGraphRichLongRunningOperation record {
     string? 'type?;
 };
 
-# Details of a license assigned to a user, including SKU and service plan information.
+# Details of a license assigned to a user, including SKU identifiers and associated service plans.
 public type MicrosoftGraphLicenseDetails record {
     *MicrosoftGraphEntity;
     # Unique SKU display name. Equal to the skuPartNumber on the related subscribedSku object; for example, AAD_Premium. Read-only
@@ -1158,29 +1158,29 @@ public type MicrosoftGraphLicenseDetails record {
     string? skuId?;
 };
 
-# Request body for granting a permission, specifying recipients and roles.
+# Request body for granting a permission, specifying target recipients and assigned roles.
 public type PermissionIdMicrosoftGraphGrantBody record {
     # List of drive recipients to whom the permission is being granted.
     MicrosoftGraphDriveRecipient[] recipients?;
-    # List of role names to assign to the specified recipients.
+    # List of roles to assign to the specified recipients for the permission grant.
     string[] roles?;
 };
 
-# A reference linking a site column to a content type by column name.
+# Represents a reference to a column included in a content type definition.
 public type MicrosoftGraphColumnLink record {
     *MicrosoftGraphEntity;
     # The name of the column  in this content type
     string? name?;
 };
 
-# Metadata describing a protected application, including its policy location identifier.
+# Metadata for a protected application, extending integrated application metadata with a policy location.
 public type MicrosoftGraphProtectedApplicationMetadata record {
     *MicrosoftGraphIntegratedApplicationMetadata;
     # The client (application) ID of the Microsoft Entra application. Required
     MicrosoftGraphPolicyLocation|record {} applicationLocation?;
 };
 
-# Configuration for a date/time column, controlling display format and value presentation.
+# Configuration for a date/time column, defining display format and whether to show date only or date and time.
 public type MicrosoftGraphDateTimeColumn record {
     # How the value should be presented in the UX. Must be one of default, friendly, or standard. See below for more details. If unspecified, treated as default
     string? displayAs?;
@@ -1188,10 +1188,10 @@ public type MicrosoftGraphDateTimeColumn record {
     string? format?;
 };
 
-# Paginated collection response containing richLongRunningOperation items.
+# Paginated collection response containing an array of richLongRunningOperation items.
 public type MicrosoftGraphRichLongRunningOperationCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
-    # Array of richLongRunningOperation objects returned in the collection.
+    # Array of RichLongRunningOperation items returned in the collection response.
     MicrosoftGraphRichLongRunningOperation[] value?;
 };
 
@@ -1223,7 +1223,7 @@ public type SitesGetByPathListContentTypesQueries record {
     ("id"|"associatedHubsUrls"|"description"|"documentSet"|"documentTemplate"|"group"|"hidden"|"inheritedFrom"|"isBuiltIn"|"name"|"order"|"parentId"|"propagateChanges"|"readOnly"|"sealed"|"base"|"baseTypes"|"columnLinks"|"columnPositions"|"columns")[] dollarSelect?;
 };
 
-# Details about how and when a document was shared, including the sharer, subject, and sharing method.
+# Details about how, when, and by whom a document was shared.
 public type MicrosoftGraphSharingDetail record {
     # The subject with which the document was shared
     string? sharingSubject?;
@@ -1275,10 +1275,10 @@ public type SitesContentTypesListColumnLinksQueries record {
     ("id"|"name")[] dollarSelect?;
 };
 
-# Enumeration of color theme values applicable to schedule entities such as shifts and time-off entries.
+# Enumeration of color theme options available for schedule entities.
 public type MicrosoftGraphScheduleEntityTheme "white"|"blue"|"green"|"purple"|"pink"|"yellow"|"gray"|"darkBlue"|"darkGreen"|"darkPurple"|"darkPink"|"darkYellow"|"unknownFutureValue"|"darkRed"|"cranberry"|"darkOrange"|"bronze"|"peach"|"gold"|"lime"|"forest"|"lightGreen"|"jade"|"lightTeal"|"darkTeal"|"steel"|"skyBlue"|"blueGray"|"lavender"|"lilac"|"plum"|"magenta"|"darkBrown"|"beige"|"charcoal"|"silver";
 
-# Represents Office Graph–calculated document insights including trending, shared, and used items for a user.
+# Represents calculated document insights including trending, shared, and used items.
 public type MicrosoftGraphOfficeGraphInsights record {
     *MicrosoftGraphEntity;
     # Calculated relationship that identifies documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for work or school and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before
@@ -1289,7 +1289,7 @@ public type MicrosoftGraphOfficeGraphInsights record {
     MicrosoftGraphUsedInsight[] used?;
 };
 
-# Represents an activity performed on a drive item, including the actor, action type, and timestamp.
+# Represents an activity performed on a drive item, including actor and access details.
 public type MicrosoftGraphItemActivity record {
     *MicrosoftGraphEntity;
     # Identity of who performed the action. Read-only
@@ -1302,7 +1302,7 @@ public type MicrosoftGraphItemActivity record {
     string? activityDateTime?;
 };
 
-# Represents a SharePoint list, including its columns, content types, items, drive, and metadata.
+# Represents a SharePoint list, extending BaseItem with columns, content types, items, and drive access.
 public type MicrosoftGraphList record {
     *MicrosoftGraphBaseItem;
     # The set of subscriptions on the list
@@ -1327,7 +1327,7 @@ public type MicrosoftGraphList record {
     MicrosoftGraphListItem[] items?;
 };
 
-# Details for a time-off entry, indicating whether it spans the full day and its subject or reason.
+# Details of a time-off entry, including whether it spans the full day and the subject or reason.
 public type MicrosoftGraphTimeOffDetails record {
     # Indicates whether the time-off entry spans the entire day
     boolean isAllDay?;
@@ -1335,7 +1335,7 @@ public type MicrosoftGraphTimeOffDetails record {
     string? subject?;
 };
 
-# Represents a meeting attendee's record, including identity, role, attendance intervals, and total duration.
+# Represents a meeting attendance record, including identity, role, intervals, and total attendance duration.
 public type MicrosoftGraphAttendanceRecord record {
     *MicrosoftGraphEntity;
     # Email address of the user associated with this attendance record
@@ -1354,7 +1354,7 @@ public type MicrosoftGraphAttendanceRecord record {
     decimal? totalAttendanceInSeconds?;
 };
 
-# Base entity schema with audit fields tracking creation and modification metadata.
+# An entity that tracks creation and modification timestamps along with the identities of contributors.
 public type MicrosoftGraphChangeTrackedEntity record {
     *MicrosoftGraphEntity;
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -1367,7 +1367,7 @@ public type MicrosoftGraphChangeTrackedEntity record {
     string? createdDateTime?;
 };
 
-# Represents a thread within a group conversation, including posts, recipients, and metadata.
+# Represents a thread within a group conversation, including posts and recipients.
 public type MicrosoftGraphConversationThread record {
     *MicrosoftGraphEntity;
     # A short summary from the body of the latest post in this conversation. Returned by default
@@ -1386,32 +1386,28 @@ public type MicrosoftGraphConversationThread record {
     string topic?;
     # Indicates whether any of the posts within this thread has at least one attachment. Returned by default
     boolean hasAttachments?;
-    # Collection of posts belonging to this conversation thread.
+    # Collection of posts contained within this conversation thread.
     MicrosoftGraphPost[] posts?;
 };
 
-# Nullable alternative representation of a site object, used where a null site value is permitted.
-public type SiteNullableAlternative record {
-};
-
-# Flags enum representing content usage rights such as view, edit, print, export, forward, and other permission types.
+# Flags enum representing the set of usage rights granted on protected content.
 public type MicrosoftGraphUsageRights "unknown"|"docEdit"|"edit"|"comment"|"export"|"forward"|"owner"|"print"|"reply"|"replyAll"|"view"|"extract"|"viewRightsData"|"editRightsData"|"objModel"|"accessDenied"|"userDefinedProtectionTypeNotSupportedException"|"encryptedProtectionTypeNotSupportedException"|"purviewClaimsChallengeNotSupportedException"|"exception"|"labelNotFoundException"|"unknownFutureValue";
 
-# Enum specifying content behavior during a retention period: doNotRetain, retain, retainAsRecord, retainAsRegulatoryRecord, or unknownFutureValue.
+# Enum defining content retention behavior during an active retention period.
 public type MicrosoftGraphSecurityBehaviorDuringRetentionPeriod "doNotRetain"|"retain"|"retainAsRecord"|"retainAsRegulatoryRecord"|"unknownFutureValue";
 
-# Represents basic identifying information about a Microsoft Teams team, including display name and tenant ID.
+# Represents basic identifying information about a Microsoft Teams team, including its display name and tenant association.
 public type MicrosoftGraphTeamInfo record {
     *MicrosoftGraphEntity;
     # The name of the team
     string? displayName?;
     # The ID of the Microsoft Entra tenant
     string? tenantId?;
-    # Navigation property referencing the associated Microsoft Teams team.
+    # The associated Microsoft Teams team resource. Navigation property.
     MicrosoftGraphTeam|record {} team?;
 };
 
-# Defines the display order and default status of a content type within a SharePoint selection UI.
+# Represents the ordering configuration for a content type within a SharePoint selection UI.
 public type MicrosoftGraphContentTypeOrder record {
     # Indicates whether this is the default content type
     boolean? default?;
@@ -1419,10 +1415,10 @@ public type MicrosoftGraphContentTypeOrder record {
     decimal? position?;
 };
 
-# Enum identifying well-known task list types: none, defaultList, flaggedEmails, or unknownFutureValue.
+# Enumeration of well-known list names, including default, flagged emails, and unknown future values.
 public type MicrosoftGraphWellknownListName "none"|"defaultList"|"flaggedEmails"|"unknownFutureValue";
 
-# Represents a Teams app registered in the Microsoft Teams app catalog.
+# Represents a Microsoft Teams app in the catalog, including its distribution method, versioned definitions, and identifiers.
 public type MicrosoftGraphTeamsApp record {
     *MicrosoftGraphEntity;
     # The method of distribution for the app. Read-only
@@ -1435,7 +1431,7 @@ public type MicrosoftGraphTeamsApp record {
     string? externalId?;
 };
 
-# Represents binary hosted content, such as images, used within Microsoft Teams.
+# Represents write-only hosted content (such as images) associated with a Teams message or resource.
 public type MicrosoftGraphTeamworkHostedContent record {
     *MicrosoftGraphEntity;
     # Write only. Bytes for the hosted content (such as images)
@@ -1444,36 +1440,37 @@ public type MicrosoftGraphTeamworkHostedContent record {
     string? contentType?;
 };
 
-# Represents metadata for a chat message pinned within a Microsoft Teams chat.
+# Represents metadata for a pinned message within a Teams chat.
 public type MicrosoftGraphPinnedChatMessageInfo record {
     *MicrosoftGraphEntity;
     # Represents details about the chat message that is pinned
     MicrosoftGraphChatMessage|record {} message?;
 };
 
-# Represents metadata associated with a user activity, including the activity type.
+# Metadata object describing a user activity, including its activity type classification.
 public type MicrosoftGraphActivityMetadata record {
-    # Enumeration of user activity types such as text/file upload or download actions.
+    # Indicates the type of user activity performed, such as file or text upload or download.
     MicrosoftGraphUserActivityType activity?;
 };
 
-# Represents a task triggered by a print event, including its status, definition, and trigger.
+# Represents a print task triggered by a print event, including its status and definition.
 public type MicrosoftGraphPrintTask record {
     *MicrosoftGraphEntity;
     # The URL for the print entity that triggered this task. For example, https://graph.microsoft.com/v1.0/print/printers/{printerId}/jobs/{jobId}. Read-only
     string parentUrl?;
-    # Defines a reusable template for print tasks, including creator identity, display name, and associated task instances.
+    # Defines a print task template, including its creator, display name, and associated tasks.
     MicrosoftGraphPrintTaskDefinition definition?;
-    # Defines the event and task definition that triggers a print task.
+    # Represents a trigger that initiates a print task, associating a task definition with a print event.
     MicrosoftGraphPrintTaskTrigger trigger?;
-    # Represents the current processing status and description of a print task.
+    # Represents the current processing status of a print task, including state and description.
     MicrosoftGraphPrintTaskStatus status?;
 };
 
-# Response schema for getByPath; returns a SharePoint site or null.
-public type SiteGetByPathResponse MicrosoftGraphSite|SiteNullableAlternative?;
+# A nullable object representing the result of a content type operation.
+public type NullableContentTypeResult record {
+};
 
-# Represents a post within an Outlook conversation thread, including body, sender, and attachments.
+# Represents a conversation group post, including body, sender, attachments, and thread metadata.
 public type MicrosoftGraphPost record {
     *MicrosoftGraphOutlookItem;
     # Read-only. Nullable. Supports $expand
@@ -1504,7 +1501,7 @@ public type MicrosoftGraphPost record {
     string? conversationThreadId?;
 };
 
-# Represents an Excel workbook pivot table, including its name and parent worksheet.
+# Represents an Excel workbook pivot table and its associated worksheet.
 public type MicrosoftGraphWorkbookPivotTable record {
     *MicrosoftGraphEntity;
     # The name of the pivot table
@@ -1513,10 +1510,10 @@ public type MicrosoftGraphWorkbookPivotTable record {
     MicrosoftGraphWorkbookWorksheet|record {} worksheet?;
 };
 
-# Enumeration of work location types for a user's work schedule entry.
+# Enumeration of work location types such as office, remote, or time off.
 public type MicrosoftGraphWorkLocationType "unspecified"|"office"|"remote"|"timeOff"|"unknownFutureValue";
 
-# Describes a service plan within a product SKU, including its ID, name, provisioning status, and assignment scope.
+# Describes a service plan within a license, including provisioning status and assignment scope.
 public type MicrosoftGraphServicePlanInfo record {
     # The name of the service plan
     string? servicePlanName?;
@@ -1556,14 +1553,14 @@ public type SitesGetByPathListPermissionsQueries record {
     ("id"|"expirationDateTime"|"grantedTo"|"grantedToIdentities"|"grantedToIdentitiesV2"|"grantedToV2"|"hasPassword"|"inheritedFrom"|"invitation"|"link"|"roles"|"shareId")[] dollarSelect?;
 };
 
-# Represents a user's Focused Inbox classification settings, including sender-based overrides.
+# Represents a user's Focused Inbox classification settings and sender overrides.
 public type MicrosoftGraphInferenceClassification record {
     *MicrosoftGraphEntity;
     # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable
     MicrosoftGraphInferenceClassificationOverride[] overrides?;
 };
 
-# Defines a user's password and sign-in change requirements, including MFA enforcement options.
+# Defines a user's password profile, including password value and change-on-sign-in policies.
 public type MicrosoftGraphPasswordProfile record {
     # The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next sign-in. The password must satisfy minimum requirements as specified by the user's passwordPolicies property. By default, a strong password is required
     string? password?;
@@ -1573,7 +1570,7 @@ public type MicrosoftGraphPasswordProfile record {
     boolean? forceChangePasswordNextSignInWithMfa?;
 };
 
-# Represents a scheduled work shift assigned to a user within a Teams schedule.
+# Represents a scheduled work shift, including draft and shared versions for Teams scheduling.
 public type MicrosoftGraphShift record {
     *MicrosoftGraphChangeTrackedEntity;
     # Draft changes in the shift. Draft changes are only visible to managers. The changes are visible to employees when they're shared, which copies the changes from the draftShift to the sharedShift property
@@ -1608,7 +1605,7 @@ public type SitesGetColumnsQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Contains URLs to open a OneNote page in the native client or web browser.
+# Contains URL links to open a OneNote page in the native client or on the web.
 public type MicrosoftGraphPageLinks record {
     # Opens the page in the OneNote native client if it's installed
     MicrosoftGraphExternalLink|record {} oneNoteClientUrl?;
@@ -1616,12 +1613,12 @@ public type MicrosoftGraphPageLinks record {
     MicrosoftGraphExternalLink|record {} oneNoteWebUrl?;
 };
 
-# Represents item-level insights derived from user activity signals in Microsoft 365.
+# Represents item insights derived from user activity, extending OfficeGraphInsights.
 public type MicrosoftGraphItemInsights record {
     *MicrosoftGraphOfficeGraphInsights;
 };
 
-# Represents a default content file or template associated with a SharePoint document set.
+# Defines default content or template file details within a SharePoint document set.
 public type MicrosoftGraphDocumentSetContent record {
     # Name of the file in resource folder that should be added as a default content or a template in the document set
     string? fileName?;
@@ -1631,14 +1628,14 @@ public type MicrosoftGraphDocumentSetContent record {
     MicrosoftGraphContentTypeInfo|record {} contentType?;
 };
 
-# Enumeration representing an object's lifecycle status: active, updated, deleted, ignored, or unknownFutureValue.
+# Enumeration representing the status of a resource: active, updated, deleted, ignored, or unknownFutureValue.
 public type MicrosoftGraphStatus "active"|"updated"|"deleted"|"ignored"|"unknownFutureValue";
 
-# Nullable object variant used as an alternative type for days-of-week values.
+# Nullable object variant used in anyOf composition for days-of-week fields.
 public type DaysOfWeekAnyOf2 record {
 };
 
-# Identifies a recipient for a drive sharing invitation by alias, email, or directory object ID.
+# Represents a recipient for a drive sharing invitation, identified by alias, email, or objectId.
 public type MicrosoftGraphDriveRecipient record {
     # The alias of the domain object, for cases where an email address is unavailable (for example, security groups)
     string? alias?;
@@ -1648,7 +1645,7 @@ public type MicrosoftGraphDriveRecipient record {
     string? objectId?;
 };
 
-# Represents a specific instance of a Windows setting, including its payload and lifecycle timestamps.
+# Represents a specific instance of a Windows setting, including its value, lifecycle timestamps, and expiration.
 public type MicrosoftGraphWindowsSettingInstance record {
     *MicrosoftGraphEntity;
     # Set by the server. The object expires at the specified dateTime in UTC, making it unavailable after that time
@@ -1661,7 +1658,7 @@ public type MicrosoftGraphWindowsSettingInstance record {
     string createdDateTime?;
 };
 
-# Represents a physical or virtual location, including address, coordinates, type, and display name.
+# Represents a physical or virtual location, including address, coordinates, display name, and type.
 public type MicrosoftGraphLocation record {
     # The street address of the location
     MicrosoftGraphPhysicalAddress|record {} address?;
@@ -1681,7 +1678,7 @@ public type MicrosoftGraphLocation record {
     string? locationEmailAddress?;
 };
 
-# Represents a device registered or joined to Microsoft Entra ID, including identity, compliance, and management details.
+# Represents a device registered or joined in Microsoft Entra ID, including identity, compliance, and management details.
 public type MicrosoftGraphDevice record {
     *MicrosoftGraphDirectoryObject;
     # The display name for the device. Maximum length is 256 characters. Required. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby
@@ -1776,28 +1773,28 @@ public type SitesContentTypesColumnPositionsGetCountDea9Queries record {
     string dollarSearch?;
 };
 
-# Enumeration indicating whether a message is classified as focused or other.
+# Enum indicating message classification: 'focused' for prioritized messages or 'other' for the rest.
 public type MicrosoftGraphInferenceClassificationType "focused"|"other";
 
-# Nullable fallback object type for feed orientation values.
+# Nullable object type representing an alternative or unspecified feed orientation value.
 public type FeedOrientationsAnyOf2 record {
 };
 
-# Request body for copying a file to the default content location of a content type.
+# Request body for copying a file to the default content location, specifying the source file and destination name.
 public type ContentTypeIdMicrosoftGraphCopyToDefaultContentLocationBody record {
-    # The target file name for the copied file at the destination location.
+    # The target file name for the copied file in the default content location.
     string? destinationFileName?;
-    # Reference information for locating a driveItem or listItem within SharePoint or OneDrive.
+    # Identifies and locates a drive item or list item via drive, site, path, and SharePoint identifiers.
     MicrosoftGraphItemReference sourceFile?;
 };
 
-# Enumeration of supported online meeting providers: Teams, Skype for Business, or Skype consumer.
+# Enum identifying the online meeting provider: unknown, skypeForBusiness, skypeForConsumer, or teamsForBusiness.
 public type MicrosoftGraphOnlineMeetingProviderType "unknown"|"skypeForBusiness"|"skypeForConsumer"|"teamsForBusiness";
 
-# Finishing capability value, either a PrintFinishing enum or a nullable fallback object.
+# Supported finishing options for a printer, accepting a standard or extended finishing value.
 public type MicrosoftgraphprinterCapabilitiesFinishings MicrosoftGraphPrintFinishing|FinishingsAnyOf2?;
 
-# Identifies an application by its ID, display name, and service principal details in Microsoft Entra ID.
+# Identity of an application, including its ID, display name, and service principal details.
 public type MicrosoftGraphAppIdentity record {
     # Refers to the Service Principal Name is the Application name in the tenant
     string? servicePrincipalName?;
@@ -1809,7 +1806,7 @@ public type MicrosoftGraphAppIdentity record {
     string? servicePrincipalId?;
 };
 
-# Represents a service provisioning error, including occurrence time, service instance, and resolution status.
+# An error reported by a service during provisioning, including timestamp, source instance, and resolution status.
 public type MicrosoftGraphServiceProvisioningError record {
     # The date and time at which the error occurred
     string? createdDateTime?;
@@ -1819,17 +1816,17 @@ public type MicrosoftGraphServiceProvisioningError record {
     boolean? isResolved?;
 };
 
-# Enumeration of phone types used for authentication: mobile, alternateMobile, office, or unknownFutureValue.
+# Enumeration of phone types used for authentication: mobile, alternate mobile, office, or unknown.
 public type MicrosoftGraphAuthenticationPhoneType "mobile"|"alternateMobile"|"office"|"unknownFutureValue";
 
-# Represents a delta-enabled paginated collection of SharePoint site resources.
+# A delta-enabled collection of SharePoint site resources, supporting incremental change tracking.
 public type CollectionOfSite1 record {
     *BaseDeltaFunctionResponse;
-    # Array of SharePoint site objects returned in the collection.
+    # Array of SharePoint site objects returned in the delta response.
     MicrosoftGraphSite[] value?;
 };
 
-# Represents settings for joining a meeting by ID, including the meeting ID, optional passcode, and passcode requirement flag.
+# Settings for joining a meeting using a meeting ID and optional passcode.
 public type MicrosoftGraphJoinMeetingIdSettings record {
     # Indicates whether a passcode is required to join a meeting when using joinMeetingId. Optional
     boolean? isPasscodeRequired?;
@@ -1839,12 +1836,12 @@ public type MicrosoftGraphJoinMeetingIdSettings record {
     string? passcode?;
 };
 
-# Represents a Microsoft Teams template entity used as a base for team creation.
+# Represents a Microsoft Teams template entity used for team creation.
 public type MicrosoftGraphTeamsTemplate record {
     *MicrosoftGraphEntity;
 };
 
-# Contains information about available storage plans for a SharePoint site.
+# Information about available storage plans and upgrade eligibility for a drive.
 public type MicrosoftGraphStoragePlanInformation record {
     # Indicates whether there are higher storage quota plans available. Read-only
     boolean? upgradeAvailable?;
@@ -1857,7 +1854,7 @@ public type SitesGetByPathDeleteTermStoreHeaders record {
     string ifMatch?;
 };
 
-# Represents a tag assigned to users within a Microsoft Teams team.
+# Represents a tag assigned to members within a Microsoft Teams team.
 public type MicrosoftGraphTeamworkTag record {
     *MicrosoftGraphEntity;
     # The name of the tag as it appears to the user in Microsoft Teams
@@ -1874,11 +1871,11 @@ public type MicrosoftGraphTeamworkTag record {
     string? description?;
 };
 
-# Nullable object variant for duplex mode values; represents an unspecified or null duplex mode.
+# Nullable object type representing an alternative duplex mode value.
 public type DuplexModesAnyOf2 record {
 };
 
-# Represents a user's presence status message, including content, expiry, and publish time.
+# Represents a user's presence status message including content and expiry details.
 public type MicrosoftGraphPresenceStatusMessage record {
     # Time in which the status message was published.Read-only.publishedDateTime isn't available when you request the presence of another user
     string? publishedDateTime?;
@@ -1888,7 +1885,7 @@ public type MicrosoftGraphPresenceStatusMessage record {
     MicrosoftGraphDateTimeTimeZone|record {} expiryDateTime?;
 };
 
-# Represents a data series in a workbook chart, including formatting and data points.
+# Represents a data series within a workbook chart, including formatting and points.
 public type MicrosoftGraphWorkbookChartSeries record {
     *MicrosoftGraphEntity;
     # The name of a series in a chart
@@ -1902,7 +1899,7 @@ public type MicrosoftGraphWorkbookChartSeries record {
 # Malware severity
 public type MicrosoftGraphWindowsMalwareSeverity "unknown"|"low"|"moderate"|"high"|"severe";
 
-# Defines watermark protection settings for shared content and video feeds in meetings.
+# Settings controlling watermark application to shared content and video feeds.
 public type MicrosoftGraphWatermarkProtectionValues record {
     # Indicates whether to apply a watermark to any shared content
     boolean? isEnabledForContentSharing?;
@@ -1910,47 +1907,47 @@ public type MicrosoftGraphWatermarkProtectionValues record {
     boolean? isEnabledForVideo?;
 };
 
-# Represents a directory role membership scoped to a specific administrative unit.
+# Represents a directory role membership scoped to an administrative unit.
 public type MicrosoftGraphScopedRoleMembership record {
     *MicrosoftGraphEntity;
     # Unique identifier for the administrative unit that the directory role is scoped to
     string administrativeUnitId?;
-    # Represents an identity with a unique identifier and display name for a user, group, or application actor.
+    # Represents an identity with a unique identifier and display name for a user, group, or app.
     MicrosoftGraphIdentity roleMemberInfo?;
     # Unique identifier for the directory role that the member is in
     string roleId?;
 };
 
-# Enum indicating the importance level of a chat message: normal, high, urgent, or unknownFutureValue.
+# Enumeration of importance levels for a chat message: normal, high, urgent, or unknown.
 public type MicrosoftGraphChatMessageImportance "normal"|"high"|"urgent"|"unknownFutureValue";
 
-# Represents a request by an employee to claim an open shift, extending ScheduleChangeRequest.
+# Represents a request by an employee to claim an open shift in a schedule.
 public type MicrosoftGraphOpenShiftChangeRequest record {
     *MicrosoftGraphScheduleChangeRequest;
     # ID for the open shift
     string? openShiftId?;
 };
 
-# Represents the aggregated storage quota for a user across Microsoft services, extending Entity.
+# Represents the unified storage quota details for a user across Microsoft cloud services.
 public type MicrosoftGraphUnifiedStorageQuota record {
     *MicrosoftGraphEntity;
-    # Total allocated storage quota in bytes.
+    # Total storage quota allocated to the user, in bytes.
     decimal? total?;
-    # Amount of storage in bytes occupied by deleted items pending purge.
+    # Amount of storage occupied by deleted items pending purge, in bytes.
     decimal? deleted?;
-    # URL to the web page where the user can manage their storage quota.
+    # URL to the web interface for managing the user's storage quota.
     string? manageWebUrl?;
-    # Current state of the storage quota (e.g., normal, nearing, exceeded).
+    # Current state of the unified storage quota.
     string? state?;
-    # Total storage consumed in bytes across all services.
+    # Total storage used, in bytes.
     decimal? used?;
-    # Per-service storage quota breakdown as a collection of ServiceStorageQuotaBreakdown items.
+    # Storage quota breakdown by individual Microsoft services.
     MicrosoftGraphServiceStorageQuotaBreakdown[] services?;
-    # Remaining available storage quota in bytes.
+    # Remaining available storage, in bytes.
     decimal? remaining?;
 };
 
-# Represents the assignment of an engagement role to a Microsoft Entra user, including assignment timestamp.
+# Represents the assignment of an engagement role to a Microsoft Entra user.
 public type MicrosoftGraphEngagementRoleMember record {
     *MicrosoftGraphEntity;
     # The date and time when the role was assigned to the user. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -1961,7 +1958,7 @@ public type MicrosoftGraphEngagementRoleMember record {
     MicrosoftGraphUser|record {} user?;
 };
 
-# Represents an item shared with or by a user, including sharing details and resource metadata.
+# Represents a document or item shared with or by a user, including sharing context and resource details.
 public type MicrosoftGraphSharedInsight record {
     *MicrosoftGraphEntity;
     # The method or entity through which the item was most recently shared.
@@ -1988,7 +1985,7 @@ public type SitesExternalColumnsGetCount3855Queries record {
     string dollarSearch?;
 };
 
-# Formatting data for a Planner task displayed in the AssignedTo view of the Task Board, including assignee order hints.
+# Formatting data for displaying a Planner task on the AssignedTo view of the Task Board.
 public type MicrosoftGraphPlannerAssignedToTaskBoardTaskFormat record {
     *MicrosoftGraphEntity;
     # Dictionary of hints used to order tasks on the AssignedTo view of the Task Board. The key of each entry is one of the users the task is assigned to and the value is the order hint. The format of each value is defined as outlined here
@@ -2000,7 +1997,7 @@ public type MicrosoftGraphPlannerAssignedToTaskBoardTaskFormat record {
 # Owner type of device
 public type MicrosoftGraphManagedDeviceOwnerType "unknown"|"company"|"personal"|"unknownFutureValue";
 
-# Set of conditions and exceptions that define criteria an incoming message must meet for a mail rule to apply.
+# Conditions and exceptions that evaluate incoming messages to determine if a mail rule applies.
 public type MicrosoftGraphMessageRulePredicates record {
     # Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply
     boolean? isPermissionControlled?;
@@ -2064,7 +2061,7 @@ public type MicrosoftGraphMessageRulePredicates record {
     MicrosoftGraphRecipient[] sentToAddresses?;
 };
 
-# Enum identifying the type of Teams conversation context: team, channel, chat, or unknownFutureValue.
+# Specifies the type of Teams conversation context: team, channel, chat, or unknown.
 public type MicrosoftGraphTeamworkConversationIdentityType "team"|"channel"|"chat"|"unknownFutureValue";
 
 # Represents the Queries record for the operation: sitesGetAllSites
@@ -2095,7 +2092,7 @@ public type SitesGetAllSitesQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"displayName"|"error"|"isPersonalSite"|"root"|"sharepointIds"|"siteCollection"|"createdByUser"|"lastModifiedByUser"|"analytics"|"columns"|"contentTypes"|"drive"|"drives"|"externalColumns"|"items"|"lists"|"onenote"|"operations"|"pages"|"permissions"|"sites"|"termStore"|"termStores")[] dollarSelect?;
 };
 
-# Represents an Outlook email message, including recipients, body, attachments, metadata, and extended properties.
+# Represents an Outlook email message with full metadata, recipients, body, and extended properties.
 public type MicrosoftGraphMessage record {
     *MicrosoftGraphOutlookItem;
     # Indicates the status, start date, due date, or completion date for the message
@@ -2163,7 +2160,7 @@ public type MicrosoftGraphMessage record {
 # Device Exchange Access State Reason
 public type MicrosoftGraphDeviceManagementExchangeAccessStateReason "none"|"unknown"|"exchangeGlobalRule"|"exchangeIndividualRule"|"exchangeDeviceRule"|"exchangeUpgrade"|"exchangeMailboxPolicy"|"other"|"compliant"|"notCompliant"|"notEnrolled"|"unknownLocation"|"mfaRequired"|"azureADBlockDueToAccessPolicy"|"compromisedPassword"|"deviceNotKnownWithManagedApp";
 
-# Enum indicating how a sensitivity label was applied: manual, automatic, recommended, none, or unknownFutureValue.
+# Enum indicating the source that triggered a sensitivity label action.
 public type MicrosoftGraphLabelActionSource "manual"|"automatic"|"recommended"|"none"|"unknownFutureValue";
 
 # Represents the Queries record for the operation: sitesAnalyticsItemActivityStatsActivitiesGetCount972d
@@ -2176,7 +2173,7 @@ public type SitesAnalyticsItemActivityStatsActivitiesGetCount972dQueries record 
     string dollarSearch?;
 };
 
-# Represents an item in a SharePoint list, including content type, fields, and version history.
+# Represents an item in a SharePoint list, including fields, content type, and version history.
 public type MicrosoftGraphListItem record {
     *MicrosoftGraphBaseItem;
     # Analytics about the view activities that took place on this item
@@ -2197,7 +2194,7 @@ public type MicrosoftGraphListItem record {
     MicrosoftGraphDocumentSetVersion[] documentSetVersions?;
 };
 
-# Represents a Cloud PC entity with provisioning, device, service plan, and user assignment details.
+# Represents a Windows 365 Cloud PC with provisioning, service plan, and device details.
 public type MicrosoftGraphCloudPC record {
     *MicrosoftGraphEntity;
     # The last modified date and time of the Cloud PC. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -2268,10 +2265,10 @@ public type SitesSitesGetCountF499Queries record {
     string dollarSearch?;
 };
 
-# Enum specifying the category of a location, such as conferenceRoom, hotel, or businessAddress.
+# Enumeration of location classification types such as conferenceRoom, businessAddress, hotel, and restaurant.
 public type MicrosoftGraphLocationType "default"|"conferenceRoom"|"homeAddress"|"businessAddress"|"geoCoordinates"|"streetAddress"|"hotel"|"restaurant"|"localBusiness"|"postalAddress";
 
-# Represents a time card clock event, including timestamp, location approval, and notes.
+# Represents a time card clock event with timestamp, location approval status, and optional notes.
 public type MicrosoftGraphTimeCardEvent record {
     # The time the entry is recorded
     @constraint:String {pattern: re `^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$`}
@@ -2282,7 +2279,7 @@ public type MicrosoftGraphTimeCardEvent record {
     boolean? isAtApprovedLocation?;
 };
 
-# Represents a daily note for a shift schedule, including draft, shared versions, and date.
+# Represents a daily note for a schedule, with draft and shared versions and an associated date.
 public type MicrosoftGraphDayNote record {
     *MicrosoftGraphChangeTrackedEntity;
     # The draft version of this day note that is viewable by managers. Only contentType text is supported
@@ -2293,7 +2290,7 @@ public type MicrosoftGraphDayNote record {
     string? dayNoteDate?;
 };
 
-# Represents a OneDrive or SharePoint document library drive, including its items, quota, and metadata.
+# Represents a OneDrive or SharePoint document library drive, including quota, items, owner, and storage metadata.
 public type MicrosoftGraphDrive record {
     *MicrosoftGraphBaseItem;
     # Optional. The user account that owns the drive. Read-only
@@ -2336,16 +2333,16 @@ public type MicrosoftGraphOnlineMeetingInfo record {
     string[] tollFreeNumbers?;
 };
 
-# Represents data security and governance settings and activity logs scoped to a user.
+# Represents data security and governance settings and activity scoped to a specific user.
 public type MicrosoftGraphUserDataSecurityAndGovernance record {
     *MicrosoftGraphDataSecurityAndGovernance;
-    # Container defining the data protection scopes applicable to the user.
+    # Container defining the protection scopes applicable to this user.
     MicrosoftGraphUserProtectionScopeContainer|record {} protectionScopes?;
     # Container for activity logs (content processing and audit) related to this user. ContainsTarget: true
     MicrosoftGraphActivitiesContainer|record {} activities?;
 };
 
-# Specifies the edge-first orientation for feeding paper into a printer.
+# Specifies paper feed orientation for a printer: longEdgeFirst, shortEdgeFirst, or unknownFutureValue.
 public type MicrosoftGraphPrinterFeedOrientation "longEdgeFirst"|"shortEdgeFirst"|"unknownFutureValue";
 
 # Management state of device in Microsoft Intune
@@ -2359,10 +2356,10 @@ public type MicrosoftGraphImage record {
     decimal? height?;
 };
 
-# Indicates the precision level of a work location: unknown, none, approximate, or specific.
+# Indicates the precision level of a work location: unknown, none, approximate, specific, or unknownFutureValue.
 public type MicrosoftGraphMaxWorkLocationDetails "unknown"|"none"|"approximate"|"specific"|"unknownFutureValue";
 
-# Describes sharing metadata for an item, including owner identity, scope, and shared date.
+# Contains metadata about a shared item, including owner identity, scope, sharer, and shared timestamp.
 public type MicrosoftGraphShared record {
     # The identity of the owner of the shared item. Read-only
     MicrosoftGraphIdentitySet|record {} owner?;
@@ -2389,14 +2386,14 @@ public type MicrosoftGraphResourceSpecificPermissionGrant record {
     string? clientAppId?;
 };
 
-# Paginated collection of service provisioning errors with count support.
+# Paginated collection response containing an array of service provisioning error objects.
 public type MicrosoftGraphServiceProvisioningErrorCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
     # Array of service provisioning error objects returned in the collection.
     MicrosoftGraphServiceProvisioningError[] value?;
 };
 
-# Represents a call recording associated with an online meeting, including content and metadata.
+# Represents a recording associated with an online meeting or call.
 public type MicrosoftGraphCallRecording record {
     *MicrosoftGraphEntity;
     # The unique identifier for the call that is related to this recording. Read-only
@@ -2481,10 +2478,10 @@ public type SitesGetByPathListPagesQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"pageLayout"|"publishingState"|"title"|"createdByUser"|"lastModifiedByUser")[] dollarSelect?;
 };
 
-# Enumeration representing days of the week from sunday through saturday.
+# Enum representing a day of the week (sunday through saturday).
 public type MicrosoftGraphDayOfWeek "sunday"|"monday"|"tuesday"|"wednesday"|"thursday"|"friday"|"saturday";
 
-# Contains metadata for an integrated application, including its name and version.
+# Represents metadata for an integrated application, including name and version.
 public type MicrosoftGraphIntegratedApplicationMetadata record {
     # The name of the integrated application
     string? name?;
@@ -2492,7 +2489,7 @@ public type MicrosoftGraphIntegratedApplicationMetadata record {
     string? version?;
 };
 
-# Represents a drive item bundle, optionally typed as an album, with a child item count.
+# Represents a bundle grouping related drive items, optionally as an album, with a child item count.
 public type MicrosoftGraphBundle record {
     # If the bundle is an album, then the album property is included
     MicrosoftGraphAlbum|record {} album?;
@@ -2500,7 +2497,7 @@ public type MicrosoftGraphBundle record {
     decimal? childCount?;
 };
 
-# Enum indicating the status of automatic replies: disabled, always enabled, or scheduled.
+# Enumeration indicating whether automatic replies are disabled, always enabled, or scheduled.
 public type MicrosoftGraphAutomaticRepliesStatus "disabled"|"alwaysEnabled"|"scheduled";
 
 # Represents an ad hoc call entity with associated recordings and transcripts.
@@ -2514,15 +2511,15 @@ public type MicrosoftGraphAdhocCall record {
 
 public type MicrosoftGraphLicenseAssignmentStateDisabledPlansItemsString string?;
 
-# Enum indicating whether a FIDO2 passkey has been attested, not attested, or is unknown.
+# Indicates the attestation level of a credential: attested, notAttested, or unknownFutureValue.
 public type MicrosoftGraphAttestationLevel "attested"|"notAttested"|"unknownFutureValue";
 
-# Identity set representing the sender of a chat message.
+# Represents the sender identity set for a chat message, extending the base IdentitySet.
 public type MicrosoftGraphChatMessageFromIdentitySet record {
     *MicrosoftGraphIdentitySet;
 };
 
-# Insight representing a document or item recently used by the user.
+# Represents an item used by a user, including usage details, resource reference, and visualization properties.
 public type MicrosoftGraphUsedInsight record {
     *MicrosoftGraphEntity;
     # Information about when the item was last viewed or modified by the user. Read-only
@@ -2535,13 +2532,13 @@ public type MicrosoftGraphUsedInsight record {
     MicrosoftGraphResourceVisualization|record {} resourceVisualization?;
 };
 
-# Represents the current processing state, details, and description of a printer.
+# Represents the current processing status of a printer, including state, description, and detail list.
 public type MicrosoftGraphPrinterStatus record {
     # A human-readable description of the printer's current processing state. Read-only
     string? description?;
     # The list of details describing why the printer is in the current state. Valid values are described in the following table. Read-only
     MicrosoftGraphPrinterProcessingStateDetail[] details?;
-    # Enum representing the current processing state of a printer: unknown, idle, processing, stopped, or unknownFutureValue.
+    # Enum representing the current processing state of a printer: unknown, idle, processing, stopped, or unknownFutureValue
     MicrosoftGraphPrinterProcessingState state?;
 };
 
@@ -2558,7 +2555,7 @@ public type SitesGetPermissionsQueries record {
 # Malware category id
 public type MicrosoftGraphWindowsMalwareCategory "invalid"|"adware"|"spyware"|"passwordStealer"|"trojanDownloader"|"worm"|"backdoor"|"remoteAccessTrojan"|"trojan"|"emailFlooder"|"keylogger"|"dialer"|"monitoringSoftware"|"browserModifier"|"cookie"|"browserPlugin"|"aolExploit"|"nuker"|"securityDisabler"|"jokeProgram"|"hostileActiveXControl"|"softwareBundler"|"stealthNotifier"|"settingsModifier"|"toolBar"|"remoteControlSoftware"|"trojanFtp"|"potentialUnwantedSoftware"|"icqExploit"|"trojanTelnet"|"exploit"|"filesharingProgram"|"malwareCreationTool"|"remote_Control_Software"|"tool"|"trojanDenialOfService"|"trojanDropper"|"trojanMassMailer"|"trojanMonitoringSoftware"|"trojanProxyServer"|"virus"|"known"|"unknown"|"spp"|"behavior"|"vulnerability"|"policy"|"enterpriseUnwantedSoftware"|"ransom"|"hipsRule";
 
-# Configuration settings for a Microsoft Teams tab, including content and website URLs.
+# Represents configuration settings for a Teams tab, including content, website, remove URLs, and entity ID.
 public type MicrosoftGraphTeamsTabConfiguration record {
     # Url used for rendering tab contents in Teams. Required
     string? contentUrl?;
@@ -2570,7 +2567,7 @@ public type MicrosoftGraphTeamsTabConfiguration record {
     string? entityId?;
 };
 
-# Represents a sensitivity label assigned to a Microsoft 365 group.
+# Represents a sensitivity label assigned to a resource, including its ID and display name.
 public type MicrosoftGraphAssignedLabel record {
     # The unique identifier of the label
     string? labelId?;
@@ -2578,16 +2575,16 @@ public type MicrosoftGraphAssignedLabel record {
     string? displayName?;
 };
 
-# Defines the event and task definition that triggers a print task.
+# Represents a trigger that initiates a print task, associating a task definition with a print event.
 public type MicrosoftGraphPrintTaskTrigger record {
     *MicrosoftGraphEntity;
-    # Defines a reusable template for print tasks, including creator identity, display name, and associated task instances.
+    # Defines a print task template, including its creator, display name, and associated tasks.
     MicrosoftGraphPrintTaskDefinition definition?;
     # Enumeration of print job events, such as jobStarted or unknownFutureValue.
     MicrosoftGraphPrintEvent event?;
 };
 
-# Represents a column within a workbook table, including its name, index, filter, and raw cell values.
+# Represents a column within a workbook table, including its index, name, values, and filter.
 public type MicrosoftGraphWorkbookTableColumn record {
     *MicrosoftGraphEntity;
     # The filter applied to the column. Read-only
@@ -2600,7 +2597,7 @@ public type MicrosoftGraphWorkbookTableColumn record {
     decimal index?;
 };
 
-# Defines guest permission settings for a Microsoft Team, controlling channel creation and deletion rights.
+# Defines guest permission settings for a team, controlling channel creation and deletion capabilities.
 public type MicrosoftGraphTeamGuestSettings record {
     # If set to true, guests can delete channels
     boolean? allowDeleteChannels?;
@@ -2608,7 +2605,7 @@ public type MicrosoftGraphTeamGuestSettings record {
     boolean? allowCreateUpdateChannels?;
 };
 
-# Contains metadata for an online meeting, including the join URL, calendar event ID, and organizer identity.
+# Contains metadata for a Teamwork online meeting, including join URL, calendar event, and organizer.
 public type MicrosoftGraphTeamworkOnlineMeetingInfo record {
     # The identifier of the calendar event associated with the meeting
     string? calendarEventId?;
@@ -2618,7 +2615,7 @@ public type MicrosoftGraphTeamworkOnlineMeetingInfo record {
     MicrosoftGraphTeamworkUserIdentity|record {} organizer?;
 };
 
-# Represents a cloud clipboard entry containing one or more payloads synced across a user's devices.
+# Represents a cloud clipboard item synced across devices, containing one or more format payloads.
 public type MicrosoftGraphCloudClipboardItem record {
     *MicrosoftGraphEntity;
     # Set by the server. DateTime in UTC when the object expires and after that the object is no longer available. The default and also maximum TTL is 12 hours after the creation, but it might change for performance optimization
@@ -2631,17 +2628,17 @@ public type MicrosoftGraphCloudClipboardItem record {
     string createdDateTime?;
 };
 
-# Enumeration of permission levels that can be granted to a user for accessing a calendar.
+# Enumeration of permission levels for calendar sharing, ranging from none to full delegate access.
 public type MicrosoftGraphCalendarRoleType "none"|"freeBusyRead"|"limitedRead"|"read"|"write"|"delegateWithoutPrivateEventAccess"|"delegateWithPrivateEventAccess"|"custom";
 
-# User identity in a Teams context, extending base identity with a user identity type.
+# Represents a Teams user identity, extending base identity with a user identity type classification.
 public type MicrosoftGraphTeamworkUserIdentity record {
     *MicrosoftGraphIdentity;
     # Type of user. The possible values are: aadUser, onPremiseAadUser, anonymousGuest, federatedUser, personalMicrosoftAccountUser, skypeUser, phoneUser, unknownFutureValue and emailUser
     MicrosoftGraphTeamworkUserIdentityType|record {} userIdentityType?;
 };
 
-# An Outlook inbox rule defining conditions, actions, and exceptions for message processing.
+# Represents an Outlook message rule with conditions, actions, exceptions, and rule metadata.
 public type MicrosoftGraphMessageRule record {
     *MicrosoftGraphEntity;
     # Indicates the order in which the rule is executed, among other rules
@@ -2662,7 +2659,7 @@ public type MicrosoftGraphMessageRule record {
     MicrosoftGraphMessageRulePredicates|record {} exceptions?;
 };
 
-# Paginated collection response containing an array of SharePoint site resources.
+# A paginated collection response containing an array of SharePoint site resources.
 public type MicrosoftGraphSiteCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
     # Array of SharePoint site objects returned in the collection response.
@@ -2679,10 +2676,10 @@ public type SitesContentTypesGetColumnLinksQueries record {
     ("id"|"name")[] dollarSelect?;
 };
 
-# Enumeration of possible states for a long-running operation lifecycle.
+# Enumeration of possible statuses for a long-running operation: notStarted, running, succeeded, failed, or unknownFutureValue.
 public type MicrosoftGraphLongRunningOperationStatus "notStarted"|"running"|"succeeded"|"failed"|"unknownFutureValue";
 
-# Base metadata for content submitted for policy processing, including identity, timestamps, and content payload.
+# Base metadata schema for content submitted for policy processing, including identifiers, timestamps, and optional content payload.
 public type MicrosoftGraphProcessContentMetadataBase record {
     # Required. Indicates if the provided content has been truncated from its original form (for example, due to size limits)
     boolean isTruncated?;
@@ -2734,7 +2731,7 @@ public type SitesGetByPathListListsQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"displayName"|"list"|"sharepointIds"|"system"|"createdByUser"|"lastModifiedByUser"|"columns"|"contentTypes"|"drive"|"items"|"operations"|"subscriptions")[] dollarSelect?;
 };
 
-# Reference information for locating a driveItem or listItem within SharePoint or OneDrive.
+# Identifies and locates a drive item or list item via drive, site, path, and SharePoint identifiers.
 public type MicrosoftGraphItemReference record {
     # Percent-encoded path that can be used to navigate to the item. Read-only
     string? path?;
@@ -2754,16 +2751,16 @@ public type MicrosoftGraphItemReference record {
     MicrosoftGraphSharepointIds|record {} sharepointIds?;
 };
 
-# Configuration for a URL column specifying whether it renders as a hyperlink or image.
+# Defines whether a URL column renders as a clickable hyperlink or an inline picture.
 public type MicrosoftGraphHyperlinkOrPictureColumn record {
     # Specifies whether the display format used for URL columns is an image or a hyperlink
     boolean? isPicture?;
 };
 
-# Enum defining which roles are permitted to admit participants from the meeting lobby.
+# Defines which roles are permitted to admit participants from the meeting lobby.
 public type MicrosoftGraphAllowedLobbyAdmitterRoles "organizerAndCoOrganizersAndPresenters"|"organizerAndCoOrganizers"|"unknownFutureValue";
 
-# Represents a license assigned to a user, including the SKU identifier and disabled service plans.
+# Represents a license assigned to a user, including the SKU identifier and any disabled service plans.
 public type MicrosoftGraphAssignedLicense record {
     # A collection of the unique identifiers for plans that have been disabled. IDs are available in servicePlans > servicePlanId in the tenant's subscribedSkus or serviceStatus > servicePlanId in the tenant's companySubscription
     MicrosoftGraphAssignedLicenseDisabledPlansItemsString[] disabledPlans?;
@@ -2771,7 +2768,7 @@ public type MicrosoftGraphAssignedLicense record {
     string? skuId?;
 };
 
-# Represents an external resource linked to a To Do task from a third-party application.
+# Represents an external resource linked to a To Do task, including its source app and URL.
 public type MicrosoftGraphLinkedResource record {
     *MicrosoftGraphEntity;
     # The title of the linkedResource
@@ -2784,11 +2781,11 @@ public type MicrosoftGraphLinkedResource record {
     string? applicationName?;
 };
 
-# Represents an access action event recorded in an item's audit activity.
+# Represents an access action event recorded in an item's activity, with no additional properties.
 public type MicrosoftGraphAccessAction record {
 };
 
-# Contains the Base64URL-encoded attestation response data returned by a WebAuthn authenticator.
+# Contains the Base64URL-encoded attestation response returned by a WebAuthn authenticator during registration.
 public type MicrosoftGraphWebauthnAuthenticatorAttestationResponse record {
     # Contains the JSON-compatible serialization of client data passed to the authenticator by the client. This value is Base64URL-encoded without padding
     string? clientDataJSON?;
@@ -2796,7 +2793,7 @@ public type MicrosoftGraphWebauthnAuthenticatorAttestationResponse record {
     string? attestationObject?;
 };
 
-# Configures messaging permissions for a team, including message editing, deletion, and mentions.
+# Configures messaging permissions for a team, including message editing, deletion, and mention capabilities.
 public type MicrosoftGraphTeamMessagingSettings record {
     # If set to true, users can delete their messages
     boolean? allowUserDeleteMessages?;
@@ -2810,12 +2807,12 @@ public type MicrosoftGraphTeamMessagingSettings record {
     boolean? allowUserEditMessages?;
 };
 
-# Represents the usage rights included for a sensitivity label, scoped to a user or owner.
+# Represents usage rights included for a sensitivity label, scoped to a specific user and owner.
 public type MicrosoftGraphUsageRightsIncluded record {
     *MicrosoftGraphEntity;
     # The email of user with label user rights
     string? userEmail?;
-    # Flags enum representing content usage rights such as view, edit, print, export, forward, and other permission types.
+    # Flags enum representing the set of usage rights granted on protected content.
     MicrosoftGraphUsageRights value?;
     # The email of owner label rights
     string? ownerEmail?;
@@ -2865,10 +2862,10 @@ public type SitesSiteGetApplicableContentTypesForListQueries record {
     ("id"|"associatedHubsUrls"|"description"|"documentSet"|"documentTemplate"|"group"|"hidden"|"inheritedFrom"|"isBuiltIn"|"name"|"order"|"parentId"|"propagateChanges"|"readOnly"|"sealed"|"base"|"baseTypes"|"columnLinks"|"columnPositions"|"columns")[] dollarSelect?;
 };
 
-# Enum representing a user's access role on a OneNote notebook: None, Owner, Contributor, or Reader.
+# Enumerates the access roles a user can hold on a OneNote resource: None, Owner, Contributor, or Reader.
 public type MicrosoftGraphOnenoteUserRole "None"|"Owner"|"Contributor"|"Reader";
 
-# Base schema for an attachment, including name, MIME type, size, and last modified timestamp.
+# Base schema for an attachment, providing common properties such as name, size, content type, and last modified timestamp.
 public type MicrosoftGraphAttachmentBase record {
     *MicrosoftGraphEntity;
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -2891,7 +2888,7 @@ public type SitesAnalyticsGetAllTimeQueries record {
     ("id"|"access"|"create"|"delete"|"edit"|"endDateTime"|"incompleteData"|"isTrending"|"move"|"startDateTime"|"activities")[] dollarSelect?;
 };
 
-# Facet indicating that a drive item is the root of its hierarchy.
+# Facet indicating that an item is the root of a hierarchy.
 public type MicrosoftGraphRoot record {
 };
 
@@ -2907,7 +2904,7 @@ public type MicrosoftGraphFollowupFlag record {
     MicrosoftGraphDateTimeTimeZone|record {} completedDateTime?;
 };
 
-# A term store description paired with its associated language tag.
+# Represents a term store description in a specific localized language.
 public type MicrosoftGraphTermStoreLocalizedDescription record {
     # The description in the localized language
     string? description?;
@@ -2943,7 +2940,7 @@ public type MicrosoftGraphDeviceCompliancePolicySettingState record {
     string? settingName?;
 };
 
-# Describes the publication state of a document, including version, level, and checked-out user.
+# Represents the publication state of a document, including version and checkout details.
 public type MicrosoftGraphPublicationFacet record {
     # The unique identifier for the version that is visible to the current caller. Read-only
     string? versionId?;
@@ -2953,9 +2950,9 @@ public type MicrosoftGraphPublicationFacet record {
     MicrosoftGraphIdentitySet|record {} checkedOutBy?;
 };
 
-# Request body for copying a content type from the content type hub by ID.
+# Request body for adding a content type copy from the content type hub.
 public type ContentTypesMicrosoftGraphAddCopyFromContentTypeHubBody record {
-    # The unique identifier of the content type to copy from the content type hub.
+    # The unique identifier of the content type to copy from the hub.
     string contentTypeId?;
 };
 
@@ -2966,13 +2963,13 @@ public type SitesGetByPathDeleteAnalyticsHeaders record {
     string ifMatch?;
 };
 
-# Represents a user's work location, including place, type, and source details.
+# Represents a user's work location, including type, place, and data source.
 public type MicrosoftGraphUserWorkLocation record {
     # Identifier of the place, if applicable
     string? placeId?;
-    # Enumeration of work location types for a user's work schedule entry.
+    # Enumeration of work location types such as office, remote, or time off.
     MicrosoftGraphWorkLocationType workLocationType?;
-    # Enumeration indicating how a user's work location was determined (e.g., manual, scheduled, automatic).
+    # Indicates the source that determined the user's work location (e.g., manual, scheduled, automatic).
     MicrosoftGraphWorkLocationSource 'source?;
 };
 
@@ -2989,7 +2986,7 @@ public type SitesContentTypesColumnsGetCount896bQueries record {
     string dollarSearch?;
 };
 
-# Represents a named range or constant in a workbook, including its value, scope, and type.
+# Represents a defined name for a range, value, or formula within an Excel workbook.
 public type MicrosoftGraphWorkbookNamedItem record {
     *MicrosoftGraphEntity;
     # Indicates whether the object is visible
@@ -3008,13 +3005,13 @@ public type MicrosoftGraphWorkbookNamedItem record {
     MicrosoftGraphJson|record {} value?;
 };
 
-# Request body schema for adding one or more SharePoint sites.
+# Request body schema for adding one or more SharePoint sites to a collection.
 public type SitesMicrosoftGraphAddBody record {
-    # Array of SharePoint site objects to be added.
+    # Array of SharePoint site objects to be added to the collection.
     MicrosoftGraphSite[] value?;
 };
 
-# Represents an alternative security identifier for internal use only.
+# Represents an alternative security identifier for a device. For internal use only.
 public type MicrosoftGraphAlternativeSecurityId record {
     # For internal use only
     decimal? 'type?;
@@ -3024,7 +3021,7 @@ public type MicrosoftGraphAlternativeSecurityId record {
     string? 'key?;
 };
 
-# Defines validation rules for a SharePoint list column, including formula and localized messages.
+# Defines validation rules and localized error messages for a SharePoint list column.
 public type MicrosoftGraphColumnValidation record {
     # Default BCP 47 language tag for the description
     string? defaultLanguage?;
@@ -3037,7 +3034,7 @@ public type MicrosoftGraphColumnValidation record {
 # Enumeration of distribution methods for a Teams app: store, organization, sideloaded, or unknown.
 public type MicrosoftGraphTeamsAppDistributionMethod "store"|"organization"|"sideloaded"|"unknownFutureValue";
 
-# Defines a sort condition for a workbook, including sort key, direction, type, and target color or icon.
+# Defines a sort condition for a workbook, including sort key, direction, and target type.
 public type MicrosoftGraphWorkbookSortField record {
     # Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon
     string sortOn?;
@@ -3054,14 +3051,14 @@ public type MicrosoftGraphWorkbookSortField record {
     decimal 'key?;
 };
 
-# Paginated collection of column definition resources for a SharePoint list or content type.
+# Paginated collection response containing an array of column definition resources.
 public type MicrosoftGraphColumnDefinitionCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
-    # Array of column definition objects returned in the collection response.
+    # Array of ColumnDefinition objects returned in the collection response.
     MicrosoftGraphColumnDefinition[] value?;
 };
 
-# Represents a keyed collection of identity references for the application, device, and user associated with an action.
+# Represents a keyed collection of identity references for application, device, and user.
 public type MicrosoftGraphIdentitySet record {
     # Optional. The application associated with this action
     MicrosoftGraphIdentity|record {} application?;
@@ -3071,7 +3068,7 @@ public type MicrosoftGraphIdentitySet record {
     MicrosoftGraphIdentity|record {} user?;
 };
 
-# Represents a member of a conversation or chat, including display name, roles, and history visibility.
+# Represents a member of a conversation with display name, roles, and history visibility.
 public type MicrosoftGraphConversationMember record {
     *MicrosoftGraphEntity;
     # The display name of the user
@@ -3082,7 +3079,7 @@ public type MicrosoftGraphConversationMember record {
     string? visibleHistoryStartDateTime?;
 };
 
-# Represents a captured version of a document set, including creator, timestamp, comment, and captured items.
+# Represents a captured version of a document set, including items, author, and timestamp.
 public type MicrosoftGraphDocumentSetVersion record {
     *MicrosoftGraphListItemVersion;
     # User who captured the version
@@ -3132,16 +3129,16 @@ public type SitesGetByPathListSitesQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"displayName"|"error"|"isPersonalSite"|"root"|"sharepointIds"|"siteCollection"|"createdByUser"|"lastModifiedByUser"|"analytics"|"columns"|"contentTypes"|"drive"|"drives"|"externalColumns"|"items"|"lists"|"onenote"|"operations"|"pages"|"permissions"|"sites"|"termStore"|"termStores")[] dollarSelect?;
 };
 
-# Represents a task in Microsoft To Do, including scheduling, status, recurrence, and attachments.
+# Represents a task in Microsoft To Do, including scheduling, recurrence, attachments, and status.
 public type MicrosoftGraphTodoTask record {
     *MicrosoftGraphEntity;
     # The date and time when the task was last modified. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'
     string lastModifiedDateTime?;
     # A collection of file attachments for the task
     MicrosoftGraphAttachmentBase[] attachments?;
-    # Active upload sessions for file attachments associated with the task.
+    # Collection of active upload sessions for task file attachments.
     MicrosoftGraphAttachmentSession[] attachmentSessions?;
-    # Enum indicating the importance level of an item: low, normal, or high.
+    # Indicates the importance level of an item: low, normal, or high.
     MicrosoftGraphImportance importance?;
     # Set to true if an alert is set to remind the user of the task
     boolean isReminderOn?;
@@ -3177,14 +3174,10 @@ public type MicrosoftGraphTodoTask record {
     MicrosoftGraphTaskStatus status?;
 };
 
-# Nullable object representing an optional or absent content type reference.
-public type ContentTypeNullableAlternative record {
-};
-
-# Content rating filter for Giphy integration: strict, moderate, or reserved for future values.
+# Enumeration of Giphy content rating levels: strict, moderate, or unknownFutureValue.
 public type MicrosoftGraphGiphyRatingType "strict"|"moderate"|"unknownFutureValue";
 
-# Represents a managed app registration, tracking device, policy, and sync state for app management.
+# Represents a managed app registration, linking a device app to Intune app management policies.
 public type MicrosoftGraphManagedAppRegistration record {
     *MicrosoftGraphEntity;
     # App version
@@ -3219,7 +3212,7 @@ public type MicrosoftGraphManagedAppRegistration record {
     string? platformVersion?;
 };
 
-# A generic key-value pair used to represent arbitrary name-value data.
+# A generic key-value pair used to represent arbitrary named string properties.
 public type MicrosoftGraphKeyValue record {
     # Value for the key-value pair
     string? value?;
@@ -3227,7 +3220,7 @@ public type MicrosoftGraphKeyValue record {
     string? 'key?;
 };
 
-# Duplex printing modes supported by the printer, as a PrintDuplexMode or extended value.
+# Supported duplex printing modes for a printer, expressed as PrintDuplexMode values.
 public type MicrosoftgraphprinterCapabilitiesDuplexModes MicrosoftGraphPrintDuplexMode|DuplexModesAnyOf2?;
 
 # Represents the Queries record for the operation: sitesContentTypesGetBase
@@ -3240,7 +3233,7 @@ public type SitesContentTypesGetBaseQueries record {
     ("id"|"associatedHubsUrls"|"description"|"documentSet"|"documentTemplate"|"group"|"hidden"|"inheritedFrom"|"isBuiltIn"|"name"|"order"|"parentId"|"propagateChanges"|"readOnly"|"sealed"|"base"|"baseTypes"|"columnLinks"|"columnPositions"|"columns")[] dollarSelect?;
 };
 
-# A name-value pair representing a single group setting defined by a setting template.
+# A name-value pair representing an individual setting defined by a group setting template.
 public type MicrosoftGraphSettingValue record {
     # Name of the setting (as defined by the groupSettingTemplate)
     string? name?;
@@ -3248,7 +3241,7 @@ public type MicrosoftGraphSettingValue record {
     string? value?;
 };
 
-# Represents a Microsoft Teams team, including settings, channels, members, and metadata.
+# Represents a Microsoft Teams team, including its settings, channels, members, apps, and associated metadata.
 public type MicrosoftGraphTeam record {
     *MicrosoftGraphEntity;
     # The template this team was created from. See available templates
@@ -3273,7 +3266,7 @@ public type MicrosoftGraphTeam record {
     MicrosoftGraphTeamsAsyncOperation[] operations?;
     # Members and owners of the team
     MicrosoftGraphConversationMember[] members?;
-    # The Microsoft 365 group associated with this team.
+    # The Microsoft 365 group associated with this team. Navigation property. Nullable.
     MicrosoftGraphGroup|record {} group?;
     # Contains summary information about the team, including number of owners, members, and guests
     MicrosoftGraphTeamSummary|record {} summary?;
@@ -3311,16 +3304,16 @@ public type MicrosoftGraphTeam record {
     MicrosoftGraphTeamMemberSettings|record {} memberSettings?;
 };
 
-# Represents a specific version of a Teams app, including its metadata, publishing state, and associated bot details.
+# Represents a specific version of a Teams app, including its manifest details, publishing state, and authorization requirements.
 public type MicrosoftGraphTeamsAppDefinition record {
     *MicrosoftGraphEntity;
     # Authorization requirements specified in the Teams app manifest
     MicrosoftGraphTeamsAppAuthorization|record {} authorization?;
     # The ID from the Teams app manifest
     string? teamsAppId?;
-    # The date and time when the app definition was last modified.
+    # Timestamp of the last modification to this Teams app definition, in ISO 8601 format.
     string? lastModifiedDateTime?;
-    # The identity of the user who created this app definition version.
+    # Identity of the user or entity that created this Teams app definition.
     MicrosoftGraphIdentitySet|record {} createdBy?;
     # The name of the app provided by the app developer
     string? displayName?;
@@ -3336,10 +3329,10 @@ public type MicrosoftGraphTeamsAppDefinition record {
     MicrosoftGraphTeamsAppPublishingState|record {} publishingState?;
 };
 
-# Represents a Microsoft To Do task list, including its tasks, sharing status, and associated extensions.
+# Represents a Microsoft To Do task list, containing tasks, ownership, sharing status, and associated extensions.
 public type MicrosoftGraphTodoTaskList record {
     *MicrosoftGraphEntity;
-    # Enum identifying well-known task list types: none, defaultList, flaggedEmails, or unknownFutureValue.
+    # Enumeration of well-known list names, including default, flagged emails, and unknown future values.
     MicrosoftGraphWellknownListName wellknownListName?;
     # The collection of open extensions defined for the task list. Nullable
     MicrosoftGraphExtension[] extensions?;
@@ -3353,7 +3346,7 @@ public type MicrosoftGraphTodoTaskList record {
     MicrosoftGraphTodoTask[] tasks?;
 };
 
-# Represents a Planner bucket that groups tasks within a plan, with ordering and task collection support.
+# Represents a Planner bucket that groups tasks within a plan, including ordering and associated task collection.
 public type MicrosoftGraphPlannerBucket record {
     *MicrosoftGraphEntity;
     # Hint used to order items of this type in a list view. For details about the supported format, see Using order hints in Planner
@@ -3366,19 +3359,19 @@ public type MicrosoftGraphPlannerBucket record {
     MicrosoftGraphPlannerTask[] tasks?;
 };
 
-# Represents a sharing invitation associated with a permission, including recipient and sender details.
+# Represents a sharing invitation, including sender info, recipient email, sign-in requirement, and redemption status.
 public type MicrosoftGraphSharingInvitation record {
     # Provides information about who sent the invitation that created this permission, if that information is available. Read-only
     MicrosoftGraphIdentitySet|record {} invitedBy?;
     # If true the recipient of the invitation needs to sign in in order to access the shared item. Read-only
     boolean? signInRequired?;
-    # The email address or identifier of the user who redeemed the sharing invitation.
+    # The identity of the user who redeemed the sharing invitation.
     string? redeemedBy?;
     # The email address provided for the recipient of the sharing invitation. Read-only
     string? email?;
 };
 
-# Represents a shared printer, including access controls, allowed users, groups, and the associated printer.
+# Represents a shared printer, including access controls, allowed users/groups, and creation metadata.
 public type MicrosoftGraphPrinterShare record {
     *MicrosoftGraphPrinterBase;
     # Additional data for a printer share as viewed by the signed-in user
@@ -3405,7 +3398,7 @@ public type SitesContentTypesColumnsGetSourceColumnQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Describes the full set of hardware and print capabilities supported by a printer.
+# Describes the full set of capabilities supported by a printer, including media, orientation, color, and finishing options.
 public type MicrosoftGraphPrinterCapabilities record {
     # A list of supported left margins(in microns) for the printer
     MicrosoftGraphPrinterCapabilitiesLeftMarginsItemsNumber[] leftMargins?;
@@ -3459,11 +3452,11 @@ public type MicrosoftGraphPrinterCapabilities record {
     string[] mediaSizes?;
 };
 
-# Nullable object variant for a color mode value, allowing an absent or null color mode.
+# Nullable object representing an alternative or unresolved color mode value.
 public type ColorModesAnyOf2 record {
 };
 
-# Represents an Excel workbook table, including structure, formatting, and navigation properties.
+# Represents an Excel workbook table, including structure, formatting, sorting, and navigation properties.
 public type MicrosoftGraphWorkbookTable record {
     *MicrosoftGraphEntity;
     # Indicates whether the first column contains special formatting
@@ -3496,7 +3489,7 @@ public type MicrosoftGraphWorkbookTable record {
     MicrosoftGraphWorkbookWorksheet|record {} worksheet?;
 };
 
-# Represents an @mention within a chat message, identifying the mentioned entity and display text.
+# Represents an @mention within a chat message, including the mentioned entity and display text.
 public type MicrosoftGraphChatMessageMention record {
     # String used to represent the mention. For example, a user's display name, a team name
     string? mentionText?;
@@ -3510,19 +3503,19 @@ public type MicrosoftGraphChatMessageMention record {
 public type MicrosoftGraphPlannerAssignments record {
 };
 
-# Represents a break period within a time card, including start, end events, and notes.
+# Represents a break period within a time card, including start and end events and notes.
 public type MicrosoftGraphTimeCardBreak record {
     # ID of the timeCardBreak
     string? breakId?;
     # Notes about the timeCardBreak
     MicrosoftGraphItemBody|record {} notes?;
-    # Represents a time card clock event, including timestamp, location approval, and notes.
+    # Represents a time card clock event with timestamp, location approval status, and optional notes.
     MicrosoftGraphTimeCardEvent 'start?;
     # The start event of the timeCardBreak
     MicrosoftGraphTimeCardEvent|record {} end?;
 };
 
-# Defines the set of actions to perform on messages that match an Outlook mail rule.
+# Defines the set of actions to perform on a message when an inbox rule condition is met.
 public type MicrosoftGraphMessageRuleActions record {
     # The ID of a folder that a message is to be copied to
     string? copyToFolder?;
@@ -3548,13 +3541,13 @@ public type MicrosoftGraphMessageRuleActions record {
     boolean? markAsRead?;
 };
 
-# Defines who can present in an online meeting: everyone, organization members, assigned presenters, organizer, or unknown future values.
+# Enumeration of presenter roles allowed in an online meeting, such as everyone or organizer.
 public type MicrosoftGraphOnlineMeetingPresenters "everyone"|"organization"|"roleIsPresenter"|"organizer"|"unknownFutureValue";
 
-# Specifies the recurrence range type: end by date, no end, or a fixed number of occurrences.
+# Enumeration defining how a recurrence series ends: by end date, indefinitely, or by occurrence count.
 public type MicrosoftGraphRecurrenceRangeType "endDate"|"noEnd"|"numbered";
 
-# Represents a versioned item within a document set, including its identifier, version ID, and title.
+# Represents a single item captured within a document set version snapshot.
 public type MicrosoftGraphDocumentSetVersionItem record {
     # The unique identifier for the item
     string? itemId?;
@@ -3568,7 +3561,7 @@ public type MicrosoftGraphDocumentSetVersionItem record {
 public type MicrosoftGraphPlannerAppliedCategories record {
 };
 
-# Represents a chart legend in a workbook, including its visibility, position, overlay behavior, and formatting.
+# Represents the legend of a workbook chart, including its visibility, position, overlay behavior, and formatting.
 public type MicrosoftGraphWorkbookChartLegend record {
     *MicrosoftGraphEntity;
     # Indicates whether the chart legend is visible
@@ -3581,19 +3574,19 @@ public type MicrosoftGraphWorkbookChartLegend record {
     string? position?;
 };
 
-# Days of the week for a recurrence pattern, as a DayOfWeek value or extended days-of-week type.
+# Represents a day-of-week value for a recurrence pattern, accepting either a standard or extended day-of-week type.
 public type MicrosoftgraphrecurrencePatternDaysOfWeek MicrosoftGraphDayOfWeek|DaysOfWeekAnyOf2?;
 
 # Compliance state
 public type MicrosoftGraphComplianceState "unknown"|"compliant"|"noncompliant"|"conflict"|"error"|"inGracePeriod"|"configManager";
 
-# Configuration for a currency column, specifying the locale used to derive the currency symbol.
+# Configuration for a SharePoint currency column, specifying the locale used to determine the currency symbol.
 public type MicrosoftGraphCurrencyColumn record {
     # Specifies the locale from which to infer the currency symbol
     string? locale?;
 };
 
-# Display labels for up to 25 Planner task categories used to classify and organize plan tasks.
+# Defines custom labels for up to 25 task categories used in a Planner plan.
 public type MicrosoftGraphPlannerCategoryDescriptions record {
     # The label associated with Category 25
     string? category25?;
@@ -3647,7 +3640,7 @@ public type MicrosoftGraphPlannerCategoryDescriptions record {
     string? category20?;
 };
 
-# Audio metadata extracted from a file, including artist, album, bitrate, duration, and track details.
+# Metadata extracted from an audio file, including artist, album, genre, bitrate, duration, and track information.
 public type MicrosoftGraphAudio record {
     # Indicates if the file is protected with digital rights management
     boolean? hasDrm?;
@@ -3683,11 +3676,13 @@ public type MicrosoftGraphAudio record {
     decimal? track?;
 };
 
-# Enumeration representing the sign-in readiness state of an authentication method for a user.
+# Enum representing the sign-in capability state of an authentication method for a user.
 public type MicrosoftGraphAuthenticationMethodSignInState "notSupported"|"notAllowedByPolicy"|"notEnabled"|"phoneNumberNotUnique"|"ready"|"notConfigured"|"unknownFutureValue";
 
+# Enum specifying the classification of a phone number (e.g., home, business, mobile, fax, pager).
 public type MicrosoftGraphPhoneType "home"|"business"|"mobile"|"other"|"assistant"|"homeFax"|"businessFax"|"otherFax"|"pager"|"radio";
 
+# Enum describing detailed processing state conditions of a printer, covering hardware, consumable, and subsystem status events.
 public type MicrosoftGraphPrinterProcessingStateDetail "paused"|"mediaJam"|"mediaNeeded"|"mediaLow"|"mediaEmpty"|"coverOpen"|"interlockOpen"|"outputTrayMissing"|"outputAreaFull"|"markerSupplyLow"|"markerSupplyEmpty"|"inputTrayMissing"|"outputAreaAlmostFull"|"markerWasteAlmostFull"|"markerWasteFull"|"fuserOverTemp"|"fuserUnderTemp"|"other"|"none"|"movingToPaused"|"shutdown"|"connectingToDevice"|"timedOut"|"stopping"|"stoppedPartially"|"tonerLow"|"tonerEmpty"|"spoolAreaFull"|"doorOpen"|"opticalPhotoConductorNearEndOfLife"|"opticalPhotoConductorLifeOver"|"developerLow"|"developerEmpty"|"interpreterResourceUnavailable"|"unknownFutureValue"|"alertRemovalOfBinaryChangeEntry"|"banderAdded"|"banderAlmostEmpty"|"banderAlmostFull"|"banderAtLimit"|"banderClosed"|"banderConfigurationChange"|"banderCoverClosed"|"banderCoverOpen"|"banderEmpty"|"banderFull"|"banderInterlockClosed"|"banderInterlockOpen"|"banderJam"|"banderLifeAlmostOver"|"banderLifeOver"|"banderMemoryExhausted"|"banderMissing"|"banderMotorFailure"|"banderNearLimit"|"banderOffline"|"banderOpened"|"banderOverTemperature"|"banderPowerSaver"|"banderRecoverableFailure"|"banderRecoverableStorage"|"banderRemoved"|"banderResourceAdded"|"banderResourceRemoved"|"banderThermistorFailure"|"banderTimingFailure"|"banderTurnedOff"|"banderTurnedOn"|"banderUnderTemperature"|"banderUnrecoverableFailure"|"banderUnrecoverableStorageError"|"banderWarmingUp"|"binderAdded"|"binderAlmostEmpty"|"binderAlmostFull"|"binderAtLimit"|"binderClosed"|"binderConfigurationChange"|"binderCoverClosed"|"binderCoverOpen"|"binderEmpty"|"binderFull"|"binderInterlockClosed"|"binderInterlockOpen"|"binderJam"|"binderLifeAlmostOver"|"binderLifeOver"|"binderMemoryExhausted"|"binderMissing"|"binderMotorFailure"|"binderNearLimit"|"binderOffline"|"binderOpened"|"binderOverTemperature"|"binderPowerSaver"|"binderRecoverableFailure"|"binderRecoverableStorage"|"binderRemoved"|"binderResourceAdded"|"binderResourceRemoved"|"binderThermistorFailure"|"binderTimingFailure"|"binderTurnedOff"|"binderTurnedOn"|"binderUnderTemperature"|"binderUnrecoverableFailure"|"binderUnrecoverableStorageError"|"binderWarmingUp"|"cameraFailure"|"chamberCooling"|"chamberFailure"|"chamberHeating"|"chamberTemperatureHigh"|"chamberTemperatureLow"|"cleanerLifeAlmostOver"|"cleanerLifeOver"|"configurationChange"|"deactivated"|"deleted"|"dieCutterAdded"|"dieCutterAlmostEmpty"|"dieCutterAlmostFull"|"dieCutterAtLimit"|"dieCutterClosed"|"dieCutterConfigurationChange"|"dieCutterCoverClosed"|"dieCutterCoverOpen"|"dieCutterEmpty"|"dieCutterFull"|"dieCutterInterlockClosed"|"dieCutterInterlockOpen"|"dieCutterJam"|"dieCutterLifeAlmostOver"|"dieCutterLifeOver"|"dieCutterMemoryExhausted"|"dieCutterMissing"|"dieCutterMotorFailure"|"dieCutterNearLimit"|"dieCutterOffline"|"dieCutterOpened"|"dieCutterOverTemperature"|"dieCutterPowerSaver"|"dieCutterRecoverableFailure"|"dieCutterRecoverableStorage"|"dieCutterRemoved"|"dieCutterResourceAdded"|"dieCutterResourceRemoved"|"dieCutterThermistorFailure"|"dieCutterTimingFailure"|"dieCutterTurnedOff"|"dieCutterTurnedOn"|"dieCutterUnderTemperature"|"dieCutterUnrecoverableFailure"|"dieCutterUnrecoverableStorageError"|"dieCutterWarmingUp"|"extruderCooling"|"extruderFailure"|"extruderHeating"|"extruderJam"|"extruderTemperatureHigh"|"extruderTemperatureLow"|"fanFailure"|"faxModemLifeAlmostOver"|"faxModemLifeOver"|"faxModemMissing"|"faxModemTurnedOff"|"faxModemTurnedOn"|"folderAdded"|"folderAlmostEmpty"|"folderAlmostFull"|"folderAtLimit"|"folderClosed"|"folderConfigurationChange"|"folderCoverClosed"|"folderCoverOpen"|"folderEmpty"|"folderFull"|"folderInterlockClosed"|"folderInterlockOpen"|"folderJam"|"folderLifeAlmostOver"|"folderLifeOver"|"folderMemoryExhausted"|"folderMissing"|"folderMotorFailure"|"folderNearLimit"|"folderOffline"|"folderOpened"|"folderOverTemperature"|"folderPowerSaver"|"folderRecoverableFailure"|"folderRecoverableStorage"|"folderRemoved"|"folderResourceAdded"|"folderResourceRemoved"|"folderThermistorFailure"|"folderTimingFailure"|"folderTurnedOff"|"folderTurnedOn"|"folderUnderTemperature"|"folderUnrecoverableFailure"|"folderUnrecoverableStorageError"|"folderWarmingUp"|"hibernate"|"holdNewJobs"|"identifyPrinterRequested"|"imprinterAdded"|"imprinterAlmostEmpty"|"imprinterAlmostFull"|"imprinterAtLimit"|"imprinterClosed"|"imprinterConfigurationChange"|"imprinterCoverClosed"|"imprinterCoverOpen"|"imprinterEmpty"|"imprinterFull"|"imprinterInterlockClosed"|"imprinterInterlockOpen"|"imprinterJam"|"imprinterLifeAlmostOver"|"imprinterLifeOver"|"imprinterMemoryExhausted"|"imprinterMissing"|"imprinterMotorFailure"|"imprinterNearLimit"|"imprinterOffline"|"imprinterOpened"|"imprinterOverTemperature"|"imprinterPowerSaver"|"imprinterRecoverableFailure"|"imprinterRecoverableStorage"|"imprinterRemoved"|"imprinterResourceAdded"|"imprinterResourceRemoved"|"imprinterThermistorFailure"|"imprinterTimingFailure"|"imprinterTurnedOff"|"imprinterTurnedOn"|"imprinterUnderTemperature"|"imprinterUnrecoverableFailure"|"imprinterUnrecoverableStorageError"|"imprinterWarmingUp"|"inputCannotFeedSizeSelected"|"inputManualInputRequest"|"inputMediaColorChange"|"inputMediaFormPartsChange"|"inputMediaSizeChange"|"inputMediaTrayFailure"|"inputMediaTrayFeedError"|"inputMediaTrayJam"|"inputMediaTypeChange"|"inputMediaWeightChange"|"inputPickRollerFailure"|"inputPickRollerLifeOver"|"inputPickRollerLifeWarn"|"inputPickRollerMissing"|"inputTrayElevationFailure"|"inputTrayPositionFailure"|"inserterAdded"|"inserterAlmostEmpty"|"inserterAlmostFull"|"inserterAtLimit"|"inserterClosed"|"inserterConfigurationChange"|"inserterCoverClosed"|"inserterCoverOpen"|"inserterEmpty"|"inserterFull"|"inserterInterlockClosed"|"inserterInterlockOpen"|"inserterJam"|"inserterLifeAlmostOver"|"inserterLifeOver"|"inserterMemoryExhausted"|"inserterMissing"|"inserterMotorFailure"|"inserterNearLimit"|"inserterOffline"|"inserterOpened"|"inserterOverTemperature"|"inserterPowerSaver"|"inserterRecoverableFailure"|"inserterRecoverableStorage"|"inserterRemoved"|"inserterResourceAdded"|"inserterResourceRemoved"|"inserterThermistorFailure"|"inserterTimingFailure"|"inserterTurnedOff"|"inserterTurnedOn"|"inserterUnderTemperature"|"inserterUnrecoverableFailure"|"inserterUnrecoverableStorageError"|"inserterWarmingUp"|"interlockClosed"|"interpreterCartridgeAdded"|"interpreterCartridgeDeleted"|"interpreterComplexPageEncountered"|"interpreterMemoryDecrease"|"interpreterMemoryIncrease"|"interpreterResourceAdded"|"interpreterResourceDeleted"|"lampAtEol"|"lampFailure"|"lampNearEol"|"laserAtEol"|"laserFailure"|"laserNearEol"|"makeEnvelopeAdded"|"makeEnvelopeAlmostEmpty"|"makeEnvelopeAlmostFull"|"makeEnvelopeAtLimit"|"makeEnvelopeClosed"|"makeEnvelopeConfigurationChange"|"makeEnvelopeCoverClosed"|"makeEnvelopeCoverOpen"|"makeEnvelopeEmpty"|"makeEnvelopeFull"|"makeEnvelopeInterlockClosed"|"makeEnvelopeInterlockOpen"|"makeEnvelopeJam"|"makeEnvelopeLifeAlmostOver"|"makeEnvelopeLifeOver"|"makeEnvelopeMemoryExhausted"|"makeEnvelopeMissing"|"makeEnvelopeMotorFailure"|"makeEnvelopeNearLimit"|"makeEnvelopeOffline"|"makeEnvelopeOpened"|"makeEnvelopeOverTemperature"|"makeEnvelopePowerSaver"|"makeEnvelopeRecoverableFailure"|"makeEnvelopeRecoverableStorage"|"makeEnvelopeRemoved"|"makeEnvelopeResourceAdded"|"makeEnvelopeResourceRemoved"|"makeEnvelopeThermistorFailure"|"makeEnvelopeTimingFailure"|"makeEnvelopeTurnedOff"|"makeEnvelopeTurnedOn"|"makeEnvelopeUnderTemperature"|"makeEnvelopeUnrecoverableFailure"|"makeEnvelopeUnrecoverableStorageError"|"makeEnvelopeWarmingUp"|"markerAdjustingPrintQuality"|"markerCleanerMissing"|"markerDeveloperAlmostEmpty"|"markerDeveloperEmpty"|"markerDeveloperMissing"|"markerFuserMissing"|"markerFuserThermistorFailure"|"markerFuserTimingFailure"|"markerInkAlmostEmpty"|"markerInkEmpty"|"markerInkMissing"|"markerOpcMissing"|"markerPrintRibbonAlmostEmpty"|"markerPrintRibbonEmpty"|"markerPrintRibbonMissing"|"markerSupplyAlmostEmpty"|"markerSupplyMissing"|"markerTonerCartridgeMissing"|"markerTonerMissing"|"markerWasteInkReceptacleAlmostFull"|"markerWasteInkReceptacleFull"|"markerWasteInkReceptacleMissing"|"markerWasteMissing"|"markerWasteTonerReceptacleAlmostFull"|"markerWasteTonerReceptacleFull"|"markerWasteTonerReceptacleMissing"|"materialEmpty"|"materialLow"|"materialNeeded"|"mediaDrying"|"mediaPathCannotDuplexMediaSelected"|"mediaPathFailure"|"mediaPathInputEmpty"|"mediaPathInputFeedError"|"mediaPathInputJam"|"mediaPathInputRequest"|"mediaPathJam"|"mediaPathMediaTrayAlmostFull"|"mediaPathMediaTrayFull"|"mediaPathMediaTrayMissing"|"mediaPathOutputFeedError"|"mediaPathOutputFull"|"mediaPathOutputJam"|"mediaPathPickRollerFailure"|"mediaPathPickRollerLifeOver"|"mediaPathPickRollerLifeWarn"|"mediaPathPickRollerMissing"|"motorFailure"|"outputMailboxSelectFailure"|"outputMediaTrayFailure"|"outputMediaTrayFeedError"|"outputMediaTrayJam"|"perforaterAdded"|"perforaterAlmostEmpty"|"perforaterAlmostFull"|"perforaterAtLimit"|"perforaterClosed"|"perforaterConfigurationChange"|"perforaterCoverClosed"|"perforaterCoverOpen"|"perforaterEmpty"|"perforaterFull"|"perforaterInterlockClosed"|"perforaterInterlockOpen"|"perforaterJam"|"perforaterLifeAlmostOver"|"perforaterLifeOver"|"perforaterMemoryExhausted"|"perforaterMissing"|"perforaterMotorFailure"|"perforaterNearLimit"|"perforaterOffline"|"perforaterOpened"|"perforaterOverTemperature"|"perforaterPowerSaver"|"perforaterRecoverableFailure"|"perforaterRecoverableStorage"|"perforaterRemoved"|"perforaterResourceAdded"|"perforaterResourceRemoved"|"perforaterThermistorFailure"|"perforaterTimingFailure"|"perforaterTurnedOff"|"perforaterTurnedOn"|"perforaterUnderTemperature"|"perforaterUnrecoverableFailure"|"perforaterUnrecoverableStorageError"|"perforaterWarmingUp"|"platformCooling"|"platformFailure"|"platformHeating"|"platformTemperatureHigh"|"platformTemperatureLow"|"powerDown"|"powerUp"|"printerManualReset"|"printerNmsReset"|"printerReadyToPrint"|"puncherAdded"|"puncherAlmostEmpty"|"puncherAlmostFull"|"puncherAtLimit"|"puncherClosed"|"puncherConfigurationChange"|"puncherCoverClosed"|"puncherCoverOpen"|"puncherEmpty"|"puncherFull"|"puncherInterlockClosed"|"puncherInterlockOpen"|"puncherJam"|"puncherLifeAlmostOver"|"puncherLifeOver"|"puncherMemoryExhausted"|"puncherMissing"|"puncherMotorFailure"|"puncherNearLimit"|"puncherOffline"|"puncherOpened"|"puncherOverTemperature"|"puncherPowerSaver"|"puncherRecoverableFailure"|"puncherRecoverableStorage"|"puncherRemoved"|"puncherResourceAdded"|"puncherResourceRemoved"|"puncherThermistorFailure"|"puncherTimingFailure"|"puncherTurnedOff"|"puncherTurnedOn"|"puncherUnderTemperature"|"puncherUnrecoverableFailure"|"puncherUnrecoverableStorageError"|"puncherWarmingUp"|"resuming"|"scanMediaPathFailure"|"scanMediaPathInputEmpty"|"scanMediaPathInputFeedError"|"scanMediaPathInputJam"|"scanMediaPathInputRequest"|"scanMediaPathJam"|"scanMediaPathOutputFeedError"|"scanMediaPathOutputFull"|"scanMediaPathOutputJam"|"scanMediaPathPickRollerFailure"|"scanMediaPathPickRollerLifeOver"|"scanMediaPathPickRollerLifeWarn"|"scanMediaPathPickRollerMissing"|"scanMediaPathTrayAlmostFull"|"scanMediaPathTrayFull"|"scanMediaPathTrayMissing"|"scannerLightFailure"|"scannerLightLifeAlmostOver"|"scannerLightLifeOver"|"scannerLightMissing"|"scannerSensorFailure"|"scannerSensorLifeAlmostOver"|"scannerSensorLifeOver"|"scannerSensorMissing"|"separationCutterAdded"|"separationCutterAlmostEmpty"|"separationCutterAlmostFull"|"separationCutterAtLimit"|"separationCutterClosed"|"separationCutterConfigurationChange"|"separationCutterCoverClosed"|"separationCutterCoverOpen"|"separationCutterEmpty"|"separationCutterFull"|"separationCutterInterlockClosed"|"separationCutterInterlockOpen"|"separationCutterJam"|"separationCutterLifeAlmostOver"|"separationCutterLifeOver"|"separationCutterMemoryExhausted"|"separationCutterMissing"|"separationCutterMotorFailure"|"separationCutterNearLimit"|"separationCutterOffline"|"separationCutterOpened"|"separationCutterOverTemperature"|"separationCutterPowerSaver"|"separationCutterRecoverableFailure"|"separationCutterRecoverableStorage"|"separationCutterRemoved"|"separationCutterResourceAdded"|"separationCutterResourceRemoved"|"separationCutterThermistorFailure"|"separationCutterTimingFailure"|"separationCutterTurnedOff"|"separationCutterTurnedOn"|"separationCutterUnderTemperature"|"separationCutterUnrecoverableFailure"|"separationCutterUnrecoverableStorageError"|"separationCutterWarmingUp"|"sheetRotatorAdded"|"sheetRotatorAlmostEmpty"|"sheetRotatorAlmostFull"|"sheetRotatorAtLimit"|"sheetRotatorClosed"|"sheetRotatorConfigurationChange"|"sheetRotatorCoverClosed"|"sheetRotatorCoverOpen"|"sheetRotatorEmpty"|"sheetRotatorFull"|"sheetRotatorInterlockClosed"|"sheetRotatorInterlockOpen"|"sheetRotatorJam"|"sheetRotatorLifeAlmostOver"|"sheetRotatorLifeOver"|"sheetRotatorMemoryExhausted"|"sheetRotatorMissing"|"sheetRotatorMotorFailure"|"sheetRotatorNearLimit"|"sheetRotatorOffline"|"sheetRotatorOpened"|"sheetRotatorOverTemperature"|"sheetRotatorPowerSaver"|"sheetRotatorRecoverableFailure"|"sheetRotatorRecoverableStorage"|"sheetRotatorRemoved"|"sheetRotatorResourceAdded"|"sheetRotatorResourceRemoved"|"sheetRotatorThermistorFailure"|"sheetRotatorTimingFailure"|"sheetRotatorTurnedOff"|"sheetRotatorTurnedOn"|"sheetRotatorUnderTemperature"|"sheetRotatorUnrecoverableFailure"|"sheetRotatorUnrecoverableStorageError"|"sheetRotatorWarmingUp"|"slitterAdded"|"slitterAlmostEmpty"|"slitterAlmostFull"|"slitterAtLimit"|"slitterClosed"|"slitterConfigurationChange"|"slitterCoverClosed"|"slitterCoverOpen"|"slitterEmpty"|"slitterFull"|"slitterInterlockClosed"|"slitterInterlockOpen"|"slitterJam"|"slitterLifeAlmostOver"|"slitterLifeOver"|"slitterMemoryExhausted"|"slitterMissing"|"slitterMotorFailure"|"slitterNearLimit"|"slitterOffline"|"slitterOpened"|"slitterOverTemperature"|"slitterPowerSaver"|"slitterRecoverableFailure"|"slitterRecoverableStorage"|"slitterRemoved"|"slitterResourceAdded"|"slitterResourceRemoved"|"slitterThermistorFailure"|"slitterTimingFailure"|"slitterTurnedOff"|"slitterTurnedOn"|"slitterUnderTemperature"|"slitterUnrecoverableFailure"|"slitterUnrecoverableStorageError"|"slitterWarmingUp"|"stackerAdded"|"stackerAlmostEmpty"|"stackerAlmostFull"|"stackerAtLimit"|"stackerClosed"|"stackerConfigurationChange"|"stackerCoverClosed"|"stackerCoverOpen"|"stackerEmpty"|"stackerFull"|"stackerInterlockClosed"|"stackerInterlockOpen"|"stackerJam"|"stackerLifeAlmostOver"|"stackerLifeOver"|"stackerMemoryExhausted"|"stackerMissing"|"stackerMotorFailure"|"stackerNearLimit"|"stackerOffline"|"stackerOpened"|"stackerOverTemperature"|"stackerPowerSaver"|"stackerRecoverableFailure"|"stackerRecoverableStorage"|"stackerRemoved"|"stackerResourceAdded"|"stackerResourceRemoved"|"stackerThermistorFailure"|"stackerTimingFailure"|"stackerTurnedOff"|"stackerTurnedOn"|"stackerUnderTemperature"|"stackerUnrecoverableFailure"|"stackerUnrecoverableStorageError"|"stackerWarmingUp"|"standby"|"staplerAdded"|"staplerAlmostEmpty"|"staplerAlmostFull"|"staplerAtLimit"|"staplerClosed"|"staplerConfigurationChange"|"staplerCoverClosed"|"staplerCoverOpen"|"staplerEmpty"|"staplerFull"|"staplerInterlockClosed"|"staplerInterlockOpen"|"staplerJam"|"staplerLifeAlmostOver"|"staplerLifeOver"|"staplerMemoryExhausted"|"staplerMissing"|"staplerMotorFailure"|"staplerNearLimit"|"staplerOffline"|"staplerOpened"|"staplerOverTemperature"|"staplerPowerSaver"|"staplerRecoverableFailure"|"staplerRecoverableStorage"|"staplerRemoved"|"staplerResourceAdded"|"staplerResourceRemoved"|"staplerThermistorFailure"|"staplerTimingFailure"|"staplerTurnedOff"|"staplerTurnedOn"|"staplerUnderTemperature"|"staplerUnrecoverableFailure"|"staplerUnrecoverableStorageError"|"staplerWarmingUp"|"stitcherAdded"|"stitcherAlmostEmpty"|"stitcherAlmostFull"|"stitcherAtLimit"|"stitcherClosed"|"stitcherConfigurationChange"|"stitcherCoverClosed"|"stitcherCoverOpen"|"stitcherEmpty"|"stitcherFull"|"stitcherInterlockClosed"|"stitcherInterlockOpen"|"stitcherJam"|"stitcherLifeAlmostOver"|"stitcherLifeOver"|"stitcherMemoryExhausted"|"stitcherMissing"|"stitcherMotorFailure"|"stitcherNearLimit"|"stitcherOffline"|"stitcherOpened"|"stitcherOverTemperature"|"stitcherPowerSaver"|"stitcherRecoverableFailure"|"stitcherRecoverableStorage"|"stitcherRemoved"|"stitcherResourceAdded"|"stitcherResourceRemoved"|"stitcherThermistorFailure"|"stitcherTimingFailure"|"stitcherTurnedOff"|"stitcherTurnedOn"|"stitcherUnderTemperature"|"stitcherUnrecoverableFailure"|"stitcherUnrecoverableStorageError"|"stitcherWarmingUp"|"subunitAdded"|"subunitAlmostEmpty"|"subunitAlmostFull"|"subunitAtLimit"|"subunitClosed"|"subunitCoolingDown"|"subunitEmpty"|"subunitFull"|"subunitLifeAlmostOver"|"subunitLifeOver"|"subunitMemoryExhausted"|"subunitMissing"|"subunitMotorFailure"|"subunitNearLimit"|"subunitOffline"|"subunitOpened"|"subunitOverTemperature"|"subunitPowerSaver"|"subunitRecoverableFailure"|"subunitRecoverableStorage"|"subunitRemoved"|"subunitResourceAdded"|"subunitResourceRemoved"|"subunitThermistorFailure"|"subunitTimingFailure"|"subunitTurnedOff"|"subunitTurnedOn"|"subunitUnderTemperature"|"subunitUnrecoverableFailure"|"subunitUnrecoverableStorage"|"subunitWarmingUp"|"suspend"|"testing"|"trimmerAdded"|"trimmerAlmostEmpty"|"trimmerAlmostFull"|"trimmerAtLimit"|"trimmerClosed"|"trimmerConfigurationChange"|"trimmerCoverClosed"|"trimmerCoverOpen"|"trimmerEmpty"|"trimmerFull"|"trimmerInterlockClosed"|"trimmerInterlockOpen"|"trimmerJam"|"trimmerLifeAlmostOver"|"trimmerLifeOver"|"trimmerMemoryExhausted"|"trimmerMissing"|"trimmerMotorFailure"|"trimmerNearLimit"|"trimmerOffline"|"trimmerOpened"|"trimmerOverTemperature"|"trimmerPowerSaver"|"trimmerRecoverableFailure"|"trimmerRecoverableStorage"|"trimmerRemoved"|"trimmerResourceAdded"|"trimmerResourceRemoved"|"trimmerThermistorFailure"|"trimmerTimingFailure"|"trimmerTurnedOff"|"trimmerTurnedOn"|"trimmerUnderTemperature"|"trimmerUnrecoverableFailure"|"trimmerUnrecoverableStorageError"|"trimmerWarmingUp"|"unknown"|"wrapperAdded"|"wrapperAlmostEmpty"|"wrapperAlmostFull"|"wrapperAtLimit"|"wrapperClosed"|"wrapperConfigurationChange"|"wrapperCoverClosed"|"wrapperCoverOpen"|"wrapperEmpty"|"wrapperFull"|"wrapperInterlockClosed"|"wrapperInterlockOpen"|"wrapperJam"|"wrapperLifeAlmostOver"|"wrapperLifeOver"|"wrapperMemoryExhausted"|"wrapperMissing"|"wrapperMotorFailure"|"wrapperNearLimit"|"wrapperOffline"|"wrapperOpened"|"wrapperOverTemperature"|"wrapperPowerSaver"|"wrapperRecoverableFailure"|"wrapperRecoverableStorage"|"wrapperRemoved"|"wrapperResourceAdded"|"wrapperResourceRemoved"|"wrapperThermistorFailure"|"wrapperTimingFailure"|"wrapperTurnedOff"|"wrapperTurnedOn"|"wrapperUnderTemperature"|"wrapperUnrecoverableFailure"|"wrapperUnrecoverableStorageError"|"wrapperWarmingUp";
 
 # Represents the Queries record for the operation: sitesAnalyticsGetLastSevenDays
@@ -3700,6 +3695,7 @@ public type SitesAnalyticsGetLastSevenDaysQueries record {
     ("id"|"access"|"create"|"delete"|"edit"|"endDateTime"|"incompleteData"|"isTrending"|"move"|"startDateTime"|"activities")[] dollarSelect?;
 };
 
+# Represents a calendar event, extending OutlookItem with scheduling, attendee, recurrence, and online meeting details.
 public type MicrosoftGraphEvent record {
     *MicrosoftGraphOutlookItem;
     # True if this event has online meeting information (that is, onlineMeeting points to an onlineMeetingInfo resource), false otherwise. Default is false (onlineMeeting is null). Optional.  After you set isOnlineMeeting to true, Microsoft Graph initializes onlineMeeting. Subsequently, Outlook ignores any further changes to isOnlineMeeting, and the meeting remains available online
@@ -3792,8 +3788,10 @@ public type MicrosoftGraphEvent record {
     MicrosoftGraphSensitivity|record {} sensitivity?;
 };
 
+# Supported paper feed orientations for the printer; accepts MicrosoftGraphPrinterFeedOrientation or extended values.
 public type MicrosoftgraphprinterCapabilitiesFeedOrientations MicrosoftGraphPrinterFeedOrientation|FeedOrientationsAnyOf2?;
 
+# Represents a device category used to organize and group devices within Intune, extending the base entity.
 public type MicrosoftGraphDeviceCategory record {
     *MicrosoftGraphEntity;
     # Display name for the device category
@@ -3802,6 +3800,7 @@ public type MicrosoftGraphDeviceCategory record {
     string? description?;
 };
 
+# Represents a language-specific label for a term store term, including name, language tag, and default flag.
 public type MicrosoftGraphTermStoreLocalizedLabel record {
     # Indicates whether the label is the default label
     boolean? isDefault?;
@@ -3811,6 +3810,7 @@ public type MicrosoftGraphTermStoreLocalizedLabel record {
     string? languageTag?;
 };
 
+# Base type for platform-specific managed app policies, extending the entity with display name, dates, and version.
 public type MicrosoftGraphManagedAppPolicy record {
     *MicrosoftGraphEntity;
     # Last time the policy was modified
@@ -3828,6 +3828,7 @@ public type MicrosoftGraphManagedAppPolicy record {
 @constraint:String {pattern: re `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`}
 public type MicrosoftGraphAssignedLicenseDisabledPlansItemsString string;
 
+# Represents a SharePoint site collection with hostname, geographic region, archival status, and root indicators.
 public type MicrosoftGraphSiteCollection record {
     # The geographic region code for where this site collection resides. Only present for multi-geo tenants. Read-only
     string? dataLocationCode?;
@@ -3839,11 +3840,13 @@ public type MicrosoftGraphSiteCollection record {
     MicrosoftGraphRoot|record {} root?;
 };
 
+# Enum specifying the scope of a term store group: global, system, siteCollection, or unknownFutureValue.
 public type MicrosoftGraphTermStoreTermGroupScope "global"|"system"|"siteCollection"|"unknownFutureValue";
 
+# Flags enum indicating who confirmed an action: none, user, manager, or unknownFutureValue.
 public type MicrosoftGraphConfirmedBy "none"|"user"|"manager"|"unknownFutureValue";
 
-# Represents a Planner task entity with assignment, scheduling, progress, and board layout properties.
+# Represents a Planner task with assignments, scheduling, progress, priority, and board formatting details.
 public type MicrosoftGraphPlannerTask record {
     *MicrosoftGraphEntity;
     # The set of assignees the task is assigned to
@@ -3901,7 +3904,7 @@ public type MicrosoftGraphPlannerTask record {
 # Enumeration of chat availability modes for a meeting: enabled, disabled, limited, or unknownFutureValue.
 public type MicrosoftGraphMeetingChatMode "enabled"|"disabled"|"limited"|"unknownFutureValue";
 
-# Represents a reason for time off in a Teams schedule, including display name, icon, and active status.
+# Represents a reason category for time-off entries within a Microsoft Teams schedule.
 public type MicrosoftGraphTimeOffReason record {
     *MicrosoftGraphChangeTrackedEntity;
     # The code of the timeOffReason to represent an external identifier. This field must be unique within the team in Microsoft Teams and uses an alphanumeric format, with a maximum of 100 characters
@@ -3942,7 +3945,7 @@ public type SitesContentTypesListBaseTypesQueries record {
     ("id"|"associatedHubsUrls"|"description"|"documentSet"|"documentTemplate"|"group"|"hidden"|"inheritedFrom"|"isBuiltIn"|"name"|"order"|"parentId"|"propagateChanges"|"readOnly"|"sealed"|"base"|"baseTypes"|"columnLinks"|"columnPositions"|"columns")[] dollarSelect?;
 };
 
-# Represents a user's locale, including the natural language display name and BCP 47 locale code.
+# Represents a user's locale, including preferred language and country/region settings.
 public type MicrosoftGraphLocaleInfo record {
     # A name representing the user's locale in natural language, for example, 'English (United States)'
     string? displayName?;
@@ -3957,7 +3960,7 @@ public type MicrosoftGraphEmailAuthenticationMethod record {
     string? emailAddress?;
 };
 
-# Represents the column values for a SharePoint list item, extending the base entity.
+# Represents the column field values for a SharePoint list item.
 public type MicrosoftGraphFieldValueSet record {
     *MicrosoftGraphEntity;
 };
@@ -3972,7 +3975,7 @@ public type SitesContentTypesBaseTypesGetCount6b07Queries record {
     string dollarSearch?;
 };
 
-# Defines a recurring event's frequency pattern and duration range for scheduling purposes.
+# Defines a recurrence pattern and range for recurring events or access reviews.
 public type MicrosoftGraphPatternedRecurrence record {
     # The frequency of an event.  For access reviews: Do not specify this property for a one-time access review.  Only interval, dayOfMonth, and type (weekly, absoluteMonthly) properties of recurrencePattern are supported
     MicrosoftGraphRecurrencePattern|record {} pattern?;
@@ -3980,7 +3983,7 @@ public type MicrosoftGraphPatternedRecurrence record {
     MicrosoftGraphRecurrenceRange|record {} range?;
 };
 
-# Represents a group of users within a team schedule, used to organize shift assignments in Teams.
+# Represents a group of users within a team schedule in Microsoft Teams Shifts.
 public type MicrosoftGraphSchedulingGroup record {
     *MicrosoftGraphChangeTrackedEntity;
     # The code for the schedulingGroup to represent an external identifier. This field must be unique within the team in Microsoft Teams and uses an alphanumeric format, with a maximum of 100 characters
@@ -3993,7 +3996,7 @@ public type MicrosoftGraphSchedulingGroup record {
     boolean? isActive?;
 };
 
-# Configuration for a numeric column, including decimal places, display format, and value range.
+# Defines configuration for a numeric column, including display format, decimal places, and value range.
 public type MicrosoftGraphNumberColumn record {
     # How many decimal places to display. See below for information about the possible values
     string? decimalPlaces?;
@@ -4005,7 +4008,7 @@ public type MicrosoftGraphNumberColumn record {
     decimal|string|ReferenceNumeric? minimum?;
 };
 
-# Represents an operation applied against a managed app registration, including state and timestamps.
+# Represents an operation applied against a managed app registration, including its state and metadata.
 public type MicrosoftGraphManagedAppOperation record {
     *MicrosoftGraphEntity;
     # The last time the app operation was modified
@@ -4087,7 +4090,7 @@ public type SitesListItemsQueries record {
 # Product Status of Windows Defender
 public type MicrosoftGraphWindowsDefenderProductStatus "noStatus"|"serviceNotRunning"|"serviceStartedWithoutMalwareProtection"|"pendingFullScanDueToThreatAction"|"pendingRebootDueToThreatAction"|"pendingManualStepsDueToThreatAction"|"avSignaturesOutOfDate"|"asSignaturesOutOfDate"|"noQuickScanHappenedForSpecifiedPeriod"|"noFullScanHappenedForSpecifiedPeriod"|"systemInitiatedScanInProgress"|"systemInitiatedCleanInProgress"|"samplesPendingSubmission"|"productRunningInEvaluationMode"|"productRunningInNonGenuineMode"|"productExpired"|"offlineScanRequired"|"serviceShutdownAsPartOfSystemShutdown"|"threatRemediationFailedCritically"|"threatRemediationFailedNonCritically"|"noStatusFlagsSet"|"platformOutOfDate"|"platformUpdateInProgress"|"platformAboutToBeOutdated"|"signatureOrPlatformEndOfLifeIsPastOrIsImpending"|"windowsSModeSignaturesInUseOnNonWin10SInstall";
 
-# Represents an active upload session for an attachment, including expiration time, upload progress, and content data.
+# Represents an active upload session for a large attachment, tracking expiration and upload progress.
 public type MicrosoftGraphAttachmentSession record {
     *MicrosoftGraphEntity;
     # The date and time in UTC when the upload session will expire. The complete file must be uploaded before this expiration time is reached
@@ -4098,10 +4101,10 @@ public type MicrosoftGraphAttachmentSession record {
     string? content?;
 };
 
-# Enum indicating the importance level of an item: low, normal, or high.
+# Indicates the importance level of an item: low, normal, or high.
 public type MicrosoftGraphImportance "low"|"normal"|"high";
 
-# Represents a website associated with a contact or profile, including URL, display name, and site type.
+# Represents a website with URL, display name, and categorized type.
 public type MicrosoftGraphWebsite record {
     # The URL of the website
     string? address?;
@@ -4111,14 +4114,14 @@ public type MicrosoftGraphWebsite record {
     MicrosoftGraphWebsiteType|record {} 'type?;
 };
 
-# Exchange-specific settings for a user, including the unique identifier of the user's primary mailbox.
+# Represents Exchange-specific settings, including the user's primary mailbox identifier.
 public type MicrosoftGraphExchangeSettings record {
     *MicrosoftGraphEntity;
     # The unique identifier for the user's primary mailbox
     string? primaryMailboxId?;
 };
 
-# Geographic coordinates used in Outlook, including latitude, longitude, altitude, and their respective accuracy values.
+# Represents geographic coordinates including latitude, longitude, altitude, and accuracy.
 public type MicrosoftGraphOutlookGeoCoordinates record {
     # The altitude of the location
     decimal|string|ReferenceNumeric? altitude?;
@@ -4142,20 +4145,20 @@ public type SitesGetCount6254Queries record {
     string dollarSearch?;
 };
 
-# Base response structure for delta function queries, containing OData delta and next page link tokens.
+# Base response schema for delta function queries, providing pagination and delta links.
 public type BaseDeltaFunctionResponse record {
-    # OData link used to retrieve future delta changes since the current query was executed.
+    # URL to retrieve subsequent delta changes after the current result set.
     @jsondata:Name {value: "@odata.deltaLink"}
     string? atOdataDeltaLink?;
-    # OData link to retrieve the next page of results in a paginated delta response.
+    # URL to retrieve the next page of results in a paginated response.
     @jsondata:Name {value: "@odata.nextLink"}
     string? atOdataNextLink?;
 };
 
-# Enum defining the layout type of a channel: post, chat, or unknownFutureValue.
+# Specifies the layout type of a channel: post, chat, or unknownFutureValue.
 public type MicrosoftGraphChannelLayoutType "post"|"chat"|"unknownFutureValue";
 
-# Represents geographic coordinates including altitude, latitude, and longitude for an item.
+# Geographic coordinates of an item, including altitude, latitude, and longitude.
 public type MicrosoftGraphGeoCoordinates record {
     # Optional. The altitude (height), in feet,  above sea level for the item. Read-only
     decimal|string|ReferenceNumeric? altitude?;
@@ -4182,7 +4185,7 @@ public type SitesContentTypesDeleteColumnsHeaders record {
     string ifMatch?;
 };
 
-# Metadata about a SharePoint list, including template type, visibility, and content type settings.
+# Metadata describing a SharePoint list, including its template type, visibility, and content type settings.
 public type MicrosoftGraphListInfo record {
     # An enumerated value that represents the base list template used in creating the list. Possible values include documentLibrary, genericList, task, survey, announcements, contacts, and more
     string? template?;
@@ -4192,7 +4195,7 @@ public type MicrosoftGraphListInfo record {
     boolean? contentTypesEnabled?;
 };
 
-# Represents data label settings for a workbook chart, including visibility and format options.
+# Represents the data labels on a workbook chart, including visibility settings, position, format, and separator.
 public type MicrosoftGraphWorkbookChartDataLabels record {
     *MicrosoftGraphEntity;
     # Boolean value that represents whether the data label value is visible
@@ -4217,19 +4220,19 @@ public type MicrosoftGraphWorkbookChartDataLabels record {
 
 # Represents the source of a configuration setting, including its type, display name, and identifier.
 public type MicrosoftGraphSettingSource record {
-    # Indicates the source type of a configuration setting, either device configuration or device intent.
+    # Enum indicating the source of a setting: deviceConfiguration or deviceIntent.
     MicrosoftGraphSettingSourceType sourceType?;
-    # The human-readable display name of the setting source.
+    # The human-readable name of the setting source.
     string? displayName?;
     # The unique identifier of the setting source.
     string? id?;
 };
 
-# Indicates that a resource is system-managed; presence of this facet denotes a system-controlled object.
+# A marker facet indicating that a resource is managed or controlled by the system.
 public type MicrosoftGraphSystemFacet record {
 };
 
-# Caption and translation settings for a Teams live event broadcast, including language options.
+# Caption and translation settings for a Teams live event broadcast meeting.
 public type MicrosoftGraphBroadcastMeetingCaptionSettings record {
     # Indicates whether captions are enabled for this Teams live event
     boolean? isCaptionEnabled?;
@@ -4239,14 +4242,14 @@ public type MicrosoftGraphBroadcastMeetingCaptionSettings record {
     string? spokenLanguage?;
 };
 
-# Enumeration indicating the role of a meeting attendee: required, optional, or resource.
+# Specifies the role of a meeting attendee: required, optional, or resource.
 public type MicrosoftGraphAttendeeType "required"|"optional"|"resource";
 
-# Request body for associating a content type with hub sites, specifying target URLs and list propagation behavior.
+# Request body for associating a content type with one or more hub sites.
 public type ContentTypeIdMicrosoftGraphAssociateWithHubSitesBody record {
     # List of hub site URLs to associate with the content type.
     string[] hubSiteUrls?;
-    # Indicates whether the content type association should propagate to existing lists. Defaults to false.
+    # Whether to propagate the content type to existing lists on associated hub sites.
     boolean? propagateToExistingLists = false;
 };
 
@@ -4257,7 +4260,7 @@ public type MicrosoftGraphPlannerGroup record {
     MicrosoftGraphPlannerPlan[] plans?;
 };
 
-# Represents a meeting response status, including the response type and the time it was submitted.
+# Represents a meeting attendee's response status, including response type and timestamp.
 public type MicrosoftGraphResponseStatus record {
     # The response type. The possible values are: none, organizer, tentativelyAccepted, accepted, declined, notResponded.To differentiate between none and notResponded:  none – from organizer's perspective. This value is used when the status of an attendee/participant is reported to the organizer of a meeting.  notResponded – from attendee's perspective. Indicates the attendee has not responded to the meeting request.  Clients can treat notResponded == none.  As an example, if attendee Alex hasn't responded to a meeting request, getting Alex' response status for that event in Alex' calendar returns notResponded. Getting Alex' response from the calendar of any other attendee or the organizer's returns none. Getting the organizer's response for the event in anybody's calendar also returns none
     MicrosoftGraphResponseType|record {} response?;
@@ -4273,7 +4276,7 @@ public type MicrosoftGraphChatViewpoint record {
     boolean? isHidden?;
 };
 
-# Represents a filter applied to a column within a workbook table.
+# Represents a filter applied to a workbook table column, exposing the active filter criteria.
 public type MicrosoftGraphWorkbookFilter record {
     *MicrosoftGraphEntity;
     # The currently applied filter on the given column. Read-only
@@ -4287,7 +4290,7 @@ public type SitesDeleteAnalyticsHeaders record {
     string ifMatch?;
 };
 
-# Represents a OneNote section group, which can contain sections and nested section groups.
+# Represents a OneNote section group, containing nested sections, child section groups, and parent notebook or section group references.
 public type MicrosoftGraphSectionGroup record {
     *MicrosoftGraphOnenoteEntityHierarchyModel;
     # The URL for the sections navigation property, which returns all the sections in the section group. Read-only
@@ -4304,14 +4307,14 @@ public type MicrosoftGraphSectionGroup record {
     MicrosoftGraphOnenoteSection[] sections?;
 };
 
-# Represents a geolocation column type configuration in a SharePoint list.
+# Represents a geolocation column type in a SharePoint list, enabling geographic coordinate data storage.
 public type MicrosoftGraphGeolocationColumn record {
 };
 
 # Supported platform types for policies
 public type MicrosoftGraphPolicyPlatformType "android"|"androidForWork"|"iOS"|"macOS"|"windowsPhone81"|"windows81AndLater"|"windows10AndLater"|"all";
 
-# Represents the authorization details for a Teams app, including required permissions and associated Entra app registration ID.
+# Authorization details for a Teams app, including required permissions and associated Entra app registration
 public type MicrosoftGraphTeamsAppAuthorization record {
     # Set of permissions required by the teamsApp
     MicrosoftGraphTeamsAppPermissionSet|record {} requiredPermissionSet?;
@@ -4319,20 +4322,20 @@ public type MicrosoftGraphTeamsAppAuthorization record {
     string? clientAppId?;
 };
 
-# Enum indicating the visibility of a team: private, public, hiddenMembership, or unknownFutureValue.
+# Enum indicating team visibility: private, public, hiddenMembership, or unknownFutureValue
 public type MicrosoftGraphTeamVisibilityType "private"|"public"|"hiddenMembership"|"unknownFutureValue";
 
-# Enum representing the current processing state of a printer: unknown, idle, processing, stopped, or unknownFutureValue.
+# Enum representing the current processing state of a printer: unknown, idle, processing, stopped, or unknownFutureValue
 public type MicrosoftGraphPrinterProcessingState "unknown"|"idle"|"processing"|"stopped"|"unknownFutureValue";
 
-# A paginated collection response containing an array of columnLink resources.
+# Paginated collection response containing an array of columnLink resources
 public type MicrosoftGraphColumnLinkCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
-    # Array of ColumnLink objects returned in the collection response.
+    # Array of columnLink resources in the collection response
     MicrosoftGraphColumnLink[] value?;
 };
 
-# Holds external registration details for a virtual event registrant, including source and ID.
+# Represents external registration information for a virtual event, including referrer URL and registration identifier.
 public type MicrosoftGraphVirtualEventExternalRegistrationInformation record {
     # A URL or string that represents the location from which the registrant registered. Optional
     string? referrer?;
@@ -4340,14 +4343,14 @@ public type MicrosoftGraphVirtualEventExternalRegistrationInformation record {
     string? registrationId?;
 };
 
-# Root container for user-specific solution resources, such as working time schedules.
+# Represents the root container for user-specific solutions, including working time schedule associations.
 public type MicrosoftGraphUserSolutionRoot record {
     *MicrosoftGraphEntity;
     # The working time schedule entity associated with the solution
     MicrosoftGraphWorkingTimeSchedule|record {} workingTimeSchedule?;
 };
 
-# Encapsulates formatting options for a workbook chart axis, including font and line styles.
+# Represents formatting options for a workbook chart axis, including font and line formatting.
 public type MicrosoftGraphWorkbookChartAxisFormat record {
     *MicrosoftGraphEntity;
     # Represents chart line formatting. Read-only
@@ -4356,14 +4359,14 @@ public type MicrosoftGraphWorkbookChartAxisFormat record {
     MicrosoftGraphWorkbookChartFont|record {} font?;
 };
 
-# Represents a user's shift scheduling preferences, including work availability and recurrence patterns.
+# Represents a user's shift scheduling preferences, including availability and recurrence patterns.
 public type MicrosoftGraphShiftPreferences record {
     *MicrosoftGraphChangeTrackedEntity;
     # Availability of the user to be scheduled for work and its recurrence pattern
     MicrosoftGraphShiftAvailability[] availability?;
 };
 
-# Represents a user-defined Outlook category with a display name and associated color.
+# Represents a named category with an assigned color for organizing Outlook items.
 public type MicrosoftGraphOutlookCategory record {
     *MicrosoftGraphEntity;
     # A pre-set color constant that characterizes a category, and that is mapped to one of 25 predefined colors. For more details, see the following note
@@ -4372,10 +4375,10 @@ public type MicrosoftGraphOutlookCategory record {
     string? displayName?;
 };
 
-# Enumeration of Teams channel membership types: standard, private, shared, or unknownFutureValue.
+# Enumeration of Teams channel membership types: standard, private, shared, or unknown.
 public type MicrosoftGraphChannelMembershipType "standard"|"private"|"unknownFutureValue"|"shared";
 
-# Represents a SharePoint content type, including its columns, templates, inheritance, and enforcement settings.
+# Represents a SharePoint content type with columns, templates, inheritance, and metadata.
 public type MicrosoftGraphContentType record {
     *MicrosoftGraphEntity;
     # List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type is applied to the lists in the enforced sites
@@ -4418,12 +4421,12 @@ public type MicrosoftGraphContentType record {
     MicrosoftGraphContentType|record {} base?;
 };
 
-# Represents summary information about a chat message, including sender, body, type, and event details.
+# Represents summary information about a Teams chat message, including body and sender details.
 public type MicrosoftGraphChatMessageInfo record {
     *MicrosoftGraphEntity;
     # If set to true, the original message has been deleted
     boolean? isDeleted?;
-    # Enumeration of chat message types: message, chatEvent, typing, systemEventMessage, or unknownFutureValue.
+    # Enum indicating the type of a chat message (e.g., message, chatEvent, typing).
     MicrosoftGraphChatMessageType messageType?;
     # Date time object representing the time at which message was created
     string? createdDateTime?;
@@ -4442,7 +4445,7 @@ public type MicrosoftGraphDriveCollectionResponse record {
     MicrosoftGraphDrive[] value?;
 };
 
-# Enumeration of team specialization types, including education, healthcare, and general-purpose variants.
+# Enumeration indicating the specialized use case for a team, such as education or healthcare.
 public type MicrosoftGraphTeamSpecialization "none"|"educationStandard"|"educationClass"|"educationProfessionalLearningCommunity"|"educationStaff"|"healthcareStandard"|"healthcareCareCoordination"|"unknownFutureValue";
 
 # Represents the Queries record for the operation: sitesGetDrive
@@ -4455,7 +4458,7 @@ public type SitesGetDriveQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"driveType"|"owner"|"quota"|"sharePointIds"|"system"|"createdByUser"|"lastModifiedByUser"|"bundles"|"following"|"items"|"list"|"root"|"special")[] dollarSelect?;
 };
 
-# Represents a reply to a workbook comment, including its content and content type.
+# Represents a reply to a comment in a workbook, including its content and content type.
 public type MicrosoftGraphWorkbookCommentReply record {
     *MicrosoftGraphEntity;
     # The content type for the reply
@@ -4464,7 +4467,7 @@ public type MicrosoftGraphWorkbookCommentReply record {
     string? content?;
 };
 
-# Represents the line formatting properties for a workbook chart, including line color.
+# Represents the line formatting options for a workbook chart, including line color.
 public type MicrosoftGraphWorkbookChartLineFormat record {
     *MicrosoftGraphEntity;
     # The HTML color code that represents the color of lines in the chart
@@ -4499,7 +4502,7 @@ public type SitesListColumnsQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Represents the protection state and settings applied to a workbook worksheet.
+# Represents the protection state and options applied to a workbook worksheet.
 public type MicrosoftGraphWorkbookWorksheetProtection record {
     *MicrosoftGraphEntity;
     # Indicates whether the worksheet is protected.  Read-only
@@ -4515,43 +4518,43 @@ public type SitesAnalyticsItemActivityStatsActivitiesGetDriveItemContentQueries 
     string dollarFormat?;
 };
 
-# Represents a sensitivity label entity with classification metadata, protection settings, and nested sublabels.
+# Represents a sensitivity label with classification metadata, protection settings, and sublabels.
 public type MicrosoftGraphSensitivityLabel record {
     *MicrosoftGraphEntity;
     # Collection of child sensitivity labels nested under this label.
     MicrosoftGraphSensitivityLabel[] sublabels?;
-    # The human-readable name of the sensitivity label shown in the UI.
+    # The human-readable display name of the sensitivity label.
     string? displayName?;
-    # Indicates whether the sensitivity label is scoped to a specific user.
+    # Indicates whether the sensitivity label is scoped to the current user.
     boolean? isScopedToUser?;
     # Tooltip text displayed to users when hovering over the sensitivity label.
     string? toolTip?;
-    # Descriptive text explaining the purpose or usage of the sensitivity label.
+    # A descriptive text explaining the purpose or usage of the sensitivity label.
     string? description?;
-    # The locale code specifying the language context for the sensitivity label.
+    # The locale associated with this sensitivity label.
     string? locale?;
-    # Integer priority value determining the label's precedence order.
+    # The priority order of the sensitivity label (int32).
     decimal? priority?;
-    # Indicates the source action that triggered or applied the sensitivity label.
+    # The source action that triggered application of this sensitivity label.
     MicrosoftGraphLabelActionSource|record {} actionSource?;
-    # Indicates whether this sensitivity label is the default label applied automatically.
+    # Indicates whether this is the default sensitivity label.
     boolean? isDefault?;
-    # Automatically generated tooltip text associated with the sensitivity label.
+    # Tooltip text displayed when the label is automatically applied.
     string? autoTooltip?;
-    # Indicates whether endpoint protection is enabled for this sensitivity label.
+    # Indicates whether endpoint protection is enabled for this label.
     boolean? isEndpointProtectionEnabled?;
-    # Usage rights included with the sensitivity label defining permitted actions.
+    # The usage rights included with this sensitivity label.
     MicrosoftGraphUsageRightsIncluded|record {} rights?;
-    # Indicates whether the sensitivity label applies content protection settings.
+    # Indicates whether this sensitivity label applies protection settings.
     boolean? hasProtection?;
-    # The internal name identifier of the sensitivity label.
+    # The display name of the sensitivity label.
     string? name?;
 };
 
-# Represents a content activity event, including associated metadata, user identity, and protection scope.
+# Represents a content activity entity, including metadata, user ID, and protection scope identifier.
 public type MicrosoftGraphContentActivity record {
     *MicrosoftGraphEntity;
-    # Request payload for processing content entries, including metadata for device, app, and activity context.
+    # Request payload for submitting content entries for compliance or sensitivity processing.
     MicrosoftGraphProcessContentRequest contentMetadata?;
     # ID of the user
     string? userId?;
@@ -4576,7 +4579,7 @@ public type SitesAnalyticsItemActivityStatsDeleteActivitiesHeaders record {
     string ifMatch?;
 };
 
-# Represents a retention label applied to a SharePoint item, including application metadata and retention settings.
+# Represents a retention label applied to a SharePoint item, including label metadata and settings.
 public type MicrosoftGraphItemRetentionLabel record {
     *MicrosoftGraphEntity;
     # The date and time when the label was applied on the item. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only
@@ -4591,17 +4594,17 @@ public type MicrosoftGraphItemRetentionLabel record {
     MicrosoftGraphIdentitySet|record {} labelAppliedBy?;
 };
 
-# Enumeration defining the scope of external recipients for automatic replies: none, contactsOnly, or all.
+# Enumeration defining the audience scope for external auto-reply messages: none, contactsOnly, or all.
 public type MicrosoftGraphExternalAudienceScope "none"|"contactsOnly"|"all";
 
-# Represents a base attendee for a calendar event, combining recipient information with an attendee type classification.
+# Represents a meeting attendee, extending recipient with an attendee type (required, optional, or resource).
 public type MicrosoftGraphAttendeeBase record {
     *MicrosoftGraphRecipient;
     # The type of attendee. The possible values are: required, optional, resource. Currently if the attendee is a person, findMeetingTimes always considers the person is of the Required type
     MicrosoftGraphAttendeeType|record {} 'type?;
 };
 
-# Represents a chart axis in a workbook, including scale bounds, tick mark intervals, gridlines, title, and formatting.
+# Represents a chart axis in a workbook, including scale, gridlines, formatting, and title properties.
 public type MicrosoftGraphWorkbookChartAxis record {
     *MicrosoftGraphEntity;
     # Returns a Gridlines object that represents the minor gridlines for the specified axis. Read-only
@@ -4622,7 +4625,7 @@ public type MicrosoftGraphWorkbookChartAxis record {
     MicrosoftGraphJson|record {} majorUnit?;
 };
 
-# Represents a Universal Print connector, including its version, hostname, location, OS, and registration details.
+# Represents a Universal Print connector, including its version, hostname, location, and registration details.
 public type MicrosoftGraphPrintConnector record {
     *MicrosoftGraphEntity;
     # The connector's version
@@ -4639,7 +4642,7 @@ public type MicrosoftGraphPrintConnector record {
     string registeredDateTime?;
 };
 
-# Represents a Microsoft Teams chat, including members, messages, apps, tabs, meeting info, and chat metadata.
+# Represents a Microsoft Teams chat, including messages, members, apps, tabs, and associated metadata.
 public type MicrosoftGraphChat record {
     *MicrosoftGraphEntity;
     # A collection of all the pinned messages in the chat. Nullable
@@ -4656,7 +4659,7 @@ public type MicrosoftGraphChat record {
     MicrosoftGraphTeamworkOnlineMeetingInfo|record {} onlineMeetingInfo?;
     # Indicates whether the chat is hidden for all its members. Read-only
     boolean? isHiddenForAllMembers?;
-    # Collection of targeted messages sent within the chat.
+    # Collection of targeted messages sent in the chat.
     MicrosoftGraphTargetedChatMessage[] targetedMessages?;
     # Timestamp of the original creation time for the chat. The value is null if the chat never entered migration mode
     string? originalCreatedDateTime?;
@@ -4678,11 +4681,11 @@ public type MicrosoftGraphChat record {
     MicrosoftGraphChatMessage[] messages?;
     # Date and time at which the chat was renamed or the list of members was last changed. Read-only
     string? lastUpdatedDateTime?;
-    # Enum indicating the type of chat: oneOnOne, group, meeting, or unknownFutureValue.
+    # Enumeration of chat conversation types: oneOnOne, group, meeting, or unknownFutureValue.
     MicrosoftGraphChatType chatType?;
 };
 
-# Represents formatting properties for a workbook chart area, including fill and font.
+# Represents the formatting properties for a chart area, including fill and font attributes.
 public type MicrosoftGraphWorkbookChartAreaFormat record {
     *MicrosoftGraphEntity;
     # Represents the fill format of an object, which includes background formatting information. Read-only
@@ -4693,10 +4696,10 @@ public type MicrosoftGraphWorkbookChartAreaFormat record {
 
 public type MicrosoftGraphPrinterCapabilitiesBottomMarginsItemsNumber decimal?;
 
-# Flags enum indicating allowed override options for a chat message policy violation verdict.
+# Flags enum specifying the override options available for a policy violation verdict on a chat message.
 public type MicrosoftGraphChatMessagePolicyViolationVerdictDetailsTypes "none"|"allowFalsePositiveOverride"|"allowOverrideWithoutJustification"|"allowOverrideWithJustification";
 
-# Represents Outlook-specific resources and settings available to a user.
+# Represents Outlook-specific user data, including personal category definitions.
 public type MicrosoftGraphOutlookUser record {
     *MicrosoftGraphEntity;
     # A list of categories defined for the user
@@ -4736,7 +4739,7 @@ public type MicrosoftGraphChatMessageHostedContent record {
     *MicrosoftGraphTeamworkHostedContent;
 };
 
-# Represents a Microsoft Teams channel, including messaging, membership, and metadata properties.
+# Represents a Microsoft Teams channel, including messaging, membership, and metadata.
 public type MicrosoftGraphChannel record {
     *MicrosoftGraphEntity;
     # Contains summary information about the channel, including number of owners, members, guests, and an indicator for members from other tenants. The summary property will only be returned if it is specified in the $select clause of the Get channel method
@@ -4784,11 +4787,11 @@ public type MicrosoftGraphChannel record {
 # Represents the on-premises synchronization behavior configuration for an entity.
 public type MicrosoftGraphOnPremisesSyncBehavior record {
     *MicrosoftGraphEntity;
-    # Indicates whether the entity is managed from the cloud rather than on-premises.
+    # Indicates whether the resource is managed from the cloud rather than on-premises.
     boolean isCloudManaged?;
 };
 
-# Represents a workbook icon defined by a named set and index position.
+# Represents an icon in a workbook, defined by its icon set and index position.
 public type MicrosoftGraphWorkbookIcon record {
     # The set that the icon is part of. The possible values are: Invalid, ThreeArrows, ThreeArrowsGray, ThreeFlags, ThreeTrafficLights1, ThreeTrafficLights2, ThreeSigns, ThreeSymbols, ThreeSymbols2, FourArrows, FourArrowsGray, FourRedToBlack, FourRating, FourTrafficLights, FiveArrows, FiveArrowsGray, FiveRating, FiveQuarters, ThreeStars, ThreeTriangles, FiveBoxes
     string set?;
@@ -4807,7 +4810,7 @@ public type SitesContentTypesColumnLinksGetCount7bc1Queries record {
     string dollarSearch?;
 };
 
-# Represents a time-limited Temporary Access Pass authentication method for a user.
+# Represents a time-limited passcode authentication method for user sign-in.
 public type MicrosoftGraphTemporaryAccessPassAuthenticationMethod record {
     *MicrosoftGraphAuthenticationMethod;
     # The date and time when the Temporary Access Pass becomes available to use and when isUsable is true is enforced
@@ -4824,7 +4827,7 @@ public type MicrosoftGraphTemporaryAccessPassAuthenticationMethod record {
     boolean? isUsableOnce?;
 };
 
-# Represents a sharing permission granted on a drive item, including roles and grantees.
+# Represents an access permission granted for a DriveItem or SharePoint resource.
 public type MicrosoftGraphPermission record {
     *MicrosoftGraphEntity;
     # A format of yyyy-MM-ddTHH:mm:ssZ of DateTimeOffset indicates the expiration time of the permission. DateTime.MinValue indicates there's no expiration set for this permission. Optional
@@ -4851,7 +4854,7 @@ public type MicrosoftGraphPermission record {
     MicrosoftGraphSharePointIdentitySet|record {} grantedToV2?;
 };
 
-# Represents a SharePoint term store containing groups, sets, and language configuration.
+# Represents a SharePoint term store containing taxonomy groups, sets, and language settings.
 public type MicrosoftGraphTermStoreStore record {
     *MicrosoftGraphEntity;
     # List of languages for the term store
@@ -4864,7 +4867,7 @@ public type MicrosoftGraphTermStoreStore record {
     MicrosoftGraphTermStoreGroup[] groups?;
 };
 
-# Represents the container resource (e.g., group or roster) that owns a Planner plan.
+# Represents the container resource (group, roster) that owns a Planner plan.
 public type MicrosoftGraphPlannerPlanContainer record {
     # The identifier of the resource that contains the plan. Optional
     string? containerId?;
@@ -4874,27 +4877,27 @@ public type MicrosoftGraphPlannerPlanContainer record {
     string? url?;
 };
 
-# Represents a content approval status column in a SharePoint list.
+# Defines the content approval status column configuration for a SharePoint list.
 public type MicrosoftGraphContentApprovalStatusColumn record {
 };
 
-# Enumeration indicating the likelihood of an item being selected; either unspecified or high.
+# Enum indicating the likelihood of an item being selected; values: notSpecified, high.
 public type MicrosoftGraphSelectionLikelihoodInfo "notSpecified"|"high";
 
-# Enumeration representing the completion status of a course assignment.
+# Enum representing the progression status of a course: notStarted, inProgress, or completed.
 public type MicrosoftGraphCourseStatus "notStarted"|"inProgress"|"completed"|"unknownFutureValue";
 
-# Represents a user's storage resource, including associated unified storage quota information.
+# Represents a user's storage resource, including associated quota information.
 public type MicrosoftGraphUserStorage record {
     *MicrosoftGraphEntity;
-    # Navigation property referencing the user's unified storage quota details.
+    # The unified storage quota details associated with the user's storage.
     MicrosoftGraphUnifiedStorageQuota|record {} quota?;
 };
 
-# Defines a reusable template for print tasks, including creator identity, display name, and associated task instances.
+# Defines a print task template, including its creator, display name, and associated tasks.
 public type MicrosoftGraphPrintTaskDefinition record {
     *MicrosoftGraphEntity;
-    # Identifies an application by its ID, display name, and service principal details in Microsoft Entra ID.
+    # Identity of an application, including its ID, display name, and service principal details.
     MicrosoftGraphAppIdentity createdBy?;
     # The name of the printTaskDefinition
     string displayName?;
@@ -4905,7 +4908,7 @@ public type MicrosoftGraphPrintTaskDefinition record {
 # Malware execution status
 public type MicrosoftGraphWindowsMalwareExecutionState "unknown"|"blocked"|"allowed"|"running"|"notRunning";
 
-# Identifies a drive item as a special folder and provides its unique name within the /drive/special collection.
+# Represents a special folder reference, identifying an item within the /drive/special collection.
 public type MicrosoftGraphSpecialFolder record {
     # The unique identifier for this item in the /drive/special collection
     string? name?;
@@ -4928,7 +4931,7 @@ public type MicrosoftGraphDeviceConfigurationState record {
     decimal settingCount?;
 };
 
-# Represents a term set in the SharePoint term store, containing terms, hierarchy, and metadata.
+# Represents a term set within a SharePoint term store, containing hierarchical taxonomy terms.
 public type MicrosoftGraphTermStoreSet record {
     *MicrosoftGraphEntity;
     # Children terms of set in term [store]
@@ -4941,7 +4944,7 @@ public type MicrosoftGraphTermStoreSet record {
     string? createdDateTime?;
     # Description that gives details on the term usage
     string? description?;
-    # Represents a term store group containing term sets, with scope, display name, and creation metadata.
+    # Represents a term store group containing sets of terms, with scope, display name, and creation metadata.
     MicrosoftGraphTermStoreGroup parentGroup?;
     # Indicates which terms have been pinned or reused directly under the set
     MicrosoftGraphTermStoreRelation[] relations?;
@@ -4949,7 +4952,7 @@ public type MicrosoftGraphTermStoreSet record {
     MicrosoftGraphKeyValue[] properties?;
 };
 
-# Represents a general device management failure event with timestamp and correlation tracking.
+# Represents a general device management failure event with timestamp and correlation identifier.
 public type MicrosoftGraphDeviceManagementTroubleshootingEvent record {
     *MicrosoftGraphEntity;
     # Time when the event occurred 
@@ -4958,7 +4961,7 @@ public type MicrosoftGraphDeviceManagementTroubleshootingEvent record {
     string? correlationId?;
 };
 
-# Enumeration of mailbox purpose types such as user, shared, room, or equipment.
+# Enumeration of mailbox purpose types: user, linked, shared, room, equipment, others, or unknownFutureValue.
 public type MicrosoftGraphUserPurpose "user"|"linked"|"shared"|"room"|"equipment"|"others"|"unknownFutureValue";
 
 # Represents the Queries record for the operation: sitesGetByPathListColumns
@@ -4989,31 +4992,31 @@ public type SitesGetByPathListColumnsQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Represents a recurring work plan entry with location, schedule, and recurrence pattern.
+# Represents a recurring work plan entry with schedule, location type, and place information.
 public type MicrosoftGraphWorkPlanRecurrence record {
     *MicrosoftGraphEntity;
-    # Defines a recurring event's frequency pattern and duration range for scheduling purposes.
+    # Defines a recurrence pattern and range for recurring events or access reviews.
     MicrosoftGraphPatternedRecurrence recurrence?;
     # Identifier of a place from the Microsoft Graph Places Directory API. Only applicable when workLocationType is set to office
     string? placeId?;
-    # Represents a date and time value paired with a time zone identifier.
+    # Represents a point in time combined with a time zone identifier for scheduling and calendar operations.
     MicrosoftGraphDateTimeTimeZone 'start?;
-    # Represents a date and time value paired with a time zone identifier.
+    # Represents a point in time combined with a time zone identifier for scheduling and calendar operations.
     MicrosoftGraphDateTimeTimeZone end?;
-    # Enumeration of work location types for a user's work schedule entry.
+    # Enumeration of work location types such as office, remote, or time off.
     MicrosoftGraphWorkLocationType workLocationType?;
 };
 
 public type MicrosoftGraphPrinterCapabilitiesRightMarginsItemsNumber decimal?;
 
-# A paginated collection of item activity statistics for a SharePoint resource.
+# A paginated collection of itemActivityStat resources representing drive item activity statistics.
 public type CollectionOfItemActivityStat record {
     *BaseCollectionPaginationCountResponse;
-    # Array of item activity stat objects representing activity metrics.
+    # An array of itemActivityStat objects representing activity statistics for drive items.
     MicrosoftGraphItemActivityStat[] value?;
 };
 
-# Represents a user's sign-in activity, including timestamps and request IDs for the last interactive, non-interactive, and successful sign-ins.
+# Tracks sign-in activity timestamps and request IDs for a user account.
 public type MicrosoftGraphSignInActivity record {
     # The date and time of the user's most recent successful interactive or non-interactive sign-in. Use this property if you need to determine when the account was truly accessed. This field can be used to build reports, such as inactive users. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Microsoft Entra ID maintains interactive sign-ins going back to April 2020. For more information about using the value of this property, see Manage inactive user accounts in Microsoft Entra ID
     string? lastSuccessfulSignInDateTime?;
@@ -5029,7 +5032,7 @@ public type MicrosoftGraphSignInActivity record {
     string? lastSignInDateTime?;
 };
 
-# Enum defining print scaling modes: auto, shrinkToFit, fill, fit, none, or unknownFutureValue.
+# Enum defining how print content is scaled to fit the page.
 public type MicrosoftGraphPrintScaling "auto"|"shrinkToFit"|"fill"|"fit"|"none"|"unknownFutureValue";
 
 # Computer endpoint protection state
@@ -5063,7 +5066,7 @@ public type SitesListOperationsQueries record {
     ("id"|"createdDateTime"|"lastActionDateTime"|"resourceLocation"|"status"|"statusDetail"|"error"|"percentageComplete"|"resourceId"|"type")[] dollarSelect?;
 };
 
-# Represents a workbook chart object, including its dimensions, position, axes, series, legend, title, data labels, and formatting.
+# Represents a workbook chart object with layout, axes, series, and formatting properties.
 public type MicrosoftGraphWorkbookChart record {
     *MicrosoftGraphEntity;
     # Represents the data labels on the chart. Read-only
@@ -5102,7 +5105,7 @@ public type SitesGetSitesQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"displayName"|"error"|"isPersonalSite"|"root"|"sharepointIds"|"siteCollection"|"createdByUser"|"lastModifiedByUser"|"analytics"|"columns"|"contentTypes"|"drive"|"drives"|"externalColumns"|"items"|"lists"|"onenote"|"operations"|"pages"|"permissions"|"sites"|"termStore"|"termStores")[] dollarSelect?;
 };
 
-# Represents a device managed or pre-enrolled through Intune, with hardware, compliance, and enrollment details.
+# Represents a device managed or pre-enrolled through Intune, including hardware, compliance, and enrollment details.
 public type MicrosoftGraphManagedDevice record {
     *MicrosoftGraphEntity;
     # MEID. This property is read-only
@@ -5153,7 +5156,7 @@ public type MicrosoftGraphManagedDevice record {
     MicrosoftGraphUser[] users?;
     # Device supervised status. This property is read-only
     boolean isSupervised?;
-    # Enumeration of device management agent types, indicating the management platform or service controlling the device.
+    # Enumeration of device management agent types such as MDM, EAS, Intune, and Configuration Manager.
     MicrosoftGraphManagementAgentType managementAgent?;
     # Phone number of the device. This property is read-only
     string? phoneNumber?;
@@ -5236,10 +5239,10 @@ public type SitesDeleteContentTypesHeaders record {
     string ifMatch?;
 };
 
-# A paginated collection of item activity records for a SharePoint drive item.
+# Paginated collection of item activity records, including pagination metadata and activity entries.
 public type MicrosoftGraphItemActivityCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
-    # Array of itemActivity objects representing recorded activities on a drive item.
+    # Array of itemActivity objects representing activities performed on a drive item.
     MicrosoftGraphItemActivity[] value?;
 };
 
@@ -5257,17 +5260,17 @@ public type SitesContentTypesGetColumnPositionsQueries record {
 public type MicrosoftGraphMobileAppIdentifier record {
 };
 
-# Authorization information for a user, including certificate-based user identifiers.
+# Authorization information for a user, containing certificate-based user identifiers.
 public type MicrosoftGraphAuthorizationInfo record {
-    # Collection of certificate user identifiers associated with the authorization info.
+    # Collection of certificate-based user identifiers associated with the user.
     string[] certificateUserIds?;
 };
 
-# A nullable object alternative used within orientation union type definitions.
+# Nullable object variant used when an orientation value is absent or not applicable.
 public type OrientationsAnyOf2 record {
 };
 
-# Represents a OneNote hierarchy entity with display name, creator, and modification metadata.
+# Hierarchical OneNote entity model with display name, creator, and last-modified identity and timestamp.
 public type MicrosoftGraphOnenoteEntityHierarchyModel record {
     *MicrosoftGraphOnenoteEntitySchemaObjectModel;
     # The date and time when the notebook was last modified. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only
@@ -5280,7 +5283,7 @@ public type MicrosoftGraphOnenoteEntityHierarchyModel record {
     MicrosoftGraphIdentitySet|record {} lastModifiedBy?;
 };
 
-# Represents a user in the employee experience platform with Viva Engage roles and learning activities.
+# Represents a user in the employee experience context, including assigned Viva Engage roles and learning course activities.
 public type MicrosoftGraphEmployeeExperienceUser record {
     *MicrosoftGraphEntity;
     # Represents the collection of Viva Engage roles assigned to a user
@@ -5289,7 +5292,7 @@ public type MicrosoftGraphEmployeeExperienceUser record {
     MicrosoftGraphLearningCourseActivity[] learningCourseActivities?;
 };
 
-# Represents a detailed public error with a code, message, and target for diagnostic purposes.
+# Represents detailed information about a public-facing API error, including code, message, and target.
 public type MicrosoftGraphPublicErrorDetail record {
     # The error code
     string? code?;
@@ -5299,7 +5302,7 @@ public type MicrosoftGraphPublicErrorDetail record {
     string? target?;
 };
 
-# Represents a customized group-level settings object derived from a group setting template.
+# Represents a customized group-level settings object derived from a group settings template.
 public type MicrosoftGraphGroupSetting record {
     *MicrosoftGraphEntity;
     # Display name of this group of settings, which comes from the associated template
@@ -5310,7 +5313,7 @@ public type MicrosoftGraphGroupSetting record {
     string? templateId?;
 };
 
-# Defines a choice column with configurable options, display style, and custom text entry support.
+# Defines a choice column configuration including available values and UI presentation style.
 public type MicrosoftGraphChoiceColumn record {
     # If true, allows custom values that aren't in the configured choices
     boolean? allowTextEntry?;
@@ -5320,10 +5323,10 @@ public type MicrosoftGraphChoiceColumn record {
     string[] choices?;
 };
 
-# Enumeration representing a user's response status to a meeting or event invitation.
+# Indicates a user's response status to a meeting invite: accepted, declined, tentative, or not responded.
 public type MicrosoftGraphResponseType "none"|"organizer"|"tentativelyAccepted"|"accepted"|"declined"|"notResponded";
 
-# Base schema for Outlook items, combining entity identity with common item metadata properties.
+# Base schema for Outlook items, including version key, timestamps, and associated categories.
 public type MicrosoftGraphOutlookItem record {
     *MicrosoftGraphEntity;
     # Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only
@@ -5336,7 +5339,7 @@ public type MicrosoftGraphOutlookItem record {
     string[] categories?;
 };
 
-# Enumeration describing the detailed processing state of a print job.
+# Enumeration of detailed states for a print job lifecycle, including upload, transformation, completion, and error conditions.
 public type MicrosoftGraphPrintJobStateDetail "uploadPending"|"transforming"|"completedSuccessfully"|"completedWithWarnings"|"completedWithErrors"|"releaseWait"|"interpreting"|"unknownFutureValue";
 
 # Represents the Queries record for the operation: sitesPermissionsGetCount511e
@@ -5349,7 +5352,7 @@ public type SitesPermissionsGetCount511eQueries record {
     string dollarSearch?;
 };
 
-# Defines page margin dimensions (top, bottom, left, right) in microns for a print job.
+# Defines print margin dimensions in microns for the top, bottom, left, and right edges of a page.
 public type MicrosoftGraphPrintMargin record {
     # The margin in microns from the top edge
     decimal? top?;
@@ -5361,7 +5364,7 @@ public type MicrosoftGraphPrintMargin record {
     decimal? right?;
 };
 
-# Represents an activity segment within a shift, including timing, pay status, display name, and theme.
+# Represents an activity within a work shift, including timing, display name, pay status, and theme.
 public type MicrosoftGraphShiftActivity record {
     # Indicates whether the microsoft.graph.user should be paid for the activity during their shift. Required
     boolean? isPaid?;
@@ -5371,7 +5374,7 @@ public type MicrosoftGraphShiftActivity record {
     string? startDateTime?;
     # The name of the shiftActivity. Required
     string? displayName?;
-    # Enumeration of color theme values applicable to schedule entities such as shifts and time-off entries.
+    # Enumeration of color theme options available for schedule entities.
     MicrosoftGraphScheduleEntityTheme theme?;
     # The end date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required
     string? endDateTime?;
@@ -5405,17 +5408,17 @@ public type SitesSiteGetByPathGetApplicableContentTypesForListQueries record {
     ("id"|"associatedHubsUrls"|"description"|"documentSet"|"documentTemplate"|"group"|"hidden"|"inheritedFrom"|"isBuiltIn"|"name"|"order"|"parentId"|"propagateChanges"|"readOnly"|"sealed"|"base"|"baseTypes"|"columnLinks"|"columnPositions"|"columns")[] dollarSelect?;
 };
 
-# Base schema providing pagination support for collection responses via OData next links.
+# Base schema for paginated collection responses, providing an OData next-page link.
 public type BaseCollectionPaginationCountResponse record {
-    # OData URL to retrieve the next page of results in a paginated collection.
+    # URL to retrieve the next page of results in a paginated collection response.
     @jsondata:Name {value: "@odata.nextLink"}
     string? atOdataNextLink?;
 };
 
-# Enumeration of possible statuses for a workbook operation: notStarted, running, succeeded, or failed.
+# Enumeration of workbook operation statuses: notStarted, running, succeeded, or failed.
 public type MicrosoftGraphWorkbookOperationStatus "notStarted"|"running"|"succeeded"|"failed";
 
-# A set of thumbnails associated with a DriveItem, including small, medium, large, and source variants.
+# Collection of thumbnail images (small, medium, large, and source) for a drive item.
 public type MicrosoftGraphThumbnailSet record {
     *MicrosoftGraphEntity;
     # A 48x48 cropped thumbnail
@@ -5428,17 +5431,17 @@ public type MicrosoftGraphThumbnailSet record {
     MicrosoftGraphThumbnail|record {} 'source?;
 };
 
-# Enumeration identifying the actor involved in a schedule change request: sender, recipient, manager, or system.
+# Enumeration of actors involved in a schedule change request workflow.
 public type MicrosoftGraphScheduleChangeRequestActor "sender"|"recipient"|"manager"|"system"|"unknownFutureValue";
 
-# Represents a SharePoint user identity, extending the base identity with a SharePoint-specific login name.
+# SharePoint user identity extending the base identity with a SharePoint login name.
 public type MicrosoftGraphSharePointIdentity record {
     *MicrosoftGraphIdentity;
     # The sign in name of the SharePoint identity
     string? loginName?;
 };
 
-# Represents a Viva Engage role with a display name and its assigned member collection.
+# Represents a Viva Engage role with a display name and its assigned members.
 public type MicrosoftGraphEngagementRole record {
     *MicrosoftGraphEntity;
     # The name of the role
@@ -5447,7 +5450,7 @@ public type MicrosoftGraphEngagementRole record {
     MicrosoftGraphEngagementRoleMember[] members?;
 };
 
-# Represents a Planner plan, including its container, tasks, buckets, and metadata.
+# Represents a Planner plan with its container, tasks, buckets, and metadata.
 public type MicrosoftGraphPlannerPlan record {
     *MicrosoftGraphEntity;
     # Identifies the container of the plan. Specify only the url, the containerId and type, or all properties. After it's set, this property can’t be updated. Required
@@ -5468,16 +5471,16 @@ public type MicrosoftGraphPlannerPlan record {
     MicrosoftGraphPlannerTask[] tasks?;
 };
 
-# Paginated collection response containing an array of SharePoint content types.
+# Paginated collection of SharePoint content types with OData metadata support.
 public type MicrosoftGraphContentTypeCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
-    # Array of contentType objects returned in the collection response.
+    # Array of content type objects returned in the collection response.
     MicrosoftGraphContentType[] value?;
 };
 
 public type MicrosoftGraphPrinterCapabilitiesPagesPerSheetItemsNumber decimal?;
 
-# Configuration for a text column in a SharePoint list, including length and formatting options.
+# Configuration for a text column in a SharePoint list, defining storage and display options.
 public type MicrosoftGraphTextColumn record {
     # The size of the text box
     decimal? linesForEditing?;
@@ -5501,7 +5504,7 @@ public type SitesAnalyticsItemActivityStatsGetCountC4acQueries record {
     string dollarSearch?;
 };
 
-# Metadata describing a device, including type, IP address, and OS specifications.
+# Metadata describing a device, including its type, IP address, and operating system details.
 public type MicrosoftGraphDeviceMetadata record {
     # Optional. The general type of the device (for example, 'Managed', 'Unmanaged')
     string? deviceType?;
@@ -5539,7 +5542,7 @@ public type SitesCreatedByUserListServiceProvisioningErrorsQueries record {
     ("createdDateTime"|"isResolved"|"serviceInstance")[] dollarSelect?;
 };
 
-# Represents a user's Microsoft Teams personal scope, including installed apps, associated teams, locale, and region settings.
+# Represents a user's Microsoft Teams configuration, including installed apps, teams, locale, and region.
 public type MicrosoftGraphUserTeamwork record {
     *MicrosoftGraphEntity;
     # The apps installed in the personal scope of this user
@@ -5554,7 +5557,7 @@ public type MicrosoftGraphUserTeamwork record {
 
 public type MicrosoftGraphPrinterCapabilitiesDpisItemsNumber decimal?;
 
-# Represents a DLP policy tip shown to a message sender, including compliance URL and matched conditions.
+# Represents a policy tip shown when a chat message violates a data loss prevention policy.
 public type MicrosoftGraphChatMessagePolicyViolationPolicyTip record {
     # The URL a user can visit to read about the data loss prevention policies for the organization. (ie, policies about what users shouldn't say in chats)
     string? complianceUrl?;
@@ -5606,7 +5609,7 @@ public type SitesContentTypesListColumnsQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Defines an inclusive integer range with a lower bound (start) and an upper bound (end).
+# Represents an inclusive integer range defined by lower and upper bound values.
 public type MicrosoftGraphIntegerRange record {
     # The inclusive lower bound of the integer range
     decimal? 'start?;
@@ -5614,7 +5617,7 @@ public type MicrosoftGraphIntegerRange record {
     decimal? end?;
 };
 
-# Represents a single attendance interval, capturing join time, leave time, and duration in seconds for a meeting attendee.
+# Represents a single join/leave interval for a meeting attendee, including duration.
 public type MicrosoftGraphAttendanceInterval record {
     # The time the attendee joined in UTC
     string? joinDateTime?;
@@ -5624,7 +5627,7 @@ public type MicrosoftGraphAttendanceInterval record {
     string? leaveDateTime?;
 };
 
-# Contains identifiers for a Microsoft Teams chat thread, message, and reply chain associated with a meeting or call.
+# Contains thread and message identifiers for a Microsoft Teams chat.
 public type MicrosoftGraphChatInfo record {
     # The unique identifier for a thread in Microsoft Teams
     string? threadId?;
@@ -5634,7 +5637,7 @@ public type MicrosoftGraphChatInfo record {
     string? messageId?;
 };
 
-# Represents the formatting options for a workbook chart series, including line and fill formatting.
+# Defines the formatting properties for a workbook chart series, including line and fill styles.
 public type MicrosoftGraphWorkbookChartSeriesFormat record {
     *MicrosoftGraphEntity;
     # Represents line formatting. Read-only
@@ -5643,7 +5646,7 @@ public type MicrosoftGraphWorkbookChartSeriesFormat record {
     MicrosoftGraphWorkbookChartFill|record {} fill?;
 };
 
-# Represents a comment in a workbook, including its content, content type, and associated replies.
+# Represents a comment in a workbook, including its content, type, and replies.
 public type MicrosoftGraphWorkbookComment record {
     *MicrosoftGraphEntity;
     # The list of replies to the comment. Read-only. Nullable
@@ -5657,19 +5660,19 @@ public type MicrosoftGraphWorkbookComment record {
 # Malware current status
 public type MicrosoftGraphWindowsMalwareState "unknown"|"detected"|"cleaned"|"quarantined"|"removed"|"allowed"|"blocked"|"cleanFailed"|"quarantineFailed"|"removeFailed"|"allowFailed"|"abandoned"|"blockFailed";
 
-# Paginated collection response containing an array of baseItem resources with pagination metadata.
+# Paginated collection response containing an array of base SharePoint items.
 public type MicrosoftGraphBaseItemCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
-    # Array of baseItem resources returned in the collection.
+    # Array of base items returned in the collection response.
     MicrosoftGraphBaseItem[] value?;
 };
 
-# Represents storage quota usage breakdown for a specific Microsoft 365 service, extending the base quota breakdown.
+# Represents a per-service breakdown of storage quota usage, extending the base quota breakdown.
 public type MicrosoftGraphServiceStorageQuotaBreakdown record {
     *MicrosoftGraphStorageQuotaBreakdown;
 };
 
-# Represents a date and time value paired with a time zone identifier.
+# Represents a point in time combined with a time zone identifier for scheduling and calendar operations.
 public type MicrosoftGraphDateTimeTimeZone record {
     # A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000)
     string dateTime?;
@@ -5677,7 +5680,7 @@ public type MicrosoftGraphDateTimeTimeZone record {
     string? timeZone?;
 };
 
-# Represents a group of calendars in a user's mailbox, including its name, identifier, and associated calendars.
+# Represents a group of calendars in a user's mailbox, with version tracking and associated calendar items.
 public type MicrosoftGraphCalendarGroup record {
     *MicrosoftGraphEntity;
     # Identifies the version of the calendar group. Every time the calendar group is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only
@@ -5690,10 +5693,10 @@ public type MicrosoftGraphCalendarGroup record {
     string? name?;
 };
 
-# Enum indicating the current status of an asynchronous Teams operation.
+# Enumeration of possible statuses for an asynchronous Teams operation lifecycle.
 public type MicrosoftGraphTeamsAsyncOperationStatus "invalid"|"notStarted"|"inProgress"|"succeeded"|"failed"|"unknownFutureValue";
 
-# Defines the configuration settings for a print job, such as orientation, color mode, copies, and media.
+# Defines the full configuration for a print job, including media, quality, layout, and finishing settings.
 public type MicrosoftGraphPrintJobConfiguration record {
     # True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions
     boolean? fitPdfToPage?;
@@ -5735,13 +5738,13 @@ public type MicrosoftGraphPrintJobConfiguration record {
     decimal? dpi?;
 };
 
-# Request body schema for the addCopy action on a content types collection.
+# Request body schema for the addCopy action on content types.
 public type ContentTypesMicrosoftGraphAddCopyBody record {
-    # The URL of the content type to copy from the source site.
+    # The URL or identifier of the content type to copy.
     string contentType?;
 };
 
-# Represents formatting options for a workbook chart title, including fill and font.
+# Represents formatting options for a workbook chart title, including fill and font attributes.
 public type MicrosoftGraphWorkbookChartTitleFormat record {
     *MicrosoftGraphEntity;
     # Represents the fill format of an object, which includes background formatting information. Read-only
@@ -5750,13 +5753,13 @@ public type MicrosoftGraphWorkbookChartTitleFormat record {
     MicrosoftGraphWorkbookChartFont|record {} font?;
 };
 
-# Represents a photo album bundle with a reference to its cover image drive item.
+# Represents a media album, including a reference to its cover image drive item.
 public type MicrosoftGraphAlbum record {
     # Unique identifier of the driveItem that is the cover of the album
     string? coverImageItemId?;
 };
 
-# Represents a user's settings including content discovery preferences, work hours, insights visibility, and shift preferences.
+# Represents user-level settings including content discovery, insights, work hours, and shift preferences.
 public type MicrosoftGraphUserSettings record {
     *MicrosoftGraphEntity;
     # When set to true, the delegate access to the user's trending API is disabled. When set to true, documents in the user's Office Delve are disabled. When set to true, the relevancy of the content displayed in Microsoft 365, for example in Suggested sites in SharePoint Home and the Discover view in OneDrive for work or school is affected. Users can control this setting in Office Delve
@@ -5773,17 +5776,17 @@ public type MicrosoftGraphUserSettings record {
     MicrosoftGraphUserInsightsSettings|record {} itemInsights?;
     # Reflects the organization level setting controlling delegate access to the trending API. When set to true, the organization doesn't have access to Office Delve. The relevancy of the content displayed in Microsoft 365, for example in Suggested sites in SharePoint Home and the Discover view in OneDrive for work or school is affected for the whole organization. This setting is read-only and can only be changed by administrators in the SharePoint admin center
     boolean contributionToContentDiscoveryAsOrganizationDisabled?;
-    # The user's preferred shift scheduling availability and preferences.
+    # The user's shift scheduling preferences for workforce management.
     MicrosoftGraphShiftPreferences|record {} shiftPreferences?;
 };
 
-# Represents supported color modes for a printer, combining known and extended values.
+# Represents supported printer color modes, accepting PrintColorMode or extended color mode values.
 public type MicrosoftgraphprinterCapabilitiesColorModes MicrosoftGraphPrintColorMode|ColorModesAnyOf2?;
 
 # Enumeration of print quality levels: low, medium, high, or unknownFutureValue.
 public type MicrosoftGraphPrintQuality "low"|"medium"|"high"|"unknownFutureValue";
 
-# Represents an error returned from a long-running operation, including an error code and message.
+# Represents an error resulting from a long-running operation, containing a code and message.
 public type MicrosoftGraphOperationError record {
     # Operation error code
     string? code?;
@@ -5801,10 +5804,10 @@ public type SitesLastModifiedByUserGetMailboxSettingsQueries record {
     ("archiveFolder"|"automaticRepliesSetting"|"dateFormat"|"delegateMeetingMessageDeliveryOptions"|"language"|"timeFormat"|"timeZone"|"userPurpose"|"workingHours")[] dollarSelect?;
 };
 
-# Enumeration of color values assignable to an Outlook category, ranging from none to preset24.
+# Enumeration of category color values, including none and preset color slots 0 through 24.
 public type MicrosoftGraphCategoryColor "none"|"preset0"|"preset1"|"preset2"|"preset3"|"preset4"|"preset5"|"preset6"|"preset7"|"preset8"|"preset9"|"preset10"|"preset11"|"preset12"|"preset13"|"preset14"|"preset15"|"preset16"|"preset17"|"preset18"|"preset19"|"preset20"|"preset21"|"preset22"|"preset23"|"preset24";
 
-# Represents a phone-based authentication method including phone number, type, and SMS sign-in state.
+# Represents a phone-based authentication method, including number, type, and SMS sign-in state.
 public type MicrosoftGraphPhoneAuthenticationMethod record {
     *MicrosoftGraphAuthenticationMethod;
     # The type of this phone. The possible values are: mobile, alternateMobile, or office
@@ -5815,7 +5818,7 @@ public type MicrosoftGraphPhoneAuthenticationMethod record {
     MicrosoftGraphAuthenticationMethodSignInState|record {} smsSignInState?;
 };
 
-# Enumeration of print page orientation options: portrait, landscape, reverseLandscape, or reversePortrait.
+# Enumeration of print orientation options: portrait, landscape, reverseLandscape, or reversePortrait.
 public type MicrosoftGraphPrintOrientation "portrait"|"landscape"|"reverseLandscape"|"reversePortrait"|"unknownFutureValue";
 
 # Represents the Queries record for the operation: sitesGetByPathGetAnalytics
@@ -5828,10 +5831,10 @@ public type SitesGetByPathGetAnalyticsQueries record {
     ("id"|"allTime"|"itemActivityStats"|"lastSevenDays")[] dollarSelect?;
 };
 
-# Represents the supported print scaling modes for a printer, accepting either a PrintScaling enum value or an extended scaling type.
+# Represents the scaling options supported by a printer, as a PrintScaling value or extended type.
 public type MicrosoftgraphprinterCapabilitiesScalings MicrosoftGraphPrintScaling|ScalingsAnyOf2?;
 
-# Configuration object defining the actions that team members are permitted to perform within a team.
+# Configures the actions that team members are permitted to perform within a team.
 public type MicrosoftGraphTeamMemberSettings record {
     # If set to true, members can add and update private channels
     boolean? allowCreatePrivateChannels?;
@@ -5847,7 +5850,7 @@ public type MicrosoftGraphTeamMemberSettings record {
     boolean? allowCreateUpdateChannels?;
 };
 
-# Represents extended details for a Planner plan, including category descriptions and shared user IDs.
+# Represents additional details about a Planner plan, including categories and sharing.
 public type MicrosoftGraphPlannerPlanDetails record {
     *MicrosoftGraphEntity;
     # An object that specifies the descriptions of the 25 categories that can be associated with tasks in the plan
@@ -5856,7 +5859,7 @@ public type MicrosoftGraphPlannerPlanDetails record {
     MicrosoftGraphPlannerUserIds|record {} sharedWith?;
 };
 
-# Represents a single session or history entry for a user activity, tracking engagement duration and timestamps.
+# Represents a session or activity history entry associated with a user activity.
 public type MicrosoftGraphActivityHistoryItem record {
     *MicrosoftGraphEntity;
     # Required. UTC DateTime when the activityHistoryItem (activity session) was started. Required for timeline history
@@ -5865,7 +5868,7 @@ public type MicrosoftGraphActivityHistoryItem record {
     string? expirationDateTime?;
     # Set by the server. DateTime in UTC when the object was modified on the server
     string? lastModifiedDateTime?;
-    # Represents a user's activity within an application, enabling cross-device activity resumption via Windows Timeline.
+    # Represents a user activity in an application, capturing app identity, content URLs, visual elements, history items, and server-managed timestamps and status.
     MicrosoftGraphUserActivity activity?;
     # Optional. UTC DateTime when the activityHistoryItem (activity session) was last understood as active or finished - if null, activityHistoryItem status should be Ongoing
     string? lastActiveDateTime?;
@@ -5879,7 +5882,7 @@ public type MicrosoftGraphActivityHistoryItem record {
     MicrosoftGraphStatus|record {} status?;
 };
 
-# Represents a user's Planner context, exposing the plans and tasks associated with that user.
+# Represents Planner resources accessible to a user, including plans and tasks.
 public type MicrosoftGraphPlannerUser record {
     *MicrosoftGraphEntity;
     # Read-only. Nullable. Returns the plannerTasks assigned to the user
@@ -5888,25 +5891,25 @@ public type MicrosoftGraphPlannerUser record {
     MicrosoftGraphPlannerTask[] tasks?;
 };
 
-# Represents a Windows setting entity containing payload type, instances, and device association.
+# Represents a Windows setting associated with a user or device, including its instances and type.
 public type MicrosoftGraphWindowsSetting record {
     *MicrosoftGraphEntity;
     # The type of setting payloads contained in the instances navigation property
     string? payloadType?;
     # A collection of setting values for a given windowsSetting
     MicrosoftGraphWindowsSettingInstance[] instances?;
-    # Specifies the type of a Windows setting, such as roaming, backup, or an unknown future value.
+    # Enum indicating the Windows setting type: roaming, backup, or unknownFutureValue.
     MicrosoftGraphWindowsSettingType settingType?;
     # A unique identifier for the device the setting might belong to if it is of the settingType backup
     string? windowsDeviceId?;
 };
 
-# Represents a user's working time schedule entity, extending the base entity.
+# Represents a working time schedule entity extending the base Graph entity.
 public type MicrosoftGraphWorkingTimeSchedule record {
     *MicrosoftGraphEntity;
 };
 
-# Identifiers for a SharePoint item across its site, list, and tenant.
+# Contains SharePoint and OneDrive identifiers for a resource item.
 public type MicrosoftGraphSharepointIds record {
     # The unique identifier (guid) for the item's list in SharePoint
     string? listId?;
@@ -5924,7 +5927,7 @@ public type MicrosoftGraphSharepointIds record {
     string? siteId?;
 };
 
-# Represents the state of a license assignment, including source, status, and errors.
+# Represents the state of a license assignment for a user, including errors and disabled plans.
 public type MicrosoftGraphLicenseAssignmentState record {
     # Indicates whether the license is directly-assigned or inherited from a group. If directly-assigned, this field is null; if inherited through a group membership, this field contains the ID of the group. Read-Only
     string? assignedByGroup?;
@@ -5947,14 +5950,14 @@ public type SitesGetByPathDeleteOnenoteHeaders record {
     string ifMatch?;
 };
 
-# A legacy extended property supporting multiple string values.
+# Represents a legacy extended property with multiple string values.
 public type MicrosoftGraphMultiValueLegacyExtendedProperty record {
     *MicrosoftGraphEntity;
     # A collection of property values
     string[] value?;
 };
 
-# Audio conferencing details for an online meeting, including dial-in numbers and conference ID.
+# Audio conferencing details for an online meeting, including dial-in URLs and toll/toll-free numbers.
 public type MicrosoftGraphAudioConferencing record {
     # A URL to the externally-accessible web page that contains dial-in information
     string? dialinUrl?;
@@ -5970,7 +5973,7 @@ public type MicrosoftGraphAudioConferencing record {
     string[] tollNumbers?;
 };
 
-# Specifies the platform and version of an operating system.
+# Specifies the platform and version string of an operating system.
 public type MicrosoftGraphOperatingSystemSpecifications record {
     # The platform of the operating system (for example, 'Windows')
     string operatingSystemPlatform?;
@@ -5978,17 +5981,17 @@ public type MicrosoftGraphOperatingSystemSpecifications record {
     string operatingSystemVersion?;
 };
 
-# Enumeration defining the intended audience scope for a broadcast meeting.
+# Enumeration defining the intended audience for a broadcast meeting.
 public type MicrosoftGraphBroadcastMeetingAudience "roleIsAttendee"|"organization"|"everyone"|"unknownFutureValue";
 
-# Represents formatting properties for a chart point, including fill settings.
+# Represents the formatting properties applied to a workbook chart point.
 public type MicrosoftGraphWorkbookChartPointFormat record {
     *MicrosoftGraphEntity;
     # Represents the fill format of a chart, which includes background formatting information. Read-only
     MicrosoftGraphWorkbookChartFill|record {} fill?;
 };
 
-# Represents a single data point in a workbook chart, including its value and format.
+# Represents a single data point in a workbook chart series.
 public type MicrosoftGraphWorkbookChartPoint record {
     *MicrosoftGraphEntity;
     # The format properties of the chart point. Read-only
@@ -5997,15 +6000,15 @@ public type MicrosoftGraphWorkbookChartPoint record {
     MicrosoftGraphJson|record {} value?;
 };
 
-# Optional nullable object variant within the finishings anyOf composition.
+# Nullable object variant used in an anyOf composition for finishing options.
 public type FinishingsAnyOf22 record {
 };
 
-# Optional nullable object variant within the finishings anyOf composition.
+# Nullable object variant used in an anyOf composition for finishing options.
 public type FinishingsAnyOf21 record {
 };
 
-# An optional nullable object representing an alternative type variant.
+# Nullable object variant used in an anyOf composition for quality options.
 public type QualitiesAnyOf2 record {
 };
 
@@ -6045,10 +6048,10 @@ public type MicrosoftGraphChannelIdentity record {
     string? channelId?;
 };
 
-# Enumeration indicating how a user's work location was determined (e.g., manual, scheduled, automatic).
+# Indicates the source that determined the user's work location (e.g., manual, scheduled, automatic).
 public type MicrosoftGraphWorkLocationSource "none"|"manual"|"scheduled"|"automatic"|"unknownFutureValue";
 
-# Client-reported file system timestamps for creation, last modification, and last access of a file.
+# File system metadata including client-reported created, last modified, and last accessed timestamps.
 public type MicrosoftGraphFileSystemInfo record {
     # The UTC date and time the file was last accessed. Available for the recent file list only
     string? lastAccessedDateTime?;
@@ -6058,7 +6061,7 @@ public type MicrosoftGraphFileSystemInfo record {
     string? createdDateTime?;
 };
 
-# Identifies a user associated with a document insight, including their ID, display name, and email address.
+# Identity details of a user who shared an item, including email address, display name, and user ID.
 public type MicrosoftGraphInsightIdentity record {
     # The email address of the user who shared the item
     string? address?;
@@ -6068,16 +6071,16 @@ public type MicrosoftGraphInsightIdentity record {
     string? id?;
 };
 
-# Enumeration of color printing modes, including black-and-white, grayscale, color, and auto.
+# Specifies the color mode for a print job (e.g., blackAndWhite, grayscale, color, auto).
 public type MicrosoftGraphPrintColorMode "blackAndWhite"|"grayscale"|"color"|"auto"|"unknownFutureValue";
 
-# Base entity schema providing a unique identifier for all Microsoft Graph resources.
+# Base entity type providing a read-only unique identifier shared by all Microsoft Graph resources.
 public type MicrosoftGraphEntity record {
     # The unique identifier for an entity. Read-only
     string id?;
 };
 
-# Represents a document trending around a user, including weight, reference, and visualization metadata.
+# Represents a document trending around a user, with weight, resource reference, and visualization metadata.
 public type MicrosoftGraphTrending record {
     *MicrosoftGraphEntity;
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -6092,36 +6095,36 @@ public type MicrosoftGraphTrending record {
     MicrosoftGraphResourceVisualization|record {} resourceVisualization?;
 };
 
-# Enumeration of calendar event types: single instance, occurrence, exception, or series master.
+# Classifies a calendar event as a single instance, occurrence, exception, or series master.
 public type MicrosoftGraphEventType "singleInstance"|"occurrence"|"exception"|"seriesMaster";
 
-# Defines chat restrictions for a meeting, such as limiting messages to text only.
+# Defines chat restrictions applicable during a Teams meeting.
 public type MicrosoftGraphChatRestrictions record {
     # Indicates whether only text is allowed in the meeting chat. Optional
     boolean? allowTextOnly?;
 };
 
-# Represents the sensitivity label assigned to a Teams online meeting.
+# Represents a sensitivity label assignment applied to a Teams online meeting.
 public type MicrosoftGraphOnlineMeetingSensitivityLabelAssignment record {
     # The ID of the sensitivity label that is applied to the Teams meeting
     string? sensitivityLabelId?;
 };
 
-# Represents a breakdown of storage quota usage for a specific resource or service.
+# Represents a breakdown of storage quota usage for a specific resource.
 public type MicrosoftGraphStorageQuotaBreakdown record {
     *MicrosoftGraphEntity;
     # Human-readable name identifying the storage quota breakdown entry.
     string? displayName?;
-    # URL to the web interface for managing this storage quota allocation.
+    # URL to the web interface for managing this storage quota resource.
     string? manageWebUrl?;
     # Amount of storage consumed, in bytes, for this quota breakdown entry.
     decimal? used?;
 };
 
-# Enum indicating the publishing state of a Teams app: submitted, rejected, published, or unknownFutureValue.
+# Enum indicating the publishing state of a Teams app: submitted, rejected, or published.
 public type MicrosoftGraphTeamsAppPublishingState "submitted"|"rejected"|"published"|"unknownFutureValue";
 
-# Represents a OneNote notebook, including its sections, section groups, sharing status, and access links.
+# Represents a OneNote notebook, including its sections, section groups, and access links.
 public type MicrosoftGraphNotebook record {
     *MicrosoftGraphOnenoteEntityHierarchyModel;
     # The URL for the sections navigation property, which returns all the sections in the notebook. Read-only
@@ -6142,10 +6145,10 @@ public type MicrosoftGraphNotebook record {
     MicrosoftGraphOnenoteSection[] sections?;
 };
 
-# Enum indicating the archive status of a SharePoint site: recentlyArchived, fullyArchived, reactivating, or unknownFutureValue.
+# Enum representing the archive status of a SharePoint site.
 public type MicrosoftGraphSiteArchiveStatus "recentlyArchived"|"fullyArchived"|"reactivating"|"unknownFutureValue";
 
-# Represents a Viva Learning course activity assigned to a learner, including completion status and progress.
+# Represents a Viva Learning course activity assigned to a learner, including progress and status.
 public type MicrosoftGraphLearningCourseActivity record {
     *MicrosoftGraphEntity;
     # The ID of the learning content created in Viva Learning. Required
@@ -6158,7 +6161,7 @@ public type MicrosoftGraphLearningCourseActivity record {
     string learnerUserId?;
     # Date and time when the assignment was completed. Optional
     string? completedDateTime?;
-    # External identifier for the course activity from the learning provider.
+    # The external identifier for the course activity.
     string? externalcourseActivityId?;
     # The status of the course activity. The possible values are: notStarted, inProgress, completed. Required
     MicrosoftGraphCourseStatus|record {} status?;
@@ -6192,7 +6195,7 @@ public type SitesGetByPathListTermStoresQueries record {
     ("id"|"defaultLanguageTag"|"languageTags"|"groups"|"sets")[] dollarSelect?;
 };
 
-# Represents formatting options for chart data labels, including fill and font properties.
+# Represents the formatting options for chart data labels in a workbook, including fill and font settings.
 public type MicrosoftGraphWorkbookChartDataLabelFormat record {
     *MicrosoftGraphEntity;
     # Represents the fill format of the current chart data label. Read-only
@@ -6201,12 +6204,12 @@ public type MicrosoftGraphWorkbookChartDataLabelFormat record {
     MicrosoftGraphWorkbookChartFont|record {} font?;
 };
 
-# Represents a container for user protection scope definitions.
+# Represents a container for user protection scopes, extending the base entity.
 public type MicrosoftGraphUserProtectionScopeContainer record {
     *MicrosoftGraphEntity;
 };
 
-# Represents an installed instance of a Teams app within a team, chat, or user scope.
+# Represents an installed Teams app instance, including app details and consented permissions.
 public type MicrosoftGraphTeamsAppInstallation record {
     *MicrosoftGraphEntity;
     # The app that is installed
@@ -6227,11 +6230,11 @@ public type SitesLastModifiedByUserServiceProvisioningErrorsGetCount4573Queries 
     string dollarSearch?;
 };
 
-# Maps assignees to their order hints for ranking Planner task assignments.
+# A dictionary of order hints keyed by assignee, used to sort tasks per user.
 public type MicrosoftGraphPlannerOrderHintsByAssignee record {
 };
 
-# Represents a binary resource (e.g., image or file) associated with a OneNote page.
+# Represents a OneNote resource, including content stream and download URL.
 public type MicrosoftGraphOnenoteResource record {
     *MicrosoftGraphOnenoteEntityBaseModel;
     # The URL for downloading the content
@@ -6240,7 +6243,7 @@ public type MicrosoftGraphOnenoteResource record {
     string? content?;
 };
 
-# Represents the collection of axes for a workbook chart, including category, value, and series axes.
+# Represents the collection of axes (category, value, series) for a workbook chart.
 public type MicrosoftGraphWorkbookChartAxes record {
     *MicrosoftGraphEntity;
     # Represents the category axis in a chart. Read-only
@@ -6254,7 +6257,7 @@ public type MicrosoftGraphWorkbookChartAxes record {
 # Enumeration of possible processing states for a print job lifecycle.
 public type MicrosoftGraphPrintJobProcessingState "unknown"|"pending"|"processing"|"paused"|"stopped"|"completed"|"canceled"|"aborted"|"unknownFutureValue";
 
-# Defines minimum and maximum message size (in kilobytes) for rule conditions or exceptions.
+# Defines minimum and maximum message size (in kilobytes) for mail rule conditions.
 public type MicrosoftGraphSizeRange record {
     # The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply
     decimal? minimumSize?;
@@ -6262,7 +6265,7 @@ public type MicrosoftGraphSizeRange record {
     decimal? maximumSize?;
 };
 
-# Represents a folder containing contacts, supporting hierarchy, extended properties, and child folders.
+# Represents a folder for organizing contacts, supporting nested child folders.
 public type MicrosoftGraphContactFolder record {
     *MicrosoftGraphEntity;
     # The collection of multi-value extended properties defined for the contactFolder. Read-only. Nullable
@@ -6282,10 +6285,10 @@ public type MicrosoftGraphContactFolder record {
 # Enumeration of device or policy compliance status values.
 public type MicrosoftGraphComplianceStatus "unknown"|"notApplicable"|"compliant"|"remediated"|"nonCompliant"|"error"|"conflict"|"notAssigned";
 
-# Enumeration of available color themes for calendar display.
+# Enumeration of color theme options available for calendar display.
 public type MicrosoftGraphCalendarColor "auto"|"lightBlue"|"lightGreen"|"lightOrange"|"lightGray"|"lightYellow"|"lightTeal"|"lightPink"|"lightBrown"|"lightRed"|"maxColor";
 
-# Identifies a SharePoint content type by its unique ID and display name.
+# Represents a SharePoint content type reference, identified by ID and name.
 public type MicrosoftGraphContentTypeInfo record {
     # The name of the content type
     string? name?;
@@ -6293,16 +6296,16 @@ public type MicrosoftGraphContentTypeInfo record {
     string? id?;
 };
 
-# Represents a print job submitted to a printer, including configuration, status, documents, and tasks.
+# Represents a print job, including configuration, status, documents, and routing details.
 public type MicrosoftGraphPrintJob record {
     *MicrosoftGraphEntity;
     # The dateTimeOffset when the job was acknowledged. Read-only
     string? acknowledgedDateTime?;
     # Contains the destination job URL, if the job has been redirected to another printer
     string? redirectedTo?;
-    # Defines the configuration settings for a print job, such as orientation, color mode, copies, and media.
+    # Defines the full configuration for a print job, including media, quality, layout, and finishing settings.
     MicrosoftGraphPrintJobConfiguration configuration?;
-    # The user identity that submitted the print job.
+    # The user identity that created the print job.
     MicrosoftGraphUserIdentity|record {} createdBy?;
     # The collection of documents associated with this print job.
     MicrosoftGraphPrintDocument[] documents?;
@@ -6316,7 +6319,7 @@ public type MicrosoftGraphPrintJob record {
     string? redirectedFrom?;
     # A list of printTasks that were triggered by this print job
     MicrosoftGraphPrintTask[] tasks?;
-    # Represents the current status of a print job, including processing state and details.
+    # Represents the current processing status of a print job, including state and details.
     MicrosoftGraphPrintJobStatus status?;
 };
 
@@ -6329,14 +6332,14 @@ public type MicrosoftGraphExternalAuthenticationMethod record {
     string configurationId?;
 };
 
-# Represents a boolean (true/false) column type in a SharePoint list.
+# Represents a boolean column type in a SharePoint list, storing true/false values.
 public type MicrosoftGraphBooleanColumn record {
 };
 
-# Represents a Microsoft Entra user account with profile, authentication, and organizational properties.
+# Represents a Microsoft Entra user account with profile, authentication, and resource associations.
 public type MicrosoftGraphUser record {
     *MicrosoftGraphDirectoryObject;
-    # The scoped role memberships assigned to the user in administrative units.
+    # The scoped administrative unit role memberships assigned to the user.
     MicrosoftGraphScopedRoleMembership[] scopedRoleMemberOf?;
     # The name of the company that the user is associated with. This property can be useful for describing the company that a guest comes from. The maximum length is 64 characters.Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)
     string? companyName?;
@@ -6354,7 +6357,7 @@ public type MicrosoftGraphUser record {
     string[] skills?;
     # Shows the timestamp for the latest change to the externalUserState property. Requires $select to retrieve. Supports $filter (eq, ne, not , in)
     string? externalUserStateChangeDateTime?;
-    # Entry point to the user's OneNote resources and notebooks.
+    # The user's OneNote notebooks and related resources.
     MicrosoftGraphOnenote|record {} onenote?;
     # true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Microsoft Entra ID. Read-only. Requires $select to retrieve. Supports $filter (eq, ne, not, in, and eq on null values)
     boolean? onPremisesSyncEnabled?;
@@ -6372,7 +6375,7 @@ public type MicrosoftGraphUser record {
     string? preferredName?;
     # The state or province in the user's address. Maximum length is 128 characters. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)
     string? state?;
-    # The user's current presence status in Microsoft Teams.
+    # The user's presence status, including availability and activity.
     MicrosoftGraphPresence|record {} presence?;
     # The user's events. Default is to show Events under the Default Calendar. Read-only. Nullable
     MicrosoftGraphEvent[] events?;
@@ -6394,7 +6397,7 @@ public type MicrosoftGraphUser record {
     MicrosoftGraphExtension[] extensions?;
     # The primary cellular telephone number for the user. Read-only for users synced from the on-premises directory. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values) and $search
     string? mobilePhone?;
-    # Delegated permission grants for client applications acting on behalf of the user.
+    # Delegated permission grants authorizing this user to access an application.
     MicrosoftGraphOAuth2PermissionGrant[] oauth2PermissionGrants?;
     # A list for the user to enumerate the schools they attended. Requires $select to retrieve
     string[] schools?;
@@ -6412,13 +6415,13 @@ public type MicrosoftGraphUser record {
     MicrosoftGraphResourceSpecificPermissionGrant[] permissionGrants?;
     # The users and contacts that report to the user. (The users and contacts that have their manager property set to this user.) Read-only. Nullable. Supports $expand
     MicrosoftGraphDirectoryObject[] directReports?;
-    # Defines synchronization behavior between on-premises Active Directory and Microsoft Entra ID.
+    # Controls on-premises synchronization behavior for the user object.
     MicrosoftGraphOnPremisesSyncBehavior|record {} onPremisesSyncBehavior?;
     # The city where the user is located. Maximum length is 128 characters. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)
     string? city?;
     # The name displayed in the address book for the user. This value is usually the combination of the user's first name, middle initial, and family name. This property is required when a user is created and it can't be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values), $orderby, and $search
     string? displayName?;
-    # The Microsoft Teams teams that the user is a direct member of.
+    # The Microsoft Teams teams that the user is a member of.
     MicrosoftGraphTeam[] joinedTeams?;
     # Information about a meeting, including the URL used to join a meeting, the attendees list, and the description
     MicrosoftGraphOnlineMeeting[] onlineMeetings?;
@@ -6498,7 +6501,7 @@ public type MicrosoftGraphUser record {
     string? country?;
     # Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect. Read-only. Requires $select to retrieve
     string? onPremisesDistinguishedName?;
-    # Authorization details including certificate user IDs for the user.
+    # Authorization details used for certificate-based authentication scenarios.
     MicrosoftGraphAuthorizationInfo|record {} authorizationInfo?;
     # The SMTP address for the user, for example, jeff@contoso.com. Changes to this property update the user's proxyAddresses collection to include the value as an SMTP address. This property can't contain accent characters.  NOTE: We don't recommend updating this property for Azure AD B2C user profiles. Use the otherMails property instead. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith, and eq on null values)
     string? mail?;
@@ -6522,7 +6525,7 @@ public type MicrosoftGraphUser record {
     string[] responsibilities?;
     # Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Microsoft Entra ID via Microsoft Entra Connect. Read-only. Requires $select to retrieve. Supports $filter (eq, ne, not, ge, le, in, startsWith)
     string? onPremisesUserPrincipalName?;
-    # Collection of SharePoint sites the user is following.
+    # SharePoint sites the user is following.
     MicrosoftGraphSite[] followedSites?;
     # Do not use in Microsoft Graph. Manage this property through the Microsoft 365 admin center instead. Represents whether the user should be included in the Outlook global address list. See Known issue
     boolean? showInAddressList?;
@@ -6530,7 +6533,7 @@ public type MicrosoftGraphUser record {
     MicrosoftGraphUserDataSecurityAndGovernance|record {} dataSecurityAndGovernance?;
     # The groups, including nested groups, and directory roles that a user is a member of. Nullable
     MicrosoftGraphDirectoryObject[] transitiveMemberOf?;
-    # User-level settings and preferences for the account.
+    # The user's settings, including regional and language preferences.
     MicrosoftGraphUserSettings|record {} settings?;
     # Represents relationships between a user and items such as OneDrive for work or school documents, calculated using advanced analytics and machine learning techniques. Read-only. Nullable
     MicrosoftGraphItemInsights|record {} insights?;
@@ -6546,9 +6549,9 @@ public type MicrosoftGraphUser record {
     string? onPremisesImmutableId?;
     # Ad hoc calls associated with the user. Read-only. Nullable
     MicrosoftGraphAdhocCall[] adhocCalls?;
-    # Root object for the user's cloud clipboard data.
+    # The user's cloud clipboard root, containing clipboard item data.
     MicrosoftGraphCloudClipboardRoot|record {} cloudClipboard?;
-    # Collection of Microsoft Teams chats the user is a participant in.
+    # Microsoft Teams chats in which the user is a participant.
     MicrosoftGraphChat[] chats?;
     # Security identifier (SID) of the user, used in Windows scenarios. Read-only. Returned by default. Supports $select and $filter (eq, not, ge, le, startsWith)
     string? securityIdentifier?;
@@ -6590,7 +6593,7 @@ public type MicrosoftGraphUser record {
     boolean? isManagementRestricted?;
     # The user's calendar groups. Read-only. Nullable
     MicrosoftGraphCalendarGroup[] calendarGroups?;
-    # Print-related resources and settings associated with the user.
+    # The user's Universal Print resources, including printers and jobs.
     MicrosoftGraphUserPrint|record {} print?;
     # Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Requires $select to retrieve. Supports $filter (eq, ne, not , ge, le, in, startsWith)
     string? employeeType?;
@@ -6602,11 +6605,11 @@ public type MicrosoftGraphUser record {
     string? faxNumber?;
     # The managed devices associated with the user
     MicrosoftGraphManagedDevice[] managedDevices?;
-    # Outlook services and settings available to the user.
+    # The user's Outlook resources, including categories and master categories.
     MicrosoftGraphOutlookUser|record {} outlook?;
 };
 
-# Represents a meeting attendee, including response status and proposed alternate times.
+# Represents a calendar event attendee, including response status and proposed alternate times.
 public type MicrosoftGraphAttendee record {
     *MicrosoftGraphAttendeeBase;
     # An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property isn't included in a response of a GET event
@@ -6615,10 +6618,10 @@ public type MicrosoftGraphAttendee record {
     MicrosoftGraphResponseStatus|record {} status?;
 };
 
-# Enumeration indicating the ordinal week position within a month.
+# Indicates the ordinal week position within a month: first, second, third, fourth, or last.
 public type MicrosoftGraphWeekIndex "first"|"second"|"third"|"fourth"|"last";
 
-# Represents a reference to an item stored in a remote drive or SharePoint location.
+# Represents a reference to an item in a remote drive or SharePoint location, including metadata such as file, folder, image, video, sharing state, and identity information.
 public type MicrosoftGraphRemoteItem record {
     # Image metadata, if the item is an image. Read-only
     MicrosoftGraphImage|record {} image?;
@@ -6660,7 +6663,7 @@ public type MicrosoftGraphRemoteItem record {
     MicrosoftGraphFileSystemInfo|record {} fileSystemInfo?;
 };
 
-# Represents a member assigned to a teamwork tag, including user and tenant identifiers.
+# Represents a member associated with a teamwork tag, extending the base entity.
 public type MicrosoftGraphTeamworkTagMember record {
     *MicrosoftGraphEntity;
     # The member's display name
@@ -6671,10 +6674,10 @@ public type MicrosoftGraphTeamworkTagMember record {
     string? userId?;
 };
 
-# Enumeration of identity types for a Teams user, such as AAD, guest, or phone user.
+# Enumeration of user identity types in Microsoft Teams teamwork context.
 public type MicrosoftGraphTeamworkUserIdentityType "aadUser"|"onPremiseAadUser"|"anonymousGuest"|"federatedUser"|"personalMicrosoftAccountUser"|"skypeUser"|"phoneUser"|"unknownFutureValue"|"emailUser";
 
-# Represents the Excel application that manages a workbook, including its calculation mode.
+# Represents the Excel workbook application settings, extending the base entity.
 public type MicrosoftGraphWorkbookApplication record {
     *MicrosoftGraphEntity;
     # Returns the calculation mode used in the workbook. The possible values are: Automatic, AutomaticExceptTables, Manual
@@ -6691,10 +6694,10 @@ public type SitesContentTypesGetBaseTypesQueries record {
     ("id"|"associatedHubsUrls"|"description"|"documentSet"|"documentTemplate"|"group"|"hidden"|"inheritedFrom"|"isBuiltIn"|"name"|"order"|"parentId"|"propagateChanges"|"readOnly"|"sealed"|"base"|"baseTypes"|"columnLinks"|"columnPositions"|"columns")[] dollarSelect?;
 };
 
-# Enumeration indicating the current migration state: inProgress, completed, or unknownFutureValue.
+# Enumeration indicating the migration state: inProgress, completed, or unknownFutureValue.
 public type MicrosoftGraphMigrationMode "inProgress"|"completed"|"unknownFutureValue";
 
-# Contains URLs for opening a OneNote section in the native client or on the web.
+# Contains URL links to open a OneNote section in the native client or on the web.
 public type MicrosoftGraphSectionLinks record {
     # Opens the section in the OneNote native client if it's installed
     MicrosoftGraphExternalLink|record {} oneNoteClientUrl?;
@@ -6702,10 +6705,10 @@ public type MicrosoftGraphSectionLinks record {
     MicrosoftGraphExternalLink|record {} oneNoteWebUrl?;
 };
 
-# Enumeration of Teams app resource-specific permission types: delegated, application, or unknownFutureValue.
+# Enumeration of resource-specific permission types for a Teams app: delegated, application, or unknownFutureValue.
 public type MicrosoftGraphTeamsAppResourceSpecificPermissionType "delegated"|"application"|"unknownFutureValue";
 
-# Represents a sign-in identity for a user, including issuer, assigned ID, and sign-in type.
+# Represents a sign-in identity for a user, including issuer, issuerAssignedId, and signInType.
 public type MicrosoftGraphObjectIdentity record {
     # Specifies the user sign-in types in your directory, such as emailAddress, userName, federated, or userPrincipalName. federated represents a unique identifier for a user from an issuer that can be in any format chosen by the issuer. Setting or updating a userPrincipalName identity updates the value of the userPrincipalName property on the user object. The validations performed on the userPrincipalName property on the user object, for example, verified domains and acceptable characters, are performed when setting or updating a userPrincipalName identity. Extra validation is enforced on issuerAssignedId when the sign-in type is set to emailAddress or userName. This property can also be set to any custom string.  For more information about filtering behavior for this property, see Filtering on the identities property of a user
     string? signInType?;
@@ -6715,7 +6718,7 @@ public type MicrosoftGraphObjectIdentity record {
     string? issuer?;
 };
 
-# Represents a team's work schedule, including shifts, time off, and scheduling settings.
+# Represents a team's work schedule, including shifts, time off, open shifts, and related request configurations.
 public type MicrosoftGraphSchedule record {
     *MicrosoftGraphEntity;
     # Indicates whether copied shifts include activities from the original shift
@@ -6768,10 +6771,10 @@ public type MicrosoftGraphSchedule record {
     MicrosoftGraphSwapShiftsChangeRequest[] swapShiftsChangeRequests?;
 };
 
-# Enumeration of action flags that can be applied to an email message.
+# Enum representing the action flag applied to a message, such as reply, forward, followUp, or review.
 public type MicrosoftGraphMessageActionFlag "any"|"call"|"doNotForward"|"followUp"|"fyi"|"forward"|"noResponseNecessary"|"read"|"reply"|"replyToAll"|"review";
 
-# Represents an Excel workbook worksheet, including its charts, tables, and protection settings.
+# Represents a worksheet in a workbook, containing charts, tables, named items, pivot tables, and protection settings.
 public type MicrosoftGraphWorkbookWorksheet record {
     *MicrosoftGraphEntity;
     # The list of charts that are part of the worksheet. Read-only
@@ -6792,7 +6795,7 @@ public type MicrosoftGraphWorkbookWorksheet record {
     MicrosoftGraphWorkbookPivotTable[] pivotTables?;
 };
 
-# Represents an open shift item with a slot count, extending the base shift item properties.
+# An open shift item extending ShiftItem with the number of available open slots.
 public type MicrosoftGraphOpenShiftItem record {
     *MicrosoftGraphShiftItem;
     # Count of the number of slots for the given open shift
@@ -6809,7 +6812,7 @@ public type SitesGetByPathGetCreatedByUserQueries record {
     ("id"|"deletedDateTime"|"aboutMe"|"accountEnabled"|"ageGroup"|"assignedLicenses"|"assignedPlans"|"authorizationInfo"|"birthday"|"businessPhones"|"city"|"companyName"|"consentProvidedForMinor"|"country"|"createdDateTime"|"creationType"|"customSecurityAttributes"|"department"|"deviceEnrollmentLimit"|"displayName"|"employeeHireDate"|"employeeId"|"employeeLeaveDateTime"|"employeeOrgData"|"employeeType"|"externalUserState"|"externalUserStateChangeDateTime"|"faxNumber"|"givenName"|"hireDate"|"identities"|"identityParentId"|"imAddresses"|"interests"|"isManagementRestricted"|"isResourceAccount"|"jobTitle"|"lastPasswordChangeDateTime"|"legalAgeGroupClassification"|"licenseAssignmentStates"|"mail"|"mailboxSettings"|"mailNickname"|"mobilePhone"|"mySite"|"officeLocation"|"onPremisesDistinguishedName"|"onPremisesDomainName"|"onPremisesExtensionAttributes"|"onPremisesImmutableId"|"onPremisesLastSyncDateTime"|"onPremisesProvisioningErrors"|"onPremisesSamAccountName"|"onPremisesSecurityIdentifier"|"onPremisesSyncEnabled"|"onPremisesUserPrincipalName"|"otherMails"|"passwordPolicies"|"passwordProfile"|"pastProjects"|"postalCode"|"preferredDataLocation"|"preferredLanguage"|"preferredName"|"print"|"provisionedPlans"|"proxyAddresses"|"responsibilities"|"schools"|"securityIdentifier"|"serviceProvisioningErrors"|"showInAddressList"|"signInActivity"|"signInSessionsValidFromDateTime"|"skills"|"state"|"streetAddress"|"surname"|"usageLocation"|"userPrincipalName"|"userType"|"activities"|"adhocCalls"|"agreementAcceptances"|"appRoleAssignments"|"authentication"|"calendar"|"calendarGroups"|"calendars"|"calendarView"|"chats"|"cloudClipboard"|"cloudPCs"|"contactFolders"|"contacts"|"createdObjects"|"dataSecurityAndGovernance"|"deviceManagementTroubleshootingEvents"|"directReports"|"drive"|"drives"|"employeeExperience"|"events"|"extensions"|"followedSites"|"inferenceClassification"|"insights"|"joinedTeams"|"licenseDetails"|"mailFolders"|"managedAppRegistrations"|"managedDevices"|"manager"|"memberOf"|"messages"|"oauth2PermissionGrants"|"onenote"|"onlineMeetings"|"onPremisesSyncBehavior"|"outlook"|"ownedDevices"|"ownedObjects"|"people"|"permissionGrants"|"photo"|"photos"|"planner"|"presence"|"registeredDevices"|"scopedRoleMemberOf"|"settings"|"solutions"|"sponsors"|"teamwork"|"todo"|"transitiveMemberOf")[] dollarSelect?;
 };
 
-# Represents retention label settings controlling document behavior, update, deletion, and lock permissions during a retention period.
+# Read-only settings of a retention label applied to an item, governing retention behavior and allowed actions.
 public type MicrosoftGraphRetentionLabelSettings record {
     # Describes the item behavior during retention period. The possible values are: doNotRetain, retain, retainAsRecord, retainAsRegulatoryRecord, unknownFutureValue. Read-only
     MicrosoftGraphSecurityBehaviorDuringRetentionPeriod|record {} behaviorDuringRetentionPeriod?;
@@ -6825,7 +6828,7 @@ public type MicrosoftGraphRetentionLabelSettings record {
     boolean? isMetadataUpdateAllowed?;
 };
 
-# Represents a user's presence information, including availability, activity, work location, out-of-office settings, and status message.
+# A user's presence information, including availability, activity, work location, and status message.
 public type MicrosoftGraphPresence record {
     *MicrosoftGraphEntity;
     # Represents the user’s aggregated work location state
@@ -6845,7 +6848,7 @@ public type MicrosoftGraphPresence record {
 # The reason for which a user has been flagged
 public type MicrosoftGraphManagedAppFlaggedReason "none"|"rootedDevice";
 
-# Represents the preferred view configuration for a folder, including sort order, sort field, and view type.
+# Display preferences for a folder, including sort order, sort field, and view type.
 public type MicrosoftGraphFolderView record {
     # If true, indicates that items should be sorted in descending order. Otherwise, items should be sorted ascending
     string? sortOrder?;
@@ -6855,7 +6858,7 @@ public type MicrosoftGraphFolderView record {
     string? sortBy?;
 };
 
-# Represents a group lifecycle policy defining expiration rules, renewal periods, and notification settings for Microsoft 365 groups.
+# A policy defining the expiration and renewal rules for Microsoft 365 groups.
 public type MicrosoftGraphGroupLifecyclePolicy record {
     *MicrosoftGraphEntity;
     # List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon
@@ -6899,7 +6902,7 @@ public type SitesGetByPathGetOnenoteQueries record {
 # Enumeration of print job events, such as jobStarted or unknownFutureValue.
 public type MicrosoftGraphPrintEvent "jobStarted"|"unknownFutureValue";
 
-# Represents a DLP policy violation on a chat message, including actions and verdicts.
+# Represents a DLP policy violation detected on a chat message, including actions and verdict.
 public type MicrosoftGraphChatMessagePolicyViolation record {
     # Justification text provided by the sender of the message when overriding a policy violation
     string? justificationText?;
@@ -6913,7 +6916,7 @@ public type MicrosoftGraphChatMessagePolicyViolation record {
     MicrosoftGraphChatMessagePolicyViolationVerdictDetailsTypes|record {} verdictDetails?;
 };
 
-# Represents a user reaction to a chat message, including type, name, and timestamp.
+# Represents a user's emoji or custom reaction to a chat message.
 public type MicrosoftGraphChatMessageReaction record {
     # The reaction type. Supported values include Unicode characters, custom, and some backward-compatible reaction types, such as like, angry, sad, laugh, heart, and surprised
     string reactionType?;
@@ -6924,11 +6927,11 @@ public type MicrosoftGraphChatMessageReaction record {
     # The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     @constraint:String {pattern: re `^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$`}
     string createdDateTime?;
-    # Represents the identity set of a user who reacted to a chat message.
+    # Represents the set of identities associated with a reaction on a chat message.
     MicrosoftGraphChatMessageReactionIdentitySet user?;
 };
 
-# Represents a file, folder, or other item stored in a drive, extending BaseItem with rich metadata facets.
+# Represents a file, folder, or other item stored in a OneDrive or SharePoint drive.
 public type MicrosoftGraphDriveItem record {
     *MicrosoftGraphBaseItem;
     # Search metadata, if the item is from a search result. Read-only
@@ -6999,11 +7002,11 @@ public type MicrosoftGraphDriveItem record {
     MicrosoftGraphFileSystemInfo|record {} fileSystemInfo?;
 };
 
-# Represents client output extensions returned after a WebAuthn authentication operation.
+# Represents client output extensions returned during a WebAuthn authentication operation.
 public type MicrosoftGraphWebauthnAuthenticationExtensionsClientOutputs record {
 };
 
-# Defines the set of protection options controlling permitted actions on a protected Excel worksheet.
+# Defines the set of protection options controlling allowed actions on a protected worksheet.
 public type MicrosoftGraphWorkbookWorksheetProtectionOptions record {
     # Indicates whether the worksheet protection option to allow the use of the pivot table feature is enabled
     boolean allowPivotTables?;
@@ -7057,7 +7060,7 @@ public type SitesSiteGetActivitiesByInterval9468Queries record {
     ("id"|"access"|"create"|"delete"|"edit"|"endDateTime"|"incompleteData"|"isTrending"|"move"|"startDateTime"|"activities")[] dollarSelect?;
 };
 
-# Visual and descriptive metadata for rendering a resource item in a UI experience.
+# Metadata for rendering a document or file resource in a user experience.
 public type MicrosoftGraphResourceVisualization record {
     # A path leading to the folder in which the item is stored
     string? containerWebUrl?;
@@ -7077,7 +7080,7 @@ public type MicrosoftGraphResourceVisualization record {
     string? containerDisplayName?;
 };
 
-# Represents a detected malware entity on a Windows device, including severity, state, and category.
+# Represents a detected malware instance and its current remediation state on a Windows device.
 public type MicrosoftGraphWindowsDeviceMalwareState record {
     *MicrosoftGraphEntity;
     # Initial detection datetime of the malware
@@ -7102,7 +7105,7 @@ public type MicrosoftGraphWindowsDeviceMalwareState record {
     MicrosoftGraphWindowsMalwareCategory|record {} category?;
 };
 
-# Represents the endpoint protection and antimalware status of a Windows device.
+# Represents the endpoint protection and Windows Defender status for a managed Windows device.
 public type MicrosoftGraphWindowsProtectionState record {
     *MicrosoftGraphEntity;
     # Current endpoint protection engine's version
@@ -7153,18 +7156,18 @@ public type MicrosoftGraphWindowsProtectionState record {
 
 # Represents the current processing state of a license assignment.
 public type MicrosoftGraphLicenseProcessingState record {
-    # The current processing state of the license assignment.
+    # Current processing state of the license assignment.
     string? state?;
 };
 
-# Represents a base directory object in Azure AD, including soft-delete timestamp.
+# Base type representing an Azure Active Directory directory object with deletion tracking.
 public type MicrosoftGraphDirectoryObject record {
     *MicrosoftGraphEntity;
     # Date and time when this object was deleted. Always null when the object hasn't been deleted
     string? deletedDateTime?;
 };
 
-# Extends IdentitySet with SharePoint-specific group and user identity information.
+# Extends IdentitySet with SharePoint-specific user, site group, and SharePoint group identities.
 public type MicrosoftGraphSharePointIdentitySet record {
     *MicrosoftGraphIdentitySet;
     # The SharePoint group associated with this action, identified by a globally unique ID. Use this property instead of siteGroup when available. Optional
@@ -7177,10 +7180,10 @@ public type MicrosoftGraphSharePointIdentitySet record {
     MicrosoftGraphIdentity|record {} group?;
 };
 
-# Enumeration of participant roles in an online meeting: attendee, presenter, producer, or coorganizer.
+# Defines the participant role in an online meeting: attendee, presenter, producer, or coorganizer.
 public type MicrosoftGraphOnlineMeetingRole "attendee"|"presenter"|"unknownFutureValue"|"producer"|"coorganizer";
 
-# Formatting properties for a workbook chart legend, including fill and font attributes. Read-only.
+# Formatting properties for a workbook chart legend, including fill and font styling.
 public type MicrosoftGraphWorkbookChartLegendFormat record {
     *MicrosoftGraphEntity;
     # Represents the fill format of an object, which includes background formating information. Read-only
@@ -7189,7 +7192,7 @@ public type MicrosoftGraphWorkbookChartLegendFormat record {
     MicrosoftGraphWorkbookChartFont|record {} font?;
 };
 
-# Represents an identity with a unique identifier and display name for a user, group, or application actor.
+# Represents an identity with a unique identifier and display name for a user, group, or app.
 public type MicrosoftGraphIdentity record {
     # The display name of the identity.For drive items, the display name might not always be available or up to date. For example, if a user changes their display name the API might show the new value in a future response, but the items associated with the user don't show up as changed when using delta
     string? displayName?;
@@ -7207,17 +7210,17 @@ public type SitesGetByPathGetDriveQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"driveType"|"owner"|"quota"|"sharePointIds"|"system"|"createdByUser"|"lastModifiedByUser"|"bundles"|"following"|"items"|"list"|"root"|"special")[] dollarSelect?;
 };
 
-# Represents an authentication method registered to a user, including its creation timestamp.
+# Represents a registered authentication method for a user, including its creation timestamp.
 public type MicrosoftGraphAuthenticationMethod record {
     *MicrosoftGraphEntity;
     # Represents the date and time when an entity was created. Read-only
     string? createdDateTime?;
 };
 
-# Enum specifying duplex printing mode: flipOnLongEdge, flipOnShortEdge, oneSided, or unknownFutureValue.
+# Enum specifying the duplex printing mode for a print job.
 public type MicrosoftGraphPrintDuplexMode "flipOnLongEdge"|"flipOnShortEdge"|"oneSided"|"unknownFutureValue";
 
-# Base representation of a SharePoint site page, including layout type, title, and publishing state.
+# Base type representing a page within a SharePoint site, including layout, title, and publishing state.
 public type MicrosoftGraphBaseSitePage record {
     *MicrosoftGraphBaseItem;
     # The name of the page layout of the page. The possible values are: microsoftReserved, article, home, unknownFutureValue
@@ -7272,13 +7275,13 @@ public type ConnectionConfig record {|
     boolean laxDataBinding = true;
 |};
 
-# Base time zone object containing a standard or custom time zone name.
+# Base type representing a time zone identified by its standard name.
 public type MicrosoftGraphTimeZoneBase record {
     # The name of a time zone. It can be a standard time zone name such as 'Hawaii-Aleutian Standard Time', or 'Customized Time Zone' for a custom time zone
     string? name?;
 };
 
-# Represents a person entity with contact details, professional info, and communication data.
+# Represents a person entity with contact details, professional info, and relevance scoring.
 public type MicrosoftGraphPerson record {
     *MicrosoftGraphEntity;
     # The person's birthday
@@ -7323,7 +7326,7 @@ public type MicrosoftGraphPerson record {
 
 # Represents file metadata including MIME type, content hashes, and processing state.
 public type MicrosoftGraphFile record {
-    # Indicates whether the file is currently being processed for metadata extraction.
+    # Indicates whether the file's metadata is currently being processed.
     boolean? processingMetadata?;
     # Hashes of the file's binary content, if available. Read-only
     MicrosoftGraphHashes|record {} hashes?;
@@ -7331,7 +7334,7 @@ public type MicrosoftGraphFile record {
     string? mimeType?;
 };
 
-# A chat message directed at a specific recipient, extending the base ChatMessage schema.
+# Represents a chat message directed to a specific recipient identity.
 public type MicrosoftGraphTargetedChatMessage record {
     *MicrosoftGraphChatMessage;
     # The identity of the specific recipient targeted by this chat message.
@@ -7369,10 +7372,10 @@ public type SitesListPermissionsQueries record {
 # AppLogUploadStatus
 public type MicrosoftGraphAppLogUploadState "pending"|"completed"|"failed"|"unknownFutureValue";
 
-# Enum representing print task processing states: pending, processing, completed, aborted, or unknownFutureValue.
+# Enumeration of print task processing states: pending, processing, completed, aborted, or unknownFutureValue.
 public type MicrosoftGraphPrintTaskProcessingState "pending"|"processing"|"completed"|"aborted"|"unknownFutureValue";
 
-# Represents a term store group containing term sets, with scope, display name, and creation metadata.
+# Represents a term store group containing sets of terms, with scope, display name, and creation metadata.
 public type MicrosoftGraphTermStoreGroup record {
     *MicrosoftGraphEntity;
     # ID of the parent site of this group
@@ -7417,7 +7420,7 @@ public type SitesGetByPathListExternalColumnsQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Contains URLs to open a OneNote notebook in the native client or on the web.
+# URLs for opening a OneNote notebook in the native client or OneNote on the web.
 public type MicrosoftGraphNotebookLinks record {
     # Opens the notebook in the OneNote native client if it's installed
     MicrosoftGraphExternalLink|record {} oneNoteClientUrl?;
@@ -7425,13 +7428,13 @@ public type MicrosoftGraphNotebookLinks record {
     MicrosoftGraphExternalLink|record {} oneNoteWebUrl?;
 };
 
-# Contains archival status details for a SharePoint site collection.
+# Contains archival status details for a SharePoint site collection, retrieved via $select.
 public type MicrosoftGraphSiteArchivalDetails record {
     # Represents the current archive status of the site collection. Requires $select to retrieve. The possible values are: recentlyArchived, fullyArchived, reactivating, unknownFutureValue
     MicrosoftGraphSiteArchiveStatus|record {} archiveStatus?;
 };
 
-# Enum indicating the type of chat: oneOnOne, group, meeting, or unknownFutureValue.
+# Enumeration of chat conversation types: oneOnOne, group, meeting, or unknownFutureValue.
 public type MicrosoftGraphChatType "oneOnOne"|"group"|"meeting"|"unknownFutureValue";
 
 # Represents the Queries record for the operation: sitesSiteGetSite
@@ -7444,7 +7447,7 @@ public type SitesSiteGetSiteQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"displayName"|"error"|"isPersonalSite"|"root"|"sharepointIds"|"siteCollection"|"createdByUser"|"lastModifiedByUser"|"analytics"|"columns"|"contentTypes"|"drive"|"drives"|"externalColumns"|"items"|"lists"|"onenote"|"operations"|"pages"|"permissions"|"sites"|"termStore"|"termStores")[] dollarSelect?;
 };
 
-# Container entity that aggregates content activity logs for data governance tracking.
+# Container entity that holds a collection of content activity logs for processing tracking.
 public type MicrosoftGraphActivitiesContainer record {
     *MicrosoftGraphEntity;
     # Collection of activity logs related to content processing
@@ -7535,14 +7538,18 @@ public type SitesSiteContentTypesGetCompatibleHubContentTypesQueries record {
     ("id"|"associatedHubsUrls"|"description"|"documentSet"|"documentTemplate"|"group"|"hidden"|"inheritedFrom"|"isBuiltIn"|"name"|"order"|"parentId"|"propagateChanges"|"readOnly"|"sealed"|"base"|"baseTypes"|"columnLinks"|"columnPositions"|"columns")[] dollarSelect?;
 };
 
-# Paginated collection of base site page resources with count support.
+# Represents a nullable SharePoint site result object, which may be null.
+public type NullableSiteResult record {
+};
+
+# Paginated collection response containing an array of base site page objects.
 public type MicrosoftGraphBaseSitePageCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
     # Array of base site page objects returned in the collection.
     MicrosoftGraphBaseSitePage[] value?;
 };
 
-# Contains EXIF metadata for a photo, including camera settings, orientation, and capture timestamp.
+# Represents EXIF metadata and camera settings extracted from a photo file.
 public type MicrosoftGraphPhoto record {
     # The numerator for the exposure time fraction from the camera. Read-only
     decimal|string|ReferenceNumeric? exposureNumerator?;
@@ -7564,7 +7571,7 @@ public type MicrosoftGraphPhoto record {
     decimal|string|ReferenceNumeric? focalLength?;
 };
 
-# Represents a user's shift availability, including recurrence pattern, time zone, and preferred time slots.
+# Represents a user's shift availability including recurrence, time zone, and time slots.
 public type MicrosoftGraphShiftAvailability record {
     # Specifies the pattern for recurrence
     MicrosoftGraphPatternedRecurrence|record {} recurrence?;
@@ -7574,7 +7581,7 @@ public type MicrosoftGraphShiftAvailability record {
     MicrosoftGraphTimeRange[] timeSlots?;
 };
 
-# Defines a lookup column configuration referencing a source list, column, and multi-value settings.
+# Defines configuration for a SharePoint list column that looks up values from another list.
 public type MicrosoftGraphLookupColumn record {
     # The unique identifier of the lookup source list
     string? listId?;
@@ -7588,10 +7595,10 @@ public type MicrosoftGraphLookupColumn record {
     string? columnName?;
 };
 
-# Enumeration of chat message types: message, chatEvent, typing, systemEventMessage, or unknownFutureValue.
+# Enum indicating the type of a chat message (e.g., message, chatEvent, typing).
 public type MicrosoftGraphChatMessageType "message"|"chatEvent"|"typing"|"unknownFutureValue"|"systemEventMessage";
 
-# Represents a schedule change request with sender, manager, state, and assignment details.
+# Represents a request to change a schedule, including sender, manager, and state details.
 public type MicrosoftGraphScheduleChangeRequest record {
     *MicrosoftGraphChangeTrackedEntity;
     # The message sent by the sender of the scheduleChangeRequest. Optional
@@ -7612,12 +7619,12 @@ public type MicrosoftGraphScheduleChangeRequest record {
     MicrosoftGraphScheduleChangeRequestActor|record {} assignedTo?;
 };
 
-# Represents an open extension that inherits base entity properties for storing custom data.
+# Represents an open extension that allows adding custom properties to a resource.
 public type MicrosoftGraphExtension record {
     *MicrosoftGraphEntity;
 };
 
-# Base model for OneNote entities, providing a self-reference endpoint URL.
+# Base model for OneNote entities, providing a self-referencing endpoint URL.
 public type MicrosoftGraphOnenoteEntityBaseModel record {
     *MicrosoftGraphEntity;
     # The endpoint where you can get details about the page. Read-only
@@ -7634,7 +7641,7 @@ public type SitesGetAnalyticsQueries record {
     ("id"|"allTime"|"itemActivityStats"|"lastSevenDays")[] dollarSelect?;
 };
 
-# Encapsulates meeting participant details, including the organizer and list of attendees.
+# Represents the participants of a meeting, including attendees and the organizer.
 public type MicrosoftGraphMeetingParticipants record {
     # Information about the meeting attendees
     MicrosoftGraphMeetingParticipantInfo[] attendees?;
@@ -7661,7 +7668,7 @@ public type MicrosoftGraphFido2AuthenticationMethod record {
     MicrosoftGraphWebauthnPublicKeyCredential|record {} publicKeyCredential?;
 };
 
-# Represents a section within a OneNote notebook, containing pages and navigation links.
+# Represents a OneNote section containing pages, with navigation links to its parent notebook and section group.
 public type MicrosoftGraphOnenoteSection record {
     *MicrosoftGraphOnenoteEntityHierarchyModel;
     # Indicates whether this is the user's default section. Read-only
@@ -7678,18 +7685,18 @@ public type MicrosoftGraphOnenoteSection record {
     MicrosoftGraphSectionGroup|record {} parentSectionGroup?;
 };
 
-# Enum flags representing actions performed on a chat message, such as reaction events.
+# Enumeration of flag-combinable actions on a chat message, such as reaction added or removed.
 public type MicrosoftGraphChatMessageActions "reactionAdded"|"reactionRemoved"|"actionUndefined"|"unknownFutureValue";
 
-# Enum representing the lifecycle status of an operation: NotStarted, Running, Completed, or Failed.
+# Enumeration of long-running operation states: NotStarted, Running, Completed, or Failed.
 public type MicrosoftGraphOperationStatus "NotStarted"|"Running"|"Completed"|"Failed";
 
-# Represents the collection of workbook functions available in an Excel workbook.
+# Represents the workbook functions entity used to invoke Excel worksheet functions.
 public type MicrosoftGraphWorkbookFunctions record {
     *MicrosoftGraphEntity;
 };
 
-# Represents an Outlook contact with personal, business, and communication details.
+# Represents an Outlook contact with personal, business, and communication details, extending OutlookItem.
 public type MicrosoftGraphContact record {
     *MicrosoftGraphOutlookItem;
     # The contact's birthday. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -7802,25 +7809,25 @@ public type SitesGetByPathListOperationsQueries record {
     ("id"|"createdDateTime"|"lastActionDateTime"|"resourceLocation"|"status"|"statusDetail"|"error"|"percentageComplete"|"resourceId"|"type")[] dollarSelect?;
 };
 
-# Enum defining the page ordering direction for multi-page print sheet layouts.
+# Enumeration of multipage print layout orientations defining page ordering direction and starting corner.
 public type MicrosoftGraphPrintMultipageLayout "clockwiseFromTopLeft"|"counterclockwiseFromTopLeft"|"counterclockwiseFromTopRight"|"clockwiseFromTopRight"|"counterclockwiseFromBottomLeft"|"clockwiseFromBottomLeft"|"counterclockwiseFromBottomRight"|"clockwiseFromBottomRight"|"unknownFutureValue";
 
 # Available health states for the Device Health API
 public type MicrosoftGraphManagedDevicePartnerReportedHealthState "unknown"|"activated"|"deactivated"|"secured"|"lowSeverity"|"mediumSeverity"|"highSeverity"|"unresponsive"|"compromised"|"misconfigured";
 
-# Represents a phone number with its type, number, language, and region.
+# Represents a phone number entry including its number, type, language, and region.
 public type MicrosoftGraphPhone record {
     # The phone number
     string? number?;
-    # The language associated with the phone number.
+    # The language associated with the phone number entry.
     string? language?;
-    # The region associated with the phone number.
+    # The geographic region associated with the phone number.
     string? region?;
     # The type of phone number. The possible values are: home, business, mobile, other, assistant, homeFax, businessFax, otherFax, pager, radio
     MicrosoftGraphPhoneType|record {} 'type?;
 };
 
-# Represents a search result item, including a telemetry callback URL.
+# Represents a search result item, including a telemetry callback URL for interaction tracking.
 public type MicrosoftGraphSearchResult record {
     # A callback URL that can be used to record telemetry information. The application should issue a GET on this URL if the user interacts with this item to improve the quality of results
     string? onClickTelemetryUrl?;
@@ -7859,13 +7866,13 @@ public type SitesGetContentTypesQueries record {
     ("id"|"associatedHubsUrls"|"description"|"documentSet"|"documentTemplate"|"group"|"hidden"|"inheritedFrom"|"isBuiltIn"|"name"|"order"|"parentId"|"propagateChanges"|"readOnly"|"sealed"|"base"|"baseTypes"|"columnLinks"|"columnPositions"|"columns")[] dollarSelect?;
 };
 
-# Represents the deletion state of an item, indicating whether it has been soft-deleted.
+# Indicates the deletion state of an item within Microsoft Graph.
 public type MicrosoftGraphDeleted record {
     # Represents the state of the deleted item
     string? state?;
 };
 
-# Represents the status and metadata of an asynchronous long-running operation, including timestamps and result URI.
+# Represents the status and metadata of a long-running asynchronous operation.
 public type MicrosoftGraphLongRunningOperation record {
     *MicrosoftGraphEntity;
     # The start time of the operation. The timestamp type represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -7880,7 +7887,7 @@ public type MicrosoftGraphLongRunningOperation record {
     MicrosoftGraphLongRunningOperationStatus|record {} status?;
 };
 
-# Represents a Windows device log collection request, including status, size, timestamps, and initiating user.
+# Represents a Windows device log collection request, including status, size, and associated timestamps.
 public type MicrosoftGraphDeviceLogCollectionResponse record {
     *MicrosoftGraphEntity;
     # Indicates Intune device unique identifier
@@ -7901,10 +7908,10 @@ public type MicrosoftGraphDeviceLogCollectionResponse record {
     MicrosoftGraphAppLogUploadState status?;
 };
 
-# Finishing options applied to a print job, accepting standard or extended finishing values.
+# Specifies the finishing options applied to a print job, such as stapling or binding.
 public type MicrosoftgraphprintJobConfigurationFinishings MicrosoftGraphPrintFinishing|FinishingsAnyOf22?;
 
-# Detailed inner error object containing code, message, target, and nested error details.
+# Represents a nested error object containing code, message, target, and error details.
 public type MicrosoftGraphPublicInnerError record {
     # The error code
     string? code?;
@@ -7944,7 +7951,7 @@ public type SitesContentTypesListColumnPositionsQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Out-of-office configuration including the status flag and auto-reply message.
+# Represents a user's out-of-office status and configured automatic reply message.
 public type MicrosoftGraphOutOfOfficeSettings record {
     # If true, either of the following is met:The current time falls within the out-of-office window configured in Outlook or Teams.An event marked as 'Show as Out of Office' appears on the user's calendar.Otherwise, false
     boolean? isOutOfOffice?;
@@ -7952,7 +7959,7 @@ public type MicrosoftGraphOutOfOfficeSettings record {
     string? message?;
 };
 
-# Defines a user's working schedule including days, start/end times, and time zone.
+# Defines a user's working hours, including start/end times, time zone, and days of the week.
 public type MicrosoftGraphWorkingHours record {
     # The time zone to which the working hours apply
     MicrosoftGraphTimeZoneBase|record {} timeZone?;
@@ -7964,7 +7971,7 @@ public type MicrosoftGraphWorkingHours record {
     MicrosoftgraphworkingHoursDaysOfWeek[] daysOfWeek?;
 };
 
-# Represents the body content and format type (text or HTML) of an item.
+# Represents the body content of an item, including its content string and content type (text or HTML).
 public type MicrosoftGraphItemBody record {
     # The type of the content. Possible values are text and html
     MicrosoftGraphBodyType|record {} contentType?;
@@ -7972,7 +7979,7 @@ public type MicrosoftGraphItemBody record {
     string? content?;
 };
 
-# Nullable object variant used as an alternative type composition for scaling values.
+# Nullable object variant for scaling configuration, allowing an absent scaling value.
 public type ScalingsAnyOf2 record {
 };
 
@@ -7985,14 +7992,14 @@ public type MicrosoftGraphWorkbookChartGridlines record {
     MicrosoftGraphWorkbookChartGridlinesFormat|record {} format?;
 };
 
-# Represents a specific version of a SharePoint list item, including its field values.
+# Represents a version of a SharePoint list item, including its field values.
 public type MicrosoftGraphListItemVersion record {
     *MicrosoftGraphBaseItemVersion;
     # A collection of the fields and values for this version of the list item
     MicrosoftGraphFieldValueSet|record {} fields?;
 };
 
-# Represents the sort configuration applied to a workbook table, including sort fields and method.
+# Represents the sort configuration applied to a workbook table.
 public type MicrosoftGraphWorkbookTableSort record {
     *MicrosoftGraphEntity;
     # Indicates whether the casing impacted the last sort of the table. Read-only
@@ -8003,21 +8010,21 @@ public type MicrosoftGraphWorkbookTableSort record {
     MicrosoftGraphWorkbookSortField[] fields?;
 };
 
-# Enumeration of supported authentication method platforms (e.g., windows, macOS, iOS).
+# Enumeration of platforms supported by an authentication method.
 public type MicrosoftGraphAuthenticationMethodPlatform "unknown"|"windows"|"macOS"|"iOS"|"android"|"linux"|"unknownFutureValue";
 
-# Represents an arbitrary JSON object value.
+# Represents an arbitrary JSON object used as a generic value container.
 public type MicrosoftGraphJson record {
 };
 
-# Represents a scheduled time-off block associated with a specific time-off reason.
+# Represents a scheduled time-off block associated with a time-off reason.
 public type MicrosoftGraphTimeOffItem record {
     *MicrosoftGraphScheduleEntity;
     # ID of the timeOffReason for this timeOffItem. Required
     string? timeOffReasonId?;
 };
 
-# Represents a service plan assigned to an entity, including its status and assignment timestamp.
+# Represents a service plan assigned to a user or organization, including status and assignment details.
 public type MicrosoftGraphAssignedPlan record {
     # The date and time at which the plan was assigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     string? assignedDateTime?;
@@ -8029,7 +8036,7 @@ public type MicrosoftGraphAssignedPlan record {
     string? servicePlanId?;
 };
 
-# Represents a term in a term store, including labels, descriptions, relations, and child terms.
+# Represents a term within a SharePoint term store set, including labels, descriptions, and relations.
 public type MicrosoftGraphTermStoreTerm record {
     *MicrosoftGraphEntity;
     # Last date and time of term modification. Read-only
@@ -8060,7 +8067,7 @@ public type SitesGetExternalColumnsQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Represents a request to offer a shift to another user, including recipient details and sender shift.
+# Represents a request to offer a shift to another user within a Teams schedule.
 public type MicrosoftGraphOfferShiftRequest record {
     *MicrosoftGraphScheduleChangeRequest;
     # The recipient's user ID
@@ -8073,24 +8080,21 @@ public type MicrosoftGraphOfferShiftRequest record {
     string? senderShiftId?;
 };
 
-# Represents a Teams app installation scoped to a user, including the associated chat.
+# Represents a Teams app installation scoped to a user, including the associated personal chat.
 public type MicrosoftGraphUserScopeTeamsAppInstallation record {
     *MicrosoftGraphTeamsAppInstallation;
     # The chat between the user and Teams app
     MicrosoftGraphChat|record {} chat?;
 };
 
-# Paginated collection of permission resources associated with a SharePoint site or item.
+# Paginated collection of permission objects with optional count, returned from permission list operations.
 public type CollectionOfPermission record {
     *BaseCollectionPaginationCountResponse;
-    # Array of permission objects returned in the collection response.
+    # Array of Permission objects returned in the collection response.
     MicrosoftGraphPermission[] value?;
 };
 
-# Response schema for the addCopy operation; returns a content type or null.
-public type ContentTypeAddCopyResponse MicrosoftGraphContentType|ContentTypeNullableAlternative?;
-
-# Represents a group conversation, including topic, participants, threads, and latest post metadata.
+# Represents a group conversation thread container with topic, participants, and posts.
 public type MicrosoftGraphConversation record {
     *MicrosoftGraphEntity;
     # A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge)
@@ -8107,7 +8111,7 @@ public type MicrosoftGraphConversation record {
     boolean hasAttachments?;
 };
 
-# Represents an email address with an associated display name for a person or entity.
+# Represents an email address with the recipient's display name and address value.
 public type MicrosoftGraphEmailAddress record {
     # The email address of the person or entity
     string? address?;
@@ -8115,10 +8119,10 @@ public type MicrosoftGraphEmailAddress record {
     string? name?;
 };
 
-# Indicates the passkey type: device-bound, synced across devices, or reserved for future values.
+# Enumeration of passkey types: deviceBound, synced, or unknownFutureValue.
 public type MicrosoftGraphPasskeyType "deviceBound"|"synced"|"unknownFutureValue";
 
-# Describes conditions under which analytics data may be incomplete, such as throttling or missing history.
+# Indicates gaps in analytics data due to throttling or missing historical records.
 public type MicrosoftGraphIncompleteData record {
     # Some data was not recorded due to excessive activity
     boolean? wasThrottled?;
@@ -8154,7 +8158,7 @@ public type SitesListSitesQueries record {
     ("id"|"createdBy"|"createdDateTime"|"description"|"eTag"|"lastModifiedBy"|"lastModifiedDateTime"|"name"|"parentReference"|"webUrl"|"displayName"|"error"|"isPersonalSite"|"root"|"sharepointIds"|"siteCollection"|"createdByUser"|"lastModifiedByUser"|"analytics"|"columns"|"contentTypes"|"drive"|"drives"|"externalColumns"|"items"|"lists"|"onenote"|"operations"|"pages"|"permissions"|"sites"|"termStore"|"termStores")[] dollarSelect?;
 };
 
-# Defines the date range and boundary type for a recurring event pattern.
+# Defines the date range over which a recurrence pattern applies to a recurring event.
 public type MicrosoftGraphRecurrenceRange record {
     # The date to stop applying the recurrence pattern. Depending on the recurrence pattern of the event, the last occurrence of the meeting may not be this date. Required if type is endDate
     string? endDate?;
@@ -8169,7 +8173,7 @@ public type MicrosoftGraphRecurrenceRange record {
     string? startDate?;
 };
 
-# Aggregated statistics for an item action, including total action count and distinct actor count.
+# Aggregated statistics for a specific item action, including action and actor counts.
 public type MicrosoftGraphItemActionStat record {
     # The number of times the action took place. Read-only
     decimal? actionCount?;
@@ -8187,7 +8191,7 @@ public type SitesItemsGetCount1b67Queries record {
     string dollarSearch?;
 };
 
-# Represents a shift schedule request for time off, including start time, end time, and reason.
+# Represents an employee request for time off within a schedule, including start, end, and reason.
 public type MicrosoftGraphTimeOffRequest record {
     *MicrosoftGraphScheduleChangeRequest;
     # The date and time the time off starts in ISO 8601 format and in UTC time
@@ -8205,10 +8209,10 @@ public type SitesDeletePermissionsHeaders record {
     string ifMatch?;
 };
 
-# Enum defining SharePoint page layout types: article, home, or microsoftReserved.
+# Enumeration of SharePoint page layout types: article, home, microsoftReserved, or unknownFutureValue.
 public type MicrosoftGraphPageLayoutType "microsoftReserved"|"article"|"home"|"unknownFutureValue";
 
-# Defines a calculated column with a formula, output type, and optional date format.
+# Defines a SharePoint column whose value is computed from a formula, with configurable output type and format.
 public type MicrosoftGraphCalculatedColumn record {
     # For dateTime output types, the format of the value. The possible values are: dateOnly or dateTime
     string? format?;
@@ -8218,7 +8222,7 @@ public type MicrosoftGraphCalculatedColumn record {
     string? outputType?;
 };
 
-# Configuration settings controlling Giphy, custom memes, and sticker usage in a team.
+# Configuration settings controlling Giphy, custom memes, stickers, and meme usage within a team.
 public type MicrosoftGraphTeamFunSettings record {
     # If set to true, enables users to include custom memes
     boolean? allowCustomMemes?;
@@ -8230,23 +8234,23 @@ public type MicrosoftGraphTeamFunSettings record {
     boolean? allowStickersAndMemes?;
 };
 
-# Malware facet containing virus details detected on a drive item.
+# Facet containing details about malware detected in a drive item, including virus description.
 public type MicrosoftGraphMalware record {
     # Contains the virus details for the malware facet
     string? description?;
 };
 
-# Paginated collection response containing an array of term store instances.
+# A paginated collection of term store instances, including pagination metadata and an array of store items.
 public type MicrosoftGraphTermStoreStoreCollectionResponse record {
     *BaseCollectionPaginationCountResponse;
     # Array of term store objects returned in the collection response.
     MicrosoftGraphTermStoreStore[] value?;
 };
 
-# Enum indicating a user's availability status: unknown, free, tentative, busy, out of office, or working elsewhere.
+# Indicates a user's availability status. Possible values: unknown, free, tentative, busy, oof, workingElsewhere.
 public type MicrosoftGraphFreeBusyStatus "unknown"|"free"|"tentative"|"busy"|"oof"|"workingElsewhere";
 
-# Represents a platform credential authentication method registered on a user's device, including platform and key strength details.
+# Represents a platform credential authentication method registered to a user's device, extending the base authentication method.
 public type MicrosoftGraphPlatformCredentialAuthenticationMethod record {
     *MicrosoftGraphAuthenticationMethod;
     # The name of the device on which Platform Credential is registered
@@ -8259,7 +8263,7 @@ public type MicrosoftGraphPlatformCredentialAuthenticationMethod record {
     MicrosoftGraphAuthenticationMethodPlatform|record {} platform?;
 };
 
-# Defines a column in a SharePoint list or site, including its type, validation rules, display settings, and data constraints.
+# Defines a SharePoint column, including its type, display settings, validation rules, and data configuration options.
 public type MicrosoftGraphColumnDefinition record {
     *MicrosoftGraphEntity;
     # This column stores DateTime values
@@ -8328,10 +8332,10 @@ public type MicrosoftGraphColumnDefinition record {
     boolean? isReorderable?;
 };
 
-# Specifies how meeting messages are delivered to delegates and principals.
+# Specifies how meeting messages are delivered when a delegate is configured. Controls routing to delegate and/or principal.
 public type MicrosoftGraphDelegateMeetingMessageDeliveryOptions "sendToDelegateAndInformationToPrincipal"|"sendToDelegateAndPrincipal"|"sendToDelegateOnly";
 
-# Represents a Microsoft Entra group, including Microsoft 365 groups, security groups, and distribution groups.
+# Represents a Microsoft Entra group, encompassing Microsoft 365 groups, security groups, and distribution groups with their full membership, settings, and associated resources.
 public type MicrosoftGraphGroup record {
     *MicrosoftGraphDirectoryObject;
     # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Requires $select to retrieve. This property can be updated only in delegated scenarios where the caller requires both the Microsoft Graph permission and a supported administrator role
@@ -8360,7 +8364,7 @@ public type MicrosoftGraphGroup record {
     MicrosoftGraphDirectoryObject[] membersWithLicenseErrors?;
     # Specifies the group resources that are associated with the Microsoft 365 group. The possible value is Team. For more information, see Microsoft 365 group behaviors and provisioning options. Returned by default. Supports $filter (eq, not, startsWith)
     string[] resourceProvisioningOptions?;
-    # Entry point to the OneNote resources associated with the group.
+    # The OneNote notebook associated with the group.
     MicrosoftGraphOnenote|record {} onenote?;
     # true if this group is synced from an on-premises directory; false if this group was originally synced from an on-premises directory but is no longer synced; null if this object has never synced from an on-premises directory (default). Returned by default. Read-only. Supports $filter (eq, ne, not, in, and eq on null values)
     boolean? onPremisesSyncEnabled?;
@@ -8406,13 +8410,13 @@ public type MicrosoftGraphGroup record {
     string? expirationDateTime?;
     # The preferred language for a Microsoft 365 group. Should follow ISO 639-1 Code; for example, en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)
     string? preferredLanguage?;
-    # Resource-specific permission grants assigned to the group for an application.
+    # Resource-specific permission grants assigned to the group.
     MicrosoftGraphResourceSpecificPermissionGrant[] permissionGrants?;
     # Indicates whether the dynamic membership processing is on or paused. Possible values are On or Paused. Returned by default. Supports $filter (eq, ne, not, in)
     string? membershipRuleProcessingState?;
     # Indicates whether a welcome message is sent to new group members.
     boolean? welcomeMessageEnabled?;
-    # Defines the synchronization behavior for the group with on-premises directory.
+    # Defines the on-premises synchronization behavior for the group.
     MicrosoftGraphOnPremisesSyncBehavior|record {} onPremisesSyncBehavior?;
     # The display name for the group. This property is required when a group is created and can't be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby
     string? displayName?;
@@ -8492,23 +8496,23 @@ public type SitesColumnsGetSourceColumnQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Indicates the source type of a configuration setting, either device configuration or device intent.
+# Enum indicating the source of a setting: deviceConfiguration or deviceIntent.
 public type MicrosoftGraphSettingSourceType "deviceConfiguration"|"deviceIntent";
 
-# Represents supported print orientation values for a printer's capabilities.
+# Represents a supported print orientation value for a printer's capabilities.
 public type MicrosoftgraphprinterCapabilitiesOrientations MicrosoftGraphPrintOrientation|OrientationsAnyOf2?;
 
-# Represents the display format of a Planner task in the bucket view of a task board.
+# Defines the display format of a Planner task in the bucket view of a task board.
 public type MicrosoftGraphPlannerBucketTaskBoardTaskFormat record {
     *MicrosoftGraphEntity;
     # Hint used to order tasks in the bucket view of the task board. For details about the supported format, see Using order hints in Planner
     string? orderHint?;
 };
 
-# Specifies the type of a Windows setting, such as roaming, backup, or an unknown future value.
+# Enum indicating the Windows setting type: roaming, backup, or unknownFutureValue.
 public type MicrosoftGraphWindowsSettingType "roaming"|"backup"|"unknownFutureValue";
 
-# Represents a WebAuthn public key credential, including attestation response and extension results.
+# Represents a WebAuthn public key credential, including attestation response, credential ID, and extension results.
 public type MicrosoftGraphWebauthnPublicKeyCredential record {
     # The response from the WebAuthn Authenticator after generating an attestation
     MicrosoftGraphWebauthnAuthenticatorAttestationResponse|record {} response?;
@@ -8518,7 +8522,7 @@ public type MicrosoftGraphWebauthnPublicKeyCredential record {
     MicrosoftGraphWebauthnAuthenticationExtensionsClientOutputs|record {} clientExtensionResults?;
 };
 
-# Represents a version of a base item, including modification history and publication status.
+# Represents a version of a base SharePoint item, including modification metadata and publication status.
 public type MicrosoftGraphBaseItemVersion record {
     *MicrosoftGraphEntity;
     # Date and time the version was last modified. Read-only
@@ -8529,10 +8533,10 @@ public type MicrosoftGraphBaseItemVersion record {
     MicrosoftGraphPublicationFacet|record {} publication?;
 };
 
-# Enumeration of supported SharePoint column data types for list column definitions.
+# Enumeration of supported SharePoint column data types, such as text, number, date, and lookup.
 public type MicrosoftGraphColumnTypes "note"|"text"|"choice"|"multichoice"|"number"|"currency"|"dateTime"|"lookup"|"boolean"|"user"|"url"|"calculated"|"location"|"geolocation"|"term"|"multiterm"|"thumbnail"|"approvalStatus"|"unknownFutureValue";
 
-# Represents a shift item with display name, notes, and scheduled activities.
+# Represents a shift item with activities, display label, and notes for workforce scheduling.
 public type MicrosoftGraphShiftItem record {
     *MicrosoftGraphScheduleEntity;
     # The shift notes for the shiftItem
@@ -8543,11 +8547,11 @@ public type MicrosoftGraphShiftItem record {
     string? displayName?;
 };
 
-# Represents a thumbnail column type definition for a SharePoint list column.
+# Represents a SharePoint thumbnail column definition for storing image thumbnails.
 public type MicrosoftGraphThumbnailColumn record {
 };
 
-# Represents a message in a Microsoft Teams chat or channel, including content, metadata, attachments, reactions, and event details.
+# Represents a message in a Microsoft Teams chat or channel, including content, metadata, attachments, reactions, and threading information.
 public type MicrosoftGraphChatMessage record {
     *MicrosoftGraphEntity;
     # Summary text of the chat message that could be used for push notifications and summary views or fall back views. Only applies to channel chat messages, not chat messages in a chat
@@ -8560,7 +8564,7 @@ public type MicrosoftGraphChatMessage record {
     string? lastModifiedDateTime?;
     # If the message was sent in a chat, represents the identity of the chat
     string? chatId?;
-    # Enum indicating the importance level of a chat message: normal, high, urgent, or unknownFutureValue.
+    # Enumeration of importance levels for a chat message: normal, high, urgent, or unknown.
     MicrosoftGraphChatMessageImportance importance?;
     # Read-only. ID of the parent chat message or root chat message of the thread. (Only applies to chat messages in channels, not chats.)
     string? replyToId?;
@@ -8572,13 +8576,13 @@ public type MicrosoftGraphChatMessage record {
     string? deletedDateTime?;
     # Defines the properties of a policy violation set by a data loss prevention (DLP) application
     MicrosoftGraphChatMessagePolicyViolation|record {} policyViolation?;
-    # Represents the body content and format type (text or HTML) of an item.
+    # Represents the body content of an item, including its content string and content type (text or HTML).
     MicrosoftGraphItemBody body?;
     # Locale of the chat message set by the client. Always set to en-us
     string locale?;
     # If the message was sent in a channel, represents identity of the channel
     MicrosoftGraphChannelIdentity|record {} channelIdentity?;
-    # Enumeration of chat message types: message, chatEvent, typing, systemEventMessage, or unknownFutureValue.
+    # Enum indicating the type of a chat message (e.g., message, chatEvent, typing).
     MicrosoftGraphChatMessageType messageType?;
     # Replies for a specified message. Supports $expand for channel messages
     MicrosoftGraphChatMessage[] replies?;
@@ -8617,20 +8621,20 @@ public type MicrosoftGraphOnenote record {
     MicrosoftGraphOnenoteSection[] sections?;
 };
 
-# Represents a software OATH token authentication method registered to a user.
+# Represents a software OATH token authentication method registered to a user for multi-factor authentication.
 public type MicrosoftGraphSoftwareOathAuthenticationMethod record {
     *MicrosoftGraphAuthenticationMethod;
     # The secret key of the method. Always returns null
     string? secretKey?;
 };
 
-# Represents a SharePoint document set configuration, including allowed content types, default contents, shared columns, and welcome page settings.
+# Represents a SharePoint document set configuration, including allowed content types, default contents, and welcome page settings.
 public type MicrosoftGraphDocumentSet record {
     # Content types allowed in document set
     MicrosoftGraphContentTypeInfo[] allowedContentTypes?;
     # Specifies whether to push welcome page changes to inherited content types
     boolean? propagateWelcomePageChanges?;
-    # Column definitions shared across all documents within the document set.
+    # The column definitions shared across all content types within the document set.
     MicrosoftGraphColumnDefinition[] sharedColumns?;
     # Indicates whether to add the name of the document set to each file name
     boolean? shouldPrefixNameToFile?;
@@ -8638,24 +8642,24 @@ public type MicrosoftGraphDocumentSet record {
     MicrosoftGraphDocumentSetContent[] defaultContents?;
     # Welcome page absolute URL
     string? welcomePageUrl?;
-    # Column definitions displayed on the document set's welcome page.
+    # The column definitions displayed on the document set's welcome page.
     MicrosoftGraphColumnDefinition[] welcomePageColumns?;
 };
 
-# Paginated collection of SharePoint site resources with optional count metadata.
+# A paginated collection of SharePoint site resources, including pagination metadata and an array of site objects.
 public type CollectionOfSite record {
     *BaseCollectionPaginationCountResponse;
-    # Array of SharePoint site objects returned in the collection response.
+    # Array of SharePoint Site objects returned in the collection response.
     MicrosoftGraphSite[] value?;
 };
 
-# Enumeration indicating the cryptographic key strength of an authentication method: normal, weak, or unknown.
+# Enum indicating the cryptographic key strength of an authentication method.
 public type MicrosoftGraphAuthenticationMethodKeyStrength "normal"|"weak"|"unknown";
 
-# Flags enum indicating user actions taken on a policy-violating chat message: none, override, or reportFalsePositive.
+# Flags enum indicating user actions taken on a policy-violating chat message (none, override, or report false positive).
 public type MicrosoftGraphChatMessagePolicyViolationUserActionTypes "none"|"override"|"reportFalsePositive";
 
-# External application metadata linking a virtual event to an ID in a third-party system.
+# External application metadata associated with a virtual event, including the external event ID and hosting application identifier.
 public type MicrosoftGraphVirtualEventExternalInformation record {
     # The identifier for a virtualEventExternalInformation object that associates the virtual event with an event ID in an external application. This association bundles all the information (both supported and not supported in virtualEvent) into one virtual event object. Optional. If set, the maximum supported length is 256 characters
     string? externalEventId?;
@@ -8663,7 +8667,7 @@ public type MicrosoftGraphVirtualEventExternalInformation record {
     string? applicationId?;
 };
 
-# Represents a document submitted to a print job, including metadata such as name, size, and content type.
+# Represents a document submitted to a print job, including its name, size, content type, and upload/download timestamps.
 public type MicrosoftGraphPrintDocument record {
     *MicrosoftGraphEntity;
     # The time the document was uploaded. Read-only
@@ -8713,6 +8717,7 @@ public type SitesContentTypesDeleteColumnLinksHeaders record {
     string ifMatch?;
 };
 
+# Physical and organizational location details of a printer, including address, floor, room, coordinates, and site.
 public type MicrosoftGraphPrinterLocation record {
     # The altitude, in meters, that the printer is located at
     decimal? altitudeInMeters?;
@@ -8722,6 +8727,7 @@ public type MicrosoftGraphPrinterLocation record {
     decimal|string|ReferenceNumeric? latitude?;
     # The postal code that the printer is located in
     string? postalCode?;
+    # Array of subunit identifiers specifying the printer's location within a floor or room.
     string[] subunit?;
     # The building that the printer is located in
     string? building?;
@@ -8749,8 +8755,10 @@ public type MicrosoftGraphPrinterLocation record {
     decimal|string|ReferenceNumeric? longitude?;
 };
 
+# Flags enum specifying DLP actions applied to a policy-violating chat message: none, notifySender, blockAccess, or blockAccessExternal.
 public type MicrosoftGraphChatMessagePolicyViolationDlpActionTypes "none"|"notifySender"|"blockAccess"|"blockAccessExternal";
 
+# Represents a localized name entry for a term store object, containing the name and its associated language tag.
 public type MicrosoftGraphTermStoreLocalizedName record {
     # The name in the localized language
     string? name?;
@@ -8758,13 +8766,13 @@ public type MicrosoftGraphTermStoreLocalizedName record {
     string? languageTag?;
 };
 
-# Represents the signed-in user's viewpoint of a printer share, including last usage timestamp.
+# Represents the signed-in user's viewpoint of a printer share, including the last used timestamp.
 public type MicrosoftGraphPrinterShareViewpoint record {
     # Date and time when the printer was last used by the signed-in user. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     string? lastUsedDateTime?;
 };
 
-# Aggregated activity statistics for a drive item over a specific time interval.
+# Aggregated activity statistics for a drive item over a defined time interval.
 public type MicrosoftGraphItemActivityStat record {
     *MicrosoftGraphEntity;
     # Statistics about the move actions in this interval. Read-only
@@ -8789,34 +8797,34 @@ public type MicrosoftGraphItemActivityStat record {
     MicrosoftGraphItemActionStat|record {} delete?;
 };
 
-# Request payload for processing content entries, including metadata for device, app, and activity context.
+# Request payload for submitting content entries for compliance or sensitivity processing.
 public type MicrosoftGraphProcessContentRequest record {
-    # Metadata describing a device, including type, IP address, and OS specifications.
+    # Metadata describing a device, including its type, IP address, and operating system details.
     MicrosoftGraphDeviceMetadata deviceMetadata?;
-    # Contains metadata for an integrated application, including its name and version.
+    # Represents metadata for an integrated application, including name and version.
     MicrosoftGraphIntegratedApplicationMetadata integratedAppMetadata?;
     # A collection of content entries to be processed. Each entry contains the content itself and its metadata. Use conversation metadata for content like prompts and responses and file metadata for files. Required
     MicrosoftGraphProcessContentMetadataBase[] contentEntries?;
     # Metadata about the protected application making the request. Required
     MicrosoftGraphProtectedApplicationMetadata|record {} protectedAppMetadata?;
-    # Represents metadata associated with a user activity, including the activity type.
+    # Metadata object describing a user activity, including its activity type classification.
     MicrosoftGraphActivityMetadata activityMetadata?;
 };
 
 # Enumeration of location identifier source types: unknown, locationStore, directory, private, or bing.
 public type MicrosoftGraphLocationUniqueIdType "unknown"|"locationStore"|"directory"|"private"|"bing";
 
-# Enum defining the recurrence pattern type: daily, weekly, absolute/relative monthly, or absolute/relative yearly.
+# Enumeration of recurrence pattern types for scheduled events, such as daily, weekly, or monthly.
 public type MicrosoftGraphRecurrencePatternType "daily"|"weekly"|"absoluteMonthly"|"relativeMonthly"|"absoluteYearly"|"relativeYearly";
 
-# Represents the display format of a task on the progress view of a Planner task board.
+# Defines the display format of a task on the progress-based task board view in Planner.
 public type MicrosoftGraphPlannerProgressTaskBoardTaskFormat record {
     *MicrosoftGraphEntity;
     # Hint value used to order the task on the progress view of the task board. For details about the supported format, see Using order hints in Planner
     string? orderHint?;
 };
 
-# Represents a Windows Hello for Business authentication method registered on a user's device.
+# Represents a Windows Hello for Business authentication method registered to a user.
 public type MicrosoftGraphWindowsHelloForBusinessAuthenticationMethod record {
     *MicrosoftGraphAuthenticationMethod;
     # The name of the device on which Windows Hello for Business is registered
@@ -8827,7 +8835,7 @@ public type MicrosoftGraphWindowsHelloForBusinessAuthenticationMethod record {
     MicrosoftGraphDevice|record {} device?;
 };
 
-# Base schema representing shared properties of a printer or printer share resource.
+# Base schema defining shared properties for printer and printerShare resources.
 public type MicrosoftGraphPrinterBase record {
     *MicrosoftGraphEntity;
     # The capabilities of the printer/printerShare
@@ -8846,14 +8854,14 @@ public type MicrosoftGraphPrinterBase record {
     boolean? isAcceptingJobs?;
     # The manufacturer of the printer/printerShare
     string? manufacturer?;
-    # Represents the current processing state, details, and description of a printer.
+    # Represents the current processing status of a printer, including state, description, and detail list.
     MicrosoftGraphPrinterStatus status?;
 };
 
-# Print quality capability value; either a standard PrintQuality enum or an extended type.
+# Represents the supported print quality values for a printer's capabilities.
 public type MicrosoftgraphprinterCapabilitiesQualities MicrosoftGraphPrintQuality|QualitiesAnyOf2?;
 
-# Participant details for an online meeting, including identity, role, and UPN.
+# Represents identity, role, and UPN information for a participant in an online meeting.
 public type MicrosoftGraphMeetingParticipantInfo record {
     # User principal name of the participant
     string? upn?;
@@ -8863,18 +8871,18 @@ public type MicrosoftGraphMeetingParticipantInfo record {
     MicrosoftGraphIdentitySet|record {} identity?;
 };
 
-# User work hours and location settings, including occurrences, recurrences, and shared location limits.
+# Defines a user's work hours and locations settings, including schedules and location constraints.
 public type MicrosoftGraphWorkHoursAndLocationsSetting record {
     *MicrosoftGraphEntity;
     # Collection of work plan occurrences
     MicrosoftGraphWorkPlanOccurrence[] occurrences?;
     # Collection of recurring work plans defined by the user
     MicrosoftGraphWorkPlanRecurrence[] recurrences?;
-    # Indicates the precision level of a work location: unknown, none, approximate, or specific.
+    # Indicates the precision level of a work location: unknown, none, approximate, specific, or unknownFutureValue.
     MicrosoftGraphMaxWorkLocationDetails maxSharedWorkLocationDetails?;
 };
 
-# Configuration for a taxonomy term column, including multi-value support and term set bindings.
+# Defines configuration for a taxonomy term column, including term set binding and multi-value support.
 public type MicrosoftGraphTermColumn record {
     # Specifies whether the column allows more than one value
     boolean? allowMultipleValues?;
@@ -8882,11 +8890,11 @@ public type MicrosoftGraphTermColumn record {
     boolean? showFullyQualifiedName?;
     # The term store set from which column values are selected.
     MicrosoftGraphTermStoreSet|record {} termSet?;
-    # The parent term that scopes the selectable terms for this column.
+    # The parent term that scopes the selectable values within the term column.
     MicrosoftGraphTermStoreTerm|record {} parentTerm?;
 };
 
-# Represents a file or item attached to a message or event, including metadata and MIME type.
+# Represents a file or item attached to a message or event, including metadata such as size and MIME type.
 public type MicrosoftGraphAttachment record {
     *MicrosoftGraphEntity;
     # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -8901,7 +8909,7 @@ public type MicrosoftGraphAttachment record {
     string? contentType?;
 };
 
-# Enum specifying the default chat history visibility mode for a meeting: none, all, or unknownFutureValue.
+# Enumeration specifying the default chat history visibility mode for a meeting: none, all, or unknownFutureValue.
 public type MicrosoftGraphMeetingChatHistoryDefaultMode "none"|"all"|"unknownFutureValue";
 
 # Configuration settings for a time clock, including the approved geographic location for clock operations.
@@ -8910,10 +8918,10 @@ public type MicrosoftGraphTimeClockSettings record {
     MicrosoftGraphGeoCoordinates|record {} approvedLocation?;
 };
 
-# Enum representing the current state of a time card: clockedIn, onBreak, clockedOut, or unknownFutureValue.
+# Represents the current state of a time card entry for a shift worker.
 public type MicrosoftGraphTimeCardState "clockedIn"|"onBreak"|"clockedOut"|"unknownFutureValue";
 
-# Represents folder metadata for a drive item, including child count and recommended view configuration.
+# Represents folder metadata including child count and recommended view settings.
 public type MicrosoftGraphFolder record {
     # A collection of properties defining the recommended view for the folder
     MicrosoftGraphFolderView|record {} view?;
@@ -8921,14 +8929,14 @@ public type MicrosoftGraphFolder record {
     decimal? childCount?;
 };
 
-# Represents a historical modification record for a chat message, including the action, reaction, and modification timestamp.
+# Represents a historical modification record for a chat message, including reaction and timestamp.
 public type MicrosoftGraphChatMessageHistoryItem record {
     # The reaction in the modified message
     MicrosoftGraphChatMessageReaction|record {} reaction?;
     # The date and time when the message was modified
     @constraint:String {pattern: re `^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$`}
     string modifiedDateTime?;
-    # Enum flags representing actions performed on a chat message, such as reaction events.
+    # Enumeration of flag-combinable actions on a chat message, such as reaction added or removed.
     MicrosoftGraphChatMessageActions actions?;
 };
 
@@ -8936,7 +8944,7 @@ public type MicrosoftGraphChatMessageHistoryItem record {
 public type MicrosoftGraphPlannerExternalReferences record {
 };
 
-# Nullable object variant for finishing options, used in anyOf composition.
+# Nullable object type representing an alternative finishing option value.
 public type FinishingsAnyOf2 record {
 };
 
@@ -8968,7 +8976,7 @@ public type SitesAnalyticsItemActivityStatsListActivitiesQueries record {
     ("id"|"access"|"activityDateTime"|"actor"|"driveItem")[] dollarSelect?;
 };
 
-# Represents an open shift in a schedule, including shared, draft, and deletion state.
+# Represents an open shift in a schedule, including draft, shared state, and group assignment.
 public type MicrosoftGraphOpenShift record {
     *MicrosoftGraphChangeTrackedEntity;
     # The shared version of this openShift that is viewable by both employees and managers
@@ -8981,10 +8989,10 @@ public type MicrosoftGraphOpenShift record {
     string? schedulingGroupId?;
 };
 
-# Enum indicating the category of a website: other, home, work, blog, or profile.
+# Enumeration of website categories: other, home, work, blog, or profile.
 public type MicrosoftGraphWebsiteType "other"|"home"|"work"|"blog"|"profile";
 
-# Tracks the last accessed and last modified timestamps for a user-accessed resource.
+# Timestamps recording when a resource was last accessed and last modified by the user.
 public type MicrosoftGraphUsageDetails record {
     # The date and time the resource was last accessed by the user. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only
     string? lastAccessedDateTime?;
@@ -9002,10 +9010,10 @@ public type SitesDrivesGetCount5071Queries record {
     string dollarSearch?;
 };
 
-# Specifies a day of the week within working hours, using DayOfWeek or extended enum values.
+# A day-of-week value for working hours, defined as either a standard or extended day-of-week type.
 public type MicrosoftgraphworkingHoursDaysOfWeek MicrosoftGraphDayOfWeek|DaysOfWeekAnyOf21?;
 
-# Represents a request to swap shifts between two employees, extending the offer shift request.
+# A shift swap request between two employees, extending offerShiftRequest with the recipient's shift ID.
 public type MicrosoftGraphSwapShiftsChangeRequest record {
     *MicrosoftGraphOfferShiftRequest;
     # The recipient's Shift ID
@@ -9022,15 +9030,15 @@ public type SitesGetCreatedByUserQueries record {
     ("id"|"deletedDateTime"|"aboutMe"|"accountEnabled"|"ageGroup"|"assignedLicenses"|"assignedPlans"|"authorizationInfo"|"birthday"|"businessPhones"|"city"|"companyName"|"consentProvidedForMinor"|"country"|"createdDateTime"|"creationType"|"customSecurityAttributes"|"department"|"deviceEnrollmentLimit"|"displayName"|"employeeHireDate"|"employeeId"|"employeeLeaveDateTime"|"employeeOrgData"|"employeeType"|"externalUserState"|"externalUserStateChangeDateTime"|"faxNumber"|"givenName"|"hireDate"|"identities"|"identityParentId"|"imAddresses"|"interests"|"isManagementRestricted"|"isResourceAccount"|"jobTitle"|"lastPasswordChangeDateTime"|"legalAgeGroupClassification"|"licenseAssignmentStates"|"mail"|"mailboxSettings"|"mailNickname"|"mobilePhone"|"mySite"|"officeLocation"|"onPremisesDistinguishedName"|"onPremisesDomainName"|"onPremisesExtensionAttributes"|"onPremisesImmutableId"|"onPremisesLastSyncDateTime"|"onPremisesProvisioningErrors"|"onPremisesSamAccountName"|"onPremisesSecurityIdentifier"|"onPremisesSyncEnabled"|"onPremisesUserPrincipalName"|"otherMails"|"passwordPolicies"|"passwordProfile"|"pastProjects"|"postalCode"|"preferredDataLocation"|"preferredLanguage"|"preferredName"|"print"|"provisionedPlans"|"proxyAddresses"|"responsibilities"|"schools"|"securityIdentifier"|"serviceProvisioningErrors"|"showInAddressList"|"signInActivity"|"signInSessionsValidFromDateTime"|"skills"|"state"|"streetAddress"|"surname"|"usageLocation"|"userPrincipalName"|"userType"|"activities"|"adhocCalls"|"agreementAcceptances"|"appRoleAssignments"|"authentication"|"calendar"|"calendarGroups"|"calendars"|"calendarView"|"chats"|"cloudClipboard"|"cloudPCs"|"contactFolders"|"contacts"|"createdObjects"|"dataSecurityAndGovernance"|"deviceManagementTroubleshootingEvents"|"directReports"|"drive"|"drives"|"employeeExperience"|"events"|"extensions"|"followedSites"|"inferenceClassification"|"insights"|"joinedTeams"|"licenseDetails"|"mailFolders"|"managedAppRegistrations"|"managedDevices"|"manager"|"memberOf"|"messages"|"oauth2PermissionGrants"|"onenote"|"onlineMeetings"|"onPremisesSyncBehavior"|"outlook"|"ownedDevices"|"ownedObjects"|"people"|"permissionGrants"|"photo"|"photos"|"planner"|"presence"|"registeredDevices"|"scopedRoleMemberOf"|"settings"|"solutions"|"sponsors"|"teamwork"|"todo"|"transitiveMemberOf")[] dollarSelect?;
 };
 
-# Represents a time window defined by a start and end date-time with time zone information.
+# A time window defined by a start and end date-time with timezone information.
 public type MicrosoftGraphTimeSlot record {
-    # Represents a date and time value paired with a time zone identifier.
+    # Represents a point in time combined with a time zone identifier for scheduling and calendar operations.
     MicrosoftGraphDateTimeTimeZone 'start?;
-    # Represents a date and time value paired with a time zone identifier.
+    # Represents a point in time combined with a time zone identifier for scheduling and calendar operations.
     MicrosoftGraphDateTimeTimeZone end?;
 };
 
-# Represents a tab pinned within a Microsoft Teams channel, including its app, configuration, display name, and deep link URL.
+# Represents a tab pinned within a Teams channel, including its app, configuration, display name, and URL.
 public type MicrosoftGraphTeamsTab record {
     *MicrosoftGraphEntity;
     # The application that is linked to the tab. This can't be changed after tab creation
@@ -9063,16 +9071,16 @@ public type SitesGetByPathGetTermStoreQueries record {
     ("id"|"defaultLanguageTag"|"languageTags"|"groups"|"sets")[] dollarSelect?;
 };
 
-# Enumeration of user activity types such as text/file upload or download actions.
+# Indicates the type of user activity performed, such as file or text upload or download.
 public type MicrosoftGraphUserActivityType "uploadText"|"uploadFile"|"downloadText"|"downloadFile"|"unknownFutureValue";
 
-# Represents supported multipage layout options for a printer, as a standard or extended layout value.
+# Supported multipage layout options for a printer, as a standard or extended layout value.
 public type MicrosoftgraphprinterCapabilitiesMultipageLayouts MicrosoftGraphPrintMultipageLayout|MultipageLayoutsAnyOf2?;
 
-# Enumeration of asynchronous operation types supported by Microsoft Teams.
+# Specifies the type of asynchronous Teams operation, such as cloning, archiving, or creating a team or channel.
 public type MicrosoftGraphTeamsAsyncOperationType "invalid"|"cloneTeam"|"archiveTeam"|"unarchiveTeam"|"createTeam"|"unknownFutureValue"|"teamifyGroup"|"createChannel"|"archiveChannel"|"unarchiveChannel";
 
-# Represents a time-off entry in a schedule, including draft, shared versions, and assignment details.
+# Represents a time-off entry in a team schedule, including shared, draft, and deletion state.
 public type MicrosoftGraphTimeOff record {
     *MicrosoftGraphChangeTrackedEntity;
     # The shared version of this timeOff that is viewable by both employees and managers. Updates to the sharedTimeOff property send notifications to users in the Teams client. Required
@@ -9085,7 +9093,7 @@ public type MicrosoftGraphTimeOff record {
     string? userId?;
 };
 
-# Configuration settings for a Teams live event, including audience, recording, and caption options.
+# Configuration settings for a Teams live event, including audience, recording, captions, and Q&A options.
 public type MicrosoftGraphBroadcastMeetingSettings record {
     # Indicates whether Q&A is enabled for this Teams live event. Default value is false
     boolean? isQuestionAndAnswerEnabled?;
@@ -9101,7 +9109,7 @@ public type MicrosoftGraphBroadcastMeetingSettings record {
     MicrosoftGraphBroadcastMeetingCaptionSettings|record {} captions?;
 };
 
-# Abstract base type for SharePoint and OneDrive items, providing common metadata properties.
+# Base schema for SharePoint items, providing common metadata such as name, timestamps, and identity.
 public type MicrosoftGraphBaseItem record {
     *MicrosoftGraphEntity;
     # Parent information, if the item has a parent. Read-write
@@ -9128,7 +9136,7 @@ public type MicrosoftGraphBaseItem record {
     MicrosoftGraphUser|record {} lastModifiedByUser?;
 };
 
-# Base type for online meetings, defining participants, access, chat, recording, and lobby settings.
+# Base schema for online meetings, defining participants, access controls, chat, and conferencing settings.
 public type MicrosoftGraphOnlineMeetingBase record {
     *MicrosoftGraphEntity;
     # The subject of the online meeting
@@ -9199,7 +9207,7 @@ public type MicrosoftGraphOnlineMeetingBase record {
     MicrosoftGraphWatermarkProtectionValues|record {} watermarkProtection?;
 };
 
-# Contains hash values for a file, used to verify content integrity. Includes SHA1, SHA256, CRC32, and quickXorHash.
+# Contains hash values for a file's contents, used to verify integrity and detect changes.
 public type MicrosoftGraphHashes record {
     # This property isn't supported. Don't use
     string? sha256Hash?;
@@ -9211,7 +9219,7 @@ public type MicrosoftGraphHashes record {
     string? crc32Hash?;
 };
 
-# Provides aggregate counts of members, guests, and owners in a Microsoft Teams team.
+# Provides aggregate membership counts for a team, including members, guests, and owners.
 public type MicrosoftGraphTeamSummary record {
     # Count of members in a team
     decimal? membersCount?;
@@ -9221,17 +9229,17 @@ public type MicrosoftGraphTeamSummary record {
     decimal? ownersCount?;
 };
 
-# Represents a time-bounded schedule segment with a start time, end time, and display theme.
+# Represents a time-bounded schedule entity with a start time, end time, and visual theme.
 public type MicrosoftGraphScheduleEntity record {
-    # The start date and time of the schedule entity in ISO 8601 format.
+    # The ISO 8601 UTC date-time when the schedule entity begins.
     string? startDateTime?;
-    # Enumeration of color theme values applicable to schedule entities such as shifts and time-off entries.
+    # Enumeration of color theme options available for schedule entities.
     MicrosoftGraphScheduleEntityTheme theme?;
-    # The end date and time of the schedule entity in ISO 8601 format.
+    # The ISO 8601 UTC date-time when the schedule entity ends.
     string? endDateTime?;
 };
 
-# Holds up to 15 on-premises Active Directory custom extension attributes for a user or device.
+# Holds up to 15 customizable on-premises extension attributes synchronized from Active Directory.
 public type MicrosoftGraphOnPremisesExtensionAttributes record {
     # Fourteenth customizable extension attribute
     string? extensionAttribute14?;
@@ -9265,7 +9273,7 @@ public type MicrosoftGraphOnPremisesExtensionAttributes record {
     string? extensionAttribute11?;
 };
 
-# Defines the visual representation of a user activity, including display text, background color, icon, and custom content.
+# Visual presentation metadata for a user activity, including display text, background color, icon attribution, and custom content for Windows Shell UI rendering.
 public type MicrosoftGraphVisualInfo record {
     # Required. Short text description of the user's unique activity (for example, document name in cases where an activity refers to document creation)
     string displayText?;
@@ -9279,7 +9287,7 @@ public type MicrosoftGraphVisualInfo record {
     MicrosoftGraphJson|record {} content?;
 };
 
-# Represents a single payload of a cloud clipboard item, including its format and base64-encoded content.
+# Represents the payload of a cloud clipboard item, including its format name and base64-encoded content.
 public type MicrosoftGraphCloudClipboardItemPayload record {
     # For a list of possible values see formatName values
     string formatName?;
@@ -9287,7 +9295,7 @@ public type MicrosoftGraphCloudClipboardItemPayload record {
     string content?;
 };
 
-# Nullable object representing an alternative or untyped multipage layout value.
+# Nullable alternative type for multipage layout values.
 public type MultipageLayoutsAnyOf2 record {
 };
 
@@ -9319,7 +9327,7 @@ public type SitesSiteGetByPathGetActivitiesByInterval96b0Queries record {
     ("id"|"access"|"create"|"delete"|"edit"|"endDateTime"|"incompleteData"|"isTrending"|"move"|"startDateTime"|"activities")[] dollarSelect?;
 };
 
-# Defines the default print settings for a printer, including media, orientation, quality, and duplex options.
+# Defines the default print settings for a printer, including color mode, duplex, orientation, media, quality, resolution, and finishing options.
 public type MicrosoftGraphPrinterDefaults record {
     # The default fitPdfToPage setting. True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions
     boolean? fitPdfToPage?;
@@ -9357,7 +9365,7 @@ public type MicrosoftGraphPrinterDefaults record {
     string? contentType?;
 };
 
-# Represents a user's activity within an application, enabling cross-device activity resumption via Windows Timeline.
+# Represents a user activity in an application, capturing app identity, content URLs, visual elements, history items, and server-managed timestamps and status.
 public type MicrosoftGraphUserActivity record {
     *MicrosoftGraphEntity;
     # Set by the server. DateTime in UTC when the object expired on the server
@@ -9370,7 +9378,7 @@ public type MicrosoftGraphUserActivity record {
     string? createdDateTime?;
     # Optional. A custom piece of data - JSON-LD extensible description of content according to schema.org syntax
     MicrosoftGraphJson|record {} contentInfo?;
-    # Defines the visual representation of a user activity, including display text, background color, icon, and custom content.
+    # Visual presentation metadata for a user activity, including display text, background color, icon attribution, and custom content for Windows Shell UI rendering.
     MicrosoftGraphVisualInfo visualElements?;
     # Required. The unique activity ID in the context of the app - supplied by caller and immutable thereafter
     string appActivityId?;
@@ -9390,7 +9398,7 @@ public type MicrosoftGraphUserActivity record {
     MicrosoftGraphStatus|record {} status?;
 };
 
-# Represents a SharePoint group identity, extending the base identity with group-specific principal ID and title.
+# Represents the identity of a SharePoint group, extending the base identity with a tenant principal ID and group title.
 public type MicrosoftGraphSharePointGroupIdentity record {
     *MicrosoftGraphIdentity;
     # The principal ID of the SharePoint group in the tenant. Read-only
@@ -9399,7 +9407,7 @@ public type MicrosoftGraphSharePointGroupIdentity record {
     string? title?;
 };
 
-# Defines a time range with a start and end time, using HH:MM:SS format.
+# Represents a time range with a start time and end time, both in HH:MM:SS format.
 public type MicrosoftGraphTimeRange record {
     # Start time for the time range
     string? startTime?;
@@ -9411,13 +9419,13 @@ public type MicrosoftGraphTimeRange record {
 public type MicrosoftGraphWorkbookOperationError record {
     # The error code
     string? code?;
-    # A nested workbook operation error providing additional error detail.
+    # Nested error object providing additional error detail
     MicrosoftGraphWorkbookOperationError|record {} innerError?;
     # The error message
     string? message?;
 };
 
-# Represents a meeting attendance report including start/end times, participant count, attendance records, and external event information.
+# Represents an attendance report for a meeting, including start/end times, total participant count, attendance records, and external event information.
 public type MicrosoftGraphMeetingAttendanceReport record {
     *MicrosoftGraphEntity;
     # UTC time when the meeting ended. Read-only
@@ -9432,7 +9440,7 @@ public type MicrosoftGraphMeetingAttendanceReport record {
     decimal? totalParticipantCount?;
 };
 
-# Represents a relationship between term store terms or sets, including source, target, and relation type.
+# Represents a relationship between terms or between a term and a set in a term store
 public type MicrosoftGraphTermStoreRelation record {
     *MicrosoftGraphEntity;
     # The to [term] of the relation. The term to which the relationship is defined
@@ -9455,7 +9463,7 @@ public type SitesAnalyticsItemActivityStatsGetActivitiesQueries record {
     ("id"|"access"|"activityDateTime"|"actor"|"driveItem")[] dollarSelect?;
 };
 
-# Defines the recurrence pattern for a scheduled event, including frequency, interval, days, and pattern type.
+# Defines the frequency and schedule pattern for a recurring event
 public type MicrosoftGraphRecurrencePattern record {
     # The month in which the event occurs.  This is a number from 1 to 12
     @constraint:Number {minValue: -2147483648, maxValue: 2147483647}
@@ -9476,7 +9484,7 @@ public type MicrosoftGraphRecurrencePattern record {
     MicrosoftGraphRecurrencePatternType|record {} 'type?;
 };
 
-# Represents a reference to a resource, including its unique identifier, web URL, and type classification.
+# A reference to an external resource, including its URL, unique identifier, and type classification
 public type MicrosoftGraphResourceReference record {
     # A URL leading to the referenced item
     string? webUrl?;
@@ -9488,7 +9496,7 @@ public type MicrosoftGraphResourceReference record {
 
 public type MicrosoftGraphPrinterCapabilitiesTopMarginsItemsNumber decimal?;
 
-# Represents the health attestation state of a device, including boot security, TPM, BitLocker, and integrity measurements.
+# Health attestation state of a device, including boot security, TPM, BitLocker, and integrity details
 public type MicrosoftGraphDeviceHealthAttestationState record {
     # When test signing is allowed, the device does not enforce signature validation during boot
     string? testSigning?;
@@ -9567,7 +9575,7 @@ public type SitesContentTypesGetColumnsQueries record {
     ("id"|"boolean"|"calculated"|"choice"|"columnGroup"|"contentApprovalStatus"|"currency"|"dateTime"|"defaultValue"|"description"|"displayName"|"enforceUniqueValues"|"geolocation"|"hidden"|"hyperlinkOrPicture"|"indexed"|"isDeletable"|"isReorderable"|"isSealed"|"lookup"|"name"|"number"|"personOrGroup"|"propagateChanges"|"readOnly"|"required"|"sourceContentType"|"term"|"text"|"thumbnail"|"type"|"validation"|"sourceColumn")[] dollarSelect?;
 };
 
-# Represents a user-defined override for classifying incoming messages from a specific sender.
+# Defines a classification override rule for messages from a specific sender
 public type MicrosoftGraphInferenceClassificationOverride record {
     *MicrosoftGraphEntity;
     # The email address information of the sender for whom the override is created
@@ -9576,7 +9584,7 @@ public type MicrosoftGraphInferenceClassificationOverride record {
     MicrosoftGraphInferenceClassificationType|record {} classifyAs?;
 };
 
-# Represents a Microsoft Teams online meeting, including scheduling, participants, and broadcast settings.
+# Represents a Microsoft Teams online meeting, including scheduling, participants, and live event settings
 public type MicrosoftGraphOnlineMeeting record {
     *MicrosoftGraphOnlineMeetingBase;
     # The ID of the meeting template
@@ -9603,7 +9611,7 @@ public type MicrosoftGraphOnlineMeeting record {
     MicrosoftGraphMeetingParticipants|record {} participants?;
 };
 
-# Represents a physical or virtual printer registered with Universal Print.
+# Represents a physical or virtual printer registered with Universal Print, including shares and connectors
 public type MicrosoftGraphPrinter record {
     *MicrosoftGraphPrinterBase;
     # The list of printerShares that are associated with the printer. Currently, only one printerShare can be associated with the printer. Read-only. Nullable
@@ -9622,7 +9630,10 @@ public type MicrosoftGraphPrinter record {
     string registeredDateTime?;
 };
 
-# Represents a thumbnail image with dimensions, content stream, and source URL.
+# Response schema returning either a SharePoint content type or a nullable result.
+public type ContentTypeOrNullResponse MicrosoftGraphContentType|NullableContentTypeResult?;
+
+# Represents a thumbnail image, including its URL, dimensions, content stream, and source item identifier.
 public type MicrosoftGraphThumbnail record {
     # The unique identifier of the item that provided the thumbnail. This is only available when a folder thumbnail is requested
     string? sourceItemId?;
@@ -9636,14 +9647,17 @@ public type MicrosoftGraphThumbnail record {
     decimal? height?;
 };
 
-# Base type representing the detail payload of a chat or channel event message.
+# Base schema representing the details of a chat or channel event message.
 public type MicrosoftGraphEventMessageDetail record {
 };
 
-# Paginated collection of SharePoint ContentType resources with OData count support.
+# Response schema returning either a SharePoint site resource or a nullable result.
+public type SiteOrNullResponse MicrosoftGraphSite|NullableSiteResult?;
+
+# Paginated collection of SharePoint content types with count and navigation support.
 public type CollectionOfContentType record {
     *BaseCollectionPaginationCountResponse;
-    # Array of ContentType items returned in the collection response.
+    # Array of content type items returned in the collection.
     MicrosoftGraphContentType[] value?;
 };
 
@@ -9677,7 +9691,7 @@ public type MicrosoftGraphMailFolder record {
 # Device Exchange Access State
 public type MicrosoftGraphDeviceManagementExchangeAccessState "none"|"unknown"|"allowed"|"blocked"|"quarantined";
 
-# Represents image metadata for an activity, including icon URL, alt text, and rendering parameters.
+# Represents image metadata including URI, alt text, and dynamic rendering parameters.
 public type MicrosoftGraphImageInfo record {
     # Optional; parameter used to indicate the server is able to render image dynamically in response to parameterization. For example – a high contrast image
     boolean? addImageQuery?;
@@ -9685,11 +9699,11 @@ public type MicrosoftGraphImageInfo record {
     string? alternateText?;
     # Optional; URI that points to an icon which represents the application used to generate the activity
     string? iconUrl?;
-    # Alternative text for the image, used for accessibility or fallback display purposes.
+    # Alternative text for the image, used for accessibility purposes.
     string? alternativeText?;
 };
 
-# Represents a row in a workbook table, including its zero-based index and raw cell values.
+# Represents a row in a workbook table, including its index and raw cell values.
 public type MicrosoftGraphWorkbookTableRow record {
     *MicrosoftGraphEntity;
     # The raw values of the specified range. The data returned could be of type string, number, or a Boolean. Any cell that contain an error will return the error string
@@ -9708,13 +9722,13 @@ public type SitesGetByPathGetLastModifiedByUserQueries record {
     ("id"|"deletedDateTime"|"aboutMe"|"accountEnabled"|"ageGroup"|"assignedLicenses"|"assignedPlans"|"authorizationInfo"|"birthday"|"businessPhones"|"city"|"companyName"|"consentProvidedForMinor"|"country"|"createdDateTime"|"creationType"|"customSecurityAttributes"|"department"|"deviceEnrollmentLimit"|"displayName"|"employeeHireDate"|"employeeId"|"employeeLeaveDateTime"|"employeeOrgData"|"employeeType"|"externalUserState"|"externalUserStateChangeDateTime"|"faxNumber"|"givenName"|"hireDate"|"identities"|"identityParentId"|"imAddresses"|"interests"|"isManagementRestricted"|"isResourceAccount"|"jobTitle"|"lastPasswordChangeDateTime"|"legalAgeGroupClassification"|"licenseAssignmentStates"|"mail"|"mailboxSettings"|"mailNickname"|"mobilePhone"|"mySite"|"officeLocation"|"onPremisesDistinguishedName"|"onPremisesDomainName"|"onPremisesExtensionAttributes"|"onPremisesImmutableId"|"onPremisesLastSyncDateTime"|"onPremisesProvisioningErrors"|"onPremisesSamAccountName"|"onPremisesSecurityIdentifier"|"onPremisesSyncEnabled"|"onPremisesUserPrincipalName"|"otherMails"|"passwordPolicies"|"passwordProfile"|"pastProjects"|"postalCode"|"preferredDataLocation"|"preferredLanguage"|"preferredName"|"print"|"provisionedPlans"|"proxyAddresses"|"responsibilities"|"schools"|"securityIdentifier"|"serviceProvisioningErrors"|"showInAddressList"|"signInActivity"|"signInSessionsValidFromDateTime"|"skills"|"state"|"streetAddress"|"surname"|"usageLocation"|"userPrincipalName"|"userType"|"activities"|"adhocCalls"|"agreementAcceptances"|"appRoleAssignments"|"authentication"|"calendar"|"calendarGroups"|"calendars"|"calendarView"|"chats"|"cloudClipboard"|"cloudPCs"|"contactFolders"|"contacts"|"createdObjects"|"dataSecurityAndGovernance"|"deviceManagementTroubleshootingEvents"|"directReports"|"drive"|"drives"|"employeeExperience"|"events"|"extensions"|"followedSites"|"inferenceClassification"|"insights"|"joinedTeams"|"licenseDetails"|"mailFolders"|"managedAppRegistrations"|"managedDevices"|"manager"|"memberOf"|"messages"|"oauth2PermissionGrants"|"onenote"|"onlineMeetings"|"onPremisesSyncBehavior"|"outlook"|"ownedDevices"|"ownedObjects"|"people"|"permissionGrants"|"photo"|"photos"|"planner"|"presence"|"registeredDevices"|"scopedRoleMemberOf"|"settings"|"solutions"|"sponsors"|"teamwork"|"todo"|"transitiveMemberOf")[] dollarSelect?;
 };
 
-# Represents a response object containing a single boolean value.
+# A response object containing a single boolean value.
 public type BooleanValueResponse record {
-    # The boolean result value of the response. Defaults to false.
+    # The boolean result value returned by the operation; defaults to false.
     boolean value = false;
 };
 
-# Defines the default value for a column, specified as either a direct value or a computed formula.
+# Defines the default value for a column via a direct value or computed formula.
 public type MicrosoftGraphDefaultColumnValue record {
     # The formula used to compute the default value for the column
     string? formula?;
@@ -9722,7 +9736,7 @@ public type MicrosoftGraphDefaultColumnValue record {
     string? value?;
 };
 
-# Represents the classification of a person by primary data source class and secondary subclass.
+# Represents the classification of a person, including primary type and secondary subtype.
 public type MicrosoftGraphPersonType record {
     # The secondary type of data source, such as OrganizationUser
     string? subclass?;
@@ -9730,19 +9744,19 @@ public type MicrosoftGraphPersonType record {
     string? 'class?;
 };
 
-# Represents the identity of a Teamwork conversation, extending base identity with conversation type.
+# Represents the identity of a Teamwork conversation, including its type (team, channel, or chat).
 public type MicrosoftGraphTeamworkConversationIdentity record {
     *MicrosoftGraphIdentity;
     # Type of conversation. The possible values are: team, channel, chat, and unknownFutureValue
     MicrosoftGraphTeamworkConversationIdentityType|record {} conversationIdentityType?;
 };
 
-# Represents a bot registered with Microsoft Teams teamwork capabilities.
+# Represents a bot associated with a Teamwork application in Microsoft Teams.
 public type MicrosoftGraphTeamworkBot record {
     *MicrosoftGraphEntity;
 };
 
-# Represents a long-running OneNote operation, including status, progress, and result details.
+# Represents a long-running OneNote operation, including its progress, result, and any errors.
 public type MicrosoftGraphOnenoteOperation record {
     *MicrosoftGraphOperation;
     # The resource id
@@ -9762,7 +9776,7 @@ public type SitesDeleteColumnsHeaders record {
     string ifMatch?;
 };
 
-# Represents a share recipient or delegate permission entry for a calendar.
+# Represents a calendar sharing or delegation permission entry for a recipient or delegate.
 public type MicrosoftGraphCalendarPermission record {
     *MicrosoftGraphEntity;
     # Represents a share recipient or delegate who has access to the calendar. For the 'My Organization' share recipient, the address property is null. Read-only
@@ -9786,12 +9800,12 @@ public type MicrosoftGraphUserIdentity record {
     string? userPrincipalName?;
 };
 
-# Represents the fill formatting for a workbook chart element.
+# Represents the fill formatting of a workbook chart element.
 public type MicrosoftGraphWorkbookChartFill record {
     *MicrosoftGraphEntity;
 };
 
-# Represents an external hyperlink containing a target URL.
+# Represents an external hyperlink with a URL href property.
 public type MicrosoftGraphExternalLink record {
     # The URL of the link
     string? href?;
@@ -9813,11 +9827,11 @@ public type MicrosoftGraphQuota record {
     decimal? remaining?;
 };
 
-# Nullable object representing an optional days-of-week value.
+# A nullable object variant used in anyOf composition for days-of-week values.
 public type DaysOfWeekAnyOf21 record {
 };
 
-# Configures meeting lobby bypass rules, specifying which participants are admitted automatically.
+# Defines lobby bypass settings for a meeting, controlling which participants are admitted automatically.
 public type MicrosoftGraphLobbyBypassSettings record {
     # Specifies whether or not to always let dial-in callers bypass the lobby. Optional
     boolean? isDialInBypassEnabled?;
@@ -9825,5 +9839,5 @@ public type MicrosoftGraphLobbyBypassSettings record {
     MicrosoftGraphLobbyBypassScope|record {} scope?;
 };
 
-# Sensitivity classification of an item: normal, personal, private, or confidential.
+# Enumeration of sensitivity levels: normal, personal, private, or confidential.
 public type MicrosoftGraphSensitivity "normal"|"personal"|"private"|"confidential";

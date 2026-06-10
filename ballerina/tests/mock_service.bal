@@ -37,34 +37,30 @@ service / on new http:Listener(9090) {
 isolated function route(string[] path, string method) returns http:Response {
     int len = path.length();
 
-    // /sites
-    if len == 1 && path[0] == "sites" {
+    // / (list sites)
+    if len == 0 {
         if method == "GET" {
             return ok(mockSiteCollectionResponse());
         }
         return methodNotAllowed();
     }
 
-    if len < 2 || path[0] != "sites" {
-        return notFound();
-    }
-
-    // /sites/{seg1} or /sites/microsoft.graph.*
-    if len == 2 {
-        string seg1 = path[1];
-        if seg1 == "microsoft.graph.getAllSites()" && method == "GET" {
+    // /{seg0} or /microsoft.graph.*
+    if len == 1 {
+        string seg0 = path[0];
+        if seg0 == "microsoft.graph.getAllSites()" && method == "GET" {
             return ok(mockSiteCollectionResponse());
         }
-        if seg1 == "microsoft.graph.add" && method == "POST" {
+        if seg0 == "microsoft.graph.add" && method == "POST" {
             return ok(mockSiteCollectionResponse());
         }
-        if seg1 == "microsoft.graph.remove" && method == "POST" {
+        if seg0 == "microsoft.graph.remove" && method == "POST" {
             return ok(mockSiteCollectionResponse());
         }
-        if seg1 == "microsoft.graph.delta()" && method == "GET" {
+        if seg0 == "microsoft.graph.delta()" && method == "GET" {
             return ok(mockDeltaSiteResponse());
         }
-        // /sites/{siteId}
+        // /{siteId}
         if method == "GET" {
             return ok(mockSite());
         }
@@ -74,9 +70,9 @@ isolated function route(string[] path, string method) returns http:Response {
         return methodNotAllowed();
     }
 
-    // /sites/{siteId}/{sub}
-    if len == 3 {
-        string sub = path[2];
+    // /{siteId}/{sub}
+    if len == 2 {
+        string sub = path[1];
         if sub.startsWith("microsoft.graph.getActivitiesByInterval") && method == "GET" {
             return ok(mockActivityStatCollectionResponse());
         }
@@ -134,10 +130,10 @@ isolated function route(string[] path, string method) returns http:Response {
         return notFound();
     }
 
-    // /sites/{siteId}/{sub}/{item}
-    if len == 4 {
-        string sub = path[2];
-        string item = path[3];
+    // /{siteId}/{sub}/{item}
+    if len == 3 {
+        string sub = path[1];
+        string item = path[2];
         if sub == "columns" {
             if method == "GET" {
                 return ok(mockColumn());
@@ -202,10 +198,10 @@ isolated function route(string[] path, string method) returns http:Response {
         return notFound();
     }
 
-    // /sites/{siteId}/{sub}/{itemId}/{action}
-    if len == 5 {
-        string sub = path[2];
-        string action = path[4];
+    // /{siteId}/{sub}/{itemId}/{action}
+    if len == 4 {
+        string sub = path[1];
+        string action = path[3];
         if sub == "contentTypes" {
             if action == "microsoft.graph.isPublished()" && method == "GET" {
                 return ok({"value": true});
@@ -250,7 +246,7 @@ isolated function route(string[] path, string method) returns http:Response {
                 return ok(mockPermissionCollectionResponse());
             }
         } else if sub == "analytics" {
-            string itemId = path[3];
+            string itemId = path[2];
             if itemId == "itemActivityStats" {
                 if method == "GET" {
                     return ok(mockActivityStat());
@@ -263,10 +259,10 @@ isolated function route(string[] path, string method) returns http:Response {
         return notFound();
     }
 
-    // /sites/{siteId}/{sub}/{itemId}/{subSub}/{subItemId}
-    if len == 6 {
-        string sub = path[2];
-        string subSub = path[4];
+    // /{siteId}/{sub}/{itemId}/{subSub}/{subItemId}
+    if len == 5 {
+        string sub = path[1];
+        string subSub = path[3];
         if sub == "contentTypes" {
             if subSub == "columns" {
                 if method == "GET" {
