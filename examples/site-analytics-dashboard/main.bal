@@ -26,7 +26,7 @@ public function main() returns error? {
     sites:ConnectionConfig config = {
         auth: <sites:OAuth2ClientCredentialsGrantConfig>{
             clientId,
-            clientSecret
+            clientSecret,
             tokenUrl: string `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
             scopes: ["https://graph.microsoft.com/.default"]
         }
