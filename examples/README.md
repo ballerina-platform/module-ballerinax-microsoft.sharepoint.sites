@@ -14,11 +14,15 @@ The `microsoft.sharepoint.sites` connector provides practical examples illustrat
 
 1. Generate Microsoft SharePoint credentials to authenticate the connector as described in the [Setup guide](https://central.ballerina.io/ballerinax/microsoft.sharepoint.sites/latest#setup-guide).
 
-2. For each example, create a `Config.toml` file the related configuration. Here's an example of how your `Config.toml` file should look:
+2. For each example, create a `Config.toml` file with the related configuration. Here's the minimum set of credentials required:
 
     ```toml
-    token = "<Access Token>"
+    clientId = "<Your Client ID>"
+    clientSecret = "<Your Client Secret>"
+    tenantId = "<Your Tenant ID>"
     ```
+
+    Some examples also require additional fields such as `siteId` or `targetContentTypeId`. Refer to the `README.md` in each example's directory for the exact `Config.toml` fields required.
 
 ## Running an Example
 
