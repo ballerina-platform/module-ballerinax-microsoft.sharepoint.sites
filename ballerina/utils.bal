@@ -173,13 +173,12 @@ isolated function getSerializedRecordArray(string parent, record {}[] value, str
 # + value - Value to be encoded
 # + return - Encoded string
 isolated function getEncodedUri(anydata value) returns string {
-    string[] parts = re`,`.split(value.toString());
-    string[] encodedParts = [];
-    foreach string part in parts {
-        string|error encoded = url:encode(part, "UTF8");
-        encodedParts.push(encoded is string ? encoded : part);
+string|error encoded = url:encode(value.toString(), "UTF8");
+    if encoded is string {
+        return encoded;
+    } else {
+        return value.toString();
     }
-    return string:'join(",", ...encodedParts);
 }
 
 # Generate query path with query parameter.
