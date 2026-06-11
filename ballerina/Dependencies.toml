@@ -342,7 +342,7 @@ modules = [
 [[package]]
 org = "ballerinax"
 name = "microsoft.sharepoint.sites"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
 	{org = "ballerina", name = "constraint"},
 	{org = "ballerina", name = "data.jsondata"},
@@ -353,6 +353,7 @@ dependencies = [
 	{org = "ballerinai", name = "observe"}
 ]
 modules = [
-	{org = "ballerinax", packageName = "microsoft.sharepoint.sites", moduleName = "microsoft.sharepoint.sites"}
+	{org = "ballerinax", packageName = "microsoft.sharepoint.sites", moduleName = "microsoft.sharepoint.sites"},
+	{org = "ballerinax", packageName = "microsoft.sharepoint.sites", moduleName = "microsoft.sharepoint.sites.mock.server"}
 ]
 
