@@ -36,7 +36,16 @@ To use the Microsoft SharePoint Sites connector, you must have access to the Mic
 
 7. Select **Microsoft Graph**, then choose **Application permissions**.
 
-8. Search for and add the required SharePoint permissions, such as `Sites.Read.All`, `Sites.ReadWrite.All`, or others as needed by your use case.
+8. Select **Application permissions**, then search for and add the permissions required by your use case:
+
+   | Permission | Operations covered |
+   |---|---|
+   | `Sites.Read.All` | Read sites, lists, columns, content types, drives, analytics |
+   | `Sites.ReadWrite.All` | Create and update lists, list items, drives, and content |
+   | `Sites.Manage.All` | Update site properties, create/delete columns and content types |
+   | `Sites.FullControl.All` | Manage site permissions |
+
+   > **Tip:** Grant only the permissions your application actually requires. For read-only use cases, `Sites.Read.All` is sufficient. For full connector coverage, add all four.
 
 9. Click **Grant admin consent** for your organization to activate the permissions.
 
