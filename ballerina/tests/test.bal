@@ -14,10 +14,13 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/os;
 import ballerina/test;
 
 configurable boolean isTestOnLiveServer = false;
+configurable string clientId = "";
+configurable string tenantId = "";
+configurable string clientSecret = "";
+configurable string siteId = "";
 
 final boolean isTestOnMockServer = !isTestOnLiveServer;
 
@@ -35,11 +38,22 @@ string testDriveId = MOCK_DRIVE_ID;
 function initClient() returns error? {
     if isTestOnLiveServer {
         string accessToken = os:getEnv("SHAREPOINT_ACCESS_TOKEN");
+        if accessToken.trim().length() == 0 {
+            return error("SHAREPOINT_ACCESS_TOKEN environment variable is required for live server tests");
+        }
         string liveSiteId = os:getEnv("SHAREPOINT_SITE_ID");
+        if liveSiteId.trim().length() == 0 {
+            return error("SHAREPOINT_SITE_ID environment variable is required for live server tests");
+        }
         sharepointClient = check new ({
-            auth: {token: accessToken}
+            auth: <OAuth2ClientCredentialsGrantConfig>{
+                clientId,
+                clientSecret,
+                tokenUrl: string `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
+                scopes: ["https://graph.microsoft.com/.default"]
+            }
         });
-        testSiteId = liveSiteId;
+        testSiteId = siteId;
     } else {
         sharepointClient = check new ({
             auth: {token: "mock-access-token"}
@@ -123,7 +137,8 @@ function testGetLastSevenDaysAnalytics() returns error? {
 }
 
 @test:Config {
-    dependsOn: [testGetAnalytics]
+    dependsOn: [testGetAnalytics],
+    enable: isTestOnMockServer
 }
 function testListItemActivityStats() returns error? {
     MicrosoftGraphItemActivityStatCollectionResponse|error result = sharepointClient->sitesAnalyticsListItemActivityStats(testSiteId);
@@ -155,7 +170,8 @@ function testListColumns() returns error? {
 function testCreateColumn() returns error? {
     MicrosoftGraphColumnDefinition payload = {
         displayName: "Test Column",
-        description: "A test column"
+        description: "A test column",
+        text: {}
     };
     MicrosoftGraphColumnDefinition|error result = sharepointClient->sitesCreateColumns(testSiteId, payload);
     if result is error {

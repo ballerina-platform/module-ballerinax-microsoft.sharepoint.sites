@@ -1,12 +1,12 @@
 # Ballerina Microsoft SharePoint Connector
 
 [![Build](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/actions/workflows/ci.yml)
-[![Trivy](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/actions/workflows/trivy-scan.yml)
-[![GraalVM Check](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/actions/workflows/build-with-bal-test-graalvm.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/actions/workflows/build-with-bal-test-graalvm.yml)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites.svg)](https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/commits/master)
 [![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/microsoft.sharepoint.sites.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%microsoft.sharepoint.sites)
 
 ## Overview
+
+[Microsoft SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) is a cloud-based collaboration and content management platform that enables organizations to create, share, and manage sites, documents, and resources securely across teams and enterprises.
 
 [Microsoft SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) is a cloud-based collaboration and content management platform that enables organizations to create, share, and manage sites, documents, and resources seamlessly across teams and enterprises.
 
@@ -14,39 +14,68 @@ The `ballerinax/microsoft.sharepoint.sites` package offers APIs to connect and i
 
 ## Setup guide
 
-To use the Microsoft SharePoint Sites connector, you must have access to the Microsoft SharePoint API through a [Microsoft Azure developer account](https://portal.azure.com/) and obtain an OAuth 2.0 client credentials (client ID, client secret, and tenant ID). If you do not have a Microsoft account, you can sign up for one [here](https://signup.microsoft.com/).
+To use the Microsoft SharePoint Sites connector, you must have access to the Microsoft SharePoint API through a [Microsoft Azure developer account](https://portal.azure.com/) and obtain client credentials by registering an application in Azure Active Directory. If you do not have a Microsoft account, you can sign up for one [here](https://account.microsoft.com/account).
 
-### Step 1: Create a Microsoft Account and Register an Application
+### Step 1: Create a Microsoft Account and Set Up SharePoint Access
 
-1. Navigate to the [Microsoft Azure portal](https://portal.azure.com/) and sign up for an account or log in if you already have one.
+1. Navigate to the [Microsoft 365 website](https://www.microsoft.com/en-us/microsoft-365) and sign up for an account or log in if you already have one.
 
-2. Ensure you have an active Microsoft 365 subscription (such as Microsoft 365 Business Basic, Business Standard, Business Premium, or an Enterprise plan like E3/E5), as access to SharePoint Sites and its API requires a valid Microsoft 365 license.
+2. Ensure you have a Microsoft 365 Business Basic, Business Standard, Business Premium, or an Enterprise (E1, E3, or E5) plan, as SharePoint Online and its API capabilities are restricted to users on these plans.
 
-3. Once logged in, navigate to **Azure Active Directory** (now called **Microsoft Entra ID**) from the left-hand navigation panel or by searching for it in the top search bar.
+### Step 2: Register an Application and Generate Credentials
 
-4. In the left sidebar, select **App registrations**, then click **New registration** to register a new application that will be used to access the SharePoint Sites API.
+1. Log in to the [Microsoft Azure Portal](https://portal.azure.com/) using your Microsoft 365 account credentials.
 
-5. Provide a name for your application, select the appropriate supported account types (typically **Accounts in this organizational directory only**), and click **Register**.
+2. In the left-hand navigation menu, select **Microsoft Entra ID** in the top search bar.
 
-### Step 2: Generate Client Credentials (Client ID, Client Secret, and Tenant ID)
+3. In the left panel, navigate to **App registrations** and click **New registration**.
 
-1. Log in to the [Azure portal](https://portal.azure.com/) and navigate to **Microsoft Entra ID** > **App registrations**.
+   ![New application registration](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/refs/heads/main/docs/resources/new-application-registration.png)
 
-2. Select the application you registered in Step 1.
+4. Enter a name for your application, select the appropriate **Supported account types** (e.g., "Single tenant only"), and click **Register**.
 
-3. On the application's overview page, copy the **Application (client) ID** and the **Directory (tenant) ID** — these are your `clientId` and `tenantId` values.
+   ![Application registration details](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/refs/heads/main/docs/resources/application-registration-details.png)
 
-4. In the left sidebar of your application, select **Certificates & secrets**, then click **New client secret**.
+5. Once the application is registered, note down the **Application (client) ID** and **Directory (tenant) ID** from the Overview page.
 
-5. Provide a description and select an expiry duration for the secret, then click **Add**.
+   ![Client ID and Tenant ID](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/refs/heads/main/docs/resources/client-id-and-tenant-id.png)
 
-6. Copy the **Value** of the newly created client secret immediately — this is your `clientSecret`.
+6. Navigate to **Certificates & secrets** in the left panel, click **New client secret**, provide a description and expiry period, then click **Add**. Copy the generated **client secret value** immediately.
 
-7. To grant the necessary permissions for SharePoint Sites, navigate to **API permissions** in the left sidebar, click **Add a permission**, select **Microsoft Graph**, choose **Application permissions**, and add the required permissions such as `Sites.Read.All` or `Sites.ReadWrite.All` depending on your use case.
+   ![Create client secret](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/refs/heads/main/docs/resources/create-client-secret.png)
 
-8. Click **Grant admin consent** to approve the permissions for your organization.
+7. Navigate to **API permissions** in the left panel and click **Add a permission**.
 
-> **Tip:** You must copy and store the client secret value somewhere safe immediately after creation. It won't be visible again in the Azure portal for security reasons.
+   ![Add API permission](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/refs/heads/main/docs/resources/add-api-permission.png)
+
+8. Select **Microsoft Graph** from the available API options.
+
+   ![Microsoft Graph API permission](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/refs/heads/main/docs/resources/microsoft-graph-api-permission.png)
+
+9. Select **Application permissions**, then search for and add the following permissions depending on your use case, then click **Add permissions**.
+
+   | Permission | Operations covered |
+   |---|---|
+   | `Sites.Read.All` | Read sites, lists, columns, content types, drives, analytics |
+   | `Sites.ReadWrite.All` | Create and update lists, list items, drives, and content |
+   | `Sites.Manage.All` | Update site properties, create/delete columns and content types |
+   | `Sites.FullControl.All` | Manage site permissions |
+
+   > **Tip:** Grant only the permissions your application actually requires. For read-only use cases, `Sites.Read.All` is sufficient. For full connector coverage, add all four.
+
+   ![API site permissions](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/refs/heads/main/docs/resources/api-site-permissions.png)
+
+10. Click **Grant admin consent** to approve the permissions for your organization.
+
+    ![Grant admin consent](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites/refs/heads/main/docs/resources/grant-admin-consent.png)
+
+11. Construct the `tokenUrl` using the **Directory (tenant) ID** obtained in step 5:
+
+```text
+https://login.microsoftonline.com/<TENANT_ID>/oauth2/v2.0/token
+```
+
+This is the OAuth 2.0 token endpoint the connector uses to exchange your `clientId` and `clientSecret` for an access token with the `https://graph.microsoft.com/.default` scope.
 
 ## Quickstart
 

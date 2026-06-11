@@ -38,7 +38,11 @@ To use the Microsoft SharePoint Sites connector, you must have access to the Mic
 
 7. Click **Grant admin consent** to approve the permissions for your organization.
 
-> **Tip:** You must copy and store the client secret value somewhere safe immediately after creation. It won't be visible again in the Azure Portal for security reasons.
+8. Search for and add the required SharePoint permissions, such as `Sites.Read.All`, `Sites.ReadWrite.All`, or others as needed by your use case.
+
+9. Click **Grant admin consent** for your organization to activate the permissions.
+
+> **Tip:** You must copy and store the client secret value somewhere safe. It won't be visible again in your Azure portal settings for security reasons.
 
 ## Quickstart
 
