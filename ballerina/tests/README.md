@@ -26,44 +26,21 @@ The `Config.toml` in the `tests` directory already has `isTestOnLiveServer = fal
 
 ### 2. Live Server Tests
 
-To run tests against the live Microsoft SharePoint API, you need valid credentials.
-
-#### Step 1: Set Environment Variables
-
-**Linux/macOS:**
-
-```bash
-export SHAREPOINT_ACCESS_TOKEN="<your-access-token>"
-export SHAREPOINT_SITE_ID="<your-sharepoint-site-id>"
-```
-
-**Windows (Command Prompt):**
-
-```cmd
-set SHAREPOINT_ACCESS_TOKEN=<your-access-token>
-set SHAREPOINT_SITE_ID=<your-sharepoint-site-id>
-```
-
-**Windows (PowerShell):**
-
-```powershell
-$env:SHAREPOINT_ACCESS_TOKEN = "<your-access-token>"
-$env:SHAREPOINT_SITE_ID = "<your-sharepoint-site-id>"
-```
-
-#### Step 2: Enable Live Server Mode
-
-Update the `Config.toml` file in the `tests` directory:
+To run tests against the live Microsoft SharePoint API, update the `Config.toml` file in the `tests` directory with your credentials:
 
 ```toml
 [ballerinax.microsoft.sharepoint.sites]
 isTestOnLiveServer = true
+clientId = "<your-client-id>"
+tenantId = "<your-tenant-id>"
+clientSecret = "<your-client-secret>"
+siteId = "<your-sharepoint-site-id>"
 ```
 
-#### Step 3: Run the Tests
+Then run:
 
 ```bash
 bal test
 ```
 
-> **Note:** `SHAREPOINT_ACCESS_TOKEN` is a short-lived Bearer token obtained from Microsoft identity platform. You can get one via the OAuth 2.0 client credentials flow using your `clientId`, `clientSecret`, and `tenantId`. `SHAREPOINT_SITE_ID` is the full SharePoint site identifier (e.g., `contoso.sharepoint.com,<site-guid>,<web-guid>`).
+> **Note:** The `siteId` is the full SharePoint site identifier in the format `hostname,siteCollectionId,webId` (e.g., `contoso.sharepoint.com,abc-123,def-456`). You can retrieve it by calling `GET https://graph.microsoft.com/v1.0/sites/{hostname}:/sites/{site-name}` in [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) and copying the `id` field from the response.
