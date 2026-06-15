@@ -5,7 +5,7 @@ name = "microsoft.sharepoint.sites"
 version = "1.0.1"
 license = ["Apache-2.0"]
 authors = ["Ballerina"]
-keywords = ["Area/Storage & File Management", "Vendor/Microsoft", "Type/Connector", "Name/Sharepoint Sites"]
+keywords = ["Area/Storage & File Management", "Vendor/Microsoft", "Type/Connector", "Name/Microsoft SharePoint Sites"]
 icon = "icon.png"
 repository = "https://github.com/ballerina-platform/module-ballerinax-microsoft.sharepoint.sites"
 
